@@ -206,10 +206,8 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 68px;
       display: flex; align-items: center;
-      background: rgba(30,30,30,0.80);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
       transition: background var(--transition), box-shadow var(--transition);
     }
     .navbar.scrolled {
@@ -298,7 +296,7 @@
       min-height: 100vh;
       background: #0b0b0f;
       display: flex; align-items: center; justify-content: center;
-      padding: 80px 0 120px;
+      padding: 140px 0 120px;
       position: relative;
       overflow: hidden;
       text-align: center;
@@ -1098,6 +1096,69 @@
 <body>
 
   <!-- ═══════════════════════════════════════════════════════ NAVBAR ══════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" aria-label="Mat Analytics">
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <ul class="navbar__nav">
+        <li class="nav-dropdown" id="navDropdown">
+          <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
+            Soluciones
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">TrustTech &amp; Certificación Digital</p>
+                <p class="nav-dropdown__item-desc">Notarización blockchain · No-Repudio · Stamping.io</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitectura de Datos Enterprise</p>
+                <p class="nav-dropdown__item-desc">Oracle ADW · ODI · Cloud híbrida</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
+              <span class="nav-dropdown__item-num">03</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Inteligencia Analítica Avanzada</p>
+                <p class="nav-dropdown__item-desc">Oracle OAC · Power BI · Gobernanza</p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a class="navbar__link" href="#casos">Casos de Uso</a></li>
+        <li><a class="navbar__link" href="#nosotros">Nosotros</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="#diagnostico" class="btn btn--primary">Agendar Diagnóstico
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="#servicios" onclick="closeMobile()">Soluciones</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificación Digital</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura de Datos</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Analítica</a>
+    <a class="mobile-menu__link" href="#casos" onclick="closeMobile()">Casos de Uso</a>
+    <a class="mobile-menu__link" href="#nosotros" onclick="closeMobile()">Nosotros</a>
+    <a href="#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagnóstico</a>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════ HERO ══════ -->
   <section class="hero" id="inicio">
     <!-- Video de fondo -->
@@ -1750,6 +1811,43 @@
 
   <!-- ═══════════════════════════════════════════════════════ SCRIPTS ═══════ -->
   <script>
+    // Dropdowns
+    const allDropdowns = document.querySelectorAll('.nav-dropdown');
+    function closeAll() {
+      allDropdowns.forEach(dd => {
+        dd.classList.remove('open');
+        const btn = dd.querySelector('[aria-expanded]');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+    allDropdowns.forEach(dd => {
+      const btn = dd.querySelector('.nav-dropdown__trigger');
+      if (!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !dd.classList.contains('open');
+        closeAll();
+        if (isOpen) { dd.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+      });
+      dd.querySelectorAll('.nav-dropdown__item').forEach(item => item.addEventListener('click', closeAll));
+    });
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+
+    // Burger menu
+    const burger = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
