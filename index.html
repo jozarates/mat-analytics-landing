@@ -296,189 +296,133 @@
     /* ─── HERO ───────────────────────────────────────────────────────────── */
     .hero {
       min-height: 100vh;
-      background: var(--black);
-      display: flex; align-items: center;
-      padding: 120px 0 80px;
+      background: #0b0b0f;
+      display: flex; align-items: center; justify-content: center;
+      padding: 140px 0 120px;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     .hero::before {
       content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(139,1,1,0.14) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(139,1,1,0.08) 0%, transparent 60%);
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 500px;
+      background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(139,1,1,0.20) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
+    .hero__center {
+      max-width: 780px; margin: 0 auto;
+      position: relative; z-index: 2;
     }
-    .hero__tag { margin-bottom: 20px; }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      letter-spacing: 0.02em;
+    }
+    .hero__badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 10px rgba(139,1,1,0.90);
+      flex-shrink: 0;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
     .hero__headline {
-      font-size: clamp(32px, 4.5vw, 52px);
+      font-size: clamp(38px, 5.8vw, 72px);
       font-weight: 800;
       color: var(--white);
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 28px;
     }
     .hero__headline em {
       font-style: normal;
-      color: var(--red);
+      background: linear-gradient(135deg, #c0392b 0%, #8B0101 55%, #5c0000 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .hero__sub {
-      font-size: 17px;
-      color: rgba(255,255,255,0.60);
-      line-height: 1.75;
-      margin-bottom: 40px;
-      max-width: 520px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.80;
+      margin: 0 auto 48px;
+      max-width: 560px;
     }
     .hero__actions {
       display: flex; flex-wrap: wrap; gap: 14px;
-      margin-bottom: 56px;
+      justify-content: center;
+      margin-bottom: 0;
     }
-    .hero__proof {
-      display: flex; align-items: center; gap: 16px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+    .btn--pill {
+      border-radius: 100px;
+      padding: 16px 38px;
+      font-size: 15px;
     }
-    .hero__proof-text {
-      font-size: 13px;
-      color: rgba(255,255,255,0.40);
-      line-height: 1.5;
+
+    /* ─── HERO RIBBON ────────────────────────────────────────────────────── */
+    .hero__ribbon {
+      position: absolute;
+      bottom: -80px; left: 50%; transform: translateX(-50%);
+      width: 160%; height: 440px;
+      pointer-events: none; z-index: 1;
     }
-    .hero__proof-logos {
-      display: flex; align-items: center; gap: 12px;
+    .hero__ribbon-layer {
+      position: absolute;
+      width: 100%; height: 100%;
+      border-radius: 60% 40% 55% 45% / 35% 45% 55% 65%;
     }
-    .hero__proof-badge {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.40);
-      border: 1px solid rgba(255,255,255,0.14);
-      padding: 4px 9px; border-radius: 3px;
+    .hero__ribbon-layer:nth-child(1) {
+      background: linear-gradient(
+        125deg,
+        rgba(139,1,1,0) 0%,
+        rgba(100,0,0,0.55) 25%,
+        rgba(139,1,1,0.70) 45%,
+        rgba(60,0,0,0.50) 65%,
+        rgba(139,1,1,0) 100%
+      );
+      filter: blur(3px);
+      animation: ribbon-wave 12s ease-in-out infinite alternate;
     }
-    .hero__visual {
-      position: relative;
-      display: flex; align-items: center; justify-content: center;
+    .hero__ribbon-layer:nth-child(2) {
+      background: linear-gradient(
+        115deg,
+        rgba(60,0,0,0) 0%,
+        rgba(139,1,1,0.30) 30%,
+        rgba(80,5,5,0.45) 55%,
+        rgba(139,1,1,0.25) 75%,
+        rgba(60,0,0,0) 100%
+      );
+      filter: blur(8px);
+      transform: scaleY(0.75) translateY(30px);
+      animation: ribbon-wave 12s ease-in-out infinite alternate-reverse;
     }
-    .hero__card-stack {
-      width: 100%; max-width: 420px;
-      position: relative;
+    .hero__ribbon-layer:nth-child(3) {
+      background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(139,1,1,0.28) 0%, transparent 70%);
+      filter: blur(20px);
+      animation: ribbon-glow 8s ease-in-out infinite alternate;
     }
-    .hero__card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: var(--radius-lg);
-      padding: 24px 28px;
-      backdrop-filter: blur(8px);
+    @keyframes ribbon-wave {
+      0%   { border-radius: 60% 40% 55% 45% / 35% 45% 55% 65%; transform: rotate(-4deg) scaleY(0.86) scaleX(1.03); }
+      25%  { border-radius: 45% 55% 40% 60% / 55% 35% 65% 45%; transform: rotate(0deg) scaleY(1.04) scaleX(0.98); }
+      55%  { border-radius: 55% 45% 62% 38% / 42% 58% 42% 58%; transform: rotate(-2deg) scaleY(0.93) scaleX(1.05); }
+      80%  { border-radius: 38% 62% 48% 52% / 58% 42% 60% 40%; transform: rotate(2deg) scaleY(1.08) scaleX(0.97); }
+      100% { border-radius: 50% 50% 55% 45% / 48% 52% 48% 52%; transform: rotate(-1deg) scaleY(0.96) scaleX(1.01); }
     }
-    .hero__card + .hero__card { margin-top: 12px; }
-    .hero__card-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--gray-trace);
-      margin-bottom: 8px;
-    }
-    .hero__card-value {
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.80);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .hero__card-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--red);
-      flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(139,1,1,0.70);
-      animation: pulse 2s infinite;
-    }
-    .hero__card--stamped {
-      border-color: rgba(139,1,1,0.30);
-      background: rgba(139,1,1,0.06);
-    }
-    .hero__card-hash {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      color: var(--red);
-      letter-spacing: 0.05em;
-      margin-top: 6px;
-      opacity: 0.80;
-    }
-    .hero__card-verified {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 600;
-      color: #4CAF50;
-      background: rgba(76,175,80,0.10);
-      padding: 3px 9px; border-radius: 3px;
-      margin-top: 8px;
+    @keyframes ribbon-glow {
+      0%   { opacity: 0.55; transform: scale(0.95); }
+      100% { opacity: 1.00; transform: scale(1.10); }
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.40; }
-    }
-
-    /* ─── HERO CINEMA ────────────────────────────────────────────────────── */
-    .hero__cinema {
-      position: relative;
-      width: 100%; max-width: 460px;
-      border-radius: 20px;
-      overflow: hidden;
-      padding: 32px 28px;
-      background: #0b0b0f;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.60), 0 0 0 1px rgba(255,255,255,0.06);
-    }
-    .hero__cinema::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 60% at 15% 15%, rgba(139,1,1,0.28) 0%, transparent 55%),
-        radial-gradient(ellipse 55% 55% at 85% 85%, rgba(139,1,1,0.16) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 40% at 50% 5%, rgba(80,0,0,0.40) 0%, transparent 55%);
-      animation: cinema-breathe 7s ease-in-out infinite alternate;
-    }
-    .hero__cinema::after {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(139,1,1,0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139,1,1,0.055) 1px, transparent 1px);
-      background-size: 30px 30px;
-      animation: grid-drift 14s linear infinite;
-    }
-    @keyframes cinema-breathe {
-      0%   { opacity: 0.75; transform: scale(1.00); }
-      100% { opacity: 1.00; transform: scale(1.06); }
-    }
-    @keyframes grid-drift {
-      0%   { transform: translate(0, 0); }
-      100% { transform: translate(30px, 30px); }
-    }
-    .hero__cinema-scan {
-      position: absolute; inset: 0; pointer-events: none; z-index: 1;
-      background: linear-gradient(transparent 30%, rgba(139,1,1,0.045) 50%, transparent 70%);
-      animation: scanline 9s ease-in-out infinite;
-    }
-    @keyframes scanline {
-      0%   { transform: translateY(-120%); }
-      100% { transform: translateY(120%); }
-    }
-    .hero__orb {
-      position: absolute; border-radius: 50%;
-      filter: blur(36px); pointer-events: none;
-      animation: orb-float 9s ease-in-out infinite;
-    }
-    .hero__orb-1 { width: 200px; height: 200px; background: rgba(139,1,1,0.22); top: -60px; right: -50px; animation-delay: 0s; }
-    .hero__orb-2 { width: 130px; height: 130px; background: rgba(139,1,1,0.14); bottom: 10px; left: -30px; animation-delay: 3.5s; }
-    .hero__orb-3 { width: 90px; height: 90px; background: rgba(220,80,0,0.10); top: 45%; left: 35%; animation-delay: 1.8s; }
-    @keyframes orb-float {
-      0%,100% { transform: translate(0, 0) scale(1); }
-      33%      { transform: translate(12px, -18px) scale(1.06); }
-      66%      { transform: translate(-9px, 12px) scale(0.94); }
-    }
-    .hero__cinema-cards {
-      position: relative; z-index: 2;
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(139,1,1,0.90); }
+      50%       { opacity: 0.50; box-shadow: 0 0 4px rgba(139,1,1,0.40); }
     }
 
     /* ─── TRUST BAR ──────────────────────────────────────────────────────── */
@@ -1150,8 +1094,7 @@
       .stat:nth-child(2n) { }
     }
     @media (max-width: 860px) {
-      .hero__grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero__visual { display: none; }
+      .hero { padding: 110px 0 100px; }
       .pillars__grid { grid-template-columns: 1fr; }
       .pillars__grid .pillar { display: block; }
       .usecases__grid { grid-template-columns: 1fr; }
@@ -1172,9 +1115,12 @@
       .trust-bar__inner { gap: 20px; }
     }
     @media (max-width: 480px) {
-      .hero { padding: 100px 0 64px; }
-      .hero__actions { flex-direction: column; }
+      .hero { padding: 100px 0 80px; }
+      .hero__headline { letter-spacing: -0.02em; }
+      .hero__sub { font-size: 16px; }
+      .hero__actions { flex-direction: column; align-items: center; }
       .hero__actions .btn { width: 100%; justify-content: center; }
+      .hero__ribbon { height: 280px; bottom: -40px; }
       .stats__grid { grid-template-columns: 1fr; }
       .form-card { padding: 28px 20px; }
     }
@@ -1270,69 +1216,33 @@
 
   <!-- ══════════════════════════════════════════════════════════ HERO ══════ -->
   <section class="hero" id="inicio">
-    <div class="container">
-      <div class="hero__grid">
-        <div class="hero__content">
-          <div class="hero__tag">
-            <span class="tag tag--white">Oracle · Power BI · Stamping.io</span>
-          </div>
-          <h1 class="hero__headline">
-            Sus datos existen.<br>¿Puede probar que son <em>irrefutables</em>?
-          </h1>
-          <p class="hero__sub">
-            Analítica enterprise con integridad criptográfica certificada. Oracle + Power BI + Stamping.io — para entornos donde el dato no puede fallar.
-          </p>
-          <div class="hero__actions">
-            <a href="#diagnostico" class="btn btn--primary btn--lg">
-              Solicitar Diagnóstico de 15 min
-              <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </a>
-            <a href="#trusttech" class="btn btn--outline-white btn--lg">
-              Ver cómo funciona
-            </a>
-          </div>
-          <div class="hero__proof">
-            <p class="hero__proof-text">Ecosistema certificado<br>clase enterprise</p>
-            <div class="hero__proof-logos">
-              <span class="hero__proof-badge">Oracle ADW</span>
-              <span class="hero__proof-badge">OAC</span>
-              <span class="hero__proof-badge">Stamping.io</span>
-            </div>
-          </div>
-        </div>
+    <!-- Ribbon visual -->
+    <div class="hero__ribbon" aria-hidden="true">
+      <div class="hero__ribbon-layer"></div>
+      <div class="hero__ribbon-layer"></div>
+      <div class="hero__ribbon-layer"></div>
+    </div>
 
-        <div class="hero__visual">
-          <div class="hero__cinema">
-            <div class="hero__orb hero__orb-1"></div>
-            <div class="hero__orb hero__orb-2"></div>
-            <div class="hero__orb hero__orb-3"></div>
-            <div class="hero__cinema-scan"></div>
-            <div class="hero__cinema-cards hero__card-stack">
-              <div class="hero__card">
-                <p class="hero__card-label">Reporte Financiero Q2 · SBS</p>
-                <div class="hero__card-value">
-                  <span class="hero__card-dot"></span>
-                  Procesando en Oracle ADW
-                </div>
-              </div>
-              <div class="hero__card">
-                <p class="hero__card-label">Análisis de Riesgo Crediticio</p>
-                <div class="hero__card-value">
-                  <span class="hero__card-dot" style="background:#4CAF50;box-shadow:0 0 8px rgba(76,175,80,0.70);animation:none;"></span>
-                  Dashboard OAC · Actualizado hace 3 min
-                </div>
-              </div>
-              <div class="hero__card hero__card--stamped">
-                <p class="hero__card-label">Certificación Stamping.io</p>
-                <div class="hero__card-value">Conciliación Mensual · Exportado 13/06/2026</div>
-                <div class="hero__card-hash">SHA-256: a3f8c1d2e9b4...7f02a1</div>
-                <div class="hero__card-verified">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#4CAF50" stroke-width="2"><polyline points="2,6 5,9 10,3"/></svg>
-                  Integridad verificada · Blockchain notarizado
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="container">
+      <div class="hero__center">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          Oracle · Power BI · Stamping.io
+        </div>
+        <h1 class="hero__headline">
+          Sus datos existen.<br>¿Puede probar que son <em>irrefutables</em>?
+        </h1>
+        <p class="hero__sub">
+          Analítica enterprise con integridad criptográfica certificada. Para entornos donde el dato no puede fallar.
+        </p>
+        <div class="hero__actions">
+          <a href="#diagnostico" class="btn btn--primary btn--pill">
+            Solicitar Diagnóstico
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+          <a href="#servicios" class="btn btn--outline-white btn--pill">
+            Ver soluciones
+          </a>
         </div>
       </div>
     </div>
