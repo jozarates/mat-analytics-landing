@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inteligencia Analítica Avanzada — Oracle Analytics Cloud & Power BI | Mat Analytics SAC</title>
   <meta name="description" content="Mat Analytics implementa Oracle Analytics Cloud y Microsoft Power BI para transformar datos en ventaja competitiva verificable. Augmented Analytics, dashboards ejecutivos, Machine Learning nativo. Lima, Perú.">
@@ -573,8 +574,24 @@
     }
     .pbi-section-hero {
       padding: 80px 0 64px;
-      text-align: center;
     }
+    .pbi-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .pbi-hero-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .pbi-hero-visual__img {
+      width: 100%; max-width: 340px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: var(--white);
+    }
+    .pbi-hero-visual__img img { width: 100%; height: auto; display: block; }
     .pbi-section-hero__title {
       font-size: clamp(28px, 3.5vw, 42px);
       font-weight: 800; color: var(--black);
@@ -583,8 +600,12 @@
     }
     .pbi-section-hero__desc {
       font-size: 17px; color: var(--gray-mid);
-      max-width: 600px; margin: 0 auto;
       line-height: 1.7;
+    }
+    @media (max-width: 720px) {
+      .pbi-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .pbi-hero-visual { order: -1; }
+      .pbi-hero-visual__img { max-width: 240px; }
     }
 
     /* Alternating capability rows */
@@ -894,7 +915,7 @@
       <ul class="navbar__nav">
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Líneas de Negocio
+            Soluciones
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
@@ -925,7 +946,7 @@
         <li><a class="navbar__link" href="index.html#nosotros">Nosotros</a></li>
       </ul>
       <div class="navbar__actions">
-        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
         <a href="index.html#diagnostico" class="btn btn--primary">Agendar Diagnóstico
@@ -939,7 +960,7 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Líneas de Negocio</a>
+    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Soluciones</a>
     <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Analítica Avanzada</a>
     <a class="mobile-menu__link" href="index.html#casos" onclick="closeMobile()">Casos de Uso</a>
     <a class="mobile-menu__link" href="index.html#nosotros" onclick="closeMobile()">Nosotros</a>
@@ -1326,31 +1347,32 @@
 <!-- ═══════════════════════════════════════════ POWER BI ═══ -->
 <section id="powerbi">
 
-  <!-- PBI Sub-hero -->
+  <!-- PBI Sub-hero + imagen fusionados -->
   <div class="pbi-section-hero">
     <div class="container">
-      <div style="margin-bottom:18px;" class="reveal">
-        <span class="tag tag--blue">Microsoft Power BI</span>
+      <div class="pbi-hero-grid">
+        <div class="pbi-hero-text">
+          <div style="margin-bottom:18px;" class="reveal">
+            <span class="tag tag--blue">Microsoft Power BI</span>
+          </div>
+          <h2 class="pbi-section-hero__title reveal reveal-delay-1">
+            BI para todos. Desde el analista<br>hasta el directorio.
+          </h2>
+          <p class="pbi-section-hero__desc reveal reveal-delay-2">
+            Microsoft Power BI democratiza el acceso a la información con Copilot, Microsoft Fabric y OneLake. La plataforma líder de Gartner que convierte a cada colaborador en un tomador de decisiones informado.
+          </p>
+        </div>
+        <div class="pbi-hero-visual reveal reveal-delay-1">
+          <div class="pbi-hero-visual__img">
+            <img
+              src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero_PBI_opt2?wid=680&hei=480&fit=crop"
+              alt="Microsoft Power BI"
+              width="680" height="480"
+              loading="lazy"
+            >
+          </div>
+        </div>
       </div>
-      <h2 class="pbi-section-hero__title reveal reveal-delay-1">
-        BI para todos. Desde el analista<br>hasta el directorio.
-      </h2>
-      <p class="pbi-section-hero__desc reveal reveal-delay-2">
-        Microsoft Power BI democratiza el acceso a la información con Copilot, Microsoft Fabric y OneLake. La plataforma líder de Gartner que convierte a cada colaborador en un tomador de decisiones informado.
-      </p>
-    </div>
-  </div>
-
-  <!-- Hero image Power BI -->
-  <div class="reveal" style="max-width:960px;margin:0 auto 0;padding:0 24px;padding-bottom:0;">
-    <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);">
-      <img
-        src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero_PBI_opt2?wid=1200&hei=675&fit=crop"
-        alt="Microsoft Power BI — plataforma de inteligencia de negocios"
-        width="1200" height="675"
-        loading="lazy"
-        style="width:100%;height:auto;display:block;"
-      >
     </div>
   </div>
 
@@ -1607,10 +1629,6 @@
           Agendar Diagnóstico Gratuito
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
-        <a href="#oracle-analytics" class="btn btn--outline-white btn--lg">
-          Comparar Oracle vs Power BI
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
       </div>
     </div>
   </div>
@@ -1635,7 +1653,7 @@
         </div>
       </div>
       <div>
-        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Líneas de Negocio</p>
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Soluciones</p>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
           <a href="trusttech.html" style="font-size:13px;color:rgba(255,255,255,0.50)">TrustTech &amp; Certificación Digital</a>
           <a href="arquitectura.html" style="font-size:13px;color:rgba(255,255,255,0.50)">Arquitectura de Datos Enterprise</a>

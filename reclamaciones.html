@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Libro de Reclamaciones — Mat Analytics SAC</title>
   <meta name="description" content="Libro de Reclamaciones Virtual de Mat Analytics SAC. Registre su queja o reclamo conforme al Código de Protección y Defensa del Consumidor.">
@@ -410,7 +411,7 @@
       <ul class="navbar__nav">
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Líneas de Negocio
+            Soluciones
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
@@ -441,7 +442,7 @@
         <li><a class="navbar__link" href="index.html#nosotros">Nosotros</a></li>
       </ul>
       <div class="navbar__actions">
-        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
         <a href="index.html#diagnostico" class="btn btn--primary">Agendar Diagnóstico
@@ -454,7 +455,7 @@
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Líneas de Negocio</a>
+    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Soluciones</a>
     <a class="mobile-menu__link" href="index.html#casos" onclick="closeMobile()">Casos de Uso</a>
     <a class="mobile-menu__link" href="index.html#nosotros" onclick="closeMobile()">Nosotros</a>
     <a href="index.html#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagnóstico</a>
@@ -710,7 +711,7 @@
           <span style="display:inline-flex;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.10);padding:4px 10px;border-radius:3px">En alianza con Stamping.io</span>
         </div>
         <div>
-          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:16px">Líneas de Negocio</p>
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:16px">Soluciones</p>
           <div style="display:flex;flex-direction:column;gap:10px">
             <a href="trusttech.html" style="font-size:13px;color:rgba(255,255,255,0.50)">TrustTech &amp; Certificación Digital</a>
             <a href="arquitectura.html" style="font-size:13px;color:rgba(255,255,255,0.50)">Arquitectura de Datos Enterprise</a>
@@ -825,10 +826,12 @@
       updateHash();
     }
 
-    function updateHash() {
+    async function updateHash() {
       if (!hasSig) { sigHash.textContent = 'Sin firma'; return; }
-      const data = canvas.toDataURL().slice(-24);
-      sigHash.textContent = 'SHA: ' + data.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().slice(0, 20) + '…';
+      const encoded = new TextEncoder().encode(canvas.toDataURL());
+      const hashBuf = await crypto.subtle.digest('SHA-256', encoded);
+      const hashHex = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2,'0')).join('');
+      sigHash.textContent = 'SHA-256: ' + hashHex.slice(0, 20) + '…';
     }
 
     function clearSignature() {
@@ -936,6 +939,37 @@
           ticketCode.textContent = 'Código: ' + code;
           form.style.display = 'none';
           success.style.display = 'block';
+          canvas.width = canvas.width;
+          // Generar recibo de auditoría descargable
+          const receipt = {
+            servicio: 'Libro de Reclamaciones — Mat Analytics SAC',
+            ticket: code,
+            estado: 'ENVIADO',
+            timestamp: new Date().toISOString(),
+            consumidor: {
+              nombres: payload.get('nombres') || '',
+              num_doc: payload.get('num_doc') || '',
+              email:   payload.get('email')   || '',
+              celular: payload.get('celular') || ''
+            },
+            reclamo: {
+              naturaleza:  payload.get('naturaleza')          || '',
+              producto:    payload.get('producto')            || '',
+              descripcion: payload.get('descripcion_reclamo') || '',
+              pedido:      payload.get('pedido')              || ''
+            },
+            integridad: {
+              firma_hash:    sigHash.textContent,
+              formspree_ref: 'mdavynjy',
+              user_agent:    navigator.userAgent.slice(0, 120)
+            }
+          };
+          const blob = new Blob([JSON.stringify(receipt, null, 2)], { type: 'application/json' });
+          const dl = document.createElement('a');
+          dl.href = URL.createObjectURL(blob);
+          dl.download = `reclamacion-${code}.json`;
+          dl.click();
+          URL.revokeObjectURL(dl.href);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
           const data = await res.json();

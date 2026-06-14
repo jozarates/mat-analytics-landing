@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arquitectura de Datos Enterprise · Oracle ADW · Mat Analytics SAC</title>
   <meta name="description" content="Mat Analytics diseña, implementa y migra arquitecturas Oracle para entornos de misión crítica: Oracle ADW, ODI, GoldenGate, Exadata. Banca, seguros, sector público peruano.">
@@ -589,7 +590,7 @@
       <ul class="navbar__nav">
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Líneas de Negocio
+            Soluciones
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
@@ -620,7 +621,7 @@
         <li><a class="navbar__link" href="index.html#nosotros">Nosotros</a></li>
       </ul>
       <div class="navbar__actions">
-        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
         <a href="index.html#diagnostico" class="btn btn--primary">Agendar Diagnóstico
@@ -633,7 +634,7 @@
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Líneas de Negocio</a>
+    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Soluciones</a>
     <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura de Datos Enterprise</a>
     <a class="mobile-menu__link" href="index.html#casos" onclick="closeMobile()">Casos de Uso</a>
     <a class="mobile-menu__link" href="index.html#nosotros" onclick="closeMobile()">Nosotros</a>
@@ -1252,7 +1253,7 @@
         </div>
       </div>
       <div>
-        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Líneas de Negocio</p>
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Soluciones</p>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
           <a href="trusttech.html" style="font-size:13px;color:rgba(255,255,255,0.50)">TrustTech &amp; Certificación Digital</a>
           <a href="arquitectura.html" style="font-size:13px;color:rgba(255,255,255,0.50)">Arquitectura de Datos Enterprise</a>

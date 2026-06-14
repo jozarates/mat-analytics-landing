@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mat Analytics — Inteligencia de Datos con Integridad Certificada</title>
   <meta name="description" content="Transformamos datos corporativos complejos en analítica estratégica con trazabilidad criptográfica inmutable. Oracle ADW · OAC · ODI · Power BI · Stamping.io. Para banca, seguros, logística y entidades del Estado.">
@@ -1189,7 +1190,7 @@
       <ul class="navbar__nav">
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Líneas de Negocio
+            Soluciones
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
@@ -1243,7 +1244,7 @@
         <li><a class="navbar__link" href="#nosotros">Nosotros</a></li>
       </ul>
       <div class="navbar__actions">
-        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
         <a href="#diagnostico" class="btn btn--primary">Agendar Diagnóstico
@@ -1258,7 +1259,7 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="#servicios" onclick="closeMobile()">Líneas de Negocio</a>
+    <a class="mobile-menu__link" href="#servicios" onclick="closeMobile()">Soluciones</a>
     <a class="mobile-menu__link" href="#trusttech" onclick="closeMobile()">TrustTech — Diferenciador exclusivo</a>
     <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech — Soluciones Stamping.io</a>
     <a class="mobile-menu__link" href="#casos" onclick="closeMobile()">Casos de Uso</a>
@@ -1345,10 +1346,10 @@
           <span class="trust-bar__item">Oracle ADW</span>
           <span class="trust-bar__item">Oracle OAC</span>
           <span class="trust-bar__item">Oracle ODI</span>
+          <span class="trust-bar__item">Oracle DB</span>
+          <span class="trust-bar__item">Oracle Cloud</span>
           <span class="trust-bar__item">Power BI</span>
           <span class="trust-bar__item trust-bar__item--red">Stamping.io</span>
-          <span class="trust-bar__item">SBS Ready</span>
-          <span class="trust-bar__item">ISO 27001</span>
         </div>
       </div>
     </div>
@@ -1880,23 +1881,23 @@
           <span class="footer__alliance">En alianza con Stamping.io</span>
           <div class="footer__socials">
             <!-- LinkedIn -->
-            <a class="footer__social" href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <a class="footer__social" href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
             <!-- X / Twitter -->
-            <a class="footer__social" href="#" aria-label="X / Twitter" target="_blank" rel="noopener">
+            <a class="footer__social" href="#" aria-label="X / Twitter" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
             <!-- Facebook -->
-            <a class="footer__social" href="#" aria-label="Facebook" target="_blank" rel="noopener">
+            <a class="footer__social" href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Col 2 — Líneas de Negocio -->
+        <!-- Col 2 — Soluciones -->
         <div>
-          <p class="footer__col-title">Líneas de Negocio</p>
+          <p class="footer__col-title">Soluciones</p>
           <ul class="footer__links">
             <li><a class="footer__link" href="#vertical-trusttech">TrustTech &amp; Certificación Digital</a></li>
             <li><a class="footer__link" href="#vertical-arquitectura">Arquitectura de Datos Enterprise</a></li>
@@ -1925,7 +1926,7 @@
           </div>
           <div class="footer__contact-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <a href="https://mat-analytics.com" target="_blank" rel="noopener">www.mat-analytics.com</a>
+            <a href="https://mat-analytics.com" target="_blank" rel="noopener noreferrer">www.mat-analytics.com</a>
           </div>
 
           <!-- Libro de Reclamaciones -->
@@ -2065,6 +2066,30 @@
         if (res.ok) {
           form.style.display = 'none';
           formSuccess.style.display = 'block';
+          // Generar recibo de auditoría descargable
+          const receipt = {
+            servicio: 'Solicitud de Diagnóstico — Mat Analytics SAC',
+            estado: 'ENVIADO',
+            timestamp: new Date().toISOString(),
+            solicitante: {
+              nombre:  data.get('nombre')  || '',
+              cargo:   data.get('cargo')   || '',
+              empresa: data.get('empresa') || '',
+              email:   data.get('email')   || '',
+              sector:  data.get('sector')  || '',
+              desafio: data.get('desafio') || ''
+            },
+            auditoria: {
+              formspree_ref: 'mdavynjy',
+              user_agent: navigator.userAgent.slice(0, 120)
+            }
+          };
+          const blob = new Blob([JSON.stringify(receipt, null, 2)], { type: 'application/json' });
+          const dl = document.createElement('a');
+          dl.href = URL.createObjectURL(blob);
+          dl.download = `diagnostico-matanalytics-${Date.now()}.json`;
+          dl.click();
+          URL.revokeObjectURL(dl.href);
         } else {
           throw new Error('error');
         }
@@ -2079,9 +2104,9 @@
         const body = encodeURIComponent(
           `Nombre: ${nombre}\nCargo: ${cargo}\nEmpresa: ${empresa}\nEmail: ${email}\nSector: ${sector}\nDesafío: ${desafio}`
         );
-        window.location.href = `mailto:jzarate@mat-analytics.com?subject=Diagnóstico Mat Analytics — ${encodeURIComponent(empresa)}&body=${body}`;
         btn.disabled = false;
         btn.innerHTML = 'Solicitar mi Diagnóstico <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>';
+        alert('Error al enviar. Por favor contáctenos a info@mat-analytics.com');
       }
     });
 

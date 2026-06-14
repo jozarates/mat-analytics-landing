@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrustTech — Certificación Criptográfica · Mat Analytics + Stamping.io</title>
   <meta name="description" content="Bóveda digital programable para entornos corporativos críticos. Notarización blockchain, firmas digitales, trazabilidad y certificación con valor legal. Mat Analytics + Stamping.io.">
@@ -517,7 +518,7 @@
       <ul class="navbar__nav">
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Líneas de Negocio
+            Soluciones
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
@@ -548,7 +549,7 @@
         <li><a class="navbar__link" href="index.html#nosotros">Nosotros</a></li>
       </ul>
       <div class="navbar__actions">
-        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
         <a href="index.html#diagnostico" class="btn btn--primary">Agendar Diagnóstico
@@ -562,7 +563,7 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Líneas de Negocio</a>
+    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Soluciones</a>
     <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificación Digital</a>
     <a class="mobile-menu__link" href="index.html#casos" onclick="closeMobile()">Casos de Uso</a>
     <a class="mobile-menu__link" href="index.html#nosotros" onclick="closeMobile()">Nosotros</a>
@@ -586,7 +587,7 @@
             Notarización blockchain, firmas digitales con valor legal, trazabilidad absoluta y certificación criptográfica. El estándar TrustTech que Mat Analytics implementa sobre la infraestructura de Stamping.io para entornos corporativos y gubernamentales críticos.
           </p>
           <div class="hero__actions">
-            <a href="https://stamping.io/admin/" target="_blank" rel="noopener" class="btn btn--primary">
+            <a href="https://stamping.io/admin/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
               Probar Stamping.io
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -629,7 +630,7 @@
               Verificación independiente disponible
             </div>
             <div style="margin-top:10px">
-              <a href="https://stamping.io/es/scan/" target="_blank" rel="noopener"
+              <a href="https://stamping.io/es/scan/" target="_blank" rel="noopener noreferrer"
                  style="font-size:12px;font-weight:600;color:var(--red);display:inline-flex;align-items:center;gap:5px;">
                 Abrir Explorer
                 <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
@@ -823,11 +824,11 @@
             Agregue marca de tiempo inmutable y firma electrónica a certificados, credenciales verificables, reportes regulatorios y cualquier transacción crítica. El resultado es un documento verificable públicamente, sin depender de su infraestructura interna.
           </p>
           <div class="tab-content__links">
-            <a href="https://registrado.org" target="_blank" rel="noopener" class="tab-link">
+            <a href="https://registrado.org" target="_blank" rel="noopener noreferrer" class="tab-link">
               registrado.org
               <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
-            <a href="https://stamping.io/es/scan/" target="_blank" rel="noopener" class="tab-link">
+            <a href="https://stamping.io/es/scan/" target="_blank" rel="noopener noreferrer" class="tab-link">
               Explorer verificador
               <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -854,11 +855,11 @@
             Flujos de firma para partes conocidas o desconocidas. Firmas ECDSA, RSA, X.509 sobre PDF e imágenes, con verificación on-chain y trazabilidad completa de quién firmó, cuándo y desde dónde.
           </p>
           <div class="tab-content__links">
-            <a href="https://appcuerdo.com" target="_blank" rel="noopener" class="tab-link">
+            <a href="https://appcuerdo.com" target="_blank" rel="noopener noreferrer" class="tab-link">
               appcuerdo.com
               <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
-            <a href="https://whatsign.com" target="_blank" rel="noopener" class="tab-link">
+            <a href="https://whatsign.com" target="_blank" rel="noopener noreferrer" class="tab-link">
               whatsign.com
               <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -885,7 +886,7 @@
             Registre cada estado, movimiento o transformación de un activo o documento en blockchain. Cualquier tercero puede verificar el historial completo sin acceso a sus sistemas internos, eliminando fricciones en auditorías y due diligence.
           </p>
           <div class="tab-content__links">
-            <a href="https://rastrar.com" target="_blank" rel="noopener" class="tab-link">
+            <a href="https://rastrar.com" target="_blank" rel="noopener noreferrer" class="tab-link">
               rastrar.com
               <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -912,7 +913,7 @@
             Emita tokens ERC-20 para programas de fidelización o dinero electrónico, y NFTs para credenciales, tickets y certificados únicos. Todo sobre redes blockchain auditables con integración a su ecosistema Oracle y Power BI.
           </p>
           <div class="tab-content__links">
-            <a href="https://stamping.io/admin/" target="_blank" rel="noopener" class="tab-link">
+            <a href="https://stamping.io/admin/" target="_blank" rel="noopener noreferrer" class="tab-link">
               Acceder al dashboard
               <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -969,7 +970,7 @@
               Cursos blockchain incluidos
             </li>
           </ul>
-          <a href="https://stamping.io/admin/register2.php" target="_blank" rel="noopener" class="price-card__cta">
+          <a href="https://stamping.io/admin/register2.php" target="_blank" rel="noopener noreferrer" class="price-card__cta">
             Crear cuenta gratis
           </a>
         </div>
@@ -1002,7 +1003,7 @@
               Cursos blockchain avanzado
             </li>
           </ul>
-          <a href="https://stamping.io/admin/" target="_blank" rel="noopener" class="price-card__cta">
+          <a href="https://stamping.io/admin/" target="_blank" rel="noopener noreferrer" class="price-card__cta">
             Contratar Startup
           </a>
         </div>
@@ -1052,14 +1053,14 @@
         Nuestro equipo configura e integra la bóveda en su ecosistema Oracle y Power BI.
       </p>
       <div class="final-cta__actions">
-        <a href="https://stamping.io/admin/" target="_blank" rel="noopener" class="btn btn--primary">
+        <a href="https://stamping.io/admin/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
           Probar Stamping.io gratis
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
         <a href="index.html#diagnostico" class="btn btn--outline-white">
           Diagnóstico con Mat Analytics
         </a>
-        <a href="https://stamping.io/es/scan/" target="_blank" rel="noopener" class="btn btn--outline-white">
+        <a href="https://stamping.io/es/scan/" target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">
           Explorer público
         </a>
       </div>
@@ -1100,7 +1101,7 @@
 
         <!-- Col 2 -->
         <div>
-          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Líneas de Negocio</p>
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Soluciones</p>
           <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
             <a href="trusttech.html" style="font-size:13px;color:rgba(255,255,255,0.50)">TrustTech &amp; Certificación Digital</a>
             <a href="arquitectura.html" style="font-size:13px;color:rgba(255,255,255,0.50)">Arquitectura de Datos Enterprise</a>
@@ -1111,7 +1112,7 @@
             <a href="#funcionalidades" style="font-size:13px;color:rgba(255,255,255,0.50)">Funcionalidades</a>
             <a href="#casos" style="font-size:13px;color:rgba(255,255,255,0.50)">Casos de Uso</a>
             <a href="index.html#diagnostico" style="font-size:13px;color:rgba(255,255,255,0.50)">Agendar Diagnóstico</a>
-            <a href="https://stamping.io/es/partners.html" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,0.50)">Stamping.io Partners</a>
+            <a href="https://stamping.io/es/partners.html" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:rgba(255,255,255,0.50)">Stamping.io Partners</a>
           </div>
         </div>
 
@@ -1128,7 +1129,7 @@
           </div>
           <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.50);margin-bottom:20px">
             <svg width="14" height="14" style="flex-shrink:0;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <a href="https://mat-analytics.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.50)">www.mat-analytics.com</a>
+            <a href="https://mat-analytics.com" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.50)">www.mat-analytics.com</a>
           </div>
           <a href="reclamaciones.html" style="display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid rgba(255,255,255,0.10);border-radius:6px">
             <div style="width:32px;height:32px;flex-shrink:0;background:rgba(139,1,1,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center">
