@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad — Mat Analytics SAC</title>
+  <meta name="description" content="Política de Privacidad y Tratamiento de Datos Personales de Mat Analytics SAC. Cumplimiento Ley N° 29733 y RGPD.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #8B0101; --red-hover: #A50101; --red-subtle: rgba(139,1,1,0.08);
+      --black: #1E1E1E; --gray-text: #3A3A3A; --gray-mid: #757575;
+      --gray-trace: #999; --gray-bg: #F7F7F7; --white: #fff;
+      --border: rgba(255,255,255,0.08); --border-light: #E5E5E5;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius: 6px; --radius-lg: 12px; --max-w: 860px; --transition: 0.22s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--gray-text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 68px; display: flex; align-items: center;
+      background: var(--black); border-bottom: 1px solid var(--border);
+    }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .navbar__logo { height: 34px; width: auto; }
+    .navbar__nav { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .navbar__link { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .navbar__link:hover { color: #fff; text-decoration: none; }
+    .navbar__mail {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.55);
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .navbar__mail:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+    /* MAIN */
+    .legal-wrap { max-width: var(--max-w); margin: 0 auto; padding: 116px 24px 80px; }
+    .legal-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid var(--border-light); }
+    .legal-badge {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--red); background: var(--red-subtle);
+      padding: 5px 12px; border-radius: 3px; margin-bottom: 16px;
+    }
+    .legal-header h1 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 12px; }
+    .legal-meta { font-size: 13px; color: var(--gray-trace); display: flex; flex-wrap: wrap; gap: 20px; }
+    .legal-meta span::before { content: '· '; }
+    .legal-meta span:first-child::before { content: ''; }
+
+    /* TOC */
+    .toc { background: var(--gray-bg); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 48px; }
+    .toc__title { font-size: 12px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--gray-trace); margin-bottom: 14px; }
+    .toc__list { display: flex; flex-direction: column; gap: 6px; }
+    .toc__link { font-size: 13px; color: var(--gray-text); }
+    .toc__link:hover { color: var(--red); }
+    .toc__num { display: inline-block; width: 22px; font-size: 11px; color: var(--gray-trace); font-weight: 600; }
+
+    /* SECTIONS */
+    .legal-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+    .legal-section h2 { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
+    .legal-section h2 .sec-num { font-size: 12px; font-weight: 700; color: var(--red); background: var(--red-subtle); padding: 3px 8px; border-radius: 3px; }
+    .legal-section h3 { font-size: 15px; font-weight: 600; color: var(--black); margin: 20px 0 8px; }
+    .legal-section p { font-size: 15px; line-height: 1.8; color: var(--gray-text); margin-bottom: 12px; }
+    .legal-section ul, .legal-section ol { padding-left: 20px; margin-bottom: 14px; }
+    .legal-section li { font-size: 15px; line-height: 1.8; color: var(--gray-text); margin-bottom: 6px; }
+    .legal-note { background: rgba(139,1,1,0.05); border-left: 3px solid var(--red); padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0; margin: 16px 0; font-size: 14px; color: var(--gray-text); }
+    .legal-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+    .legal-table th { background: var(--gray-bg); color: var(--black); font-weight: 600; text-align: left; padding: 10px 14px; border: 1px solid var(--border-light); }
+    .legal-table td { padding: 10px 14px; border: 1px solid var(--border-light); vertical-align: top; line-height: 1.6; }
+    .legal-table tr:nth-child(even) td { background: #fafafa; }
+
+    /* FOOTER */
+    .legal-footer { background: var(--black); color: rgba(255,255,255,0.45); padding: 32px 24px; text-align: center; font-size: 13px; margin-top: 64px; }
+    .legal-footer a { color: rgba(255,255,255,0.55); }
+    .legal-footer a:hover { color: #fff; }
+
+    @media (max-width: 640px) { .legal-wrap { padding-top: 96px; } .legal-table { font-size: 13px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" aria-label="Mat Analytics">
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <ul class="navbar__nav">
+        <li><a class="navbar__link" href="index.html">Inicio</a></li>
+        <li><a class="navbar__link" href="terminos.html">Términos de Servicio</a></li>
+        <li><a class="navbar__link" href="reclamaciones.html">Libro de Reclamaciones</a></li>
+      </ul>
+      <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <div class="legal-wrap">
+
+    <div class="legal-header">
+      <span class="legal-badge">Documento Legal</span>
+      <h1>Política de Privacidad y Tratamiento de Datos Personales</h1>
+      <div class="legal-meta">
+        <span>Versión 1.0</span>
+        <span>Vigente desde: junio 2026</span>
+        <span>Última actualización: 13 de junio de 2026</span>
+        <span>Responsable: Mat Analytics SAC</span>
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Tabla de contenidos">
+      <p class="toc__title">Contenido</p>
+      <div class="toc__list">
+        <a class="toc__link" href="#responsable"><span class="toc__num">01</span> Identidad del responsable</a>
+        <a class="toc__link" href="#datos-recabados"><span class="toc__num">02</span> Datos personales recabados</a>
+        <a class="toc__link" href="#finalidad"><span class="toc__num">03</span> Finalidad y base legal del tratamiento</a>
+        <a class="toc__link" href="#destinatarios"><span class="toc__num">04</span> Destinatarios y encargados del tratamiento</a>
+        <a class="toc__link" href="#transferencias"><span class="toc__num">05</span> Transferencias internacionales</a>
+        <a class="toc__link" href="#conservacion"><span class="toc__num">06</span> Periodo de conservación</a>
+        <a class="toc__link" href="#derechos"><span class="toc__num">07</span> Derechos del titular (ARCO-P)</a>
+        <a class="toc__link" href="#seguridad"><span class="toc__num">08</span> Medidas de seguridad</a>
+        <a class="toc__link" href="#menores"><span class="toc__num">09</span> Menores de edad</a>
+        <a class="toc__link" href="#actualizaciones"><span class="toc__num">10</span> Actualizaciones de la política</a>
+        <a class="toc__link" href="#contacto"><span class="toc__num">11</span> Contacto y reclamaciones</a>
+      </div>
+    </nav>
+
+    <div class="legal-note">
+      Esta política se rige principalmente por la <strong>Ley N° 29733 — Ley de Protección de Datos Personales del Perú</strong> y su reglamento aprobado por D.S. N° 003-2013-JUS, modificado por D.S. N° 011-2022-JUS. Complementariamente, aplica el <strong>Reglamento General de Protección de Datos (RGPD/GDPR)</strong> de la Unión Europea cuando el titular sea ciudadano europeo o cuando el tratamiento tenga efectos en la UE.
+    </div>
+
+    <!-- 01 -->
+    <section class="legal-section" id="responsable">
+      <h2><span class="sec-num">01</span> Identidad y datos de contacto del responsable</h2>
+      <table class="legal-table">
+        <tr><th>Razón social</th><td>Mat Analytics SAC</td></tr>
+        <tr><th>RUC</th><td>[Completar RUC]</td></tr>
+        <tr><th>Domicilio legal</th><td>Lima, Perú</td></tr>
+        <tr><th>Correo electrónico</th><td><a href="mailto:info@mat-analytics.com">info@mat-analytics.com</a></td></tr>
+        <tr><th>Sitio web</th><td><a href="https://www.mat-analytics.com" target="_blank" rel="noopener noreferrer">www.mat-analytics.com</a></td></tr>
+        <tr><th>Banco de datos registrado</th><td>Registro Nacional de Protección de Datos Personales (RNPDP) — N° de registro: [Completar]</td></tr>
+        <tr><th>Autoridad de control (Perú)</th><td>Autoridad Nacional de Protección de Datos Personales — ANPDP (Ministerio de Justicia y DDHH)</td></tr>
+      </table>
+    </section>
+
+    <!-- 02 -->
+    <section class="legal-section" id="datos-recabados">
+      <h2><span class="sec-num">02</span> Datos personales recabados</h2>
+      <p>Mat Analytics SAC recaba datos personales a través de los siguientes canales:</p>
+
+      <h3>a) Formulario de solicitud de diagnóstico (sitio web)</h3>
+      <ul>
+        <li>Nombre y apellidos</li>
+        <li>Cargo y empresa</li>
+        <li>Correo electrónico corporativo</li>
+        <li>Sector económico y descripción del desafío de negocio</li>
+      </ul>
+
+      <h3>b) Libro de Reclamaciones virtual</h3>
+      <ul>
+        <li>Nombres y apellidos completos</li>
+        <li>Tipo y número de documento de identidad (DNI / CE / RUC)</li>
+        <li>Número de celular</li>
+        <li>Correo electrónico</li>
+        <li>Descripción del reclamo o queja</li>
+        <li>Firma manuscrita digitalizada (canvas HTML5, almacenada como imagen PNG con hash SHA-256)</li>
+      </ul>
+
+      <h3>c) Datos de navegación (registros técnicos)</h3>
+      <ul>
+        <li>Dirección IP (anonimizada)</li>
+        <li>User Agent del navegador</li>
+        <li>Páginas visitadas y tiempo de sesión</li>
+        <li>Fecha y hora de acceso</li>
+      </ul>
+
+      <div class="legal-note">Mat Analytics SAC <strong>no recaba datos sensibles</strong> (salud, origen racial, opiniones políticas, religión, datos biométricos) en ninguno de sus formularios. En ningún caso se solicitan datos bancarios, contraseñas ni información financiera personal a través del sitio web.</div>
+    </section>
+
+    <!-- 03 -->
+    <section class="legal-section" id="finalidad">
+      <h2><span class="sec-num">03</span> Finalidad y base legal del tratamiento</h2>
+      <table class="legal-table">
+        <tr>
+          <th>Finalidad</th>
+          <th>Base legal (Ley 29733)</th>
+          <th>Base legal (RGPD)</th>
+        </tr>
+        <tr>
+          <td>Atender solicitudes de diagnóstico y propuestas comerciales</td>
+          <td>Consentimiento del titular (art. 13) y ejecución de relación precontractual</td>
+          <td>Art. 6.1.b RGPD — ejecución de contrato / medidas precontractuales</td>
+        </tr>
+        <tr>
+          <td>Gestión y seguimiento del Libro de Reclamaciones</td>
+          <td>Obligación legal (Ley 29571 — Código de Protección al Consumidor, art. 150)</td>
+          <td>Art. 6.1.c RGPD — obligación legal</td>
+        </tr>
+        <tr>
+          <td>Envío de comunicaciones comerciales sobre servicios Mat Analytics</td>
+          <td>Consentimiento expreso del titular (art. 13 y 14)</td>
+          <td>Art. 6.1.a RGPD — consentimiento</td>
+        </tr>
+        <tr>
+          <td>Mejora del sitio web y análisis de navegación</td>
+          <td>Interés legítimo del responsable (art. 13)</td>
+          <td>Art. 6.1.f RGPD — interés legítimo</td>
+        </tr>
+        <tr>
+          <td>Cumplimiento de obligaciones tributarias y contables</td>
+          <td>Obligación legal (Código Tributario peruano)</td>
+          <td>Art. 6.1.c RGPD — obligación legal</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 04 -->
+    <section class="legal-section" id="destinatarios">
+      <h2><span class="sec-num">04</span> Destinatarios y encargados del tratamiento</h2>
+      <p>Mat Analytics SAC puede compartir datos con los siguientes destinatarios bajo acuerdos de confidencialidad y encargo de tratamiento:</p>
+      <table class="legal-table">
+        <tr>
+          <th>Encargado</th>
+          <th>Servicio</th>
+          <th>País / Sede</th>
+          <th>Garantías</th>
+        </tr>
+        <tr>
+          <td><strong>Formspree Inc.</strong></td>
+          <td>Procesamiento de formularios web y entrega de correos</td>
+          <td>Estados Unidos</td>
+          <td>Cláusulas contractuales tipo UE; política de privacidad en formspree.io/legal/privacy-policy</td>
+        </tr>
+        <tr>
+          <td><strong>Stamping.io</strong></td>
+          <td>Notarización criptográfica de documentos (solo hash SHA-256 — sin datos personales identificables)</td>
+          <td>España / Internacional</td>
+          <td>RGPD aplicable; sólo se transmite el hash del documento, no el contenido</td>
+        </tr>
+        <tr>
+          <td><strong>Google LLC</strong></td>
+          <td>Fuentes tipográficas (Google Fonts) — sin cookies, solo IP</td>
+          <td>Estados Unidos</td>
+          <td>SCCs UE-EEUU; política en policies.google.com/privacy</td>
+        </tr>
+      </table>
+      <p>Mat Analytics SAC <strong>no vende, alquila ni cede</strong> datos personales a terceros no listados sin consentimiento expreso del titular.</p>
+    </section>
+
+    <!-- 05 -->
+    <section class="legal-section" id="transferencias">
+      <h2><span class="sec-num">05</span> Transferencias internacionales de datos</h2>
+      <p>En virtud del uso de Formspree Inc. (EE.UU.) como encargado del tratamiento, se realizan transferencias internacionales de datos. Dichas transferencias se amparan en:</p>
+      <ul>
+        <li><strong>Perú:</strong> Autorización implícita para encargados de tratamiento en el exterior con nivel de protección adecuado, conforme al art. 15 de la Ley 29733 y el art. 58 del D.S. 003-2013-JUS. Mat Analytics SAC ha suscrito o se adhiere a las condiciones de servicio de Formspree que incluyen compromisos de protección de datos equivalentes.</li>
+        <li><strong>UE/RGPD:</strong> Cláusulas Contractuales Tipo (CCT) aprobadas por la Comisión Europea (Decisión 2021/914), aplicables cuando el titular sea residente en el Espacio Económico Europeo.</li>
+      </ul>
+    </section>
+
+    <!-- 06 -->
+    <section class="legal-section" id="conservacion">
+      <h2><span class="sec-num">06</span> Periodo de conservación</h2>
+      <table class="legal-table">
+        <tr><th>Categoría de datos</th><th>Periodo de conservación</th><th>Fundamento</th></tr>
+        <tr><td>Datos de solicitud de diagnóstico (sin contrato)</td><td>2 años desde la última interacción</td><td>Prescripción contractual — Código Civil peruano art. 2001</td></tr>
+        <tr><td>Datos de Libro de Reclamaciones</td><td>3 años desde la resolución del reclamo</td><td>Ley 29571 art. 150; D.S. 011-2011-PCM</td></tr>
+        <tr><td>Datos de clientes (relación contractual)</td><td>Duración del contrato + 5 años</td><td>Código Tributario peruano — art. 43; D. Leg. 1269</td></tr>
+        <tr><td>Registros técnicos / logs</td><td>12 meses</td><td>Interés legítimo en seguridad y auditoría</td></tr>
+        <tr><td>Comunicaciones comerciales</td><td>Hasta revocación del consentimiento</td><td>Ley 29733 art. 19</td></tr>
+      </table>
+      <p>Vencido el plazo, los datos serán suprimidos de forma segura o anonimizados de manera irreversible.</p>
+    </section>
+
+    <!-- 07 -->
+    <section class="legal-section" id="derechos">
+      <h2><span class="sec-num">07</span> Derechos del titular — ARCO-P</h2>
+      <p>Conforme al Capítulo III de la Ley N° 29733, el titular de datos personales tiene los siguientes derechos:</p>
+      <table class="legal-table">
+        <tr><th>Derecho</th><th>Descripción</th></tr>
+        <tr><td><strong>Acceso</strong></td><td>Conocer qué datos personales suyos son tratados por Mat Analytics SAC, con qué finalidad y su origen.</td></tr>
+        <tr><td><strong>Rectificación</strong></td><td>Solicitar la corrección de datos inexactos, incompletos o desactualizados.</td></tr>
+        <tr><td><strong>Cancelación / Supresión</strong></td><td>Solicitar la eliminación de sus datos cuando ya no sean necesarios para la finalidad que motivó su recabación, o cuando revoque su consentimiento.</td></tr>
+        <tr><td><strong>Oposición</strong></td><td>Oponerse al tratamiento de sus datos para finalidades de marketing directo o cuando concurra un motivo legítimo.</td></tr>
+        <tr><td><strong>Portabilidad</strong> <em>(RGPD)</em></td><td>Recibir sus datos en formato estructurado, de uso común y lectura mecánica, cuando el tratamiento sea por consentimiento o contrato y se realice por medios automatizados.</td></tr>
+        <tr><td><strong>Limitación del tratamiento</strong> <em>(RGPD)</em></td><td>Solicitar la suspensión del tratamiento mientras se resuelve una impugnación sobre exactitud o licitud.</td></tr>
+      </table>
+
+      <h3>Cómo ejercer sus derechos</h3>
+      <p>Envíe su solicitud a <a href="mailto:info@mat-analytics.com">info@mat-analytics.com</a> indicando:</p>
+      <ol>
+        <li>Nombre completo y documento de identidad (adjuntar copia)</li>
+        <li>Derecho que desea ejercer</li>
+        <li>Descripción concreta de la solicitud</li>
+        <li>Dirección de contacto para la respuesta</li>
+      </ol>
+      <p>Mat Analytics SAC responderá en un plazo máximo de <strong>20 días hábiles</strong> (Ley 29733, art. 22). En caso de complejidad o volumen, dicho plazo podrá extenderse hasta 20 días hábiles adicionales, notificando al titular.</p>
+
+      <h3>Reclamación ante la autoridad de control</h3>
+      <p>Si considera que el tratamiento de sus datos vulnera la normativa aplicable, puede presentar una reclamación ante:</p>
+      <ul>
+        <li><strong>Perú:</strong> Autoridad Nacional de Protección de Datos Personales — ANPDP, Ministerio de Justicia y Derechos Humanos. Web: <a href="https://www.minjus.gob.pe" target="_blank" rel="noopener noreferrer">www.minjus.gob.pe</a></li>
+        <li><strong>UE:</strong> La autoridad de control de protección de datos del Estado miembro donde resida habitualmente o trabaje.</li>
+      </ul>
+    </section>
+
+    <!-- 08 -->
+    <section class="legal-section" id="seguridad">
+      <h2><span class="sec-num">08</span> Medidas de seguridad</h2>
+      <p>Mat Analytics SAC, en su condición de empresa especializada en arquitectura de datos y analítica enterprise, aplica medidas técnicas y organizativas acordes con el estado del arte, incluyendo:</p>
+      <ul>
+        <li>Transmisión de datos mediante HTTPS/TLS 1.2 o superior</li>
+        <li>Content Security Policy (CSP) en todas las páginas del sitio</li>
+        <li>Firma digital con hash SHA-256 generado via <code>crypto.subtle</code> (Web Cryptography API) en el Libro de Reclamaciones</li>
+        <li>Almacenamiento de formularios en plataforma Formspree con cifrado en tránsito y en reposo</li>
+        <li>Notarización criptográfica de documentos mediante blockchain (Stamping.io) para registros críticos</li>
+        <li>Control de acceso por roles a los sistemas internos</li>
+        <li>Política de retención y eliminación segura de datos</li>
+      </ul>
+      <p>No obstante, ningún sistema es completamente infalible. En caso de brecha de seguridad que afecte datos personales, Mat Analytics SAC notificará a los titulares afectados y a la ANPDP en los plazos establecidos por la normativa vigente.</p>
+    </section>
+
+    <!-- 09 -->
+    <section class="legal-section" id="menores">
+      <h2><span class="sec-num">09</span> Menores de edad</h2>
+      <p>Los servicios de Mat Analytics SAC están dirigidos exclusivamente a personas jurídicas y profesionales mayores de 18 años. No recabamos conscientemente datos personales de menores de edad. Si usted tiene conocimiento de que un menor nos ha proporcionado datos sin consentimiento parental, contáctenos a <a href="mailto:info@mat-analytics.com">info@mat-analytics.com</a> para su eliminación inmediata.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="legal-section" id="actualizaciones">
+      <h2><span class="sec-num">10</span> Actualizaciones de la política</h2>
+      <p>Mat Analytics SAC se reserva el derecho de modificar la presente política para adaptarla a novedades legislativas, jurisprudenciales o cambios en sus servicios. Las modificaciones se publicarán en esta página indicando la fecha de la nueva versión. Si los cambios son sustanciales y afectan al tratamiento basado en consentimiento, se comunicarán a los titulares afectados por correo electrónico.</p>
+      <p>El uso continuado del sitio web tras la publicación de cambios implica la aceptación de la política actualizada.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="legal-section" id="contacto">
+      <h2><span class="sec-num">11</span> Contacto</h2>
+      <p>Para cualquier consulta relacionada con el tratamiento de sus datos personales:</p>
+      <ul>
+        <li><strong>Correo:</strong> <a href="mailto:info@mat-analytics.com">info@mat-analytics.com</a></li>
+        <li><strong>Web:</strong> <a href="https://www.mat-analytics.com" target="_blank" rel="noopener noreferrer">www.mat-analytics.com</a></li>
+        <li><strong>Libro de Reclamaciones:</strong> <a href="reclamaciones.html">Acceder al formulario</a></li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer class="legal-footer">
+    <p>© 2026 Mat Analytics SAC · Lima, Perú · RUC [Completar] ·
+      <a href="terminos.html">Términos de Servicio</a> ·
+      <a href="reclamaciones.html">Libro de Reclamaciones</a>
+    </p>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nb = document.getElementById('navbar');
+    if (nb) window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 10));
+  </script>
+
+</body>
+</html>

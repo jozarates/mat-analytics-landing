@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos y Condiciones de Servicio — Mat Analytics SAC</title>
+  <meta name="description" content="Términos y Condiciones de uso del sitio web y servicios de Mat Analytics SAC. Cumplimiento Ley 29571, Código Civil peruano e INDECOPI.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #8B0101; --red-hover: #A50101; --red-subtle: rgba(139,1,1,0.08);
+      --black: #1E1E1E; --gray-text: #3A3A3A; --gray-mid: #757575;
+      --gray-trace: #999; --gray-bg: #F7F7F7; --white: #fff;
+      --border: rgba(255,255,255,0.08); --border-light: #E5E5E5;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius: 6px; --radius-lg: 12px; --max-w: 860px; --transition: 0.22s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--gray-text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 68px; display: flex; align-items: center;
+      background: var(--black); border-bottom: 1px solid var(--border);
+    }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .navbar__logo { height: 34px; width: auto; }
+    .navbar__nav { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .navbar__link { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .navbar__link:hover { color: #fff; text-decoration: none; }
+    .navbar__mail {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.55);
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .navbar__mail:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+    .legal-wrap { max-width: var(--max-w); margin: 0 auto; padding: 116px 24px 80px; }
+    .legal-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid var(--border-light); }
+    .legal-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); background: var(--red-subtle); padding: 5px 12px; border-radius: 3px; margin-bottom: 16px; }
+    .legal-header h1 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; color: var(--black); letter-spacing: -0.02em; margin-bottom: 12px; }
+    .legal-meta { font-size: 13px; color: var(--gray-trace); display: flex; flex-wrap: wrap; gap: 20px; }
+    .legal-meta span::before { content: '· '; }
+    .legal-meta span:first-child::before { content: ''; }
+
+    .toc { background: var(--gray-bg); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 48px; }
+    .toc__title { font-size: 12px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--gray-trace); margin-bottom: 14px; }
+    .toc__list { display: flex; flex-direction: column; gap: 6px; }
+    .toc__link { font-size: 13px; color: var(--gray-text); }
+    .toc__link:hover { color: var(--red); }
+    .toc__num { display: inline-block; width: 22px; font-size: 11px; color: var(--gray-trace); font-weight: 600; }
+
+    .legal-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+    .legal-section h2 { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
+    .legal-section h2 .sec-num { font-size: 12px; font-weight: 700; color: var(--red); background: var(--red-subtle); padding: 3px 8px; border-radius: 3px; }
+    .legal-section h3 { font-size: 15px; font-weight: 600; color: var(--black); margin: 20px 0 8px; }
+    .legal-section p { font-size: 15px; line-height: 1.8; color: var(--gray-text); margin-bottom: 12px; }
+    .legal-section ul, .legal-section ol { padding-left: 20px; margin-bottom: 14px; }
+    .legal-section li { font-size: 15px; line-height: 1.8; color: var(--gray-text); margin-bottom: 6px; }
+    .legal-note { background: rgba(139,1,1,0.05); border-left: 3px solid var(--red); padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0; margin: 16px 0; font-size: 14px; color: var(--gray-text); }
+    .legal-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+    .legal-table th { background: var(--gray-bg); color: var(--black); font-weight: 600; text-align: left; padding: 10px 14px; border: 1px solid var(--border-light); }
+    .legal-table td { padding: 10px 14px; border: 1px solid var(--border-light); vertical-align: top; line-height: 1.6; }
+    .legal-table tr:nth-child(even) td { background: #fafafa; }
+
+    .legal-footer { background: var(--black); color: rgba(255,255,255,0.45); padding: 32px 24px; text-align: center; font-size: 13px; margin-top: 64px; }
+    .legal-footer a { color: rgba(255,255,255,0.55); }
+    .legal-footer a:hover { color: #fff; }
+    @media (max-width: 640px) { .legal-wrap { padding-top: 96px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" aria-label="Mat Analytics">
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <ul class="navbar__nav">
+        <li><a class="navbar__link" href="index.html">Inicio</a></li>
+        <li><a class="navbar__link" href="privacidad.html">Política de Privacidad</a></li>
+        <li><a class="navbar__link" href="reclamaciones.html">Libro de Reclamaciones</a></li>
+      </ul>
+      <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <div class="legal-wrap">
+
+    <div class="legal-header">
+      <span class="legal-badge">Documento Legal</span>
+      <h1>Términos y Condiciones de Servicio</h1>
+      <div class="legal-meta">
+        <span>Versión 1.0</span>
+        <span>Vigente desde: junio 2026</span>
+        <span>Última actualización: 13 de junio de 2026</span>
+        <span>Responsable: Mat Analytics SAC</span>
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Tabla de contenidos">
+      <p class="toc__title">Contenido</p>
+      <div class="toc__list">
+        <a class="toc__link" href="#objeto"><span class="toc__num">01</span> Objeto y aceptación</a>
+        <a class="toc__link" href="#prestador"><span class="toc__num">02</span> Identidad del prestador de servicios</a>
+        <a class="toc__link" href="#servicios"><span class="toc__num">03</span> Servicios ofrecidos</a>
+        <a class="toc__link" href="#uso"><span class="toc__num">04</span> Condiciones de uso del sitio web</a>
+        <a class="toc__link" href="#propiedad"><span class="toc__num">05</span> Propiedad intelectual</a>
+        <a class="toc__link" href="#responsabilidad"><span class="toc__num">06</span> Responsabilidad y garantías</a>
+        <a class="toc__link" href="#privacidad"><span class="toc__num">07</span> Protección de datos personales</a>
+        <a class="toc__link" href="#reclamaciones"><span class="toc__num">08</span> Libro de Reclamaciones</a>
+        <a class="toc__link" href="#terceros"><span class="toc__num">09</span> Servicios y enlaces de terceros</a>
+        <a class="toc__link" href="#ley"><span class="toc__num">10</span> Ley aplicable y jurisdicción</a>
+        <a class="toc__link" href="#modificaciones"><span class="toc__num">11</span> Modificaciones</a>
+      </div>
+    </nav>
+
+    <div class="legal-note">
+      El acceso y uso de este sitio web implica la aceptación plena y sin reservas de los presentes Términos y Condiciones. Si no está de acuerdo con alguno de ellos, le rogamos que se abstenga de usar el sitio. Estos términos se rigen por la legislación peruana, complementada por estándares internacionales cuando sea aplicable.
+    </div>
+
+    <!-- 01 -->
+    <section class="legal-section" id="objeto">
+      <h2><span class="sec-num">01</span> Objeto y aceptación</h2>
+      <p>Los presentes Términos y Condiciones regulan el acceso, navegación y uso del sitio web <strong>www.mat-analytics.com</strong> (en adelante, el "Sitio"), titularidad de Mat Analytics SAC, así como la contratación de servicios profesionales ofertados a través del mismo.</p>
+      <p>El uso del Sitio atribuye la condición de usuario e implica la aceptación plena de estos Términos en la versión publicada en el momento del acceso. El usuario declara ser mayor de edad y tener capacidad legal para contratar.</p>
+      <p>Para los servicios B2B, los términos específicos del encargo profesional (alcance, entregables, honorarios, SLA) se establecerán en un contrato de servicios suscrito entre Mat Analytics SAC y el cliente.</p>
+    </section>
+
+    <!-- 02 -->
+    <section class="legal-section" id="prestador">
+      <h2><span class="sec-num">02</span> Identidad del prestador de servicios</h2>
+      <table class="legal-table">
+        <tr><th>Denominación social</th><td>Mat Analytics SAC</td></tr>
+        <tr><th>Tipo societario</th><td>Sociedad Anónima Cerrada (SAC) — Ley General de Sociedades, Ley N° 26887</td></tr>
+        <tr><th>RUC</th><td>[Completar RUC]</td></tr>
+        <tr><th>Domicilio fiscal</th><td>Lima, Perú</td></tr>
+        <tr><th>Correo electrónico</th><td><a href="mailto:info@mat-analytics.com">info@mat-analytics.com</a></td></tr>
+        <tr><th>Sitio web</th><td><a href="https://www.mat-analytics.com" target="_blank" rel="noopener noreferrer">www.mat-analytics.com</a></td></tr>
+        <tr><th>SUNARP</th><td>Inscrita en los Registros Públicos — Partida N° [Completar]</td></tr>
+      </table>
+    </section>
+
+    <!-- 03 -->
+    <section class="legal-section" id="servicios">
+      <h2><span class="sec-num">03</span> Servicios ofrecidos</h2>
+      <p>Mat Analytics SAC presta servicios profesionales especializados en:</p>
+      <ul>
+        <li><strong>TrustTech &amp; Certificación Digital:</strong> notarización criptográfica de datos mediante blockchain (Stamping.io), firmas digitales con valor legal, trazabilidad de documentos y tokenización de activos digitales.</li>
+        <li><strong>Arquitectura de Datos Enterprise:</strong> diseño e implementación de plataformas Oracle (ADW, ODI, GoldenGate, Exadata, OCI, Database 23ai) para entornos corporativos críticos.</li>
+        <li><strong>Inteligencia Analítica Avanzada:</strong> implementación y despliegue de Oracle Analytics Cloud y Microsoft Power BI, incluyendo gobernanza de datos, modelos semánticos y cuadros de mando ejecutivos.</li>
+      </ul>
+      <p>Los servicios se prestan exclusivamente en modalidad B2B (empresa a empresa). El Sitio web tiene carácter informativo y de captación de contacto comercial; la contratación definitiva se formaliza mediante contrato escrito.</p>
+    </section>
+
+    <!-- 04 -->
+    <section class="legal-section" id="uso">
+      <h2><span class="sec-num">04</span> Condiciones de uso del sitio web</h2>
+      <h3>Uso permitido</h3>
+      <ul>
+        <li>Navegar e informarse sobre los servicios de Mat Analytics SAC</li>
+        <li>Completar formularios de contacto y solicitud de diagnóstico con información veraz</li>
+        <li>Acceder al Libro de Reclamaciones virtual conforme a la Ley N° 29571</li>
+      </ul>
+      <h3>Usos prohibidos</h3>
+      <p>Queda expresamente prohibido:</p>
+      <ul>
+        <li>Utilizar el Sitio para fines ilícitos, fraudulentos o contrarios a la buena fe</li>
+        <li>Realizar ingeniería inversa, descompilar o desensamblar cualquier componente del Sitio</li>
+        <li>Introducir o difundir virus, malware o cualquier código malicioso</li>
+        <li>Efectuar ataques de denegación de servicio (DoS/DDoS) o de fuerza bruta</li>
+        <li>Recolectar datos de usuarios o información del Sitio mediante scrapers o robots automáticos sin autorización expresa</li>
+        <li>Suplantar la identidad de Mat Analytics SAC o de sus colaboradores</li>
+        <li>Reproducir, distribuir o comunicar públicamente el contenido del Sitio sin autorización</li>
+        <li>Enviar comunicaciones no solicitadas (spam) a través de los formularios</li>
+      </ul>
+      <p>El incumplimiento de estas prohibiciones podrá dar lugar a responsabilidades civiles y/o penales conforme al Código Penal peruano (D. Leg. N° 635, arts. 207-A al 207-D — Delitos informáticos) y la Ley N° 30096 — Ley de Delitos Informáticos.</p>
+    </section>
+
+    <!-- 05 -->
+    <section class="legal-section" id="propiedad">
+      <h2><span class="sec-num">05</span> Propiedad intelectual</h2>
+      <p>Todos los contenidos del Sitio — incluyendo, sin limitación, textos, gráficos, logotipos, íconos, imágenes, diseño visual, código fuente HTML/CSS/JS, estructura y selección de contenidos — son propiedad de Mat Analytics SAC o de sus licenciantes y están protegidos por:</p>
+      <ul>
+        <li><strong>Decreto Legislativo N° 822</strong> — Ley sobre el Derecho de Autor (Perú)</li>
+        <li><strong>Decreto Legislativo N° 1075</strong> — Disposiciones complementarias de propiedad intelectual</li>
+        <li>El <strong>Convenio de Berna</strong> para la Protección de las Obras Literarias y Artísticas</li>
+        <li>El <strong>Acuerdo sobre los ADPIC</strong> (TRIPS) de la OMC</li>
+      </ul>
+      <p>Queda prohibida la reproducción total o parcial del Sitio o de sus contenidos sin autorización escrita de Mat Analytics SAC. Se permite la cita con atribución expresa para fines académicos o periodísticos.</p>
+      <p>El logotipo, nombre comercial e isotipo "Mat Analytics" son marcas en proceso de registro ante el Instituto Nacional de Defensa de la Competencia y de la Protección de la Propiedad Intelectual (<strong>INDECOPI</strong>).</p>
+    </section>
+
+    <!-- 06 -->
+    <section class="legal-section" id="responsabilidad">
+      <h2><span class="sec-num">06</span> Responsabilidad y garantías</h2>
+      <h3>Exclusiones de responsabilidad</h3>
+      <p>Mat Analytics SAC no será responsable de:</p>
+      <ul>
+        <li>Daños derivados de la interrupción, suspensión o mal funcionamiento del Sitio por causas ajenas a su control (caso fortuito, fuerza mayor, fallas de telecomunicaciones)</li>
+        <li>La veracidad, exactitud o actualidad de la información proporcionada por terceros o por los propios usuarios en los formularios</li>
+        <li>El contenido de sitios web de terceros enlazados desde el Sitio</li>
+        <li>Daños indirectos, consecuenciales o lucro cesante derivados del uso del Sitio informativo</li>
+      </ul>
+      <h3>Disponibilidad del servicio</h3>
+      <p>Mat Analytics SAC no garantiza la disponibilidad ininterrumpida del Sitio y podrá suspenderlo temporal o definitivamente para mantenimiento, actualización o por razones de seguridad, sin previo aviso.</p>
+      <h3>Exactitud de la información</h3>
+      <p>La información publicada en el Sitio tiene carácter meramente informativo y no constituye asesoramiento legal, financiero o técnico. Para los servicios profesionales contratados, las condiciones específicas de garantía y nivel de servicio (SLA) se establecen en el contrato correspondiente.</p>
+    </section>
+
+    <!-- 07 -->
+    <section class="legal-section" id="privacidad">
+      <h2><span class="sec-num">07</span> Protección de datos personales</h2>
+      <p>El tratamiento de los datos personales recabados a través del Sitio se rige por la <strong><a href="privacidad.html">Política de Privacidad y Tratamiento de Datos Personales</a></strong> de Mat Analytics SAC, que forma parte integrante de los presentes Términos y Condiciones.</p>
+      <p>Al completar cualquier formulario del Sitio, el usuario declara haber leído y aceptado dicha política, otorgando su consentimiento libre, previo, expreso e informado para el tratamiento de sus datos, conforme al art. 13 de la Ley N° 29733.</p>
+    </section>
+
+    <!-- 08 -->
+    <section class="legal-section" id="reclamaciones">
+      <h2><span class="sec-num">08</span> Libro de Reclamaciones</h2>
+      <p>Conforme al <strong>Código de Protección y Defensa del Consumidor (Ley N° 29571)</strong>, Mat Analytics SAC dispone de un Libro de Reclamaciones virtual disponible en:</p>
+      <p style="margin-left:20px;"><a href="reclamaciones.html"><strong>→ Acceder al Libro de Reclamaciones</strong></a></p>
+      <p>El consumidor tiene derecho a registrar quejas o reclamos respecto de los productos o servicios de Mat Analytics SAC. La empresa atenderá el reclamo en un plazo de <strong>30 días calendario</strong> contados desde su recepción, conforme al art. 150 de la Ley N° 29571 y el D.S. N° 011-2011-PCM.</p>
+      <p>En caso de no obtener respuesta satisfactoria, el consumidor podrá acudir al:</p>
+      <ul>
+        <li><strong>INDECOPI</strong> — Instituto Nacional de Defensa de la Competencia y de la Protección de la Propiedad Intelectual: <a href="https://www.indecopi.gob.pe" target="_blank" rel="noopener noreferrer">www.indecopi.gob.pe</a></li>
+        <li>Plataforma de reclamos del INDECOPI: 224-7777 (Lima) / 0800-4-4040 (regiones, gratuito)</li>
+      </ul>
+    </section>
+
+    <!-- 09 -->
+    <section class="legal-section" id="terceros">
+      <h2><span class="sec-num">09</span> Servicios y enlaces de terceros</h2>
+      <p>El Sitio puede contener enlaces a páginas web de terceros (Stamping.io, Oracle, Microsoft, entre otros). Mat Analytics SAC no tiene control sobre el contenido de dichos sitios y no asume responsabilidad por su disponibilidad, exactitud ni por sus políticas de privacidad.</p>
+      <p>Los servicios de terceros integrados en el Sitio incluyen:</p>
+      <table class="legal-table">
+        <tr><th>Servicio</th><th>Proveedor</th><th>Finalidad</th></tr>
+        <tr><td>Envío de formularios</td><td>Formspree Inc. (EE.UU.)</td><td>Entrega de datos de formularios por correo electrónico</td></tr>
+        <tr><td>Tipografía web</td><td>Google LLC (EE.UU.)</td><td>Carga de la fuente Inter</td></tr>
+        <tr><td>Imágenes de producto</td><td>Stamping.io / Microsoft CDN</td><td>Visualización de capturas de producto</td></tr>
+      </table>
+      <p>El uso de estos servicios está sujeto a sus propias condiciones de uso y políticas de privacidad.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="legal-section" id="ley">
+      <h2><span class="sec-num">10</span> Ley aplicable y jurisdicción</h2>
+      <p>Los presentes Términos y Condiciones se rigen por la legislación de la República del Perú. Para la resolución de cualquier controversia derivada del uso del Sitio o de los servicios de Mat Analytics SAC, las partes se someten a:</p>
+      <ol>
+        <li><strong>Negociación directa</strong> — como primera instancia, las partes intentarán resolver la controversia mediante negociación directa en un plazo de 15 días hábiles desde la notificación del conflicto.</li>
+        <li><strong>Conciliación extrajudicial</strong> — de no alcanzarse acuerdo, cualquiera de las partes podrá acudir a un centro de conciliación acreditado por el Ministerio de Justicia, conforme a la Ley N° 26872.</li>
+        <li><strong>Jurisdicción ordinaria</strong> — agotadas las vías anteriores, ambas partes se someten a la competencia de los <strong>Juzgados y Tribunales de Lima (Perú)</strong>, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</li>
+      </ol>
+      <p>Para usuarios consumidores en la Unión Europea: adicionalmente, la Comisión Europea pone a disposición una plataforma de resolución de litigios en línea (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr</a>.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="legal-section" id="modificaciones">
+      <h2><span class="sec-num">11</span> Modificaciones de los Términos</h2>
+      <p>Mat Analytics SAC se reserva el derecho de modificar los presentes Términos y Condiciones en cualquier momento. Las modificaciones surtirán efecto desde su publicación en el Sitio. El uso continuado del Sitio tras la publicación de los cambios implica la aceptación de los Términos actualizados.</p>
+      <p>Para cambios sustanciales que afecten derechos de usuarios o clientes con contratos vigentes, Mat Analytics SAC notificará con un mínimo de <strong>30 días de anticipación</strong> por correo electrónico a los contactos registrados.</p>
+      <p>La versión en vigor en cada momento es la publicada en esta URL. Se recomienda revisarla periódicamente.</p>
+    </section>
+
+  </div>
+
+  <footer class="legal-footer">
+    <p>© 2026 Mat Analytics SAC · Lima, Perú · RUC [Completar] ·
+      <a href="privacidad.html">Política de Privacidad</a> ·
+      <a href="reclamaciones.html">Libro de Reclamaciones</a>
+    </p>
+  </footer>
+
+</body>
+</html>
