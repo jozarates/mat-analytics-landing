@@ -459,6 +459,55 @@
     }
     .section__sub--white { color: rgba(255,255,255,0.55); }
 
+    /* ─── EXECUTIVE BANNER ──────────────────────────────────────────────── */
+    .exec-banner {
+      background: var(--gray-bg);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--red);
+      border-radius: var(--radius-lg);
+      padding: 32px 40px;
+      margin-bottom: 52px;
+    }
+    .exec-banner__intro {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.10em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 14px;
+    }
+    .exec-banner__text {
+      font-size: 16px; color: var(--gray-text); line-height: 1.75;
+      margin-bottom: 28px; max-width: 820px;
+    }
+    .exec-banner__metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .exec-metric {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .exec-metric__icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--red-subtle);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .exec-metric__icon svg { stroke: var(--red); }
+    .exec-metric__value {
+      font-size: 20px; font-weight: 800; color: var(--black);
+      letter-spacing: -0.03em; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .exec-metric__label {
+      font-size: 12px; color: var(--gray-mid); line-height: 1.45;
+    }
+    @media (max-width: 720px) {
+      .exec-banner { padding: 24px 20px; }
+      .exec-banner__metrics { grid-template-columns: 1fr; }
+    }
+
     /* ─── PILLARS ────────────────────────────────────────────────────────── */
     .pillars__grid {
       display: grid;
@@ -1233,6 +1282,44 @@
           Cada línea de negocio resuelve un problema crítico distinto. Juntas, conforman el ecosistema de datos más robusto disponible para entornos altamente regulados en el mercado peruano.
         </p>
       </div>
+
+      <!-- Bloque ejecutivo -->
+      <div class="exec-banner reveal">
+        <p class="exec-banner__intro">Lo que esto significa para su organización</p>
+        <p class="exec-banner__text">
+          Sus equipos invierten horas conciliando reportes que luego nadie puede auditar. Nosotros cerramos ese ciclo: datos integrados, verificados y listos para la decisión directiva — sin reemplazar su infraestructura actual, sino potenciándola. El resultado es menor gasto operativo, ciclos de cierre más cortos y la confianza de que cada cifra que llega a gerencia es irrefutable.
+        </p>
+        <div class="exec-banner__metrics">
+          <div class="exec-metric">
+            <div class="exec-metric__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="exec-metric__value">−60%</div>
+              <div class="exec-metric__label">Reducción en tiempo de generación de reportes críticos</div>
+            </div>
+          </div>
+          <div class="exec-metric">
+            <div class="exec-metric__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <div class="exec-metric__value">−40%</div>
+              <div class="exec-metric__label">Reducción de costos por reprocesos y errores en datos</div>
+            </div>
+          </div>
+          <div class="exec-metric">
+            <div class="exec-metric__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div>
+              <div class="exec-metric__value">3×</div>
+              <div class="exec-metric__label">Mayor velocidad de respuesta ante auditorías internas y regulatorias</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="pillars__grid" id="servicios-grid">
         <!-- Vertical 1 — TrustTech -->
         <a class="pillar reveal" href="trusttech.html" id="vertical-trusttech" style="display:block;color:inherit;text-decoration:none;cursor:pointer;">
