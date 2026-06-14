@@ -3,3 +3,5 @@
 *.log
 Thumbs.db
 .DS_Store
+brand-assets/hero-video.mp4
+*.mp4

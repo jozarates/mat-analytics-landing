@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://stamping.io https://cdn-dynmedia-1.microsoft.com; media-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mat Analytics — Inteligencia de Datos con Integridad Certificada</title>
   <meta name="description" content="Transformamos datos corporativos complejos en analítica estratégica con trazabilidad criptográfica inmutable. Oracle ADW · OAC · ODI · Power BI · Stamping.io. Para banca, seguros, logística y entidades del Estado.">
@@ -366,58 +366,23 @@
       font-size: 15px;
     }
 
-    /* ─── HERO RIBBON ────────────────────────────────────────────────────── */
-    .hero__ribbon {
+    /* ─── HERO VIDEO ─────────────────────────────────────────────────────── */
+    .hero__video {
       position: absolute;
-      bottom: -80px; left: 50%; transform: translateX(-50%);
-      width: 160%; height: 440px;
-      pointer-events: none; z-index: 1;
-    }
-    .hero__ribbon-layer {
-      position: absolute;
+      inset: 0;
       width: 100%; height: 100%;
-      border-radius: 60% 40% 55% 45% / 35% 45% 55% 65%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.55;
     }
-    .hero__ribbon-layer:nth-child(1) {
-      background: linear-gradient(
-        125deg,
-        rgba(139,1,1,0) 0%,
-        rgba(100,0,0,0.55) 25%,
-        rgba(139,1,1,0.70) 45%,
-        rgba(60,0,0,0.50) 65%,
-        rgba(139,1,1,0) 100%
-      );
-      filter: blur(3px);
-      animation: ribbon-wave 12s ease-in-out infinite alternate;
-    }
-    .hero__ribbon-layer:nth-child(2) {
-      background: linear-gradient(
-        115deg,
-        rgba(60,0,0,0) 0%,
-        rgba(139,1,1,0.30) 30%,
-        rgba(80,5,5,0.45) 55%,
-        rgba(139,1,1,0.25) 75%,
-        rgba(60,0,0,0) 100%
-      );
-      filter: blur(8px);
-      transform: scaleY(0.75) translateY(30px);
-      animation: ribbon-wave 12s ease-in-out infinite alternate-reverse;
-    }
-    .hero__ribbon-layer:nth-child(3) {
-      background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(139,1,1,0.28) 0%, transparent 70%);
-      filter: blur(20px);
-      animation: ribbon-glow 8s ease-in-out infinite alternate;
-    }
-    @keyframes ribbon-wave {
-      0%   { border-radius: 60% 40% 55% 45% / 35% 45% 55% 65%; transform: rotate(-4deg) scaleY(0.86) scaleX(1.03); }
-      25%  { border-radius: 45% 55% 40% 60% / 55% 35% 65% 45%; transform: rotate(0deg) scaleY(1.04) scaleX(0.98); }
-      55%  { border-radius: 55% 45% 62% 38% / 42% 58% 42% 58%; transform: rotate(-2deg) scaleY(0.93) scaleX(1.05); }
-      80%  { border-radius: 38% 62% 48% 52% / 58% 42% 60% 40%; transform: rotate(2deg) scaleY(1.08) scaleX(0.97); }
-      100% { border-radius: 50% 50% 55% 45% / 48% 52% 48% 52%; transform: rotate(-1deg) scaleY(0.96) scaleX(1.01); }
-    }
-    @keyframes ribbon-glow {
-      0%   { opacity: 0.55; transform: scale(0.95); }
-      100% { opacity: 1.00; transform: scale(1.10); }
+    .hero__overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(to bottom,
+          rgba(11,11,15,0.72) 0%,
+          rgba(11,11,15,0.40) 45%,
+          rgba(11,11,15,0.80) 100%),
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(139,1,1,0.18) 0%, transparent 65%);
     }
 
     @keyframes pulse {
@@ -1135,12 +1100,12 @@
   <!-- ═══════════════════════════════════════════════════════ NAVBAR ══════ -->
   <!-- ══════════════════════════════════════════════════════════ HERO ══════ -->
   <section class="hero" id="inicio">
-    <!-- Ribbon visual -->
-    <div class="hero__ribbon" aria-hidden="true">
-      <div class="hero__ribbon-layer"></div>
-      <div class="hero__ribbon-layer"></div>
-      <div class="hero__ribbon-layer"></div>
-    </div>
+    <!-- Video de fondo -->
+    <video class="hero__video" autoplay muted loop playsinline aria-hidden="true">
+      <source src="brand-assets/hero-video.mp4" type="video/mp4">
+    </video>
+    <!-- Overlay oscuro con tinte rojo -->
+    <div class="hero__overlay" aria-hidden="true"></div>
 
     <div class="container">
       <div class="hero__center">
