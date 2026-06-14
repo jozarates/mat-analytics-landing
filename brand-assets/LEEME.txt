@@ -1,0 +1,24 @@
+MAT ANALYTICS — Kit de Logotipos v3.0 (calco vectorial del original)
+=====================================================================
+Estos SVG fueron generados por VECTORIZACION DIRECTA del logo original
+(LogoMatAnalytics.jpeg) separado en 4 capas de color y trazado con
+potrace. La geometria es fiel al arte original.
+
+Colores (muestreados del original):
+  Rojo MAT           #8B0101
+  Gris texto         #3A3A3A
+  Gris medio         #757575   (barras / triangulo de la A)
+  Gris trazas        #999999   (simbolo de conectividad)
+  Gris claro         #D9D9D9   (variantes negativo)
+  Negro corporativo  #1E1E1E   (fondo negativo)
+
+Archivos:
+  logo-horizontal-color.svg          Principal (composicion original exacta)
+  logo-horizontal-negativo.svg       Blanco sobre #1E1E1E
+  logo-horizontal-negativo-rojo.svg  Negativo con acentos rojos
+  logo-horizontal-grises.svg         Escala de grises
+  logo-horizontal-rojo.svg           Rojo (ANALYTICS se mantiene en gris #3A3A3A)
+  logo-vertical-color/negativo/grises.svg   Version compacta apilada
+  isotipo-color/negativo/grises.svg         Isotipo M (uso pequeno)
+  *.png                              Renders 1600px
+  favicon/                           favicon.ico + 16/32/48/180/192/512 px

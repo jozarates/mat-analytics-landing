@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitectura de Datos Enterprise · Oracle ADW · Mat Analytics SAC</title>
+  <meta name="description" content="Mat Analytics diseña, implementa y migra arquitecturas Oracle para entornos de misión crítica: Oracle ADW, ODI, GoldenGate, Exadata. Banca, seguros, sector público peruano.">
+
+  <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red:        #8B0101;
+      --red-dark:   #6B0101;
+      --red-hover:  #A50101;
+      --red-subtle: rgba(139,1,1,0.08);
+      --black:      #1E1E1E;
+      --black-soft: #252525;
+      --gray-text:  #3A3A3A;
+      --gray-mid:   #757575;
+      --gray-trace: #999999;
+      --gray-light: #D9D9D9;
+      --gray-bg:    #F7F7F7;
+      --white:      #FFFFFF;
+      --border:     #E5E5E5;
+      --border-dark: rgba(255,255,255,0.09);
+      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:     6px;
+      --radius-lg:  12px;
+      --shadow:     0 4px 24px rgba(0,0,0,0.09);
+      --shadow-lg:  0 16px 48px rgba(0,0,0,0.16);
+      --transition: 0.20s ease;
+      --max-w:      1140px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--gray-text); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .section { padding: 88px 0; }
+    .section--dark { background: var(--black); }
+    .section--gray { background: var(--gray-bg); }
+
+    /* ── NAVBAR ──────────────────────────────────────────────────────────── */
+    .navbar {
+      background: var(--black);
+      height: 64px; display: flex; align-items: center;
+      border-bottom: 1px solid var(--border-dark);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .navbar__inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .navbar__logo { height: 30px; }
+    .navbar__nav {
+      display: flex; align-items: center; gap: 4px;
+      list-style: none; margin: 0; padding: 0;
+    }
+    .navbar__link {
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.70); padding: 6px 12px;
+      transition: color var(--transition);
+    }
+    .navbar__link:hover { color: var(--white); }
+    .navbar__brand {
+      display: flex; align-items: center; gap: 9px;
+      padding: 5px 8px; border-radius: 8px; flex-shrink: 0;
+      transition: background var(--transition);
+    }
+    .navbar__brand:hover { background: rgba(255,255,255,0.05); }
+    .navbar__brand-icon { color: rgba(255,255,255,0.35); flex-shrink: 0; transition: color var(--transition); }
+    .navbar__brand:hover .navbar__brand-icon { color: rgba(255,255,255,0.70); }
+    .navbar__sep { width: 1px; height: 22px; background: rgba(255,255,255,0.10); margin: 0 4px; flex-shrink: 0; }
+    .navbar__actions { display: flex; align-items: center; gap: 12px; }
+    .navbar__mail {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.55); flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .navbar__mail:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+    .navbar__cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+      padding: 8px 14px; background: var(--red); color: var(--white);
+      border-radius: var(--radius); transition: background var(--transition), box-shadow var(--transition);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .navbar__cta:hover { background: var(--red-hover); box-shadow: 0 4px 14px rgba(139,1,1,0.35); }
+    .navbar__burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .navbar__burger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.70); border-radius: 2px; transition: transform var(--transition), opacity var(--transition); }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 2px;
+      background: var(--black); border-bottom: 1px solid var(--border-dark);
+      padding: 12px 24px 20px; position: sticky; top: 64px; z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu__link {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.70);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color var(--transition);
+    }
+    .mobile-menu__link:hover { color: var(--white); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown__trigger {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.70);
+      background: none; border: none; cursor: pointer; padding: 6px 12px;
+      transition: color var(--transition);
+    }
+    .nav-dropdown__trigger:hover { color: var(--white); }
+    .nav-dropdown__trigger svg { transition: transform var(--transition); }
+    .nav-dropdown.open .nav-dropdown__trigger { color: var(--white); }
+    .nav-dropdown.open .nav-dropdown__trigger svg { transform: rotate(180deg); }
+    .nav-dropdown__menu {
+      position: absolute; top: calc(100% + 10px); left: 0;
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px; padding: 6px; min-width: 290px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+      z-index: 200;
+    }
+    .nav-dropdown.open .nav-dropdown__menu { opacity: 1; visibility: visible; transform: none; }
+    .nav-dropdown__item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 12px; border-radius: 6px; color: var(--white);
+      transition: background var(--transition);
+    }
+    .nav-dropdown__item:hover { background: rgba(255,255,255,0.06); }
+    .nav-dropdown__item-num { font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 700; padding-top:2px; min-width:14px; }
+    .nav-dropdown__item-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px; }
+    .nav-dropdown__item-desc { font-size: 11.5px; color: rgba(255,255,255,0.35); }
+
+    /* ── TAG ─────────────────────────────────────────────────────────────── */
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 3px;
+    }
+    .tag--red { color: var(--red); background: var(--red-subtle); }
+    .tag--white { color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.08); }
+
+    /* ── BTN ─────────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+      padding: 13px 26px; border-radius: var(--radius);
+      border: 2px solid transparent; cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+    .btn--primary { background: var(--red); color: var(--white); border-color: var(--red); }
+    .btn--primary:hover { background: var(--red-hover); border-color: var(--red-hover); box-shadow: 0 4px 20px rgba(139,1,1,0.40); }
+    .btn--outline-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.30); }
+    .btn--outline-white:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.60); }
+    .btn--outline-dark { background: transparent; color: var(--gray-text); border-color: var(--border); }
+    .btn--outline-dark:hover { border-color: var(--red); color: var(--red); }
+    .btn svg { flex-shrink: 0; transition: transform var(--transition); }
+    .btn:hover svg { transform: translateX(3px); }
+
+    /* ── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--black);
+      padding: 84px 0 76px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 65% at 85% 25%, rgba(139,1,1,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 40% at 5% 85%, rgba(139,1,1,0.09) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero__inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero__tag { margin-bottom: 18px; }
+    .hero__title {
+      font-size: clamp(28px, 3.8vw, 46px); font-weight: 800;
+      color: var(--white); letter-spacing: -0.03em; line-height: 1.12;
+      margin-bottom: 22px;
+    }
+    .hero__title span { color: var(--red); }
+    .hero__desc {
+      font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.78;
+      margin-bottom: 36px; max-width: 500px;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero__stats {
+      display: flex; gap: 32px; margin-top: 44px; padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero__stat-val {
+      font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1;
+    }
+    .hero__stat-val span { color: var(--red); }
+    .hero__stat-lab {
+      font-size: 11.5px; color: rgba(255,255,255,0.35); font-weight: 500; margin-top: 4px;
+    }
+
+    /* Console visual */
+    .console-card {
+      background: #111111;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+    }
+    .console-card__bar {
+      display: flex; align-items: center; gap: 7px;
+      padding: 12px 16px; background: #1a1a1a;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .console-card__dot { width: 10px; height: 10px; border-radius: 50%; }
+    .console-card__dot--r { background: #FF5F57; }
+    .console-card__dot--y { background: #FEBC2E; }
+    .console-card__dot--g { background: #28C840; }
+    .console-card__title-bar {
+      flex: 1; text-align: center; font-size: 11px;
+      color: rgba(255,255,255,0.25); font-weight: 500; letter-spacing: 0.06em;
+    }
+    .console-card__body { padding: 20px; }
+    .console-line {
+      font-family: 'Courier New', monospace; font-size: 12px;
+      line-height: 1.9; color: rgba(255,255,255,0.45);
+    }
+    .console-line--prompt { color: rgba(255,255,255,0.25); }
+    .console-line--green { color: #4CAF50; }
+    .console-line--red { color: #ef5350; }
+    .console-line--blue { color: #64B5F6; }
+    .console-line--yellow { color: #FFD54F; }
+    .console-metrics {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px;
+    }
+    .console-metric {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 12px 14px;
+    }
+    .console-metric__label {
+      font-size: 10px; color: rgba(255,255,255,0.25);
+      font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .console-metric__val {
+      font-size: 20px; font-weight: 800; color: var(--white); letter-spacing: -0.02em;
+    }
+    .console-metric__val--green { color: #4CAF50; }
+    .console-metric__val--red { color: var(--red); }
+    .console-metric__sub {
+      font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 2px; font-weight: 500;
+    }
+    .pulse-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: #4CAF50; margin-right: 6px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(76,175,80,0.6); }
+      50% { opacity: 0.8; box-shadow: 0 0 0 5px rgba(76,175,80,0); }
+    }
+
+    /* ── SECTION HEADER ──────────────────────────────────────────────────── */
+    .sec-header { text-align: center; margin-bottom: 56px; }
+    .sec-header .tag { margin-bottom: 14px; }
+    .sec-header h2 {
+      font-size: clamp(24px, 3.5vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px;
+    }
+    .sec-header h2.white { color: var(--white); }
+    .sec-header p {
+      font-size: 16px; color: var(--gray-mid); line-height: 1.72;
+      max-width: 560px; margin: 0 auto;
+    }
+    .sec-header p.white { color: rgba(255,255,255,0.50); }
+
+    /* ── PRODUCT CARDS ───────────────────────────────────────────────────── */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+    }
+    .prod-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .prod-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gray-light); transition: background var(--transition);
+    }
+    .prod-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .prod-card:hover::before { background: var(--red); }
+    .prod-card__icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--gray-bg);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      transition: background var(--transition);
+    }
+    .prod-card:hover .prod-card__icon { background: var(--red-subtle); }
+    .prod-card:hover .prod-card__icon svg { stroke: var(--red); }
+    .prod-card__badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+      color: rgba(139,1,1,0.70); background: var(--red-subtle);
+      padding: 3px 8px; border-radius: 3px; display: inline-block; margin-bottom: 10px;
+    }
+    .prod-card__title { font-size: 15px; font-weight: 700; color: var(--gray-text); margin-bottom: 10px; }
+    .prod-card__desc { font-size: 13.5px; color: var(--gray-mid); line-height: 1.68; margin-bottom: 16px; }
+    .prod-card__items { display: flex; flex-direction: column; gap: 5px; }
+    .prod-card__item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: var(--gray-text);
+    }
+    .prod-card__item::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+    }
+    /* 6 cards: 3+3 */
+    .products-grid.six-cards { grid-template-columns: repeat(3, 1fr); }
+
+    /* ── CAPACIDADES ─────────────────────────────────────────────────────── */
+    .cap-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+      padding: 64px 0;
+    }
+    .cap-block + .cap-block {
+      border-top: 1px solid var(--border);
+    }
+    .cap-block--reverse .cap-block__visual { order: 2; }
+    .cap-block--reverse .cap-block__text { order: 1; }
+    .cap-block__tag { margin-bottom: 14px; }
+    .cap-block__title {
+      font-size: clamp(22px, 2.8vw, 32px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 14px;
+      color: var(--gray-text);
+    }
+    .cap-block__desc { font-size: 15px; color: var(--gray-mid); line-height: 1.78; margin-bottom: 24px; }
+    .cap-list { display: flex; flex-direction: column; gap: 12px; }
+    .cap-item {
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .cap-item__icon {
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      background: var(--red-subtle);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cap-item__icon svg { stroke: var(--red); }
+    .cap-item__text { font-size: 13.5px; color: var(--gray-text); line-height: 1.6; }
+    .cap-item__text strong { font-weight: 600; color: var(--gray-text); display: block; margin-bottom: 2px; }
+
+    /* Ilustraciones CSS */
+    .cap-visual {
+      border-radius: var(--radius-lg);
+      overflow: hidden; position: relative;
+    }
+    .arch-diagram {
+      background: linear-gradient(145deg, #1a1a2e 0%, #1E1E1E 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg); padding: 32px;
+    }
+    .arch-diagram__title {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-bottom: 24px;
+    }
+    .arch-node {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    }
+    .arch-node__box {
+      flex: 1; padding: 10px 14px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .arch-node__box--src { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+    .arch-node__box--mid { background: rgba(139,1,1,0.12); border: 1px solid rgba(139,1,1,0.25); }
+    .arch-node__box--tgt { background: rgba(76,175,80,0.08); border: 1px solid rgba(76,175,80,0.20); }
+    .arch-node__label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.70); }
+    .arch-node__sub { font-size: 10px; color: rgba(255,255,255,0.30); }
+    .arch-node__status {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 3px;
+    }
+    .arch-node__status--ok { background: rgba(76,175,80,0.15); color: #4CAF50; }
+    .arch-node__status--run { background: rgba(139,1,1,0.20); color: var(--red); }
+    .arch-arrow {
+      width: 100%; height: 1px; background: rgba(255,255,255,0.06);
+      position: relative; margin: 4px 0;
+    }
+    .arch-arrow::after {
+      content: '▶'; position: absolute; right: -1px; top: -6px;
+      font-size: 9px; color: rgba(255,255,255,0.15);
+    }
+
+    .perf-chart {
+      background: #111111; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg); padding: 28px;
+    }
+    .perf-chart__title {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-bottom: 20px;
+    }
+    .perf-bar { margin-bottom: 14px; }
+    .perf-bar__meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 6px;
+    }
+    .perf-bar__name { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .perf-bar__val { font-size: 12px; font-weight: 700; color: var(--white); }
+    .perf-bar__track {
+      height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;
+    }
+    .perf-bar__fill {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, var(--red-dark), var(--red));
+    }
+    .perf-bar__fill--green {
+      background: linear-gradient(90deg, #2E7D32, #4CAF50);
+    }
+
+    .gov-visual {
+      background: linear-gradient(145deg, #0d1117 0%, #161b22 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg); padding: 28px;
+    }
+    .gov-visual__title {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-bottom: 20px;
+    }
+    .gov-layer {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+    }
+    .gov-layer__icon {
+      width: 36px; height: 36px; flex-shrink: 0; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gov-layer__icon--red { background: rgba(139,1,1,0.20); }
+    .gov-layer__icon--blue { background: rgba(33,150,243,0.15); }
+    .gov-layer__icon--green { background: rgba(76,175,80,0.15); }
+    .gov-layer__body { flex: 1; }
+    .gov-layer__name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.70); }
+    .gov-layer__detail { font-size: 11px; color: rgba(255,255,255,0.30); margin-top: 2px; }
+    .gov-layer__badge {
+      font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px;
+    }
+    .gov-layer__badge--active { background: rgba(76,175,80,0.15); color: #4CAF50; }
+    .gov-layer__badge--warn { background: rgba(255,193,7,0.15); color: #FFC107; }
+
+    /* ── CASOS DE USO ────────────────────────────────────────────────────── */
+    .casos-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    .caso-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: background var(--transition), border-color var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .caso-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+      background: var(--red); opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .caso-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.16); }
+    .caso-card:hover::after { opacity: 1; }
+    .caso-card__sector {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(139,1,1,0.80); background: rgba(139,1,1,0.12);
+      padding: 4px 10px; border-radius: 3px; display: inline-block; margin-bottom: 14px;
+    }
+    .caso-card__title {
+      font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.3;
+    }
+    .caso-card__desc { font-size: 13.5px; color: rgba(255,255,255,0.45); line-height: 1.68; margin-bottom: 20px; }
+    .caso-card__outcomes { display: flex; flex-direction: column; gap: 8px; }
+    .caso-outcome {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: rgba(255,255,255,0.60);
+    }
+    .caso-outcome::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+    }
+    .caso-card__icon {
+      position: absolute; top: 24px; right: 24px;
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── TECH STRIP ──────────────────────────────────────────────────────── */
+    .tech-strip {
+      background: var(--gray-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .tech-strip__inner {
+      display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+    }
+    .tech-strip__label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gray-trace); margin-right: 32px; flex-shrink: 0;
+    }
+    .tech-strip__items { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tech-badge {
+      font-size: 12px; font-weight: 600; color: var(--gray-mid);
+      border: 1px solid var(--border); background: var(--white);
+      padding: 6px 14px; border-radius: 20px;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .tech-badge:hover { border-color: var(--red); color: var(--red); }
+
+    /* ── CTA ─────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, #1E1E1E 0%, #2a0000 50%, #1E1E1E 100%);
+      padding: 96px 0; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(139,1,1,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section__inner { text-align: center; position: relative; z-index: 1; }
+    .cta-section__eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.30); margin-bottom: 20px;
+    }
+    .cta-section__title {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 800;
+      color: var(--white); letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .cta-section__title span { color: var(--red); }
+    .cta-section__desc {
+      font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.72;
+      max-width: 520px; margin: 0 auto 36px;
+    }
+    .cta-section__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+    /* ── REVEAL ──────────────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero__desc { max-width: 100%; }
+      .hero__stats { gap: 24px; }
+      .products-grid, .products-grid.six-cards { grid-template-columns: repeat(2, 1fr); }
+      .cap-block { grid-template-columns: 1fr; gap: 40px; }
+      .cap-block--reverse .cap-block__visual { order: 0; }
+      .cap-block--reverse .cap-block__text { order: 0; }
+      .casos-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 60px 0; }
+      .products-grid, .products-grid.six-cards { grid-template-columns: 1fr; }
+      .navbar__nav { display: none; }
+      .navbar__burger { display: flex; }
+      .hero__stats { flex-wrap: wrap; gap: 20px; }
+      .console-metrics { grid-template-columns: 1fr; }
+      .tech-strip__label { width: 100%; margin-right: 0; margin-bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ────────────────────────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="Inicio — Mat Analytics">
+        <svg class="navbar__brand-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <div class="navbar__sep"></div>
+      <ul class="navbar__nav">
+        <li><a class="navbar__link" href="index.html#casos">Casos de Uso</a></li>
+        <li class="nav-dropdown" id="navDropdown">
+          <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
+            Soluciones
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">TrustTech &amp; Certificación Digital</p>
+                <p class="nav-dropdown__item-desc">Notarización blockchain · No-Repudio · Stamping.io</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitectura de Datos Enterprise</p>
+                <p class="nav-dropdown__item-desc">Oracle ADW · ODI · Cloud híbrida</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
+              <span class="nav-dropdown__item-num">03</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Inteligencia Analítica Avanzada</p>
+                <p class="nav-dropdown__item-desc">Oracle OAC · Power BI · Gobernanza</p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a class="navbar__link" href="index.html#nosotros">Nosotros</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="index.html#diagnostico" class="navbar__cta">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Diagnóstico
+        </a>
+      </div>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="index.html#casos" onclick="closeMobile()">Casos de Uso</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">Soluciones — TrustTech</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Soluciones — Arquitectura de Datos</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Soluciones — Analítica Avanzada</a>
+    <a class="mobile-menu__link" href="index.html#nosotros" onclick="closeMobile()">Nosotros</a>
+    <a href="index.html#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagnóstico</a>
+  </div>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <!-- Texto -->
+      <div>
+        <div class="hero__tag">
+          <span class="tag tag--white">Arquitectura de Datos Enterprise · Powered by Oracle</span>
+        </div>
+        <h1 class="hero__title">
+          Infraestructura de datos que nunca cede.<br>
+          Ni bajo <span>carga</span>. Ni bajo <span>auditoría</span>.
+        </h1>
+        <p class="hero__desc">
+          Mat Analytics diseña, implementa y migra arquitecturas Oracle para entornos de misión crítica. Banca, seguros y sector público peruano confían en nuestra práctica especializada para construir plataformas de datos que resisten los estándares más exigentes: SBS, SUNASA y Contraloría General de la República.
+        </p>
+        <div class="hero__actions">
+          <a href="index.html#diagnostico" class="btn btn--primary">
+            Agendar Diagnóstico
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+          <a href="#productos" class="btn btn--outline-white">Ver soluciones Oracle</a>
+        </div>
+        <div class="hero__stats">
+          <div>
+            <div class="hero__stat-val">99<span>.99%</span></div>
+            <div class="hero__stat-lab">SLA garantizado OCI</div>
+          </div>
+          <div>
+            <div class="hero__stat-val"><span>&lt;</span>10ms</div>
+            <div class="hero__stat-lab">Latencia Exadata on-prem</div>
+          </div>
+          <div>
+            <div class="hero__stat-val">0</div>
+            <div class="hero__stat-lab">Downtime en migraciones</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual: consola Oracle -->
+      <div class="console-card" aria-hidden="true">
+        <div class="console-card__bar">
+          <span class="console-card__dot console-card__dot--r"></span>
+          <span class="console-card__dot console-card__dot--y"></span>
+          <span class="console-card__dot console-card__dot--g"></span>
+          <span class="console-card__title-bar">Oracle ADW — Cluster Status</span>
+        </div>
+        <div class="console-card__body">
+          <div class="console-line"><span class="console-line--prompt">$</span> <span class="console-line--blue">adb-s status</span> <span style="color:rgba(255,255,255,0.20)">--cluster prod-pe-01</span></div>
+          <div class="console-line"><span class="console-line--green"><span class="pulse-dot"></span>AUTONOMOUS DATABASE · RUNNING</span></div>
+          <div class="console-line" style="margin-top:4px"><span style="color:rgba(255,255,255,0.25)">───────────────────────────────</span></div>
+          <div class="console-line"><span style="color:rgba(255,255,255,0.30)">CPU Utilization   </span><span class="console-line--yellow">38%</span></div>
+          <div class="console-line"><span style="color:rgba(255,255,255,0.30)">Storage Used      </span><span class="console-line--blue">14.2 TB / 40 TB</span></div>
+          <div class="console-line"><span style="color:rgba(255,255,255,0.30)">Active Sessions   </span><span class="console-line--green">412</span></div>
+          <div class="console-line"><span style="color:rgba(255,255,255,0.30)">Last Backup       </span><span style="color:rgba(255,255,255,0.50)">07:00 UTC — OK</span></div>
+          <div class="console-line"><span style="color:rgba(255,255,255,0.30)">Patch Level       </span><span class="console-line--green">23ai.4 (current)</span></div>
+          <div class="console-line" style="margin-top:4px"><span style="color:rgba(255,255,255,0.25)">───────────────────────────────</span></div>
+          <div class="console-line"><span style="color:rgba(255,255,255,0.20)">GoldenGate lag:</span> <span class="console-line--green">0.3s</span> <span style="color:rgba(255,255,255,0.20)">· ODI jobs:</span> <span class="console-line--yellow">3/3 OK</span></div>
+          <div class="console-metrics">
+            <div class="console-metric">
+              <div class="console-metric__label">Uptime</div>
+              <div class="console-metric__val console-metric__val--green">99.99%</div>
+              <div class="console-metric__sub">últimos 365 días</div>
+            </div>
+            <div class="console-metric">
+              <div class="console-metric__label">Queries/seg</div>
+              <div class="console-metric__val">28,540</div>
+              <div class="console-metric__sub">pico actual</div>
+            </div>
+            <div class="console-metric">
+              <div class="console-metric__label">Latencia P99</div>
+              <div class="console-metric__val">8ms</div>
+              <div class="console-metric__sub">Exadata layer</div>
+            </div>
+            <div class="console-metric">
+              <div class="console-metric__label">Replicación CDC</div>
+              <div class="console-metric__val console-metric__val--green">LIVE</div>
+              <div class="console-metric__sub">GoldenGate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STRIP ─────────────────────────────────────────────────────────── -->
+<div class="tech-strip">
+  <div class="container">
+    <div class="tech-strip__inner">
+      <span class="tech-strip__label">Stack certificado</span>
+      <div class="tech-strip__items">
+        <span class="tech-badge">Oracle ADW</span>
+        <span class="tech-badge">Oracle ODI</span>
+        <span class="tech-badge">GoldenGate</span>
+        <span class="tech-badge">Exadata Cloud@Customer</span>
+        <span class="tech-badge">OCI</span>
+        <span class="tech-badge">Oracle 23ai</span>
+        <span class="tech-badge">Database Vault</span>
+        <span class="tech-badge">Audit Vault</span>
+        <span class="tech-badge">TDE</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCTOS ORACLE ───────────────────────────────────────────────────── -->
+<section class="section" id="productos">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag--red">Portafolio Oracle</span>
+      <h2>Seis plataformas. Un ecosistema integrado.</h2>
+      <p>Implementamos el stack completo de datos Oracle — desde la capa de almacenamiento hasta la integración en tiempo real — con soporte especializado en el mercado peruano.</p>
+    </div>
+
+    <div class="products-grid six-cards">
+
+      <!-- ADW -->
+      <div class="prod-card reveal">
+        <div class="prod-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+        </div>
+        <span class="prod-card__badge">ADW</span>
+        <h3 class="prod-card__title">Oracle Autonomous Data Warehouse</h3>
+        <p class="prod-card__desc">Base de datos analítica autónoma: se administra, protege y repara sola. Escala elástica sin ventanas de mantenimiento ni DBA asignado.</p>
+        <ul class="prod-card__items">
+          <li class="prod-card__item">Machine Learning integrado en el motor SQL</li>
+          <li class="prod-card__item">Escalado elástico por carga de trabajo</li>
+          <li class="prod-card__item">Integración nativa con Oracle Analytics Cloud</li>
+          <li class="prod-card__item">Patching automático sin downtime</li>
+        </ul>
+      </div>
+
+      <!-- ODI -->
+      <div class="prod-card reveal">
+        <div class="prod-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <span class="prod-card__badge">ODI</span>
+        <h3 class="prod-card__title">Oracle Data Integrator</h3>
+        <p class="prod-card__desc">Plataforma ETL/ELT enterprise para orquestar el movimiento de datos entre fuentes heterogéneas con calidad y trazabilidad garantizadas.</p>
+        <ul class="prod-card__items">
+          <li class="prod-card__item">Conectores nativos Oracle, SAP, Salesforce, JDBC</li>
+          <li class="prod-card__item">Orquestación de pipelines con dependencias</li>
+          <li class="prod-card__item">Control de calidad y linaje de datos</li>
+          <li class="prod-card__item">Arquitectura ELT que explota el motor destino</li>
+        </ul>
+      </div>
+
+      <!-- GoldenGate -->
+      <div class="prod-card reveal">
+        <div class="prod-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+        </div>
+        <span class="prod-card__badge">GoldenGate</span>
+        <h3 class="prod-card__title">Oracle GoldenGate</h3>
+        <p class="prod-card__desc">Replicación en tiempo real con Change Data Capture para migraciones sin corte de servicio y sincronización bidireccional entre entornos.</p>
+        <ul class="prod-card__items">
+          <li class="prod-card__item">Cero downtime en migraciones a Oracle Cloud</li>
+          <li class="prod-card__item">CDC desde Oracle, SQL Server, PostgreSQL, MySQL</li>
+          <li class="prod-card__item">Latencia de replicación sub-segundo</li>
+          <li class="prod-card__item">Sincronización activo-activo para DR</li>
+        </ul>
+      </div>
+
+      <!-- Exadata -->
+      <div class="prod-card reveal">
+        <div class="prod-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="9" width="20" height="4" rx="1"/><rect x="2" y="15" width="20" height="4" rx="1"/><line x1="6" y1="5" x2="6.01" y2="5"/><line x1="6" y1="11" x2="6.01" y2="11"/><line x1="6" y1="17" x2="6.01" y2="17"/></svg>
+        </div>
+        <span class="prod-card__badge">Exadata</span>
+        <h3 class="prod-card__title">Oracle Exadata Cloud@Customer</h3>
+        <p class="prod-card__desc">El hardware de base de datos más potente del mundo desplegado en el datacenter del cliente. Soberanía de datos total con gestión gestionada desde Oracle Cloud.</p>
+        <ul class="prod-card__items">
+          <li class="prod-card__item">Latencia ultra-baja: &lt;1ms para operaciones OLTP</li>
+          <li class="prod-card__item">Datos físicamente en instalaciones del cliente</li>
+          <li class="prod-card__item">Requerimiento regulatorio SBS / Contraloría</li>
+          <li class="prod-card__item">Smart Scan y offloading de procesamiento</li>
+        </ul>
+      </div>
+
+      <!-- OCI -->
+      <div class="prod-card reveal">
+        <div class="prod-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <span class="prod-card__badge">OCI</span>
+        <h3 class="prod-card__title">Oracle Cloud Infrastructure</h3>
+        <p class="prod-card__desc">Nube de segunda generación diseñada para cargas de datos enterprise. Precios predecibles, sin sorpresas de egreso, con presencia en Latam.</p>
+        <ul class="prod-card__items">
+          <li class="prod-card__item">98+ servicios cloud nativos integrados</li>
+          <li class="prod-card__item">Regiones en Brasil, Chile y Colombia</li>
+          <li class="prod-card__item">SLA 99.99% con crédito garantizado</li>
+          <li class="prod-card__item">Precio fijo de transferencia de datos</li>
+        </ul>
+      </div>
+
+      <!-- 23ai -->
+      <div class="prod-card reveal">
+        <div class="prod-card__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        </div>
+        <span class="prod-card__badge">23ai</span>
+        <h3 class="prod-card__title">Oracle Database 23ai</h3>
+        <p class="prod-card__desc">La base de datos más completa del mercado con IA nativa: vector embeddings directamente en SQL, JSON relacional y cifrado Always Encrypted.</p>
+        <ul class="prod-card__items">
+          <li class="prod-card__item">Vector embeddings nativos para búsqueda semántica</li>
+          <li class="prod-card__item">AI-native SQL con SELECT AI</li>
+          <li class="prod-card__item">JSON-Relational Duality Views</li>
+          <li class="prod-card__item">Always Encrypted con TEE seguro</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CAPACIDADES ────────────────────────────────────────────────────────── -->
+<section class="section section--gray" id="capacidades">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag--red">Capacidades Mat Analytics</span>
+      <h2>Lo que hacemos por usted.</h2>
+      <p>Nuestro equipo combina certificaciones Oracle con conocimiento profundo del marco regulatorio peruano para entregar arquitecturas que duran.</p>
+    </div>
+
+    <!-- Bloque 1: Diseño y Migración -->
+    <div class="cap-block reveal">
+      <div class="cap-block__visual">
+        <div class="arch-diagram" aria-hidden="true">
+          <div class="arch-diagram__title">Pipeline de migración Zero-Downtime</div>
+
+          <div class="arch-node">
+            <div class="arch-node__box arch-node__box--src">
+              <div>
+                <div class="arch-node__label">SQL Server / PostgreSQL</div>
+                <div class="arch-node__sub">Fuente productiva</div>
+              </div>
+              <span class="arch-node__status arch-node__status--ok">Activo</span>
+            </div>
+          </div>
+
+          <div class="arch-arrow"></div>
+
+          <div class="arch-node">
+            <div class="arch-node__box arch-node__box--mid">
+              <div>
+                <div class="arch-node__label">Oracle GoldenGate CDC</div>
+                <div class="arch-node__sub">Captura de cambios en tiempo real</div>
+              </div>
+              <span class="arch-node__status arch-node__status--run">CDC activo</span>
+            </div>
+          </div>
+
+          <div class="arch-arrow"></div>
+
+          <div class="arch-node">
+            <div class="arch-node__box arch-node__box--tgt">
+              <div>
+                <div class="arch-node__label">Oracle Autonomous DW</div>
+                <div class="arch-node__sub">Destino certificado</div>
+              </div>
+              <span class="arch-node__status arch-node__status--ok">Sincronizado</span>
+            </div>
+          </div>
+
+          <div class="arch-arrow"></div>
+
+          <div class="arch-node">
+            <div class="arch-node__box arch-node__box--src">
+              <div>
+                <div class="arch-node__label">Corte final · Go-live</div>
+                <div class="arch-node__sub">Lag: 0.3s · Downtime: 0</div>
+              </div>
+              <span class="arch-node__status arch-node__status--ok">Completado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cap-block__text">
+        <div class="cap-block__tag"><span class="tag tag--red">01 · Diseño y Migración</span></div>
+        <h3 class="cap-block__title">Arquitecturas zero-downtime desde cualquier origen</h3>
+        <p class="cap-block__desc">Evaluamos su entorno actual, diseñamos la arquitectura Oracle de destino y ejecutamos la migración sin interrumpir las operaciones del negocio. Aplicamos pruebas de carga y stress testing antes del corte final.</p>
+        <ul class="cap-list">
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Assessment de arquitectura actual</strong>
+              Análisis de esquemas, volúmenes, dependencias y puntos de riesgo antes de proponer solución.
+            </div>
+          </li>
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Migración desde SQL Server, PostgreSQL, MySQL</strong>
+              GoldenGate CDC para replicación continua durante la transición; corte en caliente con lag sub-segundo.
+            </div>
+          </li>
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Pruebas de carga y stress testing</strong>
+              Validación de SLA en condiciones de pico antes de autorizar el go-live productivo.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bloque 2: Performance -->
+    <div class="cap-block cap-block--reverse reveal">
+      <div class="cap-block__visual">
+        <div class="perf-chart" aria-hidden="true">
+          <div class="perf-chart__title">AWR Analysis — Mejora de Performance</div>
+          <div class="perf-bar">
+            <div class="perf-bar__meta">
+              <span class="perf-bar__name">Query response time (antes)</span>
+              <span class="perf-bar__val" style="color:#ef5350">8.4s</span>
+            </div>
+            <div class="perf-bar__track"><div class="perf-bar__fill" style="width:94%"></div></div>
+          </div>
+          <div class="perf-bar">
+            <div class="perf-bar__meta">
+              <span class="perf-bar__name">Query response time (después)</span>
+              <span class="perf-bar__val" style="color:#4CAF50">0.3s</span>
+            </div>
+            <div class="perf-bar__track"><div class="perf-bar__fill perf-bar__fill--green" style="width:4%"></div></div>
+          </div>
+          <div class="perf-bar" style="margin-top:20px">
+            <div class="perf-bar__meta">
+              <span class="perf-bar__name">CPU utilization (antes)</span>
+              <span class="perf-bar__val" style="color:#ef5350">88%</span>
+            </div>
+            <div class="perf-bar__track"><div class="perf-bar__fill" style="width:88%"></div></div>
+          </div>
+          <div class="perf-bar">
+            <div class="perf-bar__meta">
+              <span class="perf-bar__name">CPU utilization (después)</span>
+              <span class="perf-bar__val" style="color:#4CAF50">31%</span>
+            </div>
+            <div class="perf-bar__track"><div class="perf-bar__fill perf-bar__fill--green" style="width:31%"></div></div>
+          </div>
+          <div class="perf-bar" style="margin-top:20px">
+            <div class="perf-bar__meta">
+              <span class="perf-bar__name">Costo cloud mensual (antes)</span>
+              <span class="perf-bar__val" style="color:#ef5350">$12,400</span>
+            </div>
+            <div class="perf-bar__track"><div class="perf-bar__fill" style="width:80%"></div></div>
+          </div>
+          <div class="perf-bar">
+            <div class="perf-bar__meta">
+              <span class="perf-bar__name">Costo cloud mensual (después)</span>
+              <span class="perf-bar__val" style="color:#4CAF50">$5,100</span>
+            </div>
+            <div class="perf-bar__track"><div class="perf-bar__fill perf-bar__fill--green" style="width:33%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cap-block__text">
+        <div class="cap-block__tag"><span class="tag tag--red">02 · Performance</span></div>
+        <h3 class="cap-block__title">Optimización que impacta el costo operativo</h3>
+        <p class="cap-block__desc">Analizamos el comportamiento real del sistema mediante AWR y ASH, identificamos los cuellos de botella y aplicamos optimizaciones de fondo que reducen tiempos de respuesta y costos cloud de forma sostenida.</p>
+        <ul class="cap-list">
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>AWR / ASH analysis profundo</strong>
+              Identificación de top SQL, waits, latch contention y segmentos calientes con metodología Oracle.
+            </div>
+          </li>
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Tuning de queries, índices y particionamiento</strong>
+              Reescritura de SQL críticos, diseño de índices compuestos y estrategias de particionamiento por rango/lista/hash.
+            </div>
+          </li>
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Reducción de costos cloud OCI</strong>
+              Right-sizing de OCPUs y almacenamiento, reservas y auto-scaling para eliminar consumo innecesario.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bloque 3: Gobierno y Seguridad -->
+    <div class="cap-block reveal">
+      <div class="cap-block__visual">
+        <div class="gov-visual" aria-hidden="true">
+          <div class="gov-visual__title">Capas de seguridad Oracle — Stack activo</div>
+
+          <div class="gov-layer">
+            <div class="gov-layer__icon gov-layer__icon--red">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef5350" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="gov-layer__body">
+              <div class="gov-layer__name">Oracle Database Vault</div>
+              <div class="gov-layer__detail">Realms activos · Acceso DBA restringido · Separación de duties</div>
+            </div>
+            <span class="gov-layer__badge gov-layer__badge--active">Activo</span>
+          </div>
+
+          <div class="gov-layer">
+            <div class="gov-layer__icon gov-layer__icon--blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64B5F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="gov-layer__body">
+              <div class="gov-layer__name">Oracle Audit Vault</div>
+              <div class="gov-layer__detail">Registro inmutable · Alertas en tiempo real · Reportes SBS/SUNASA</div>
+            </div>
+            <span class="gov-layer__badge gov-layer__badge--active">Activo</span>
+          </div>
+
+          <div class="gov-layer">
+            <div class="gov-layer__icon gov-layer__icon--green">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="gov-layer__body">
+              <div class="gov-layer__name">Transparent Data Encryption (TDE)</div>
+              <div class="gov-layer__detail">AES-256 en reposo · Cifrado de tablespaces y backups</div>
+            </div>
+            <span class="gov-layer__badge gov-layer__badge--active">Activo</span>
+          </div>
+
+          <div class="gov-layer">
+            <div class="gov-layer__icon gov-layer__icon--blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64B5F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="gov-layer__body">
+              <div class="gov-layer__name">Cumplimiento regulatorio</div>
+              <div class="gov-layer__detail">SBS · SUNASA · Contraloría · INEI</div>
+            </div>
+            <span class="gov-layer__badge gov-layer__badge--warn">En revisión</span>
+          </div>
+        </div>
+      </div>
+      <div class="cap-block__text">
+        <div class="cap-block__tag"><span class="tag tag--red">03 · Gobierno y Seguridad</span></div>
+        <h3 class="cap-block__title">Cumplimiento regulatorio desde el diseño</h3>
+        <p class="cap-block__desc">El marco regulatorio peruano exige trazabilidad, segregación de funciones y cifrado en los sectores financiero y público. Implementamos las capas de seguridad Oracle que satisfacen esos requisitos sin comprometer el rendimiento.</p>
+        <ul class="cap-list">
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Oracle Database Vault</strong>
+              Realms y command rules para impedir que DBAs accedan a datos de negocio; separación de deberes auditada.
+            </div>
+          </li>
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Oracle Audit Vault &amp; Database Firewall</strong>
+              Registro inmutable de toda actividad, alertas en tiempo real y reportes listos para SBS, SUNASA y Contraloría.
+            </div>
+          </li>
+          <li class="cap-item">
+            <div class="cap-item__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="cap-item__text">
+              <strong>Cifrado TDE y Always Encrypted</strong>
+              AES-256 en tablespaces, backups y tráfico de red; claves gestionadas en Oracle Key Vault o HSM del cliente.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CASOS DE USO ───────────────────────────────────────────────────────── -->
+<section class="section section--dark" id="casos">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag--white">Casos de Uso</span>
+      <h2 class="white">Arquitectura Oracle aplicada a la realidad peruana.</h2>
+      <p class="white">Desde el sistema financiero regulado por la SBS hasta la gestión presupuestal del MEF — implementamos soluciones con requerimientos de clase enterprise.</p>
+    </div>
+
+    <div class="casos-grid">
+
+      <!-- Banca -->
+      <div class="caso-card reveal">
+        <div class="caso-card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.40)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span class="caso-card__sector">Banca</span>
+        <h3 class="caso-card__title">Consolidación de Data Warehouse y Reporting Regulatorio SBS</h3>
+        <p class="caso-card__desc">Entidades financieras con múltiples core bancarios (Temenos, Flexcube, sistemas propietarios) que deben producir reportes regulatorios SBS con datos íntegros, trazables y a tiempo.</p>
+        <ul class="caso-card__outcomes">
+          <li class="caso-outcome">DW unificado en Oracle ADW con vistas por regulación</li>
+          <li class="caso-outcome">Pipelines ODI para cada core bancario fuente</li>
+          <li class="caso-outcome">Cuadre automático contra SIIF/SBS cada cierre diario</li>
+          <li class="caso-outcome">Linaje de datos auditable para inspecciones SBS</li>
+        </ul>
+      </div>
+
+      <!-- Seguros -->
+      <div class="caso-card reveal">
+        <div class="caso-card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.40)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="caso-card__sector">Seguros</span>
+        <h3 class="caso-card__title">Data Marts Actuariales e IFRS 17</h3>
+        <p class="caso-card__desc">Aseguradoras que enfrentan la adopción de IFRS 17 necesitan modelos de datos que soporten la valorización de contratos, grupos de cobertura y márgenes de servicio contractual en tiempo real.</p>
+        <ul class="caso-card__outcomes">
+          <li class="caso-outcome">Data mart actuarial en Oracle ADW con particionamiento por vigencia</li>
+          <li class="caso-outcome">Modelos GMM y PAA implementados en SQL analítico</li>
+          <li class="caso-outcome">Reconciliación automática contra libro general</li>
+          <li class="caso-outcome">Reportes SUNASA listos para despacho regulatorio</li>
+        </ul>
+      </div>
+
+      <!-- Sector Público -->
+      <div class="caso-card reveal">
+        <div class="caso-card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.40)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="caso-card__sector">Sector Público</span>
+        <h3 class="caso-card__title">Integración SIAF/MEF y Trazabilidad de Expedientes</h3>
+        <p class="caso-card__desc">Entidades del gobierno central y regional que necesitan integrar el SIAF con sus sistemas de gestión documental y procesos de contratación pública bajo el escrutinio de la Contraloría.</p>
+        <ul class="caso-card__outcomes">
+          <li class="caso-outcome">Integración SIAF Web Services vía ODI con transformaciones certificadas</li>
+          <li class="caso-outcome">Trazabilidad de expedientes con audit trail inmutable</li>
+          <li class="caso-outcome">Dashboards OAC para control presupuestal en tiempo real</li>
+          <li class="caso-outcome">Soberanía de datos: Exadata Cloud@Customer on-premises</li>
+        </ul>
+      </div>
+
+      <!-- Logística -->
+      <div class="caso-card reveal">
+        <div class="caso-card__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.40)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span class="caso-card__sector">Logística</span>
+        <h3 class="caso-card__title">DW Operacional e Inventarios en Tiempo Real</h3>
+        <p class="caso-card__desc">Operadores logísticos con múltiples almacenes, flotas y sistemas WMS/TMS que requieren visibilidad unificada del inventario y la operación sin latencia para tomar decisiones de despacho.</p>
+        <ul class="caso-card__outcomes">
+          <li class="caso-outcome">GoldenGate CDC desde WMS y TMS hacia Oracle ADW</li>
+          <li class="caso-outcome">Latencia de replicación &lt;1 segundo para stock en tiempo real</li>
+          <li class="caso-outcome">Modelos de demanda con ML nativo en ADW</li>
+          <li class="caso-outcome">Alertas de quiebre de stock y reposición automática</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-section__inner reveal">
+      <p class="cta-section__eyebrow">Arquitectura de Datos Enterprise · Mat Analytics SAC</p>
+      <h2 class="cta-section__title">
+        ¿Su arquitectura está lista<br>para <span>escalar</span>?
+      </h2>
+      <p class="cta-section__desc">
+        Un diagnóstico sin costo de 60 minutos con nuestros especialistas Oracle es suficiente para identificar los tres principales riesgos de su plataforma de datos actual.
+      </p>
+      <div class="cta-section__actions">
+        <a href="index.html#diagnostico" class="btn btn--primary">
+          Agendar Diagnóstico
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+        <a href="#productos" class="btn btn--outline-white">
+          Ver Oracle en acción
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<div style="display:block;line-height:0;background:var(--gray-bg)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C180,60 360,0 540,30 C720,60 900,0 1080,30 C1260,60 1380,15 1440,30 L1440,60 L0,60 Z" fill="#161616"/>
+  </svg>
+</div>
+<footer style="background:#161616;padding:64px 0 0">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:48px">
+      <div>
+        <img style="height:30px;margin-bottom:16px;display:block" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+        <p style="font-size:13px;color:rgba(255,255,255,0.40);line-height:1.65;margin-bottom:20px">Datos con integridad. Analítica con certeza. Construimos el estándar de datos que los auditores más exigentes ya esperan de su organización.</p>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.10);padding:5px 12px;border-radius:3px">En alianza con Stamping.io</span>
+        <div style="display:flex;gap:10px;margin-top:24px">
+          <a href="#" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45)" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45)" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Líneas de Negocio</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <a href="trusttech.html" style="font-size:13px;color:rgba(255,255,255,0.50)">TrustTech &amp; Certificación Digital</a>
+          <a href="arquitectura.html" style="font-size:13px;color:rgba(255,255,255,0.50)">Arquitectura de Datos Enterprise</a>
+          <a href="analitica.html" style="font-size:13px;color:rgba(255,255,255,0.50)">Inteligencia Analítica Avanzada</a>
+        </div>
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Enlaces</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#productos" style="font-size:13px;color:rgba(255,255,255,0.50)">Productos Oracle</a>
+          <a href="#capacidades" style="font-size:13px;color:rgba(255,255,255,0.50)">Capacidades</a>
+          <a href="index.html#diagnostico" style="font-size:13px;color:rgba(255,255,255,0.50)">Agendar Diagnóstico</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);margin-bottom:18px">Contacto</p>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.50);margin-bottom:12px"><svg width="14" height="14" style="flex-shrink:0;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Lima, Perú</span></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.50);margin-bottom:12px"><svg width="14" height="14" style="flex-shrink:0;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@mat-analytics.com" style="color:rgba(255,255,255,0.50)">info@mat-analytics.com</a></div>
+        <a href="reclamaciones.html" style="display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid rgba(255,255,255,0.10);border-radius:6px;margin-top:8px">
+          <div style="width:32px;height:32px;flex-shrink:0;background:rgba(139,1,1,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div><span style="display:block;font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.30)">Virtual</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.65)">Libro de Reclamaciones</span></div>
+        </a>
+      </div>
+    </div>
+    <div style="padding:24px 0;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <p style="font-size:12px;color:rgba(255,255,255,0.25)">© 2026 Mat Analytics SAC · Lima, Perú · RUC 20XXXXXXXXX</p>
+      <div style="display:flex;gap:24px"><a href="#" style="font-size:12px;color:rgba(255,255,255,0.25)">Política de Privacidad</a><a href="#" style="font-size:12px;color:rgba(255,255,255,0.25)">Términos de Servicio</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Dropdown genérico
+  const allDD = document.querySelectorAll('.nav-dropdown');
+  function closeAllDD() { allDD.forEach(dd => { dd.classList.remove('open'); const b = dd.querySelector('[aria-expanded]'); if(b) b.setAttribute('aria-expanded','false'); }); }
+  allDD.forEach(dd => { const btn = dd.querySelector('.nav-dropdown__trigger'); if(!btn) return; btn.addEventListener('click', e => { e.stopPropagation(); const o=!dd.classList.contains('open'); closeAllDD(); if(o){dd.classList.add('open');btn.setAttribute('aria-expanded','true');} }); dd.querySelectorAll('.nav-dropdown__item').forEach(i=>i.addEventListener('click',closeAllDD)); });
+  document.addEventListener('click', closeAllDD);
+  document.addEventListener('keydown', e => { if(e.key==='Escape') { closeAllDD(); closeMobile(); } });
+  // Burger / mobile menu
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function closeMobile() { mobileMenu && mobileMenu.classList.remove('open'); burgerBtn && burgerBtn.setAttribute('aria-expanded','false'); }
+  burgerBtn && burgerBtn.addEventListener('click', () => { const o = !mobileMenu.classList.contains('open'); closeMobile(); if(o){ mobileMenu.classList.add('open'); burgerBtn.setAttribute('aria-expanded','true'); } });
+  // Reveal
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
