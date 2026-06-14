@@ -888,16 +888,13 @@
 <!-- ═══════════════════════════════════════════════ NAVBAR ═══ -->
   <nav class="navbar" id="navbar">
     <div class="navbar__inner">
-      <a href="index.html" class="navbar__brand" aria-label="Inicio — Mat Analytics">
-        <svg class="navbar__brand-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <a href="index.html" aria-label="Mat Analytics">
         <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
       </a>
-      <div class="navbar__sep"></div>
       <ul class="navbar__nav">
-        <li><a class="navbar__link" href="index.html#casos">Casos de Uso</a></li>
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Soluciones
+            Líneas de Negocio
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
@@ -924,15 +921,15 @@
             </a>
           </div>
         </li>
+        <li><a class="navbar__link" href="index.html#casos">Casos de Uso</a></li>
         <li><a class="navbar__link" href="index.html#nosotros">Nosotros</a></li>
       </ul>
       <div class="navbar__actions">
         <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener" class="navbar__mail" aria-label="Webmail">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
-        <a href="index.html#diagnostico" class="navbar__cta">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Diagnóstico
+        <a href="index.html#diagnostico" class="btn btn--primary">Agendar Diagnóstico
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
       </div>
       <button class="navbar__burger" id="burgerBtn" aria-label="Menú">
@@ -942,10 +939,9 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="index.html#servicios" onclick="closeMobile()">Líneas de Negocio</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Analítica Avanzada</a>
     <a class="mobile-menu__link" href="index.html#casos" onclick="closeMobile()">Casos de Uso</a>
-    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">Soluciones — TrustTech</a>
-    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Soluciones — Arquitectura de Datos</a>
-    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Soluciones — Analítica Avanzada</a>
     <a class="mobile-menu__link" href="index.html#nosotros" onclick="closeMobile()">Nosotros</a>
     <a href="index.html#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagnóstico</a>
   </div>
