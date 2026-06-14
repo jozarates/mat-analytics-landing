@@ -712,8 +712,10 @@
       padding: 48px 36px;
       border-right: 1px solid rgba(255,255,255,0.06);
       text-align: center;
+      transition: background 0.30s ease, transform 0.30s ease;
     }
     .stat:last-child { border-right: none; }
+    .stat:hover { background: rgba(255,255,255,0.025); transform: translateY(-4px); }
     .stat__num {
       font-size: clamp(34px, 4vw, 48px);
       font-weight: 800;
@@ -721,7 +723,9 @@
       letter-spacing: -0.04em;
       line-height: 1;
       margin-bottom: 10px;
+      transition: text-shadow 0.30s ease;
     }
+    .stat:hover .stat__num { text-shadow: 0 0 32px rgba(139,1,1,0.50); }
     .stat__num span { color: var(--red); }
     .stat__label {
       font-size: 13px; font-weight: 500;
@@ -1547,19 +1551,19 @@
       </div>
       <div class="stats__grid">
         <div class="stat reveal">
-          <div class="stat__num">15<span>+</span></div>
+          <div class="stat__num" data-count="15" data-suffix="+" data-prefix="">15<span>+</span></div>
           <div class="stat__label">Años de experiencia<br>en ecosistema Oracle</div>
         </div>
         <div class="stat reveal reveal-delay-1">
-          <div class="stat__num">40<span>+</span></div>
+          <div class="stat__num" data-count="40" data-suffix="+" data-prefix="">40<span>+</span></div>
           <div class="stat__label">Proyectos enterprise<br>liderados por nuestro equipo</div>
         </div>
         <div class="stat reveal reveal-delay-2">
-          <div class="stat__num">98<span>.7%</span></div>
+          <div class="stat__num" data-count="98.7" data-suffix="%" data-prefix="" data-decimals="1">98<span>.7%</span></div>
           <div class="stat__label">SLA promedio sostenido<br>en proyectos previos</div>
         </div>
         <div class="stat reveal reveal-delay-3">
-          <div class="stat__num">&lt;2<span>h</span></div>
+          <div class="stat__num" data-count="2" data-suffix="h" data-prefix="&lt;">&lt;2<span>h</span></div>
           <div class="stat__label">Tiempo de respuesta<br>estándar del equipo consultor</div>
         </div>
       </div>
@@ -1928,6 +1932,34 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el => revealObserver.observe(el));
+
+    // Counter animation for stats
+    function animateCounter(el) {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix || '';
+      const decimals = parseInt(el.dataset.decimals || '0');
+      const duration = 1800;
+      const t0 = performance.now();
+      (function tick(now) {
+        const progress = Math.min((now - t0) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const val = target * eased;
+        const display = decimals > 0 ? val.toFixed(decimals) : Math.round(val);
+        el.innerHTML = prefix + display + '<span>' + suffix + '</span>';
+        if (progress < 1) requestAnimationFrame(tick);
+      })(t0);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = '1';
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.60 });
+    document.querySelectorAll('.stat__num[data-count]').forEach(el => counterObserver.observe(el));
 
     // Form handling
     const form = document.getElementById('diagForm');
