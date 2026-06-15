@@ -6,6 +6,18 @@ Historial de versiones y planificación de desarrollo.
 
 ## Versiones lanzadas
 
+### v1.1.1 — Imagen IA Empresarial y ajuste de despliegue `[2026-06-15]`
+
+**Arquitecturas de Referencia:**
+- Se agregó imagen de referencia para "Lakehouse e Inteligencia Artificial Empresarial".
+- La tarjeta 08 ahora muestra imagen y diagrama con el mismo patrón visual de las demás arquitecturas.
+- Se compactó el flujo de 7 capas para mantener lectura rápida en desktop.
+
+**Calidad visual:**
+- Validación responsive en desktop y móvil.
+- Corrección de overflow móvil en la banda editorial de la página.
+- Limpieza de artefactos locales de pruebas visuales antes de despliegue.
+
 ### v1.1.0 — Arquitecturas de Referencia y navegación `[2026-06-15]`
 
 **Páginas y contenido:**

@@ -33,7 +33,7 @@ mat-analytics-landing/
 ├── reclamaciones.html      # Libro de Reclamaciones Virtual
 ├── assets/
 │   ├── arquitecturas-referencia-hero.png # Hero visual de Arquitecturas de Referencia
-│   └── arquitecturas/       # WebP por arquitectura de referencia
+│   └── arquitecturas/       # Imágenes por arquitectura de referencia
 ├── brand-assets/
 │   ├── favicon/            # favicon.ico + 16/32/48/180/192/512 px
 │   ├── logo-horizontal-*.svg / *.png   # Logo horizontal (color, negativo, rojo, grises)
