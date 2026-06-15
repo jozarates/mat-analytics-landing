@@ -158,6 +158,39 @@
     @media(max-width:600px){
       .topic-row__tag{display:none}
     }
+    .trends-legend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .trends-legend__item{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid)}
+    .trends-legend__arrow{font-size:13px;color:var(--gray-light)}
+    .trends-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .trends-dot--trend{background:var(--black)}
+    .trends-dot--problem{background:#EF4444}
+    .trends-dot--benefit{background:#10B981}
+    .trends-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px}
+    .trend-card{background:#fff;border:1px solid #E8E8E8;border-left:3px solid var(--red);border-radius:0 12px 12px 0;padding:24px 26px;display:flex;flex-direction:column}
+    .trend-card--gov{border-left-color:#1E40AF}
+    .trend-card--strategy{border-left-color:#92400E}
+    .trend-card--trust{border-left-color:#7C3AED}
+    .trend-card--analytics{border-left-color:#065F46}
+    .trend-card__meta{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+    .trend-domain{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 9px;border-radius:3px}
+    .trend-domain--arq{color:#8B0101;background:rgba(139,1,1,0.08)}
+    .trend-domain--gov{color:#1E40AF;background:rgba(30,64,175,0.08)}
+    .trend-domain--strategy{color:#92400E;background:rgba(146,64,14,0.08)}
+    .trend-domain--trust{color:#7C3AED;background:rgba(124,58,237,0.08)}
+    .trend-domain--analytics{color:#065F46;background:rgba(6,95,70,0.08)}
+    .trend-idx{font-size:11px;font-weight:700;color:var(--gray-light);letter-spacing:0.06em;font-variant-numeric:tabular-nums}
+    .trend-name{font-size:16px;font-weight:700;color:var(--black);letter-spacing:-0.02em;line-height:1.25;margin-bottom:16px}
+    .trend-divider{height:1px;background:#F0F0F0;margin-bottom:16px}
+    .trend-row{margin-bottom:14px}
+    .trend-row:last-child{margin-bottom:0;flex:1}
+    .trend-row__label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:#BBBBBB;margin-bottom:5px}
+    .trend-row__dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+    .trend-row__dot--problem{background:#EF4444}
+    .trend-row__dot--benefit{background:#10B981}
+    .trend-row__text{font-size:13px;color:var(--gray-text);line-height:1.70}
+    .trends-note{background:#F7F7F7;border-left:3px solid var(--gray-light);border-radius:0 6px 6px 0;padding:16px 20px}
+    .trends-note p{font-size:12.5px;color:var(--gray-mid);line-height:1.75;font-style:italic}
+    @media(max-width:900px){.trends-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -245,6 +278,169 @@
       <div class="page-hero__tag"><span class="tag">Recursos</span></div>
       <h1 class="page-hero__title">Perspectivas sobre datos<br>que mueven decisiones.</h1>
       <p class="page-hero__sub">Gu&iacute;as pr&aacute;cticas, casos de uso y an&aacute;lisis t&eacute;cnicos sobre analytics empresarial, gobernanza de datos y certificaci&oacute;n blockchain para sectores regulados.</p>
+    </div>
+  </section>
+
+  <!-- Trends -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header reveal">
+        <div class="section__tag"><span class="tag">An&aacute;lisis de Mercado</span></div>
+        <h2 class="section__title">Tendencias e Iniciativas que est&aacute;n<br>transformando la gesti&oacute;n de datos.</h2>
+        <p class="section__sub">Seguimiento de publicaciones sectoriales, informes de analistas y evoluci&oacute;n de plataformas tecnol&oacute;gicas l&iacute;deres. Ninguna tendencia es atribuida a MAT Analytics.</p>
+        <div class="trends-legend">
+          <span class="trends-legend__item"><span class="trends-dot trends-dot--trend"></span>Tendencia</span>
+          <span class="trends-legend__arrow">&#8594;</span>
+          <span class="trends-legend__item"><span class="trends-dot trends-dot--problem"></span>Problema que resuelve</span>
+          <span class="trends-legend__arrow">&#8594;</span>
+          <span class="trends-legend__item"><span class="trends-dot trends-dot--benefit"></span>Beneficio empresarial</span>
+        </div>
+      </div>
+
+      <div class="trends-grid">
+
+        <div class="trend-card reveal">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--arq">Arquitectura</span>
+            <span class="trend-idx">01</span>
+          </div>
+          <h3 class="trend-name">Data Warehouses Modernos</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Las organizaciones acumulan datos en silos fragmentados &mdash;ERP, CRM, operaciones&mdash; sin fuente unificada de verdad. Los reportes son lentos, inconsistentes y dependen de consolidaci&oacute;n manual.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Arquitectura centralizada optimizada para consultas anal&iacute;ticas elimina inconsistencias y habilita reportes ejecutivos en tiempo real desde una sola fuente auditada.</p>
+          </div>
+        </div>
+
+        <div class="trend-card trend-card--gov reveal reveal-delay-1">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--gov">Gobernanza</span>
+            <span class="trend-idx">02</span>
+          </div>
+          <h3 class="trend-name">Gobierno de Datos</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Sin un marco de gobierno, los datos cr&iacute;ticos carecen de linaje claro, calidad verificable y responsabilidad asignada. Las decisiones se basan en cifras contradictorias entre &aacute;reas.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Propietarios de datos, est&aacute;ndares de calidad, reglas de acceso y trazabilidad completa desde la fuente hasta el reporte. Los datos pasan de ser un riesgo a ser un activo auditado.</p>
+          </div>
+        </div>
+
+        <div class="trend-card reveal">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--arq">Arquitectura</span>
+            <span class="trend-idx">03</span>
+          </div>
+          <h3 class="trend-name">Data Fabric</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Arquitecturas de datos que crecen en capas de tecnolog&iacute;as desconectadas: warehouses, data lakes, bases transaccionales y APIs sin metadatos compartidos ni sem&aacute;ntica consistente.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Capa de integraci&oacute;n inteligente que conecta fuentes heterog&eacute;neas con metadatos unificados. Los equipos consumen datos con contexto sin requerir ingenier&iacute;a centralizada para cada consulta.</p>
+          </div>
+        </div>
+
+        <div class="trend-card trend-card--strategy reveal reveal-delay-1">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--strategy">Estrategia</span>
+            <span class="trend-idx">04</span>
+          </div>
+          <h3 class="trend-name">Data Mesh</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Los equipos de datos centralizados se convierten en cuellos de botella cuando cada &aacute;rea de negocio debe canalizar sus necesidades anal&iacute;ticas a trav&eacute;s de un &uacute;nico equipo t&eacute;cnico.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Los dominios de negocio publican sus datos como productos con contratos y est&aacute;ndares definidos. La gobernanza se federaliza sin sacrificar consistencia global.</p>
+          </div>
+        </div>
+
+        <div class="trend-card trend-card--trust reveal">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--trust">TrustTech</span>
+            <span class="trend-idx">05</span>
+          </div>
+          <h3 class="trend-name">Certificaci&oacute;n Criptogr&aacute;fica de Documentos</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Los documentos digitales &mdash;contratos, reportes regulatorios, estados financieros&mdash; pueden modificarse sin dejar rastro verificable, exponiendo a las organizaciones a disputas legales y fallos de auditor&iacute;a.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">La notarizaci&oacute;n criptogr&aacute;fica registra una huella digital inmutable del documento en el momento de su emisi&oacute;n. Cualquier modificaci&oacute;n posterior es detectable sin necesidad de un tercero custodio.</p>
+          </div>
+        </div>
+
+        <div class="trend-card trend-card--trust reveal reveal-delay-1">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--trust">TrustTech</span>
+            <span class="trend-idx">06</span>
+          </div>
+          <h3 class="trend-name">Blockchain Aplicada a Auditor&iacute;a</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Los registros de auditor&iacute;a en sistemas tradicionales son mutables. Pueden ser alterados por administradores sin dejar evidencia, debilitando el valor probatorio del trail ante auditores externos.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Trail de auditor&iacute;a permanente, secuencial y verificable por cualquier parte autorizada, independiente del sistema que lo gener&oacute;. Cumple est&aacute;ndares de evidencia en entornos regulados.</p>
+          </div>
+        </div>
+
+        <div class="trend-card trend-card--analytics reveal">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--analytics">Analytics</span>
+            <span class="trend-idx">07</span>
+          </div>
+          <h3 class="trend-name">Anal&iacute;tica para Cumplimiento Regulatorio</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">El compliance &mdash;SBS, SMV, SUNAT&mdash; exige reportes peri&oacute;dicos con datos precisos y trazables. Los procesos manuales son lentos, propensos a error y dif&iacute;ciles de defender ante un auditor externo.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Fuente &uacute;nica de verdad con reglas de negocio codificadas y linaje de datos permite generar reportes regulatorios autom&aacute;ticamente con evidencia completa de la ruta de c&aacute;lculo.</p>
+          </div>
+        </div>
+
+        <div class="trend-card trend-card--analytics reveal reveal-delay-1">
+          <div class="trend-card__meta">
+            <span class="trend-domain trend-domain--analytics">Analytics</span>
+            <span class="trend-idx">08</span>
+          </div>
+          <h3 class="trend-name">Inteligencia Artificial Aplicada a Datos</h3>
+          <div class="trend-divider"></div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
+            <p class="trend-row__text">Los vol&uacute;menes de datos transaccionales superan la capacidad humana para detectar patrones, anomal&iacute;as y se&ntilde;ales tempranas de riesgo mediante an&aacute;lisis manual o reportes est&aacute;ticos.</p>
+          </div>
+          <div class="trend-row">
+            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
+            <p class="trend-row__text">Detecci&oacute;n autom&aacute;tica de anomal&iacute;as, forecasting de variables cr&iacute;ticas y segmentaci&oacute;n inteligente que ampl&iacute;an la capacidad de decisi&oacute;n sin reemplazar al analista humano.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="trends-note reveal">
+        <p>Tendencias observadas a trav&eacute;s del seguimiento de publicaciones sectoriales, informes de analistas de mercado y la evoluci&oacute;n de las plataformas tecnol&oacute;gicas l&iacute;deres. Ninguna iniciativa mencionada es atribuida a MAT Analytics ni a sus clientes. Reflejan el conocimiento del mercado de datos que nuestro equipo consultor mantiene actualizado.</p>
+      </div>
+
     </div>
   </section>
 
