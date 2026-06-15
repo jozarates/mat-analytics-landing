@@ -80,7 +80,7 @@
     .arch-notice__body{flex:1;min-width:0}
     .arch-notice__eyebrow{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:3px}
     .arch-notice__text{font-size:12.5px;color:rgba(255,255,255,0.42);line-height:1.55}
-    .arch-notice__pills{display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0}
+    .arch-notice__pills{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 260px;min-width:0}
     .arch-notice__pill{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);border:1px solid rgba(255,255,255,0.10);padding:4px 10px;border-radius:3px;white-space:nowrap}
     /* Hero */
     .page-hero{padding:72px 0 60px;background:#fff;border-bottom:1px solid var(--border-light)}
@@ -108,8 +108,9 @@
     .arch-domain--ha{color:#065F46;background:rgba(6,95,70,0.08)}
     .arch-domain--lake{color:#0F766E;background:rgba(15,118,110,0.08)}
     .arch-domain--ai{color:#B45309;background:rgba(180,83,9,0.08)}
-    .ref-diagram__flow--seven{grid-template-columns:1fr}
-    .arch-card__body-inner--ia{grid-template-areas:"components diagram" "benefits diagram" "scenarios scenarios"}
+    .ref-diagram__flow--seven{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ref-diagram__flow--seven .ref-diagram__node:last-child{grid-column:1 / -1}
+    .arch-card__body-inner--ia{grid-template-areas:"components visual" "benefits diagram" "scenarios scenarios"}
     .arch-card__title{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.025em;line-height:1.20;margin-bottom:8px}
     .arch-card__obj{font-size:13.5px;color:var(--gray-mid);line-height:1.65}
     .arch-card__toggle{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border-light);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;transition:all var(--transition);cursor:pointer}
@@ -909,6 +910,9 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner arch-card__body-inner--ia">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/ia-empresarial.png" alt="Imagen de referencia de Lakehouse e inteligencia artificial empresarial" loading="lazy" decoding="async">
+              </figure>
               <div class="ref-diagram" aria-label="Diagrama de flujo — 7 capas Lakehouse e IA Empresarial">
                 <p class="ref-diagram__title">Flujo de referencia &mdash; 7 capas</p>
                 <div class="ref-diagram__flow ref-diagram__flow--seven">
