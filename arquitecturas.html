@@ -349,6 +349,7 @@
       <a class="ac-mobile-nav__item" href="#lakehouse"><span class="ac-mobile-nav__num">06</span> Lakehouse</a>
       <a class="ac-mobile-nav__item" href="#lakehouse-ia"><span class="ac-mobile-nav__num">07</span> Lakehouse + IA</a>
       <a class="ac-mobile-nav__item" href="#lakehouse-oracle"><span class="ac-mobile-nav__num">08</span> Lakehouse Oracle</a>
+      <a class="ac-mobile-nav__item" href="#lakehouse-ia-gen"><span class="ac-mobile-nav__num">09</span> Lakehouse + RAG</a>
     </div>
   </nav>
 
@@ -360,7 +361,7 @@
         <!-- Sidebar -->
         <aside class="ac-sidebar" aria-label="Arquitecturas">
           <nav class="ac-nav">
-            <span class="ac-nav__label">8 Arquitecturas</span>
+            <span class="ac-nav__label">9 Arquitecturas</span>
             <a class="ac-nav__item" href="#dw-oracle"><span class="ac-nav__num">01</span>Data Warehouse Oracle</a>
             <a class="ac-nav__item" href="#bi-empresarial"><span class="ac-nav__num">02</span>Business Intelligence</a>
             <a class="ac-nav__item" href="#gobierno-datos"><span class="ac-nav__num">03</span>Gobierno de Datos</a>
@@ -369,6 +370,7 @@
             <a class="ac-nav__item" href="#lakehouse"><span class="ac-nav__num">06</span>Lakehouse Empresarial</a>
             <a class="ac-nav__item" href="#lakehouse-ia"><span class="ac-nav__num">07</span>Lakehouse + IA</a>
             <a class="ac-nav__item" href="#lakehouse-oracle"><span class="ac-nav__num">08</span>Lakehouse Oracle</a>
+            <a class="ac-nav__item" href="#lakehouse-ia-gen"><span class="ac-nav__num">09</span>Lakehouse + RAG &amp; IA</a>
             <div class="ac-nav__divider"></div>
             <a class="ac-nav__item" href="arquitecturas-referencia.html" style="font-size:11.5px;opacity:0.70">&#8592; Arquitecturas de Referencia</a>
           </nav>
@@ -909,6 +911,86 @@
                 <p class="ac-meta-item">Data Catalog como componente obligatorio en arquitecturas reguladas — el principio &ldquo;catalogar antes de analizar&rdquo; se consolida</p>
                 <p class="ac-meta-item">AutoML integrado al repositorio reduce el ciclo de experimentaci&oacute;n de semanas a horas en organizaciones maduras</p>
                 <p class="ac-meta-item">Migraci&oacute;n acelerada desde Oracle DW on-premise hacia OCI en sectores financieros de LATAM</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               09. LAKEHOUSE E INTELIGENCIA ARTIFICIAL EMPRESARIAL
+          ============================================================ -->
+          <section class="ac-section reveal" id="lakehouse-ia-gen">
+            <div class="ac-section__head">
+              <span class="ac-section__num">09</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Inteligencia Aumentada &amp; IA Generativa</span>
+                <h2 class="ac-section__title">Lakehouse e Inteligencia Artificial Empresarial</h2>
+                <p class="ac-section__problem">Las organizaciones con Business Intelligence tradicional enfrentan un punto de inflexión: los reportes est&aacute;ticos no pueden responder preguntas no anticipadas ni operar en lenguaje natural. La transici&oacute;n hacia plataformas de inteligencia aumentada requiere una base de datos gobernada, un mecanismo de recuperaci&oacute;n sem&aacute;ntica (RAG) y modelos fundacionales conectados al contexto espec&iacute;fico de la organizaci&oacute;n.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Base de datos e IA</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Fuentes de datos</p><p class="ac-comp-item__desc">Estructurados, documentos, transaccionales, APIs y datos no estructurados</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Lakehouse</p><p class="ac-comp-item__desc">Repositorio unificado — formatos abiertos, acceso gobernado, sin silos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Gobierno de datos</p><p class="ac-comp-item__desc">Cat&aacute;logo, linaje y calidad: prerequisito para IA confiable en entornos regulados</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Vector Database</p><p class="ac-comp-item__desc">Almac&eacute;n de embeddings sem&aacute;nticos — pgvector, Pinecone, Oracle AI Vector Search</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Modelos y aplicaciones</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">LLM / Modelo base</p><p class="ac-comp-item__desc">GPT-4o, Gemini, Oracle GenAI, Llama — seg&uacute;n contexto y regulaci&oacute;n vigente</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">RAG (Retrieval-Augmented Generation)</p><p class="ac-comp-item__desc">Recuperaci&oacute;n sem&aacute;ntica del contexto empresarial antes de generar la respuesta</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Copilots Empresariales</p><p class="ac-comp-item__desc">Asistentes con contexto del negocio: normas, m&eacute;tricas, pol&iacute;ticas y nomenclaturas</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Dashboards e Insights</p><p class="ac-comp-item__desc">OAC GenAI, Power BI Copilot — an&aacute;lisis conversacional y visualizaci&oacute;n aumentada</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — plataforma de inteligencia aumentada</span>
+              <div class="ac-flow" role="img" aria-label="Flujo Lakehouse IA Generativa: Fuentes a Dashboards">
+                <div class="ac-node"><span class="ac-node__cat">Origen</span><span class="ac-node__name">Fuentes de Datos</span><span class="ac-node__tech">Struct · Doc · APIs · Stream</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Plataforma</span><span class="ac-node__name">Lakehouse</span><span class="ac-node__tech">Iceberg · Delta · Unificado</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Gobierno</span><span class="ac-node__name">Gobierno de Datos</span><span class="ac-node__tech">Cat&aacute;logo · Linaje · DQ</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Sem&aacute;ntica</span><span class="ac-node__name">Vector Database</span><span class="ac-node__tech">Embeddings · B&uacute;squeda</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Modelo</span><span class="ac-node__name">LLM</span><span class="ac-node__tech">GPT · Gemini · GenAI</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Recuperaci&oacute;n</span><span class="ac-node__name">RAG</span><span class="ac-node__tech">Contexto empresarial</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Aplicaci&oacute;n</span><span class="ac-node__name">Copilots</span><span class="ac-node__tech">Asistentes · Agentes</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Consumo</span><span class="ac-node__name">Dashboards e Insights</span><span class="ac-node__tech">OAC GenAI · PBI Copilot</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta ac-section__meta--3col">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Transici&oacute;n controlada desde BI est&aacute;tico hacia IA generativa con datos gobernados</p>
+                <p class="ac-meta-item">RAG garantiza respuestas del LLM con contexto empresarial propio, no gen&eacute;rico</p>
+                <p class="ac-meta-item">Copilots con memoria del negocio: regulaciones, m&eacute;tricas y nomenclaturas internas</p>
+                <p class="ac-meta-item">Trazabilidad de cada inferencia: auditable y explicable ante reguladores</p>
+                <p class="ac-meta-item">Dashboards que responden preguntas en lenguaje natural sin SQL manual</p>
+                <p class="ac-meta-item">Integraci&oacute;n con plataformas BI existentes sin reemplazarlas</p>
+              </div>
+              <div class="ac-meta-block" style="border-right:1px solid var(--border-light)">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Seguros: copilot de suscripci&oacute;n que consulta historial de p&oacute;lizas y siniestros</p>
+                <p class="ac-meta-item">Banca: analista virtual que interpreta reportes regulatorios y detecta desviaciones</p>
+                <p class="ac-meta-item">Sector p&uacute;blico: asistente que indexa normativa y responde consultas legales</p>
+                <p class="ac-meta-item">Retail: co-pilot de compras con patrones hist&oacute;ricos y proyecci&oacute;n de demanda</p>
+                <p class="ac-meta-item">Cualquier organizaci&oacute;n con grandes vol&uacute;menes de documentaci&oacute;n interna no estructurada</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Tendencias observadas en el mercado</span>
+                <p class="ac-meta-item">RAG se consolida como el patr&oacute;n est&aacute;ndar para IA empresarial, desplazando al fine-tuning en la mayor&iacute;a de casos de uso</p>
+                <p class="ac-meta-item">La evoluci&oacute;n de BI tradicional hacia an&aacute;lisis conversacional es la transici&oacute;n arquitect&oacute;nica m&aacute;s relevante observada en el mercado de datos</p>
+                <p class="ac-meta-item">El gobierno del dato se vuelve prerequisito no negociable para iniciativas de IA en sectores regulados</p>
+                <p class="ac-meta-item">Los copilots empresariales avanzan de asistentes de texto a agentes con acceso a sistemas y capacidad de acci&oacute;n</p>
+                <p class="ac-meta-item">La trazabilidad de las inferencias de IA empieza a exigirse por marcos regulatorios de datos en mercados maduros</p>
               </div>
             </div>
           </section>
