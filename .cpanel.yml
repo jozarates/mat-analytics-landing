@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/matanalytics/public_html
-    - /bin/cp -Rf $REPO_DIR/. $DEPLOYPATH
-    - /bin/cp -f $REPO_DIR/.htaccess $DEPLOYPATH/.htaccess
+    - /bin/cp -Rf . $DEPLOYPATH/
+    - /bin/cp -f .htaccess $DEPLOYPATH/.htaccess
