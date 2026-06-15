@@ -143,7 +143,39 @@
       .navbar__nav,.navbar__actions{display:none}
       .navbar__burger{display:flex}
       .mv-grid,.valores-grid,.cross-links{grid-template-columns:1fr}
+      .exp-body{grid-template-columns:1fr}
+      .exp-pillars{grid-template-columns:1fr}
     }
+    .exp-section{background:#0c0c0c;position:relative;overflow:hidden;padding:80px 0}
+    .exp-section::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 60% at 90% 15%,rgba(139,1,1,0.12) 0%,transparent 65%),radial-gradient(ellipse 30% 35% at 5% 90%,rgba(139,1,1,0.06) 0%,transparent 55%)}
+    .exp-section .container{position:relative;z-index:1}
+    .exp-header{margin-bottom:60px}
+    .exp-header .tag{background:rgba(139,1,1,0.18);color:rgba(255,255,255,0.65);border:1px solid rgba(139,1,1,0.25);margin-bottom:22px}
+    .exp-header__title{font-size:clamp(28px,4vw,54px);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:#fff;margin-bottom:16px}
+    .exp-header__title span{color:var(--red)}
+    .exp-header__sub{font-size:15px;color:rgba(255,255,255,0.38);max-width:480px;line-height:1.70}
+    .exp-body{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:56px}
+    .exp-quote{border-left:2px solid var(--red);padding-left:22px;margin-bottom:28px}
+    .exp-quote__text{font-size:17px;font-style:italic;color:rgba(255,255,255,0.78);line-height:1.80}
+    .exp-disclaimer{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:20px 22px;margin-bottom:36px}
+    .exp-disclaimer__text{font-size:13px;color:rgba(255,255,255,0.42);line-height:1.80;font-style:italic}
+    .exp-badges{display:flex;flex-direction:column;gap:11px}
+    .exp-badge{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.50)}
+    .exp-badge__dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+    .exp-specs{display:flex;flex-direction:column}
+    .spec-row{display:flex;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,0.055);transition:padding-left 0.20s ease}
+    .spec-row:first-child{border-top:1px solid rgba(255,255,255,0.055)}
+    .spec-row:hover{padding-left:6px}
+    .spec-num{font-size:11px;font-weight:700;color:rgba(255,255,255,0.17);width:24px;flex-shrink:0;font-variant-numeric:tabular-nums;letter-spacing:0.04em}
+    .spec-body{flex:1}
+    .spec-name{font-size:14px;font-weight:700;color:rgba(255,255,255,0.82);line-height:1.25;margin-bottom:3px}
+    .spec-desc{font-size:12px;color:rgba(255,255,255,0.32);line-height:1.50}
+    .spec-oracle{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;opacity:0.65}
+    .exp-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);border-radius:12px;overflow:hidden}
+    .exp-pillar{background:#0c0c0c;padding:28px 30px}
+    .exp-pillar__val{font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1;margin-bottom:8px}
+    .exp-pillar__val span{color:var(--red)}
+    .exp-pillar__lab{font-size:12px;color:rgba(255,255,255,0.38);font-weight:500;line-height:1.50}
   </style>
 </head>
 <body>
@@ -252,6 +284,116 @@
           <span class="equipo-card__tag">Lima, Per&uacute;</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="exp-section">
+    <div class="container">
+
+      <div class="exp-header reveal">
+        <div class="tag">Trayectoria del equipo consultor</div>
+        <h2 class="exp-header__title">Experiencia que Respalda<br><span>Nuestros Proyectos.</span></h2>
+        <p class="exp-header__sub">Especializaci&oacute;n acumulada en el ecosistema Oracle y disciplinas de datos empresariales. Probada en entornos de alta exigencia regulatoria.</p>
+      </div>
+
+      <div class="exp-body">
+
+        <div>
+          <div class="exp-quote reveal">
+            <p class="exp-quote__text">&ldquo;Nuestros consultores han participado en iniciativas de modernizaci&oacute;n tecnol&oacute;gica, anal&iacute;tica empresarial y gesti&oacute;n de datos en organizaciones de diversos sectores.&rdquo;</p>
+          </div>
+          <div class="exp-disclaimer reveal">
+            <p class="exp-disclaimer__text">&ldquo;No atribuimos esos proyectos a MAT Analytics. Forman parte de la experiencia profesional acumulada de nuestros especialistas.&rdquo;</p>
+          </div>
+          <div class="exp-badges reveal">
+            <div class="exp-badge"><span class="exp-badge__dot"></span>Oracle Certified &mdash; Ecosistema completo</div>
+            <div class="exp-badge"><span class="exp-badge__dot"></span>15+ a&ntilde;os en proyectos de datos enterprise</div>
+            <div class="exp-badge"><span class="exp-badge__dot"></span>Banca &middot; Seguros &middot; Sector P&uacute;blico</div>
+            <div class="exp-badge"><span class="exp-badge__dot"></span>Alianza estrat&eacute;gica con Stamping.io</div>
+          </div>
+        </div>
+
+        <div class="exp-specs reveal">
+          <div class="spec-row">
+            <span class="spec-num">01</span>
+            <div class="spec-body">
+              <p class="spec-name">Oracle Database</p>
+              <p class="spec-desc">Arquitectura, tuning, alta disponibilidad y gesti&oacute;n avanzada de instancias</p>
+            </div>
+            <span class="spec-oracle" title="Certificaci&oacute;n Oracle"></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">02</span>
+            <div class="spec-body">
+              <p class="spec-name">Oracle RAC</p>
+              <p class="spec-desc">Clustering de alta disponibilidad, failover y continuidad operativa</p>
+            </div>
+            <span class="spec-oracle" title="Certificaci&oacute;n Oracle"></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">03</span>
+            <div class="spec-body">
+              <p class="spec-name">Oracle Data Integrator (ODI)</p>
+              <p class="spec-desc">Flujos ETL/ELT, integraci&oacute;n enterprise y gobierno de movimientos de datos</p>
+            </div>
+            <span class="spec-oracle" title="Certificaci&oacute;n Oracle"></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">04</span>
+            <div class="spec-body">
+              <p class="spec-name">Oracle Analytics Server (OAS)</p>
+              <p class="spec-desc">Plataformas anal&iacute;ticas, capa sem&aacute;ntica y gobernanza de acceso por rol</p>
+            </div>
+            <span class="spec-oracle" title="Certificaci&oacute;n Oracle"></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">05</span>
+            <div class="spec-body">
+              <p class="spec-name">Data Warehouse</p>
+              <p class="spec-desc">Modelado dimensional, dise&ntilde;o de staging, mart y capa de presentaci&oacute;n</p>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">06</span>
+            <div class="spec-body">
+              <p class="spec-name">Business Intelligence</p>
+              <p class="spec-desc">Dashboards ejecutivos, KPIs operativos y visualizaci&oacute;n de datos cr&iacute;ticos</p>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">07</span>
+            <div class="spec-body">
+              <p class="spec-name">Arquitecturas de Alta Disponibilidad</p>
+              <p class="spec-desc">Ecosistemas con redundancia, recuperaci&oacute;n ante desastres y SLA cr&iacute;ticos</p>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-num">08</span>
+            <div class="spec-body">
+              <p class="spec-name">Transformaci&oacute;n Digital Empresarial</p>
+              <p class="spec-desc">Modernizaci&oacute;n de plataformas heredadas, adopci&oacute;n cloud h&iacute;brida y gobierno de datos</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="exp-pillars reveal">
+        <div class="exp-pillar">
+          <p class="exp-pillar__val">15<span>+</span></p>
+          <p class="exp-pillar__lab">A&ntilde;os de experiencia acumulada en el ecosistema Oracle</p>
+        </div>
+        <div class="exp-pillar">
+          <p class="exp-pillar__val">8</p>
+          <p class="exp-pillar__lab">Especialidades certificadas en plataformas Oracle y disciplinas de datos</p>
+        </div>
+        <div class="exp-pillar">
+          <p class="exp-pillar__val">3</p>
+          <p class="exp-pillar__lab">Sectores regulados de alta exigencia: banca, seguros, sector p&uacute;blico</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
