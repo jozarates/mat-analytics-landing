@@ -1350,38 +1350,41 @@
         <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
       </a>
       <ul class="navbar__nav">
+        <li><a class="navbar__link" href="/">Inicio</a></li>
         <li class="nav-dropdown" id="navDropdown">
           <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
-            Soluciones
+            Capacidades
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
-            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
+            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
               <span class="nav-dropdown__item-num">01</span>
               <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">TrustTech &amp; Certificación Digital</p>
-                <p class="nav-dropdown__item-desc">Notarización blockchain · No-Repudio · Stamping.io</p>
+                <p class="nav-dropdown__item-title">Inteligencia Anal&iacute;tica</p>
+                <p class="nav-dropdown__item-desc">Oracle OAC &middot; Power BI &middot; Gobernanza</p>
               </div>
             </a>
-            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
               <span class="nav-dropdown__item-num">02</span>
               <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Arquitectura de Datos Enterprise</p>
-                <p class="nav-dropdown__item-desc">Oracle ADW · ODI · Cloud híbrida</p>
+                <p class="nav-dropdown__item-title">TrustTech &amp; Certificaci&oacute;n</p>
+                <p class="nav-dropdown__item-desc">Notarizaci&oacute;n blockchain &middot; Stamping.io</p>
               </div>
             </a>
-            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
-              <span class="nav-dropdown__item-num">03</span>
+            <div class="nav-dropdown__divider"></div>
+            <a class="nav-dropdown__item" href="capacidades.html" role="menuitem">
+              <span class="nav-dropdown__item-num">&#8594;</span>
               <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Inteligencia Analítica Avanzada</p>
-                <p class="nav-dropdown__item-desc">Oracle OAC · Power BI · Gobernanza</p>
+                <p class="nav-dropdown__item-title">Ver todas las capacidades</p>
+                <p class="nav-dropdown__item-desc">Portafolio completo de servicios</p>
               </div>
             </a>
           </div>
         </li>
-        <li><a class="navbar__link" href="#industrias">Industrias</a></li>
-        <li><a class="navbar__link" href="#casos">Casos de Éxito</a></li>
-        <li><a class="navbar__link" href="#quienes-somos">Nosotros</a></li>
+        <li><a class="navbar__link" href="arquitectura.html">Arquitecturas</a></li>
+        <li><a class="navbar__link" href="insights.html">Insights</a></li>
+        <li><a class="navbar__link" href="nosotros.html">Nosotros</a></li>
+        <li><a class="navbar__link" href="#diagnostico">Contacto</a></li>
       </ul>
       <div class="navbar__actions">
         <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
@@ -1399,14 +1402,14 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="#quienes-somos" onclick="closeMobile()">Quiénes Somos</a>
-    <a class="mobile-menu__link" href="#capacidades" onclick="closeMobile()">Capacidades</a>
-    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificación Digital</a>
-    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura de Datos</a>
-    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Analítica</a>
-    <a class="mobile-menu__link" href="#industrias" onclick="closeMobile()">Industrias</a>
-    <a class="mobile-menu__link" href="#casos" onclick="closeMobile()">Casos de Éxito</a>
-    <a href="#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagnóstico</a>
+    <a class="mobile-menu__link" href="/" onclick="closeMobile()">Inicio</a>
+    <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitecturas</a>
+    <a class="mobile-menu__link" href="insights.html" onclick="closeMobile()">Insights</a>
+    <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
+    <a href="#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagn&oacute;stico</a>
   </div>
 
   <!-- ══════════════════════════════════════════════════════════ HERO ══════ -->
@@ -1506,16 +1509,12 @@
   <nav class="dot-nav" aria-label="Navegación por secciones">
     <a href="#inicio"        title="01 · Portada"></a>
     <a href="#quienes-somos" title="02 · Quiénes Somos"></a>
-    <a href="#problema"      title="03 · Problema del Mercado"></a>
-    <a href="#solucion"      title="04 · Nuestra Solución"></a>
-    <a href="#capacidades"   title="05 · Capacidades"></a>
-    <a href="#trusttech"     title="06 · Diferencial TrustTech"></a>
-    <a href="#industrias"    title="07 · Industrias"></a>
-    <a href="#casos"         title="08 · Casos de Éxito"></a>
-    <a href="#tecnologias"   title="09 · Tecnologías"></a>
-    <a href="#equipo"        title="10 · Equipo"></a>
-    <a href="#filosofia"     title="11 · Filosofía"></a>
-    <a href="#diagnostico"   title="12 · Contacto"></a>
+    <a href="#capacidades"   title="03 · Capacidades"></a>
+    <a href="#trusttech"     title="04 · TrustTech"></a>
+    <a href="#industrias"    title="05 · Industrias"></a>
+    <a href="#casos"         title="06 · Casos de Éxito"></a>
+    <a href="#equipo"        title="07 · Equipo"></a>
+    <a href="#diagnostico"   title="08 · Contacto"></a>
   </nav>
 
   <!-- ══════════════════════════════════════════════════ TRUST BAR ═════════ -->
@@ -1562,96 +1561,6 @@
         <div class="stat reveal reveal-delay-3">
           <div class="stat__num" data-count="2" data-suffix="h" data-prefix="&lt;">&lt;2<span>h</span></div>
           <div class="stat__label">Tiempo de respuesta<br>estándar del equipo consultor</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═════════════════════════════════ 03 · PROBLEMA DEL MERCADO ═════════ -->
-  <section class="section section--gray" id="problema">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__tag"><span class="tag">El problema</span></div>
-        <h2 class="section__title">El caos de datos no es un problema de TI.<br>Es un riesgo de negocio.</h2>
-        <p class="section__sub">
-          Las organizaciones más reguladas de Perú operan con datos que nadie puede garantizar. El resultado: decisiones cuestionables, auditorías traumáticas y riesgo regulatorio acumulado.
-        </p>
-      </div>
-      <div class="problema__grid">
-        <div class="problema-item reveal">
-          <p class="problema-item__num">01</p>
-          <h3 class="problema-item__title">Datos sin trazabilidad, reportes sin defensa</h3>
-          <p class="problema-item__desc">Sus equipos generan reportes críticos que llegan a gerencia o reguladores sin ninguna prueba de que no fueron modificados. En una auditoría, eso es una vulnerabilidad.</p>
-        </div>
-        <div class="problema-item reveal reveal-delay-1">
-          <p class="problema-item__num">02</p>
-          <h3 class="problema-item__title">Infraestructuras fragmentadas y silos de datos</h3>
-          <p class="problema-item__desc">Múltiples sistemas que no conversan entre sí generan reprocesos manuales, conciliaciones eternas y una versión diferente de la verdad en cada área.</p>
-        </div>
-        <div class="problema-item reveal reveal-delay-2">
-          <p class="problema-item__num">03</p>
-          <h3 class="problema-item__title">Reguladores que exigen más evidencia cada año</h3>
-          <p class="problema-item__desc">SBS, SUNASA, Contraloría y MEF elevan continuamente los estándares de evidencia y trazabilidad. Las empresas que no anticipan esto pagan con multas y fricción operativa.</p>
-        </div>
-        <div class="problema-item reveal reveal-delay-3">
-          <p class="problema-item__num">04</p>
-          <h3 class="problema-item__title">Dashboards sobre datos que nadie garantiza</h3>
-          <p class="problema-item__desc">La mayoría de implementaciones de BI se construyen sobre datos sin gobernar. El tablero se ve bien, pero la integridad del dato de origen no está verificada por nadie.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════ 04 · NUESTRA SOLUCIÓN ════════════ -->
-  <section class="section" id="solucion">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__tag"><span class="tag">Nuestra solución</span></div>
-        <h2 class="section__title">Analítica con integridad.<br>Desde el dato hasta la decisión.</h2>
-      </div>
-      <div class="uvp-block reveal">
-        <div class="uvp-block__tag"><span class="tag">Propuesta de Valor Única</span></div>
-        <p class="uvp-block__headline">
-          "Gobernanza analítica e inmutabilidad de datos<br>
-          para decisiones corporativas <span>sin riesgo</span>."
-        </p>
-        <p class="uvp-block__desc">
-          Modernizamos infraestructuras críticas de datos bajo entornos Oracle y Power BI, y aseguramos la transparencia absoluta de sus procesos mediante certificación criptográfica y notarización digital. Transformamos el caos operativo y el riesgo regulatorio en activos de alta confianza, auditables en tiempo real y listos para la automatización inteligente.
-        </p>
-      </div>
-      <div class="exec-banner reveal">
-        <p class="exec-banner__intro">Lo que esto significa para su organización</p>
-        <p class="exec-banner__text">
-          Sus equipos invierten horas conciliando reportes que luego nadie puede auditar. Nosotros cerramos ese ciclo: datos integrados, verificados y listos para la decisión directiva — sin reemplazar su infraestructura actual, sino potenciándola. El resultado es menor gasto operativo, ciclos de cierre más cortos y la confianza de que cada cifra que llega a gerencia es irrefutable.
-        </p>
-        <div class="exec-banner__metrics">
-          <div class="exec-metric">
-            <div class="exec-metric__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div>
-              <div class="exec-metric__value">−60%</div>
-              <div class="exec-metric__label">Reducción en tiempo de generación de reportes críticos</div>
-            </div>
-          </div>
-          <div class="exec-metric">
-            <div class="exec-metric__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <div>
-              <div class="exec-metric__value">−40%</div>
-              <div class="exec-metric__label">Reducción de costos por reprocesos y errores en datos</div>
-            </div>
-          </div>
-          <div class="exec-metric">
-            <div class="exec-metric__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <div>
-              <div class="exec-metric__value">3×</div>
-              <div class="exec-metric__label">Mayor velocidad de respuesta ante auditorías internas y regulatorias</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1724,6 +1633,12 @@
             <span class="pillar__badge">Gobernanza</span>
             <span class="pillar__badge">Predictivo</span>
           </div>
+        </a>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:40px">
+        <a href="capacidades.html" class="btn btn--primary btn--pill">
+          Explorar todas las capacidades
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
       </div>
     </div>
@@ -1948,55 +1863,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════ 09 · TECNOLOGÍAS ═════════ -->
-  <section class="section" id="tecnologias">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__tag"><span class="tag">Stack tecnológico</span></div>
-        <h2 class="section__title">Las herramientas que definen<br>el estándar enterprise.</h2>
-        <p class="section__sub">
-          No trabajamos con tecnología genérica. Cada herramienta de nuestro stack fue seleccionada por su robustez en entornos de misión crítica y su capacidad para operar en los sectores más regulados.
-        </p>
-      </div>
-      <div class="tech__grid">
-        <div class="tech-item reveal">
-          <p class="tech-item__category">Ecosistema core</p>
-          <h3 class="tech-item__name">Oracle</h3>
-          <p class="tech-item__desc">El estándar de facto para Data Warehouse y analítica en banca, seguros y sector público. Desplegamos Oracle ADW, OAC, ODI, DB y Oracle Cloud con certificación oficial y más de 15 años de experiencia probada.</p>
-          <div class="tech-item__tags">
-            <span class="pillar__badge">Oracle ADW</span>
-            <span class="pillar__badge">Oracle OAC</span>
-            <span class="pillar__badge">Oracle ODI</span>
-            <span class="pillar__badge">Oracle DB</span>
-            <span class="pillar__badge">Oracle Cloud</span>
-          </div>
-        </div>
-        <div class="tech-item reveal reveal-delay-1">
-          <p class="tech-item__category">Inteligencia de negocio</p>
-          <h3 class="tech-item__name">Power BI</h3>
-          <p class="tech-item__desc">Capa de visualización y analítica avanzada para la alta dirección. Implementamos modelos dimensionales sólidos, gobernanza de datasets y dashboards ejecutivos sobre datos certificados en origen.</p>
-          <div class="tech-item__tags">
-            <span class="pillar__badge">Power BI Premium</span>
-            <span class="pillar__badge">DAX Avanzado</span>
-            <span class="pillar__badge">Modelamiento Dimensional</span>
-            <span class="pillar__badge">Gobernanza</span>
-          </div>
-        </div>
-        <div class="tech-item reveal reveal-delay-2">
-          <p class="tech-item__category">Diferenciador TrustTech</p>
-          <h3 class="tech-item__name">Stamping.io</h3>
-          <p class="tech-item__desc">Plataforma de notarización digital en blockchain que permite sellar cualquier documento o dataset con hash SHA-256. La integridad del dato queda verificable por cualquier tercero, sin depender de infraestructura interna.</p>
-          <div class="tech-item__tags">
-            <span class="pillar__badge">Blockchain</span>
-            <span class="pillar__badge">SHA-256</span>
-            <span class="pillar__badge">Ethereum</span>
-            <span class="pillar__badge">No-Repudio</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ════════════════════════════════════════════════ 10 · EQUIPO ════════ -->
   <section class="section section--gray" id="equipo">
     <div class="container">
@@ -2019,97 +1885,14 @@
           <span class="equipo-card__tag">Lima, Perú</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════ 11 · FILOSOFÍA ══════════ -->
-  <section class="section identity" id="filosofia">
-    <div class="container">
-
-      <div class="section__header" style="margin-bottom:36px">
-        <div class="section__tag"><span class="tag">Filosofía corporativa</span></div>
-        <h2 class="section__title">Misión y Visión</h2>
-      </div>
-      <div class="mv-grid">
-        <div class="mv-card reveal">
-          <p class="mv-card__label">Misión</p>
-          <h3 class="mv-card__title">Arquitecturas de datos de misión crítica con integridad garantizada.</h3>
-          <p class="mv-card__desc">
-            Diseñar e implementar arquitecturas de datos de misión crítica y soluciones de automatización inteligente de alta confianza. Fusionamos la robustez de los entornos líderes del mercado con tecnología de inmutabilidad digital descentralizada, garantizando a corporaciones y entidades gubernamentales la integridad de su información, la agilidad de sus procesos y el cumplimiento estricto de sus marcos regulatorios.
-          </p>
-        </div>
-        <div class="mv-card reveal reveal-delay-1">
-          <p class="mv-card__label">Visión <span class="mv-card__year">Al 2030</span></p>
-          <h3 class="mv-card__title">MAT Analytics | TrustTech para datos críticos — referencia en América Latina.</h3>
-          <p class="mv-card__desc">
-            Ser reconocidos al 2030 como la firma consultora de tecnología de referencia en América Latina para el despliegue de ecosistemas de datos transparentes, seguros y auditables. Redefiniremos el estándar de la transformación digital, logrando que las organizaciones medianas y grandes operen en entornos de datos de absoluta confianza y cero fricción burocrática.
-          </p>
-        </div>
-      </div>
-
-      <div class="section__header" style="margin-bottom:36px;margin-top:72px">
-        <div class="section__tag"><span class="tag">Valores Corporativos</span></div>
-        <h2 class="section__title">Los principios que no negociamos.</h2>
-      </div>
-      <div class="valores-grid">
-
-        <div class="valor reveal">
-          <div class="valor__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
-            </svg>
-          </div>
-          <div class="valor__body">
-            <h4 class="valor__title">Integridad Criptográfica e Institucional</h4>
-            <p class="valor__desc">No dejamos espacio para la manipulación. Promovemos la transparencia radical en los datos de nuestros clientes y en nuestro actuar profesional.</p>
-          </div>
-        </div>
-
-        <div class="valor reveal reveal-delay-1">
-          <div class="valor__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
-              <path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>
-            </svg>
-          </div>
-          <div class="valor__body">
-            <h4 class="valor__title">Rigor de Ingeniería</h4>
-            <p class="valor__desc">Diseñamos arquitecturas tecnológicas de misión crítica pensadas para la alta disponibilidad, escalabilidad y la mitigación absoluta de fallas u optimizaciones deficientes.</p>
-          </div>
-        </div>
-
-        <div class="valor reveal reveal-delay-2">
-          <div class="valor__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-            </svg>
-          </div>
-          <div class="valor__body">
-            <h4 class="valor__title">Gobernanza de Datos</h4>
-            <p class="valor__desc">Creemos que la información solo tiene valor si es confiable, trazable y está debidamente alineada a las normativas de cumplimiento y legalidad vigentes.</p>
-          </div>
-        </div>
-
-        <div class="valor reveal reveal-delay-3">
-          <div class="valor__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
-          </div>
-          <div class="valor__body">
-            <h4 class="valor__title">Agilidad de Negocio</h4>
-            <p class="valor__desc">Sustituimos la burocracia pesada y los flujos manuales obsoletos por automatización segura, acelerando la toma de decisiones sin comprometer el control legal o regulatorio.</p>
-          </div>
-        </div>
-
+      <div class="reveal" style="text-align:center;margin-top:32px">
+        <a href="nosotros.html" class="btn btn--outline-dark btn--pill">
+          Conocer Nuestro Equipo
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </section>
-
-  <!-- ════════════════════════════════════════════ 12 · CONTACTO ══════════ -->
 
   <!-- ═══════════════════════════════════════════════════ CTA / FORM ════════ -->
   <section class="section cta-section" id="diagnostico">
@@ -2405,7 +2188,7 @@
 
     // Dot nav — scroll spy
     (function () {
-      const sectionIds = ['inicio','quienes-somos','problema','solucion','capacidades','trusttech','industrias','casos','tecnologias','equipo','filosofia','diagnostico'];
+      const sectionIds = ['inicio','quienes-somos','capacidades','trusttech','industrias','casos','equipo','diagnostico'];
       const dots = document.querySelectorAll('.dot-nav a');
       const dotMap = {};
       dots.forEach(d => { dotMap[d.getAttribute('href').slice(1)] = d; });

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacidades | Inteligencia Analítica · TrustTech · Arquitecturas — Mat Analytics</title>
+  <meta name="description" content="Portafolio completo de capacidades de Mat Analytics: Inteligencia Analítica con Oracle OAC y Power BI, TrustTech con Stamping.io, y Arquitecturas de Datos Enterprise. Lima, Perú.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mat-analytics.com/capacidades.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mat-analytics.com/capacidades.html">
+  <meta property="og:title" content="Capacidades — Mat Analytics">
+  <meta property="og:description" content="Tres verticales de servicio. Una arquitectura sin fisuras. Inteligencia Analítica, TrustTech y Arquitecturas de Datos para organizaciones reguladas en Perú.">
+  <meta property="og:site_name" content="Mat Analytics">
+  <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="brand-assets/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" href="brand-assets/favicon/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#8B0101;--red-hover:#A50101;--red-subtle:rgba(139,1,1,0.08);--black:#1E1E1E;--gray-text:#3A3A3A;--gray-mid:#757575;--gray-light:#D9D9D9;--gray-bg:#F7F7F7;--white:#FFFFFF;--border:rgba(255,255,255,0.08);--border-light:#E5E5E5;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--radius:6px;--radius-lg:12px;--shadow:0 4px 24px rgba(0,0,0,0.10);--transition:0.22s ease;--max-w:1160px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--gray-text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    img{display:block;max-width:100%}
+    button,input{font-family:inherit}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);background:var(--red-subtle);padding:5px 12px;border-radius:3px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:0.02em;padding:11px 22px;border-radius:var(--radius);border:none;cursor:pointer;transition:background var(--transition),box-shadow var(--transition),color var(--transition),border-color var(--transition);text-decoration:none;white-space:nowrap}
+    .btn--primary{background:var(--red);color:var(--white)}
+    .btn--primary:hover{background:var(--red-hover);box-shadow:0 4px 14px rgba(139,1,1,0.35)}
+    .btn--outline-dark{background:transparent;color:var(--black);border:1.5px solid rgba(30,30,30,0.18)}
+    .btn--outline-dark:hover{border-color:rgba(30,30,30,0.35);background:rgba(0,0,0,0.04)}
+    .btn--pill{border-radius:100px;padding:13px 28px}
+    .btn--lg{font-size:15px;padding:13px 24px}
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;background:#1E1E1E;border-bottom:1px solid rgba(255,255,255,0.07);transition:box-shadow var(--transition)}
+    .navbar.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.40)}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .navbar__logo{height:34px;width:auto}
+    .navbar__nav{display:flex;align-items:center;gap:32px}
+    .navbar__link{font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);transition:color var(--transition)}
+    .navbar__link:hover,.navbar__link--active{color:#fff}
+    .navbar__actions{display:flex;align-items:center;gap:8px}
+    .navbar__mail{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.55);transition:background var(--transition),border-color var(--transition),color var(--transition)}
+    .navbar__mail:hover{background:var(--red);border-color:var(--red);color:#fff}
+    .navbar__cta,.btn.btn--primary{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:8px 14px;background:var(--red);color:#fff;border-radius:var(--radius);transition:background var(--transition),box-shadow var(--transition);white-space:nowrap}
+    .navbar__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+    .navbar__burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform var(--transition),opacity var(--transition)}
+    .navbar__burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .navbar__burger.open span:nth-child(2){opacity:0}
+    .navbar__burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    /* Dropdown */
+    .nav-dropdown{position:relative}
+    .nav-dropdown__trigger{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);background:none;border:none;cursor:pointer;padding:0;transition:color var(--transition)}
+    .nav-dropdown__trigger:hover{color:#fff}
+    .nav-dropdown__menu{display:none;position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#1E1E1E;border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:8px;min-width:280px;box-shadow:0 16px 48px rgba(0,0,0,0.40);z-index:200}
+    .nav-dropdown.open .nav-dropdown__menu{display:block}
+    .nav-dropdown__item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:6px;transition:background var(--transition);color:#fff}
+    .nav-dropdown__item:hover{background:rgba(255,255,255,0.06)}
+    .nav-dropdown__item-num{font-size:11px;font-weight:600;color:rgba(255,255,255,0.25);margin-top:2px;flex-shrink:0}
+    .nav-dropdown__item-title{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.35;margin-bottom:2px}
+    .nav-dropdown__item-desc{font-size:11.5px;color:rgba(255,255,255,0.35);line-height:1.45}
+    .nav-dropdown__divider{height:1px;background:rgba(255,255,255,0.07);margin:6px 0}
+    /* Mobile */
+    .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:#1E1E1E;padding:32px 24px;flex-direction:column;gap:4px;z-index:99;overflow-y:auto}
+    .mobile-menu.open{display:flex}
+    .mobile-menu__link{display:block;font-size:18px;font-weight:500;color:rgba(255,255,255,0.80);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);transition:color var(--transition)}
+    .mobile-menu__link:hover{color:#fff}
+    .mobile-menu .btn{margin-top:24px;width:100%;justify-content:center}
+    /* Breadcrumb */
+    .breadcrumb{padding:13px 0;background:var(--gray-bg);border-bottom:1px solid var(--border-light);margin-top:68px}
+    .breadcrumb__inner{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray-mid)}
+    .breadcrumb__link{color:var(--gray-mid);transition:color var(--transition)}
+    .breadcrumb__link:hover{color:var(--red)}
+    .breadcrumb__sep{color:var(--gray-light)}
+    .breadcrumb__current{color:var(--gray-text);font-weight:500}
+    /* Page hero */
+    .page-hero{padding:72px 0 64px;background:#fff;border-bottom:1px solid var(--border-light);text-align:center}
+    .page-hero__tag{margin-bottom:18px}
+    .page-hero__title{font-size:clamp(28px,3.8vw,52px);font-weight:800;color:var(--black);letter-spacing:-0.035em;line-height:1.1;margin-bottom:20px}
+    .page-hero__title span{color:var(--red)}
+    .page-hero__sub{font-size:17px;color:var(--gray-mid);max-width:580px;margin:0 auto;line-height:1.75}
+    /* Section commons */
+    .section{padding:80px 0}
+    .section--gray{background:var(--gray-bg)}
+    .section--dark{background:#1E1E1E;color:#fff}
+    .section__header{text-align:center;margin-bottom:56px}
+    .section__tag{margin-bottom:14px}
+    .section__title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:16px;color:var(--black)}
+    .section__sub{font-size:16px;color:var(--gray-mid);max-width:540px;margin:0 auto;line-height:1.70}
+    /* Capability cards */
+    .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .cap-card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:36px 28px;transition:border-color 0.22s,box-shadow 0.22s,transform 0.22s;display:flex;flex-direction:column}
+    .cap-card:hover{border-color:rgba(139,1,1,0.22);box-shadow:0 12px 40px rgba(0,0,0,0.07);transform:translateY(-3px)}
+    .cap-card__num{font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--red);opacity:0.65;margin-bottom:16px}
+    .cap-card__icon{width:44px;height:44px;border-radius:10px;background:var(--red-subtle);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .cap-card__icon svg{stroke:var(--red)}
+    .cap-card__title{font-size:18px;font-weight:700;color:var(--black);margin-bottom:10px;letter-spacing:-0.02em;line-height:1.3}
+    .cap-card__desc{font-size:14px;color:var(--gray-mid);line-height:1.70;flex:1;margin-bottom:20px}
+    .cap-card__tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+    .cap-tag{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:var(--gray-bg);color:var(--gray-mid);padding:4px 10px;border-radius:4px}
+    .cap-card__link{font-size:13px;font-weight:600;color:var(--red);display:inline-flex;align-items:center;gap:6px;margin-top:auto;transition:gap 0.2s}
+    .cap-card__link:hover{gap:10px}
+    /* Metrics */
+    .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-light)}
+    .metric-item{background:#fff;padding:36px 24px;text-align:center}
+    .metric-item__val{font-size:38px;font-weight:800;color:var(--red);letter-spacing:-0.05em;line-height:1}
+    .metric-item__label{font-size:13px;color:var(--gray-mid);margin-top:8px;line-height:1.5}
+    /* Cross-links */
+    .cross-links{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .cross-link{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:24px;display:flex;align-items:center;gap:14px;transition:border-color 0.22s,box-shadow 0.22s}
+    .cross-link:hover{border-color:rgba(139,1,1,0.22);box-shadow:0 6px 24px rgba(0,0,0,0.06)}
+    .cross-link__icon{width:40px;height:40px;border-radius:10px;background:var(--red-subtle);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .cross-link__icon svg{stroke:var(--red)}
+    .cross-link__title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+    .cross-link__sub{font-size:12px;color:var(--gray-mid)}
+    /* CTA section */
+    .cta-band{padding:80px 0;background:var(--black);color:#fff;text-align:center}
+    .cta-band__title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-0.03em;margin-bottom:14px}
+    .cta-band__sub{font-size:16px;color:rgba(255,255,255,0.55);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+    .cta-band .btn--primary{font-size:15px;padding:14px 32px;border-radius:100px}
+    /* Footer */
+    .footer{background:#1E1E1E;color:#fff;padding:40px 0 24px}
+    .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px}
+    .footer__logo{height:28px;opacity:0.80}
+    .footer__links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer__link{font-size:13px;color:rgba(255,255,255,0.45);transition:color var(--transition)}
+    .footer__link:hover{color:rgba(255,255,255,0.80)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .footer__copy{font-size:12px;color:rgba(255,255,255,0.28)}
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.10s}
+    .reveal-delay-2{transition-delay:0.20s}
+    /* Responsive */
+    @media(max-width:900px){
+      .navbar__nav,.navbar__actions{display:none}
+      .navbar__burger{display:flex}
+      .cap-grid{grid-template-columns:1fr}
+      .metrics-grid{grid-template-columns:repeat(2,1fr)}
+      .cross-links{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){.metrics-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" aria-label="Mat Analytics">
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <ul class="navbar__nav">
+        <li><a class="navbar__link" href="/">Inicio</a></li>
+        <li class="nav-dropdown" id="navDropdown">
+          <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
+            Capacidades
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Inteligencia Anal&iacute;tica</p>
+                <p class="nav-dropdown__item-desc">Oracle OAC &middot; Power BI &middot; Gobernanza</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">TrustTech &amp; Certificaci&oacute;n</p>
+                <p class="nav-dropdown__item-desc">Notarizaci&oacute;n blockchain &middot; Stamping.io</p>
+              </div>
+            </a>
+            <div class="nav-dropdown__divider"></div>
+            <a class="nav-dropdown__item" href="capacidades.html" role="menuitem">
+              <span class="nav-dropdown__item-num">&#8594;</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Ver todas las capacidades</p>
+                <p class="nav-dropdown__item-desc">Portafolio completo de servicios</p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a class="navbar__link" href="arquitectura.html">Arquitecturas</a></li>
+        <li><a class="navbar__link" href="insights.html">Insights</a></li>
+        <li><a class="navbar__link" href="nosotros.html">Nosotros</a></li>
+        <li><a class="navbar__link" href="/#diagnostico">Contacto</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="/#diagnostico" class="btn btn--primary">Agendar Diagn&oacute;stico
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Men&uacute;">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="/" onclick="closeMobile()">Inicio</a>
+    <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitecturas</a>
+    <a class="mobile-menu__link" href="insights.html" onclick="closeMobile()">Insights</a>
+    <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
+    <a href="/#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagn&oacute;stico</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <div class="breadcrumb__inner">
+        <a class="breadcrumb__link" href="/">Inicio</a>
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current" aria-current="page">Capacidades</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__tag"><span class="tag">Portafolio de servicios</span></div>
+      <h1 class="page-hero__title">Tres verticales.<br><span>Una arquitectura sin fisuras.</span></h1>
+      <p class="page-hero__sub">Cada capacidad de Mat Analytics está diseñada para operar de forma integrada. Datos gobernados, analizados y certificados desde una sola firma consultora.</p>
+    </div>
+  </section>
+
+  <!-- Capabilities Grid -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="cap-grid">
+
+        <article class="cap-card reveal">
+          <p class="cap-card__num">01 — Inteligencia</p>
+          <div class="cap-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h2 class="cap-card__title">Inteligencia Anal&iacute;tica Avanzada</h2>
+          <p class="cap-card__desc">Transformamos datos dispersos en activos analíticos gobernados. Implementamos modelos dimensionales sólidos, dashboards ejecutivos y analítica predictiva con las plataformas líderes del mercado.</p>
+          <div class="cap-card__tags">
+            <span class="cap-tag">Oracle OAC</span>
+            <span class="cap-tag">Power BI</span>
+            <span class="cap-tag">Gobernanza</span>
+            <span class="cap-tag">ML Nativo</span>
+          </div>
+          <a href="analitica.html" class="cap-card__link">
+            Ver Inteligencia Anal&iacute;tica
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-1">
+          <p class="cap-card__num">02 — TrustTech</p>
+          <div class="cap-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h2 class="cap-card__title">TrustTech &amp; Certificaci&oacute;n Digital</h2>
+          <p class="cap-card__desc">La única firma en Perú que combina ingeniería de datos con inmutabilidad criptográfica. Sellamos reportes, datasets y procesos críticos con notarización blockchain verificable por cualquier tercero.</p>
+          <div class="cap-card__tags">
+            <span class="cap-tag">Stamping.io</span>
+            <span class="cap-tag">Blockchain</span>
+            <span class="cap-tag">SHA-256</span>
+            <span class="cap-tag">No-Repudio</span>
+          </div>
+          <a href="trusttech.html" class="cap-card__link">
+            Ver TrustTech
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-2">
+          <p class="cap-card__num">03 — Arquitecturas</p>
+          <div class="cap-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="7"/><rect x="15" y="3" width="7" height="7"/><rect x="2" y="14" width="7" height="7"/><path d="M17 17h2a2 2 0 0 0 0-4h-4v-3"/></svg>
+          </div>
+          <h2 class="cap-card__title">Arquitecturas de Datos Enterprise</h2>
+          <p class="cap-card__desc">Diseñamos e implementamos infraestructuras de datos de misión crítica sobre Oracle ADW, ODI y Oracle Cloud. Migraciones sin fricciones, Data Warehouse sólido y gobierno centralizado.</p>
+          <div class="cap-card__tags">
+            <span class="cap-tag">Oracle ADW</span>
+            <span class="cap-tag">Oracle ODI</span>
+            <span class="cap-tag">Data Warehouse</span>
+            <span class="cap-tag">Cloud Híbrida</span>
+          </div>
+          <a href="arquitectura.html" class="cap-card__link">
+            Ver Arquitecturas
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag"><span class="tag">Resultados comprobados</span></div>
+        <h2 class="section__title">N&uacute;meros que respaldan la propuesta.</h2>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-item reveal">
+          <div class="metric-item__val">&minus;60%</div>
+          <div class="metric-item__label">Reducci&oacute;n en tiempo<br>de generaci&oacute;n de reportes</div>
+        </div>
+        <div class="metric-item reveal reveal-delay-1">
+          <div class="metric-item__val">&minus;40%</div>
+          <div class="metric-item__label">Costos por reprocesos<br>y errores en datos</div>
+        </div>
+        <div class="metric-item reveal reveal-delay-2">
+          <div class="metric-item__val">3&times;</div>
+          <div class="metric-item__label">Velocidad de respuesta<br>ante auditor&iacute;as regulatorias</div>
+        </div>
+        <div class="metric-item reveal">
+          <div class="metric-item__val">15+</div>
+          <div class="metric-item__label">A&ntilde;os de experiencia<br>en ecosistema Oracle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-links -->
+  <section class="section section--gray">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag"><span class="tag">Explorar m&aacute;s</span></div>
+        <h2 class="section__title">Profundiza en cada &aacute;rea.</h2>
+      </div>
+      <div class="cross-links">
+        <a href="arquitectura.html" class="cross-link reveal">
+          <div class="cross-link__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="7"/><rect x="15" y="3" width="7" height="7"/><rect x="2" y="14" width="7" height="7"/><path d="M17 17h2a2 2 0 0 0 0-4h-4v-3"/></svg>
+          </div>
+          <div>
+            <p class="cross-link__title">Ver Arquitecturas de Datos</p>
+            <p class="cross-link__sub">Oracle ADW &middot; ODI &middot; Cloud h&iacute;brida</p>
+          </div>
+        </a>
+        <a href="insights.html" class="cross-link reveal reveal-delay-1">
+          <div class="cross-link__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div>
+            <p class="cross-link__title">Leer Insights</p>
+            <p class="cross-link__sub">Recursos &middot; Casos &middot; Mejores pr&aacute;cticas</p>
+          </div>
+        </a>
+        <a href="nosotros.html" class="cross-link reveal reveal-delay-2">
+          <div class="cross-link__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <p class="cross-link__title">Conocer Nuestro Equipo</p>
+            <p class="cross-link__sub">Senior &middot; Oracle Certified &middot; Lima, Per&uacute;</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2 class="cta-band__title">Agende un diagn&oacute;stico gratuito.</h2>
+      <p class="cta-band__sub">Analizamos su situaci&oacute;n actual y le proponemos el punto de entrada con mayor impacto en 45 minutos.</p>
+      <a href="/#diagnostico" class="btn btn--primary">
+        Agendar Diagn&oacute;stico
+        <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <img class="footer__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+        <div class="footer__links">
+          <a class="footer__link" href="/">Inicio</a>
+          <a class="footer__link" href="capacidades.html">Capacidades</a>
+          <a class="footer__link" href="arquitectura.html">Arquitecturas</a>
+          <a class="footer__link" href="insights.html">Insights</a>
+          <a class="footer__link" href="nosotros.html">Nosotros</a>
+          <a class="footer__link" href="/#diagnostico">Contacto</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Mat Analytics SAC &middot; Lima, Per&uacute;</p>
+        <div class="footer__links">
+          <a class="footer__link" href="privacidad.html">Privacidad</a>
+          <a class="footer__link" href="terminos.html">T&eacute;rminos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 10), {passive:true});
+
+    // Dropdown
+    const dd = document.querySelector('.nav-dropdown');
+    const btn = document.getElementById('navDropdownBtn');
+    if(dd && btn){
+      btn.addEventListener('click', e => { e.stopPropagation(); const o = !dd.classList.contains('open'); dd.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); });
+      document.addEventListener('click', () => { dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
+      document.addEventListener('keydown', e => { if(e.key==='Escape'){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');} });
+    }
+
+    // Burger
+    const burger = document.getElementById('burgerBtn');
+    const mob = document.getElementById('mobileMenu');
+    function closeMobile(){ mob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow=''; }
+    burger.addEventListener('click', () => { const o = mob.classList.toggle('open'); burger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+
+    // Reveal
+    const reveals = document.querySelectorAll('.reveal');
+    new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.12}).observe ? reveals.forEach(r => new IntersectionObserver((en) => { en.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.12}).observe(r)) : reveals.forEach(r => r.classList.add('visible'));
+  </script>
+</body>
+</html>
