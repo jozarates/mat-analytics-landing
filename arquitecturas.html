@@ -214,6 +214,28 @@
       .ac-comp-col{padding:18px 16px}
       .ac-meta-block{padding:16px}
     }
+    /* Flow animation — arch #09 */
+    @keyframes acNodeIn{0%{opacity:0;transform:translateY(10px) scale(.96)}65%{opacity:1;transform:translateY(-2px) scale(1.01)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes acNodeInFinal{0%{opacity:0;transform:translateY(10px) scale(.96)}60%{opacity:1;transform:translateY(-3px) scale(1.02)}80%{transform:translateY(0) scale(1)}91%{transform:scale(1.025);box-shadow:0 0 0 4px rgba(139,1,1,0.12)}100%{opacity:1;transform:scale(1);box-shadow:none}}
+    @keyframes acArrIn{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+    .ac-flow--anim>*{opacity:0}
+    .ac-flow--anim .ac-flow__arr{transform-origin:left center}
+    .ac-flow--anim.ac-flow--playing>:nth-child(1){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards 0s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(2){animation:acArrIn .22s ease forwards .32s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(3){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards .45s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(4){animation:acArrIn .22s ease forwards .77s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(5){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards .90s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(6){animation:acArrIn .22s ease forwards 1.22s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(7){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards 1.35s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(8){animation:acArrIn .22s ease forwards 1.67s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(9){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards 1.80s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(10){animation:acArrIn .22s ease forwards 2.12s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(11){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards 2.25s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(12){animation:acArrIn .22s ease forwards 2.57s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(13){animation:acNodeIn .40s cubic-bezier(.16,1,.3,1) forwards 2.70s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(14){animation:acArrIn .22s ease forwards 3.02s}
+    .ac-flow--anim.ac-flow--playing>:nth-child(15){animation:acNodeInFinal .55s cubic-bezier(.16,1,.3,1) forwards 3.15s}
+    @media(prefers-reduced-motion:reduce){.ac-flow--anim>*{opacity:1!important;animation:none!important}}
   </style>
 </head>
 <body>
@@ -947,7 +969,7 @@
 
             <div class="ac-flow-wrap">
               <span class="ac-flow-wrap__label">Diagrama conceptual — plataforma de inteligencia aumentada</span>
-              <div class="ac-flow" role="img" aria-label="Flujo Lakehouse IA Generativa: Fuentes a Dashboards">
+              <div class="ac-flow ac-flow--anim" role="img" aria-label="Flujo Lakehouse IA Generativa: Fuentes a Dashboards">
                 <div class="ac-node"><span class="ac-node__cat">Origen</span><span class="ac-node__name">Fuentes de Datos</span><span class="ac-node__tech">Struct · Doc · APIs · Stream</span></div>
                 <div class="ac-flow__arr"></div>
                 <div class="ac-node"><span class="ac-node__cat">Plataforma</span><span class="ac-node__name">Lakehouse</span><span class="ac-node__tech">Iceberg · Delta · Unificado</span></div>
@@ -1069,6 +1091,14 @@
     // Reveal on scroll
     const revObs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.06});
     document.querySelectorAll('.reveal').forEach(r => revObs.observe(r));
+    // Flow animation — arch #09 (trigger once on enter)
+    const animFlow = document.querySelector('#lakehouse-ia-gen .ac-flow--anim');
+    if(animFlow){
+      const flowObs = new IntersectionObserver(entries => {
+        if(entries[0].isIntersecting){ animFlow.classList.add('ac-flow--playing'); flowObs.disconnect(); }
+      },{threshold:0.25});
+      flowObs.observe(animFlow);
+    }
   </script>
 </body>
 </html>
