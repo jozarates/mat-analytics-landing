@@ -28,8 +28,12 @@ mat-analytics-landing/
 ├── index.html              # Landing principal
 ├── trusttech.html          # TrustTech & Certificación Digital (Stamping.io)
 ├── arquitectura.html       # Arquitectura de Datos Enterprise (Oracle)
+├── arquitecturas-referencia.html # Patrones de referencia: DWH, Lakehouse, Data Fabric, IA
 ├── analitica.html          # Inteligencia Analítica Avanzada (OAC + Power BI)
 ├── reclamaciones.html      # Libro de Reclamaciones Virtual
+├── assets/
+│   ├── arquitecturas-referencia-hero.png # Hero visual de Arquitecturas de Referencia
+│   └── arquitecturas/       # WebP por arquitectura de referencia
 ├── brand-assets/
 │   ├── favicon/            # favicon.ico + 16/32/48/180/192/512 px
 │   ├── logo-horizontal-*.svg / *.png   # Logo horizontal (color, negativo, rojo, grises)
@@ -88,6 +92,14 @@ mat-analytics-landing/
 - Capacidades: diseño/migración, rendimiento, seguridad
 - Casos por industria: banca, seguros, sector público, logística
 
+### `arquitecturas-referencia.html` — Arquitecturas de Referencia
+- Arquitecturas de referencia presentadas como patrones empresariales, no como implementaciones realizadas por MAT Analytics
+- Evolución de plataformas de datos: Data Warehouse → Data Lake → Lakehouse → Data Fabric → IA Empresarial
+- 7 arquitecturas con imagen WebP, diagrama compacto, componentes recomendados, beneficios y escenarios
+- Layout UX optimizado: en desktop, componentes/beneficios a la izquierda e imagen/diagrama a la derecha para ver el contexto en una sola vista
+- Animación sobria al expandir cada arquitectura con soporte para `prefers-reduced-motion`
+- SEO orientado a Lakehouse, Data Lake, Data Warehouse, Data Fabric, Gobierno de Datos, Arquitecturas Analíticas e Inteligencia Artificial Empresarial
+
 ### `analitica.html` — Inteligencia Analítica Avanzada
 - Oracle Analytics Cloud: mockup dashboard CSS + funcionalidades
 - Power BI: imágenes vía Microsoft CDN (`cdn-dynmedia-1.microsoft.com`)
@@ -137,6 +149,7 @@ python -m http.server 8743
 - Sin comentarios salvo WHY no obvio
 - CSS primero en `<style>`, JS al final de `<body>`
 - Dropdown JS genérico: `querySelectorAll('.nav-dropdown')` — no IDs específicos
+- Menú superior `Arquitectura`: dropdown con `arquitectura.html` y `arquitecturas-referencia.html`; en móvil se expone como dos enlaces separados
 - IntersectionObserver para animaciones `reveal` al scroll
 - Clases BEM-like: `.hero__card`, `.nav-dropdown__item`, etc.
 

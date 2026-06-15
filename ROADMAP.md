@@ -6,6 +6,27 @@ Historial de versiones y planificación de desarrollo.
 
 ## Versiones lanzadas
 
+### v1.1.0 — Arquitecturas de Referencia y navegación `[2026-06-15]`
+
+**Páginas y contenido:**
+- `arquitecturas-referencia.html` — nueva página de arquitecturas de referencia.
+- Nueva arquitectura: Lakehouse Empresarial.
+- Sección "Evolución de las Plataformas de Datos": Data Warehouse → Data Lake → Lakehouse → Data Fabric → IA Empresarial.
+- Disclaimer editorial para presentar las arquitecturas como patrones de referencia, no como implementaciones de MAT Analytics.
+
+**UX y visuales:**
+- Hero visual propio para Arquitecturas de Referencia.
+- 7 imágenes WebP de referencia en `assets/arquitecturas/`.
+- Diagramas compactos por arquitectura.
+- Layout desktop optimizado para ver componentes, beneficios, imagen y diagrama en una sola vista.
+- Animación sobria al expandir cada arquitectura, con soporte para `prefers-reduced-motion`.
+
+**Navegación:**
+- Menú superior "Arquitectura" convertido en dropdown:
+  - `arquitectura.html`
+  - `arquitecturas-referencia.html`
+- Menú móvil con enlaces separados para Arquitectura y Arquitecturas de Referencia.
+
 ### v1.0.0 — Lanzamiento inicial `[2026-06-13]`
 
 **Páginas creadas:**

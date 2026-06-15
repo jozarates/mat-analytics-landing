@@ -134,7 +134,7 @@
       transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
       z-index: 200;
     }
-    .nav-dropdown.open .nav-dropdown__menu { opacity: 1; visibility: visible; transform: none; }
+    .nav-dropdown.open .nav-dropdown__menu,.nav-dropdown:hover .nav-dropdown__menu,.nav-dropdown:focus-within .nav-dropdown__menu { opacity: 1; visibility: visible; transform: none; }
     .nav-dropdown__item {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 10px 12px; border-radius: 6px; color: var(--white);
@@ -635,7 +635,28 @@
             </a>
           </div>
         </li>
-        <li><a class="navbar__link navbar__link--active" href="arquitectura.html">Arquitecturas</a></li>
+        <li class="nav-dropdown nav-dropdown--architecture">
+          <button class="nav-dropdown__trigger navbar__link--active" aria-expanded="false" aria-haspopup="true">
+            Arquitectura
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitectura</p>
+                <p class="nav-dropdown__item-desc">Arquitectura de Datos Enterprise</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="arquitecturas-referencia.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitecturas de Referencia</p>
+                <p class="nav-dropdown__item-desc">Patrones empresariales y buenas pr&aacute;cticas</p>
+              </div>
+            </a>
+          </div>
+        </li>
         <li><a class="navbar__link" href="insights.html">Insights</a></li>
         <li><a class="navbar__link" href="nosotros.html">Nosotros</a></li>
         <li><a class="navbar__link" href="/#diagnostico">Contacto</a></li>
@@ -658,7 +679,8 @@
     <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
     <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
     <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
-    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitecturas</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura</a>
+    <a class="mobile-menu__link" href="arquitecturas-referencia.html" onclick="closeMobile()">Arquitecturas de Referencia</a>
     <a class="mobile-menu__link" href="insights.html" onclick="closeMobile()">Insights</a>
     <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
     <a href="/#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagn&oacute;stico</a>

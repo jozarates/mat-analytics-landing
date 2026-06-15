@@ -50,11 +50,34 @@ Solo usar datos verificables de fuentes públicas (Forrester, Microsoft, Oracle)
 Inicio (index.html)
 ├── TrustTech & Certificación Digital (trusttech.html)
 ├── Arquitectura de Datos Enterprise (arquitectura.html)
+├── Arquitecturas de Referencia (arquitecturas-referencia.html)
 ├── Inteligencia Analítica Avanzada (analitica.html)
 ├── Casos de Uso → [pendiente página propia]
 ├── Nosotros → [pendiente página propia]
 └── Libro de Reclamaciones (reclamaciones.html)
 ```
+
+### Arquitecturas de Referencia
+
+La página `arquitecturas-referencia.html` debe tratar las arquitecturas como:
+
+- Arquitecturas de referencia.
+- Patrones empresariales.
+- Buenas prácticas observadas en el mercado.
+
+No afirmar que las arquitecturas de referencia fueron implementadas por MAT Analytics. Mantener el disclaimer visible y evitar nombres de clientes o casos específicos.
+
+Arquitecturas vigentes:
+
+| Arquitectura | Enfoque |
+|--------------|---------|
+| Data Warehouse | Consolidación analítica, gobierno y reporting |
+| Analítica Empresarial | Capa semántica, dashboards, métricas y analítica aumentada |
+| Gobierno de Datos | Catálogo, linaje, políticas, calidad y privacidad |
+| Lakehouse | Datos estructurados/no estructurados, capas bronze/silver/gold e IA |
+| Certificación Criptográfica | Hash, sellado, evidencia verificable y auditoría |
+| Clustering de Alta Disponibilidad | Nodos activos, almacenamiento compartido y continuidad |
+| Recuperación ante Desastres | Sitio primario/secundario, replicación, RTO/RPO |
 
 ## Nomenclatura de servicios
 
@@ -64,6 +87,7 @@ Usar exactamente estos nombres (consistencia en todas las páginas):
 |---------------|-------------------|
 | TrustTech & Certificación Digital | "Trusttech", "Trust Tech", "certificación digital" sola |
 | Arquitectura de Datos Enterprise | "infra", "infraestructura", "arquitectura Oracle" |
+| Arquitecturas de Referencia | "casos implementados", "casos de éxito", "proyectos realizados" |
 | Inteligencia Analítica Avanzada | "BI", "analítica", "dashboards" |
 | Libro de Reclamaciones | "libro de reclamos", "reclamos" |
 | Agendar Diagnóstico | "contactar", "consulta gratuita" |
