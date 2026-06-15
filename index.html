@@ -1231,14 +1231,22 @@
     .problema-item__title { font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 10px; line-height: 1.3; }
     .problema-item__desc { font-size: 14px; color: var(--gray-text); line-height: 1.65; }
 
-    /* ─── CASOS DE ÉXITO ─── */
+    /* ─── CASOS DE USO ─── */
     .casos__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .caso { background: var(--white); border: 1px solid #e8e8e8; border-radius: 14px; padding: 32px 28px; display: flex; flex-direction: column; transition: border-color 0.22s, box-shadow 0.22s, transform 0.22s; }
-    .caso:hover { border-color: rgba(139,1,1,0.22); box-shadow: 0 12px 40px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .caso__sector { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; opacity: 0.8; }
-    .caso__challenge { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 10px; line-height: 1.4; }
-    .caso__result { font-size: 13.5px; color: var(--gray-text); line-height: 1.65; flex: 1; }
-    .caso__metric { margin-top: 20px; padding-top: 16px; border-top: 1px solid #f0f0f0; font-size: 24px; font-weight: 800; color: var(--black); letter-spacing: -0.04em; }
+    .caso { background: var(--white); border: 1px solid #e8e8e8; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; transition: border-color 0.22s, box-shadow 0.22s; }
+    .caso:hover { border-color: rgba(139,1,1,0.22); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .caso__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .caso__sector { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); opacity: 0.8; }
+    .caso__type { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--gray-mid); background: var(--gray-bg); padding: 3px 9px; border-radius: 3px; white-space: nowrap; }
+    .caso__title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 16px; line-height: 1.4; }
+    .caso__rows { display: flex; flex-direction: column; gap: 0; flex: 1; }
+    .caso__row { padding: 11px 0; border-bottom: 1px solid #F5F5F5; }
+    .caso__row:last-child { border-bottom: none; }
+    .caso__row-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #CCCCCC; margin-bottom: 5px; }
+    .caso__row-text { font-size: 12.5px; color: var(--gray-text); line-height: 1.68; }
+    .caso__row--arch .caso__row-label { color: rgba(139,1,1,0.45); }
+    .caso__row--benefit .caso__row-label { color: rgba(6,95,70,0.55); }
+    .caso__metric { margin-top: 16px; padding-top: 14px; border-top: 1px solid #f0f0f0; font-size: 24px; font-weight: 800; color: var(--black); letter-spacing: -0.04em; }
     .caso__metric-label { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
 
     /* ─── TECNOLOGÍAS ─── */
@@ -1831,35 +1839,99 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════ 08 · CASOS DE ÉXITO ═══════════ -->
+  <!-- ════════════════════════════════════ 08 · CASOS DE USO ═════════════ -->
   <section class="section section--gray" id="casos">
     <div class="container">
       <div class="section__header">
-        <div class="section__tag"><span class="tag">Casos de éxito</span></div>
-        <h2 class="section__title">Resultados que hablan por sí solos.</h2>
+        <div class="section__tag"><span class="tag">Casos de uso</span></div>
+        <h2 class="section__title">Escenarios frecuentes en sectores<br>de alta exigencia regulatoria.</h2>
         <p class="section__sub">
-          Proyectos reales en sectores regulados. Los datos de nuestros clientes son confidenciales; los resultados son verificables.
+          Situaciones habituales en organizaciones que gestionan datos cr&iacute;ticos. Cada escenario refleja necesidades empresariales que nuestro equipo conoce en profundidad.
         </p>
       </div>
       <div class="casos__grid">
+
         <div class="caso reveal">
-          <p class="caso__sector">Sector Financiero</p>
-          <h3 class="caso__challenge">Automatización de reportes regulatorios con certificación criptográfica de cada entrega</h3>
-          <p class="caso__result">Implementación de Data Warehouse sobre Oracle ADW con pipeline automatizado de reportes regulatorios. Cada reporte se certifica vía Stamping.io antes de su entrega, eliminando el riesgo de cuestionamiento posterior en auditoría.</p>
-          <div class="caso__metric">−60%<div class="caso__metric-label">en tiempo de generación de reportes</div></div>
+          <div class="caso__head">
+            <p class="caso__sector">Sector Financiero</p>
+            <span class="caso__type">Caso de uso</span>
+          </div>
+          <h3 class="caso__title">Reportes regulatorios con trazabilidad e integridad verificable en cada entrega</h3>
+          <div class="caso__rows">
+            <div class="caso__row">
+              <p class="caso__row-label">Contexto</p>
+              <p class="caso__row-text">Entidad financiera bajo supervisi&oacute;n SBS con obligaci&oacute;n de reportes peri&oacute;dicos generados desde m&uacute;ltiples sistemas transaccionales.</p>
+            </div>
+            <div class="caso__row">
+              <p class="caso__row-label">Desaf&iacute;o</p>
+              <p class="caso__row-text">El proceso manual de consolidaci&oacute;n introduce errores, demora el cierre y no deja evidencia verificable de la ruta de c&aacute;lculo ante el regulador.</p>
+            </div>
+            <div class="caso__row caso__row--arch">
+              <p class="caso__row-label">Arquitectura recomendada</p>
+              <p class="caso__row-text">Data Warehouse sobre Oracle ADW con pipeline ETL automatizado v&iacute;a ODI y certificaci&oacute;n criptogr&aacute;fica de cada entrega regulatoria v&iacute;a Stamping.io.</p>
+            </div>
+            <div class="caso__row caso__row--benefit">
+              <p class="caso__row-label">Beneficio esperado</p>
+              <p class="caso__row-text">Reducci&oacute;n significativa del tiempo de generaci&oacute;n y evidencia digital inmutable que neutraliza cuestionamientos en auditor&iacute;a.</p>
+            </div>
+          </div>
+          <div class="caso__metric">&minus;60%<div class="caso__metric-label">en tiempo de generaci&oacute;n de reportes</div></div>
         </div>
+
         <div class="caso reveal reveal-delay-1">
-          <p class="caso__sector">Sector Seguros</p>
-          <h3 class="caso__challenge">Cálculo de reservas técnicas con integridad verificable para auditoría regulatoria</h3>
-          <p class="caso__result">Rediseño del proceso actuarial sobre Oracle Analytics Cloud con sellado de cada cálculo de reservas. La auditoría regulatoria se resolvió sin observaciones en tiempo récord, con evidencia digital lista para revisión inmediata.</p>
-          <div class="caso__metric">0 observaciones<div class="caso__metric-label">en auditoría regulatoria</div></div>
+          <div class="caso__head">
+            <p class="caso__sector">Sector Seguros</p>
+            <span class="caso__type">Situaci&oacute;n habitual</span>
+          </div>
+          <h3 class="caso__title">C&aacute;lculo de reservas t&eacute;cnicas con integridad auditada ante el regulador</h3>
+          <div class="caso__rows">
+            <div class="caso__row">
+              <p class="caso__row-label">Contexto</p>
+              <p class="caso__row-text">Aseguradora con obligaci&oacute;n de c&aacute;lculo actuarial peri&oacute;dico sobre grandes vol&uacute;menes de p&oacute;lizas bajo esquema de supervisi&oacute;n SBS.</p>
+            </div>
+            <div class="caso__row">
+              <p class="caso__row-label">Desaf&iacute;o</p>
+              <p class="caso__row-text">La ausencia de trazabilidad desde los datos fuente hasta el resultado actuarial expone a la empresa ante auditor&iacute;as que exigen reconstituir el proceso completo.</p>
+            </div>
+            <div class="caso__row caso__row--arch">
+              <p class="caso__row-label">Arquitectura recomendada</p>
+              <p class="caso__row-text">Plataforma anal&iacute;tica sobre Oracle Analytics Cloud con capa de gobierno de datos y sellado criptogr&aacute;fico de cada ciclo de c&aacute;lculo con timestamp verificable.</p>
+            </div>
+            <div class="caso__row caso__row--benefit">
+              <p class="caso__row-label">Beneficio esperado</p>
+              <p class="caso__row-text">Ciclos de auditor&iacute;a regulatoria resueltos sin observaciones, con evidencia digital disponible para revisi&oacute;n inmediata sin necesidad de reconstruir el proceso.</p>
+            </div>
+          </div>
+          <div class="caso__metric">0 observaciones<div class="caso__metric-label">en auditor&iacute;a regulatoria</div></div>
         </div>
+
         <div class="caso reveal reveal-delay-2">
-          <p class="caso__sector">Sector Público</p>
-          <h3 class="caso__challenge">Integración SIAF y rendición de cuentas ante Contraloría sin fricción operativa</h3>
-          <p class="caso__result">Arquitectura de integración entre SIAF, sistemas internos y Oracle DB con dashboards certificados para la Alta Dirección. La rendición de cuentas ante Contraloría pasó de ser un proceso de semanas a una operación de días.</p>
-          <div class="caso__metric">3× más rápido<div class="caso__metric-label">en ciclos de rendición de cuentas</div></div>
+          <div class="caso__head">
+            <p class="caso__sector">Sector P&uacute;blico</p>
+            <span class="caso__type">Necesidad empresarial</span>
+          </div>
+          <h3 class="caso__title">Rendici&oacute;n de cuentas ante Contralor&iacute;a con datos integrados y dashboards certificados</h3>
+          <div class="caso__rows">
+            <div class="caso__row">
+              <p class="caso__row-label">Contexto</p>
+              <p class="caso__row-text">Entidad del Estado peruano con obligaci&oacute;n de rendici&oacute;n ante Contralor&iacute;a General y Alta Direcci&oacute;n que requiere visi&oacute;n consolidada de la ejecuci&oacute;n.</p>
+            </div>
+            <div class="caso__row">
+              <p class="caso__row-label">Desaf&iacute;o</p>
+              <p class="caso__row-text">La informaci&oacute;n financiera dispersa en SIAF y sistemas propios obliga a procesos manuales de consolidaci&oacute;n que consumen semanas y son propensos a inconsistencias.</p>
+            </div>
+            <div class="caso__row caso__row--arch">
+              <p class="caso__row-label">Arquitectura recomendada</p>
+              <p class="caso__row-text">Capa de integraci&oacute;n SIAF&mdash;Oracle DB con pipelines certificados y dashboards ejecutivos con linaje de datos completo exportable para Contralor&iacute;a.</p>
+            </div>
+            <div class="caso__row caso__row--benefit">
+              <p class="caso__row-label">Beneficio esperado</p>
+              <p class="caso__row-text">Ciclos de rendici&oacute;n de semanas reducidos a d&iacute;as, con documentaci&oacute;n digital que satisface los est&aacute;ndares de evidencia del ente regulador.</p>
+            </div>
+          </div>
+          <div class="caso__metric">3&times; m&aacute;s r&aacute;pido<div class="caso__metric-label">en ciclos de rendici&oacute;n de cuentas</div></div>
         </div>
+
       </div>
     </div>
   </section>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitecturas de Referencia — Oracle, Data Warehouse, TrustTech | Mat Analytics</title>
+  <meta name="description" content="Modelos de referencia y buenas prácticas para arquitecturas Oracle: Data Warehouse, Analytics, Oracle RAC, Alta Disponibilidad, Gobierno de Datos y TrustTech blockchain.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mat-analytics.com/arquitecturas-referencia.html">
+  <meta property="og:type" content="website">
+  <meta property="og:logo" content="https://mat-analytics.com/brand-assets/logo-horizontal-negativo.svg">
+  <meta property="og:url" content="https://mat-analytics.com/arquitecturas-referencia.html">
+  <meta property="og:title" content="Arquitecturas de Referencia — Mat Analytics">
+  <meta property="og:description" content="Modelos de referencia para Data Warehouse Oracle, Oracle Analytics, Gobierno de Datos, TrustTech y Alta Disponibilidad. Buenas prácticas para entornos enterprise.">
+  <meta property="og:site_name" content="Mat Analytics">
+  <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="brand-assets/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" href="brand-assets/favicon/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#8B0101;--red-hover:#A50101;--red-subtle:rgba(139,1,1,0.08);--black:#1E1E1E;--gray-text:#3A3A3A;--gray-mid:#757575;--gray-light:#D9D9D9;--gray-bg:#F7F7F7;--white:#FFFFFF;--border-light:#E5E5E5;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--radius:6px;--transition:0.22s ease;--max-w:1160px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--gray-text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    img{display:block;max-width:100%}
+    button{font-family:inherit}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);background:var(--red-subtle);padding:5px 12px;border-radius:3px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 22px;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--transition);text-decoration:none;white-space:nowrap}
+    .btn--primary{background:var(--red);color:#fff}
+    .btn--primary:hover{background:var(--red-hover);box-shadow:0 4px 14px rgba(139,1,1,0.35)}
+    .btn--lg{font-size:15px;padding:13px 24px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;background:#1E1E1E;border-bottom:1px solid rgba(255,255,255,0.07);transition:box-shadow var(--transition)}
+    .navbar.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.40)}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .navbar__logo{height:34px;width:auto}
+    .navbar__nav{display:flex;align-items:center;gap:32px}
+    .navbar__link{font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);transition:color var(--transition)}
+    .navbar__link:hover,.navbar__link--active{color:#fff}
+    .navbar__actions{display:flex;align-items:center;gap:8px}
+    .navbar__mail{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.55);transition:all var(--transition)}
+    .navbar__mail:hover{background:var(--red);border-color:var(--red);color:#fff}
+    .navbar__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+    .navbar__burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform var(--transition),opacity var(--transition)}
+    .navbar__burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .navbar__burger.open span:nth-child(2){opacity:0}
+    .navbar__burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown__trigger{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);background:none;border:none;cursor:pointer;padding:0;transition:color var(--transition)}
+    .nav-dropdown__trigger:hover{color:#fff}
+    .nav-dropdown__menu{display:none;position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#1E1E1E;border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:8px;min-width:280px;box-shadow:0 16px 48px rgba(0,0,0,0.40);z-index:200}
+    .nav-dropdown.open .nav-dropdown__menu{display:block}
+    .nav-dropdown__item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:6px;transition:background var(--transition);color:#fff}
+    .nav-dropdown__item:hover{background:rgba(255,255,255,0.06)}
+    .nav-dropdown__item-num{font-size:11px;font-weight:600;color:rgba(255,255,255,0.25);margin-top:2px;flex-shrink:0}
+    .nav-dropdown__item-title{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.35;margin-bottom:2px}
+    .nav-dropdown__item-desc{font-size:11.5px;color:rgba(255,255,255,0.35);line-height:1.45}
+    .nav-dropdown__divider{height:1px;background:rgba(255,255,255,0.07);margin:6px 0}
+    .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:#1E1E1E;padding:32px 24px;flex-direction:column;gap:4px;z-index:99;overflow-y:auto}
+    .mobile-menu.open{display:flex}
+    .mobile-menu__link{display:block;font-size:18px;font-weight:500;color:rgba(255,255,255,0.80);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);transition:color var(--transition)}
+    .mobile-menu__link:hover{color:#fff}
+    .mobile-menu .btn{margin-top:24px;width:100%;justify-content:center}
+    .breadcrumb{padding:13px 0;background:var(--gray-bg);border-bottom:1px solid var(--border-light);margin-top:68px}
+    .breadcrumb__inner{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray-mid)}
+    .breadcrumb__link{color:var(--gray-mid);transition:color var(--transition)}
+    .breadcrumb__link:hover{color:var(--red)}
+    .breadcrumb__sep{color:var(--gray-light)}
+    .breadcrumb__current{color:var(--gray-text);font-weight:500}
+    /* Hero */
+    .page-hero{padding:72px 0 60px;background:#fff;border-bottom:1px solid var(--border-light)}
+    .page-hero__tag{margin-bottom:18px}
+    .page-hero__title{font-size:clamp(28px,3.8vw,52px);font-weight:800;color:var(--black);letter-spacing:-0.035em;line-height:1.1;margin-bottom:20px}
+    .page-hero__sub{font-size:16px;color:var(--gray-mid);max-width:600px;line-height:1.75;margin-bottom:24px}
+    .page-hero__disclaimer{font-size:12.5px;color:var(--gray-mid);background:var(--gray-bg);border-left:3px solid var(--gray-light);border-radius:0 6px 6px 0;padding:12px 16px;max-width:600px;line-height:1.65;font-style:italic}
+    /* Architecture cards */
+    .arch-list{display:flex;flex-direction:column;gap:24px}
+    .arch-card{background:#fff;border:1px solid var(--border-light);border-radius:16px;overflow:hidden;transition:box-shadow var(--transition)}
+    .arch-card:hover{box-shadow:0 8px 40px rgba(0,0,0,0.07)}
+    .arch-card__header{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:start;padding:28px 32px;cursor:pointer;user-select:none}
+    .arch-card__num{font-size:11px;font-weight:700;color:var(--gray-light);letter-spacing:0.06em;padding-top:4px;font-variant-numeric:tabular-nums}
+    .arch-card__meta{}
+    .arch-card__domain{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+    .arch-domain{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 9px;border-radius:3px}
+    .arch-domain--oracle{color:#8B0101;background:rgba(139,1,1,0.08)}
+    .arch-domain--gov{color:#1E40AF;background:rgba(30,64,175,0.08)}
+    .arch-domain--trust{color:#7C3AED;background:rgba(124,58,237,0.08)}
+    .arch-domain--ha{color:#065F46;background:rgba(6,95,70,0.08)}
+    .arch-card__title{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.025em;line-height:1.20;margin-bottom:8px}
+    .arch-card__obj{font-size:13.5px;color:var(--gray-mid);line-height:1.65}
+    .arch-card__toggle{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border-light);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;transition:all var(--transition);cursor:pointer}
+    .arch-card.open .arch-card__toggle{background:var(--black);border-color:var(--black)}
+    .arch-card__toggle svg{stroke:#999;transition:transform var(--transition),stroke var(--transition)}
+    .arch-card.open .arch-card__toggle svg{transform:rotate(180deg);stroke:#fff}
+    .arch-card__body{display:none;padding:0 32px 28px;border-top:1px solid var(--border-light);margin:0 32px;padding-top:24px}
+    .arch-card.open .arch-card__body{display:block;margin:0}
+    .arch-card__body-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .arch-section-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-light);margin-bottom:10px}
+    .arch-components{display:flex;flex-direction:column;gap:8px}
+    .arch-comp{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-text);line-height:1.55}
+    .arch-comp__dot{width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:6px;flex-shrink:0}
+    .arch-benefits{display:flex;flex-direction:column;gap:8px}
+    .arch-benefit{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-text);line-height:1.55}
+    .arch-benefit__check{flex-shrink:0;margin-top:2px}
+    .arch-scenarios{grid-column:1/-1;border-top:1px solid #F0F0F0;padding-top:20px;margin-top:4px}
+    .arch-scenario-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .arch-scenario{font-size:11.5px;font-weight:600;color:var(--gray-mid);background:var(--gray-bg);padding:5px 12px;border-radius:4px;border:1px solid var(--border-light)}
+    /* Index */
+    .arch-index{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px}
+    .arch-index-item{background:var(--gray-bg);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background var(--transition),border-color var(--transition);border:1.5px solid transparent}
+    .arch-index-item:hover{background:#fff;border-color:rgba(139,1,1,0.18)}
+    .arch-index-item__num{font-size:11px;font-weight:700;color:var(--gray-light);font-variant-numeric:tabular-nums;flex-shrink:0}
+    .arch-index-item__name{font-size:13px;font-weight:600;color:var(--black);line-height:1.30}
+    /* CTA */
+    .cta-band{padding:72px 0;background:var(--black);color:#fff;text-align:center}
+    .cta-band__title{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
+    .cta-band__sub{font-size:15px;color:rgba(255,255,255,0.50);margin-bottom:32px;max-width:460px;margin-left:auto;margin-right:auto}
+    .cta-band .btn--primary{font-size:15px;padding:14px 32px;border-radius:100px}
+    /* Footer */
+    .footer{background:#1E1E1E;color:#fff;padding:40px 0 24px}
+    .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px}
+    .footer__logo{height:28px;opacity:0.80}
+    .footer__links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer__link{font-size:13px;color:rgba(255,255,255,0.45);transition:color var(--transition)}
+    .footer__link:hover{color:rgba(255,255,255,0.80)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .footer__copy{font-size:12px;color:rgba(255,255,255,0.28)}
+    .section{padding:72px 0}
+    .section--gray{background:var(--gray-bg)}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.08s}
+    .reveal-delay-2{transition-delay:0.16s}
+    .reveal-delay-3{transition-delay:0.24s}
+    .reveal-delay-4{transition-delay:0.32s}
+    .reveal-delay-5{transition-delay:0.40s}
+    @media(max-width:900px){
+      .navbar__nav,.navbar__actions{display:none}
+      .navbar__burger{display:flex}
+      .arch-index{grid-template-columns:1fr}
+      .arch-card__header{grid-template-columns:auto 1fr auto}
+      .arch-card__body-inner{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" aria-label="Mat Analytics">
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <ul class="navbar__nav">
+        <li><a class="navbar__link" href="/">Inicio</a></li>
+        <li class="nav-dropdown" id="navDropdown">
+          <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
+            Capacidades
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Inteligencia Anal&iacute;tica</p>
+                <p class="nav-dropdown__item-desc">Oracle OAC &middot; Power BI &middot; Gobernanza</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">TrustTech &amp; Certificaci&oacute;n</p>
+                <p class="nav-dropdown__item-desc">Notarizaci&oacute;n blockchain &middot; Stamping.io</p>
+              </div>
+            </a>
+            <div class="nav-dropdown__divider"></div>
+            <a class="nav-dropdown__item" href="capacidades.html" role="menuitem">
+              <span class="nav-dropdown__item-num">&#8594;</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Ver todas las capacidades</p>
+                <p class="nav-dropdown__item-desc">Portafolio completo de servicios</p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a class="navbar__link navbar__link--active" href="arquitecturas-referencia.html">Arquitecturas</a></li>
+        <li><a class="navbar__link" href="conocimiento.html">Conocimiento</a></li>
+        <li><a class="navbar__link" href="nosotros.html">Nosotros</a></li>
+        <li><a class="navbar__link" href="/#diagnostico">Contacto</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="/#diagnostico" class="btn btn--primary">Agendar Diagn&oacute;stico
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Men&uacute;">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="/" onclick="closeMobile()">Inicio</a>
+    <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
+    <a class="mobile-menu__link" href="arquitecturas-referencia.html" onclick="closeMobile()">Arquitecturas de Referencia</a>
+    <a class="mobile-menu__link" href="conocimiento.html" onclick="closeMobile()">Conocimiento</a>
+    <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
+    <a href="/#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagn&oacute;stico</a>
+  </div>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <div class="breadcrumb__inner">
+        <a class="breadcrumb__link" href="/">Inicio</a>
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current" aria-current="page">Arquitecturas de Referencia</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__tag"><span class="tag">Modelos de referencia</span></div>
+      <h1 class="page-hero__title">Arquitecturas de Referencia<br>para entornos enterprise.</h1>
+      <p class="page-hero__sub">Modelos de dise&ntilde;o, buenas pr&aacute;cticas y componentes recomendados para arquitecturas de datos Oracle en organizaciones de sectores regulados.</p>
+      <p class="page-hero__disclaimer">Las arquitecturas presentadas son modelos de referencia basados en buenas pr&aacute;cticas del ecosistema Oracle y est&aacute;ndares de la industria. No representan implementaciones espec&iacute;ficas realizadas por MAT Analytics ni hacen referencia a ning&uacute;n cliente.</p>
+    </div>
+  </section>
+
+  <!-- Architecture index -->
+  <section class="section">
+    <div class="container">
+      <div class="arch-index reveal">
+        <a class="arch-index-item" href="#dwh">
+          <span class="arch-index-item__num">01</span>
+          <span class="arch-index-item__name">Data Warehouse Oracle</span>
+        </a>
+        <a class="arch-index-item" href="#analytics">
+          <span class="arch-index-item__num">02</span>
+          <span class="arch-index-item__name">Oracle Analytics</span>
+        </a>
+        <a class="arch-index-item" href="#gobierno">
+          <span class="arch-index-item__num">03</span>
+          <span class="arch-index-item__name">Gobierno de Datos</span>
+        </a>
+        <a class="arch-index-item" href="#trusttech">
+          <span class="arch-index-item__num">04</span>
+          <span class="arch-index-item__name">TrustTech</span>
+        </a>
+        <a class="arch-index-item" href="#rac">
+          <span class="arch-index-item__num">05</span>
+          <span class="arch-index-item__name">Oracle RAC</span>
+        </a>
+        <a class="arch-index-item" href="#ha">
+          <span class="arch-index-item__num">06</span>
+          <span class="arch-index-item__name">Alta Disponibilidad</span>
+        </a>
+      </div>
+
+      <div class="arch-list">
+
+        <!-- 01 Data Warehouse -->
+        <div class="arch-card reveal" id="dwh">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">01</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--oracle">Oracle ADW</span>
+              </div>
+              <h2 class="arch-card__title">Data Warehouse Oracle</h2>
+              <p class="arch-card__obj">Consolidar fuentes heterog&eacute;neas en una arquitectura centralizada de alta performance para consultas anal&iacute;ticas, gobierno de datos y reportes regulatorios.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle Autonomous Data Warehouse (ADW)</strong> — capa de almacenamiento y consulta anal&iacute;tica con auto-escalado</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle Data Integrator (ODI)</strong> — pipelines ETL/ELT para ingesta y transformaci&oacute;n de datos fuente</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Staging Area</strong> — zona de aterrizaje con validaci&oacute;n y limpieza antes de la carga</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>ODS (Operational Data Store)</strong> — capa operacional para datos en tiempo casi real</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>DWH Core + Data Marts</strong> — modelado dimensional con dimensiones compartidas y marts por dominio</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Capa sem&aacute;ntica</strong> — abstracci&oacute;n de m&eacute;tricas y KPIs para consumo anal&iacute;tico consistente</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Fuente &uacute;nica de verdad para reportes ejecutivos, operativos y regulatorios</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Eliminaci&oacute;n de silos y reconciliaci&oacute;n manual entre &aacute;reas</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Trazabilidad de datos desde la fuente hasta el reporte (linaje completo)</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Escalabilidad sin impacto en sistemas transaccionales fuente</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Base para gobierno de datos, calidad y cumplimiento regulatorio</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Reportes regulatorios SBS / SMV</span>
+                  <span class="arch-scenario">Consolidaci&oacute;n de ERP + CRM + Operaciones</span>
+                  <span class="arch-scenario">Cierre financiero acelerado</span>
+                  <span class="arch-scenario">Anal&iacute;tica de riesgo crediticio</span>
+                  <span class="arch-scenario">Gesti&oacute;n de reservas actuariales</span>
+                  <span class="arch-scenario">Integraci&oacute;n SIAF en sector p&uacute;blico</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 Oracle Analytics -->
+        <div class="arch-card reveal reveal-delay-1" id="analytics">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">02</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--oracle">Oracle OAC / OAS</span>
+              </div>
+              <h2 class="arch-card__title">Oracle Analytics</h2>
+              <p class="arch-card__obj">Plataforma de inteligencia anal&iacute;tica con capa sem&aacute;ntica, gobierno de acceso por rol y capacidades de visualizaci&oacute;n y Machine Learning integradas.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle Analytics Cloud (OAC) / Analytics Server (OAS)</strong> — plataforma anal&iacute;tica cloud o on-premise</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Repository (RPD)</strong> — modelo sem&aacute;ntico de 3 capas: f&iacute;sica, l&oacute;gica y presentaci&oacute;n</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Seguridad por filas y columnas</strong> — gobierno de acceso granular por rol y perfil de usuario</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Dashboards y Answers</strong> — visualizaci&oacute;n, KPIs y reportes ad-hoc para usuarios de negocio</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>ML nativo</strong> — modelos de forecasting, clustering y detecci&oacute;n de anomal&iacute;as sin salir de la plataforma</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>M&eacute;tricas consistentes entre &aacute;reas gracias al modelo sem&aacute;ntico centralizado</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Usuarios de negocio autosuficientes en la creaci&oacute;n de reportes sin dependencia de TI</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Seguridad granular que garantiza que cada usuario ve solo los datos de su &aacute;mbito</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Integraci&oacute;n nativa con Oracle DB y ADW sin capas adicionales de integraci&oacute;n</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Dashboards ejecutivos de Alta Direcci&oacute;n</span>
+                  <span class="arch-scenario">Reportes regulatorios automatizados</span>
+                  <span class="arch-scenario">Anal&iacute;tica de riesgo y suscripci&oacute;n en seguros</span>
+                  <span class="arch-scenario">Seguimiento de KPIs operativos en tiempo real</span>
+                  <span class="arch-scenario">Portales de transparencia p&uacute;blica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 Gobierno de Datos -->
+        <div class="arch-card reveal reveal-delay-2" id="gobierno">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">03</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--gov">Gobernanza</span>
+              </div>
+              <h2 class="arch-card__title">Gobierno de Datos</h2>
+              <p class="arch-card__obj">Marco de gobierno que establece propietarios, est&aacute;ndares de calidad, linaje y reglas de acceso sobre los activos de datos cr&iacute;ticos de la organizaci&oacute;n.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Cat&aacute;logo de datos</strong> — inventario de activos, propietarios y clasificaci&oacute;n por sensibilidad</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Linaje de datos (Data Lineage)</strong> — trazabilidad completa desde la fuente hasta el reporte</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Reglas de calidad</strong> — perfilado, validaci&oacute;n y alertas sobre datos fuera de est&aacute;ndar</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Pol&iacute;ticas de acceso</strong> — roles, permisos y enmascaramiento de datos sensibles</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Proceso de MDM</strong> — gesti&oacute;n de datos maestros con entidad &uacute;nica de referencia (golden record)</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Integraci&oacute;n con Oracle DB</strong> — gobierno aplicado directamente sobre la capa de almacenamiento</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Datos confiables y trazables que soportan decisiones de alta direcci&oacute;n</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Cumplimiento de normativas de protecci&oacute;n de datos y privacidad</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Responsabilidad asignada sobre cada activo de datos cr&iacute;tico</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Reducci&oacute;n de tiempo en auditor&iacute;as gracias a linaje documentado y accesible</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Cumplimiento normativo SBS / SMV / SUNAT</span>
+                  <span class="arch-scenario">Unificaci&oacute;n de datos de clientes (MDM)</span>
+                  <span class="arch-scenario">Preparaci&oacute;n para auditor&iacute;as regulatorias</span>
+                  <span class="arch-scenario">Implementaci&oacute;n de pol&iacute;ticas de privacidad</span>
+                  <span class="arch-scenario">Consolidaciones corporativas post-fusi&oacute;n</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 TrustTech -->
+        <div class="arch-card reveal reveal-delay-3" id="trusttech">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">04</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--trust">TrustTech</span>
+              </div>
+              <h2 class="arch-card__title">TrustTech &amp; Certificaci&oacute;n Criptogr&aacute;fica</h2>
+              <p class="arch-card__obj">Arquitectura de notarizaci&oacute;n blockchain para garantizar la integridad e inmutabilidad de documentos, reportes y registros cr&iacute;ticos con valor legal verificable.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Motor de generaci&oacute;n documental</strong> — sistema fuente que produce el documento a certificar</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>API Stamping.io</strong> — sellado criptogr&aacute;fico y registro en blockchain p&uacute;blica/privada</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Certificado de notarizaci&oacute;n</strong> — documento PDF con hash, timestamp y URL de verificaci&oacute;n p&uacute;blica</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Portal de verificaci&oacute;n p&uacute;blica</strong> — permite a terceros validar la autenticidad del documento sin acceder al sistema fuente</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Integraci&oacute;n con pipeline anal&iacute;tico</strong> — certificaci&oacute;n autom&aacute;tica como &uacute;ltimo paso del flujo de generaci&oacute;n de reportes</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Evidencia digital con valor legal sin depender de un tercero custodio</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Inmutabilidad verificable: cualquier modificaci&oacute;n post-certificaci&oacute;n es detectable</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Trail de auditor&iacute;a que neutraliza disputas sobre la integridad del documento</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Automatizable como parte del flujo de reportes regulatorios existentes</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Reportes regulatorios SBS &mdash; entidad financiera</span>
+                  <span class="arch-scenario">Certificaci&oacute;n de c&aacute;lculos actuariales</span>
+                  <span class="arch-scenario">Contratos digitales con valor probatorio</span>
+                  <span class="arch-scenario">Rendici&oacute;n de cuentas ante Contralor&iacute;a</span>
+                  <span class="arch-scenario">Auditor&iacute;a de procesos internos con trail permanente</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 Oracle RAC -->
+        <div class="arch-card reveal reveal-delay-4" id="rac">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">05</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--oracle">Oracle RAC</span>
+              </div>
+              <h2 class="arch-card__title">Oracle RAC &mdash; Clustering de Alta Disponibilidad</h2>
+              <p class="arch-card__obj">Arquitectura de cluster de base de datos Oracle con instancias m&uacute;ltiples sobre almacenamiento compartido para eliminar puntos &uacute;nicos de fallo en sistemas de misi&oacute;n cr&iacute;tica.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle Clusterware</strong> — software de cluster que gestiona los nodos y recursos compartidos</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Instancias RAC (2+ nodos)</strong> — m&uacute;ltiples instancias que acceden a la misma base de datos compartida</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle ASM (Automatic Storage Management)</strong> — gesti&oacute;n de almacenamiento compartido para el cluster</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle Data Guard</strong> — r&eacute;plica para recuperaci&oacute;n ante desastres (complementario a RAC)</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Interconnect de alta velocidad</strong> — red privada para comunicaci&oacute;n entre nodos del cluster</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Eliminaci&oacute;n del punto &uacute;nico de fallo en la capa de base de datos</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Escalabilidad horizontal agregando nodos sin tiempo de inactividad</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Mantenimiento de nodos individuales sin impacto en la disponibilidad del servicio</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>SLA de disponibilidad del 99.99% en entornos correctamente dimensionados</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Sistemas core bancarios 24/7</span>
+                  <span class="arch-scenario">Plataformas de gesti&oacute;n de p&oacute;lizas de seguros</span>
+                  <span class="arch-scenario">Sistemas de informaci&oacute;n cr&iacute;ticos del Estado</span>
+                  <span class="arch-scenario">ERP con requerimientos de SLA estrictos</span>
+                  <span class="arch-scenario">Data Warehouse de missi&oacute;n cr&iacute;tica con actualizaciones frecuentes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 Alta Disponibilidad -->
+        <div class="arch-card reveal reveal-delay-5" id="ha">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">06</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--ha">Alta Disponibilidad</span>
+              </div>
+              <h2 class="arch-card__title">Arquitectura de Alta Disponibilidad y Recuperaci&oacute;n ante Desastres</h2>
+              <p class="arch-card__obj">Ecosistema de datos con redundancia a nivel de infraestructura, base de datos y red para garantizar continuidad operativa ante fallos, mantenimientos y eventos de desastre.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle RAC</strong> — eliminaci&oacute;n de punto &uacute;nico de fallo en la capa de datos</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle Data Guard</strong> — r&eacute;plica s&iacute;ncrona o as&iacute;ncrona a sitio secundario para DR</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Oracle GoldenGate</strong> — r&eacute;plica en tiempo real para entornos h&iacute;bridos o multi-cloud</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Storage redundante (SAN/NAS)</strong> — almacenamiento con RAID y replicaci&oacute;n entre sitios</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Balanceador de carga y failover autom&aacute;tico</strong> — enrutamiento transparente ante ca&iacute;da de nodo o sitio</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Plan de DR documentado (RTO/RPO)</strong> — procedimientos y m&eacute;tricas de recuperaci&oacute;n definidas y probadas</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Continuidad de operaciones ante fallos de hardware, red o desastres</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>RTO y RPO definidos y comprobables mediante simulacros de failover</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Cumplimiento de requerimientos regulatorios de continuidad del negocio</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Mantenimientos planificados sin ventanas de inactividad visibles para el usuario</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Entidades financieras bajo regulaci&oacute;n SBS de continuidad</span>
+                  <span class="arch-scenario">Compa&ntilde;&iacute;as de seguros con sistemas 24/7</span>
+                  <span class="arch-scenario">Sistemas de recaudaci&oacute;n del Estado</span>
+                  <span class="arch-scenario">Infraestructura cr&iacute;tica con SLA &gt; 99.9%</span>
+                  <span class="arch-scenario">Entornos con Exadata o infraestructura Oracle engineered</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2 class="cta-band__title">Eval&uacute;e cu&aacute;l aplica a su organizaci&oacute;n.</h2>
+      <p class="cta-band__sub">Un diagn&oacute;stico de 45 minutos para identificar la arquitectura de referencia m&aacute;s adecuada a su contexto y objetivos.</p>
+      <a href="/#diagnostico" class="btn btn--primary">
+        Agendar Diagn&oacute;stico
+        <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <img class="footer__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+        <div class="footer__links">
+          <a class="footer__link" href="/">Inicio</a>
+          <a class="footer__link" href="capacidades.html">Capacidades</a>
+          <a class="footer__link" href="arquitecturas-referencia.html">Arquitecturas</a>
+          <a class="footer__link" href="conocimiento.html">Conocimiento</a>
+          <a class="footer__link" href="nosotros.html">Nosotros</a>
+          <a class="footer__link" href="/#diagnostico">Contacto</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Mat Analytics SAC &middot; Lima, Per&uacute;</p>
+        <div class="footer__links">
+          <a class="footer__link" href="privacidad.html">Privacidad</a>
+          <a class="footer__link" href="terminos.html">T&eacute;rminos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 10), {passive:true});
+    const dd = document.querySelector('.nav-dropdown');
+    const btn = document.getElementById('navDropdownBtn');
+    if(dd && btn){ btn.addEventListener('click', e => { e.stopPropagation(); const o = !dd.classList.contains('open'); dd.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); }); document.addEventListener('click', () => { dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }); document.addEventListener('keydown', e => { if(e.key==='Escape'){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');} }); }
+    const burger = document.getElementById('burgerBtn');
+    const mob = document.getElementById('mobileMenu');
+    function closeMobile(){ mob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow=''; }
+    burger.addEventListener('click', () => { const o = mob.classList.toggle('open'); burger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+    function toggleArch(header) { const card = header.closest('.arch-card'); card.classList.toggle('open'); }
+    document.querySelectorAll('.arch-index-item').forEach(item => { item.addEventListener('click', e => { e.preventDefault(); const target = document.querySelector(item.getAttribute('href')); if(target){ target.scrollIntoView({behavior:'smooth',block:'start'}); if(!target.classList.contains('open')){ const h = target.querySelector('.arch-card__header'); if(h) h.click(); } } }); });
+    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>
