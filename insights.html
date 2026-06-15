@@ -1,27 +1,88 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insights — Recursos sobre Datos, Analytics y TrustTech | Mat Analytics</title>
-  <meta name="description" content="Guías, casos de uso y perspectivas sobre inteligencia analítica empresarial, gobernanza de datos y notarización blockchain para sectores regulados en Perú.">
+  <title>Insights — Arquitecturas de Datos, BI, Gobierno y TrustTech | Mat Analytics</title>
+  <meta name="description" content="Artículos, guías y análisis sobre Data Warehouse, Business Intelligence, Gobierno de Datos, Lakehouse, Inteligencia Artificial empresarial y TrustTech blockchain para sectores regulados en Perú.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mat-analytics.com/insights.html">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:logo" content="https://mat-analytics.com/brand-assets/logo-horizontal-negativo.svg">
   <meta property="og:url" content="https://mat-analytics.com/insights.html">
-  <meta property="og:title" content="Insights — Mat Analytics">
-  <meta property="og:description" content="Recursos sobre analytics empresarial, TrustTech y arquitecturas de datos para decisiones críticas.">
+  <meta property="og:title" content="Insights — Arquitecturas de Datos y Analítica Empresarial | Mat Analytics">
+  <meta property="og:description" content="Artículos, guías y análisis sobre Data Warehouse, BI, Gobierno de Datos, Lakehouse, IA Empresarial y TrustTech. Perspectivas editoriales sin contenido promocional.">
   <meta property="og:site_name" content="Mat Analytics">
+  <meta property="og:image" content="https://mat-analytics.com/brand-assets/og-image.jpg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Insights — Mat Analytics">
+  <meta name="twitter:description" content="Artículos y análisis sobre arquitecturas de datos, analítica empresarial, gobierno de datos, IA y TrustTech para sectores regulados.">
+  <meta name="twitter:image" content="https://mat-analytics.com/brand-assets/og-image.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "Insights — Mat Analytics SAC",
+        "description": "Artículos, guías y análisis sobre Data Warehouse, Business Intelligence, Gobierno de Datos, Lakehouse, Inteligencia Artificial empresarial y TrustTech.",
+        "url": "https://mat-analytics.com/insights.html",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mat Analytics SAC",
+          "url": "https://mat-analytics.com",
+          "logo": {"@type": "ImageObject","url": "https://mat-analytics.com/brand-assets/logo-horizontal-negativo.svg"}
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem","position": 1,"name": "Inicio","item": "https://mat-analytics.com"},
+          {"@type": "ListItem","position": 2,"name": "Insights","item": "https://mat-analytics.com/insights.html"}
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Insights Mat Analytics",
+        "url": "https://mat-analytics.com/insights.html",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"item":{"@type":"Article","name":"Del Business Intelligence Tradicional al Análisis Aumentado","url":"https://mat-analytics.com/insights.html","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":[{"@type":"Thing","name":"Business Intelligence"},{"@type":"Thing","name":"Inteligencia Artificial Empresarial"}]}},
+          {"@type":"ListItem","position":2,"item":{"@type":"Article","name":"Por qué el Data Warehouse centralizado sigue siendo la base de la analítica en sectores regulados","url":"https://mat-analytics.com/arquitecturas.html#dw-oracle","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Data Warehouse"}}},
+          {"@type":"ListItem","position":3,"item":{"@type":"Article","name":"Self-service analytics vs. BI gobernado: el equilibrio que buscan las áreas de datos","url":"https://mat-analytics.com/analitica.html","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Business Intelligence"}}},
+          {"@type":"ListItem","position":4,"item":{"@type":"Article","name":"El catálogo de datos no es un proyecto de TI: es una iniciativa de negocio","url":"https://mat-analytics.com/arquitecturas.html#gobierno-datos","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Gobierno de Datos"}}},
+          {"@type":"ListItem","position":5,"item":{"@type":"Article","name":"No-repudio en reportes regulatorios: por qué la firma electrónica no es suficiente","url":"https://mat-analytics.com/trusttech.html","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"TrustTech"}}},
+          {"@type":"ListItem","position":6,"item":{"@type":"Article","name":"Lakehouse vs. Data Warehouse: cuándo cada arquitectura responde al contexto","url":"https://mat-analytics.com/arquitecturas.html#lakehouse","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Lakehouse"}}},
+          {"@type":"ListItem","position":7,"item":{"@type":"Article","name":"RAG empresarial: cómo los LLMs acceden al conocimiento interno sin exponer datos","url":"https://mat-analytics.com/arquitecturas.html#lakehouse-ia-gen","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Inteligencia Artificial Empresarial"}}},
+          {"@type":"ListItem","position":8,"item":{"@type":"Article","name":"Oracle Analytics Cloud vs. Power BI: criterios técnicos para entornos regulados","url":"https://mat-analytics.com/analitica.html","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Oracle Analytics"}}},
+          {"@type":"ListItem","position":9,"item":{"@type":"Article","name":"Patrones de arquitectura de datos para banca regulada","url":"https://mat-analytics.com/arquitecturas.html","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Arquitecturas Empresariales"}}},
+          {"@type":"ListItem","position":10,"item":{"@type":"Article","name":"DAMA-DMBOK en la práctica: qué principios son universalmente aplicables","url":"https://mat-analytics.com/arquitecturas.html#gobierno-datos","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Gobierno de Datos"}}},
+          {"@type":"ListItem","position":11,"item":{"@type":"Article","name":"Blockchain aplicado a datos empresariales: qué garantiza y cuándo aplicarlo","url":"https://mat-analytics.com/trusttech.html","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"TrustTech"}}},
+          {"@type":"ListItem","position":12,"item":{"@type":"Article","name":"Evaluación de migración: de Data Warehouse tradicional a Lakehouse","url":"https://mat-analytics.com/arquitecturas.html#lakehouse","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Lakehouse"}}},
+          {"@type":"ListItem","position":13,"item":{"@type":"Article","name":"Modelado dimensional en 2026: el estándar que mantiene su relevancia","url":"https://mat-analytics.com/arquitecturas.html#dw-oracle","datePublished":"2026-06-15","author":{"@type":"Organization","name":"Mat Analytics SAC"},"about":{"@type":"Thing","name":"Data Warehouse"}}}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="brand-assets/favicon/favicon-32.png">
   <link rel="apple-touch-icon" href="brand-assets/favicon/favicon-180.png">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{--red:#8B0101;--red-hover:#A50101;--red-subtle:rgba(139,1,1,0.08);--black:#1E1E1E;--gray-text:#3A3A3A;--gray-mid:#757575;--gray-light:#D9D9D9;--gray-bg:#F7F7F7;--white:#FFFFFF;--border:rgba(255,255,255,0.08);--border-light:#E5E5E5;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--radius:6px;--radius-lg:12px;--transition:0.22s ease;--max-w:1160px}
+    :root{--red:#8B0101;--red-hover:#A50101;--red-subtle:rgba(139,1,1,0.08);--black:#1E1E1E;--gray-text:#3A3A3A;--gray-mid:#757575;--gray-light:#D9D9D9;--gray-bg:#F7F7F7;--white:#FFFFFF;--border-light:#E8E8E8;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--transition:0.22s ease;--max-w:1160px}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;font-size:16px}
     body{font-family:var(--font);color:var(--gray-text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -30,14 +91,7 @@
     img{display:block;max-width:100%}
     button{font-family:inherit}
     .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
-    .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);background:var(--red-subtle);padding:5px 12px;border-radius:3px}
-    .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 22px;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--transition);text-decoration:none;white-space:nowrap}
-    .btn--primary{background:var(--red);color:#fff}
-    .btn--primary:hover{background:var(--red-hover);box-shadow:0 4px 14px rgba(139,1,1,0.35)}
-    .btn--outline-dark{background:transparent;color:var(--black);border:1.5px solid rgba(30,30,30,0.18)}
-    .btn--outline-dark:hover{border-color:rgba(30,30,30,0.35);background:rgba(0,0,0,0.04)}
-    .btn--pill{border-radius:100px;padding:13px 28px}
-    .btn--lg{font-size:15px;padding:13px 24px}
+
     /* Navbar */
     .navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;background:#1E1E1E;border-bottom:1px solid rgba(255,255,255,0.07);transition:box-shadow var(--transition)}
     .navbar.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.40)}
@@ -70,6 +124,11 @@
     .mobile-menu__link{display:block;font-size:18px;font-weight:500;color:rgba(255,255,255,0.80);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);transition:color var(--transition)}
     .mobile-menu__link:hover{color:#fff}
     .mobile-menu .btn{margin-top:24px;width:100%;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 22px;border-radius:6px;border:none;cursor:pointer;transition:all var(--transition);text-decoration:none;white-space:nowrap}
+    .btn--primary{background:var(--red);color:#fff}
+    .btn--primary:hover{background:var(--red-hover);box-shadow:0 4px 14px rgba(139,1,1,0.35)}
+    .btn--lg{font-size:15px;padding:13px 24px}
+
     /* Breadcrumb */
     .breadcrumb{padding:13px 0;background:var(--gray-bg);border-bottom:1px solid var(--border-light);margin-top:68px}
     .breadcrumb__inner{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray-mid)}
@@ -77,63 +136,109 @@
     .breadcrumb__link:hover{color:var(--red)}
     .breadcrumb__sep{color:var(--gray-light)}
     .breadcrumb__current{color:var(--gray-text);font-weight:500}
-    /* Page hero */
-    .page-hero{padding:72px 0 64px;background:#fff;border-bottom:1px solid var(--border-light);text-align:center}
-    .page-hero__tag{margin-bottom:18px}
-    .page-hero__title{font-size:clamp(28px,3.8vw,52px);font-weight:800;color:var(--black);letter-spacing:-0.035em;line-height:1.1;margin-bottom:20px}
-    .page-hero__sub{font-size:17px;color:var(--gray-mid);max-width:580px;margin:0 auto;line-height:1.75}
-    /* Sections */
-    .section{padding:80px 0}
-    .section--gray{background:var(--gray-bg)}
-    .section__header{text-align:center;margin-bottom:52px}
-    .section__tag{margin-bottom:14px}
-    .section__title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-0.025em;line-height:1.15;margin-bottom:16px;color:var(--black)}
-    .section__sub{font-size:16px;color:var(--gray-mid);max-width:540px;margin:0 auto;line-height:1.70}
-    /* Category cards */
-    .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .cat-card{background:#fff;border:1px solid var(--border-light);border-radius:16px;padding:32px;transition:border-color 0.22s,box-shadow 0.22s;position:relative;overflow:hidden}
-    .cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform 0.30s ease}
-    .cat-card:hover{border-color:rgba(139,1,1,0.18);box-shadow:0 8px 32px rgba(0,0,0,0.07)}
-    .cat-card:hover::before{transform:scaleX(1)}
-    .cat-card__icon{width:44px;height:44px;border-radius:12px;background:var(--red-subtle);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-    .cat-card__count{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px;opacity:0.70}
-    .cat-card__title{font-size:17px;font-weight:700;color:var(--black);margin-bottom:10px;letter-spacing:-0.02em;line-height:1.25}
-    .cat-card__desc{font-size:13.5px;color:var(--gray-mid);line-height:1.70;margin-bottom:18px}
-    .cat-card__link{font-size:13px;font-weight:600;color:var(--red);display:inline-flex;align-items:center;gap:5px;transition:gap var(--transition)}
-    .cat-card:hover .cat-card__link{gap:9px}
-    /* Coming soon badge */
-    .coming-soon{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid);background:var(--gray-bg);padding:5px 12px;border-radius:100px;border:1px solid var(--border-light)}
-    .coming-soon::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gray-light);display:inline-block}
-    /* Featured topics */
-    .topics-list{display:flex;flex-direction:column;gap:0}
-    .topic-row{display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--border-light)}
-    .topic-row:first-child{border-top:1px solid var(--border-light)}
-    .topic-row__num{font-size:13px;font-weight:600;color:var(--gray-light);width:28px;flex-shrink:0;font-variant-numeric:tabular-nums}
-    .topic-row__tag{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--red);background:var(--red-subtle);padding:3px 9px;border-radius:3px;white-space:nowrap}
-    .topic-row__title{font-size:15px;font-weight:600;color:var(--black);flex:1;line-height:1.35}
-    .topic-row__status{font-size:11px;color:var(--gray-mid);white-space:nowrap}
-    /* Newsletter */
-    .newsletter{background:#111;border-radius:16px;padding:48px;text-align:center;color:#fff}
-    .newsletter__title{font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
-    .newsletter__sub{font-size:15px;color:rgba(255,255,255,0.50);margin-bottom:32px}
-    .newsletter__form{display:flex;gap:10px;max-width:420px;margin:0 auto}
-    .newsletter__input{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 16px;font-size:14px;color:#fff;font-family:inherit;outline:none;transition:border-color var(--transition)}
-    .newsletter__input::placeholder{color:rgba(255,255,255,0.30)}
-    .newsletter__input:focus{border-color:rgba(255,255,255,0.30)}
-    .newsletter__note{font-size:11.5px;color:rgba(255,255,255,0.25);margin-top:14px}
-    /* Cross-links */
-    .cross-links{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .cross-link{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:24px;display:flex;align-items:center;gap:14px;transition:border-color 0.22s,box-shadow 0.22s}
-    .cross-link:hover{border-color:rgba(139,1,1,0.22);box-shadow:0 6px 24px rgba(0,0,0,0.06)}
-    .cross-link__icon{width:40px;height:40px;border-radius:10px;background:var(--red-subtle);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .cross-link__icon svg{stroke:var(--red)}
-    .cross-link__title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
-    .cross-link__sub{font-size:12px;color:var(--gray-mid)}
+
+    /* Hero */
+    .ins-hero{padding:52px 0 44px;background:#fff;border-bottom:1px solid var(--border-light)}
+    .ins-hero__eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+    .ins-hero__eyebrow::before{content:'';display:block;width:16px;height:2px;background:var(--red)}
+    .ins-hero__title{font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--black);letter-spacing:-0.04em;line-height:1.08;margin-bottom:12px}
+    .ins-hero__sub{font-size:15.5px;color:var(--gray-mid);max-width:560px;line-height:1.72;margin-bottom:24px}
+    .ins-hero__stats{display:flex;gap:28px;flex-wrap:wrap}
+    .ins-hero__stat{display:flex;flex-direction:column;gap:2px}
+    .ins-hero__stat-val{font-size:20px;font-weight:800;color:var(--black);letter-spacing:-0.03em}
+    .ins-hero__stat-label{font-size:11px;color:var(--gray-mid);font-weight:500}
+
+    /* Mobile categories bar */
+    .ins-mobile-cats{display:none;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border-light);background:#fff}
+    .ins-mobile-cats::-webkit-scrollbar{display:none}
+    .ins-mobile-cats__inner{display:flex;padding:0 16px}
+    .ins-mobile-cat{display:inline-flex;align-items:center;gap:5px;padding:12px 14px;font-size:12px;font-weight:500;color:var(--gray-mid);border-bottom:2px solid transparent;cursor:pointer;flex-shrink:0;transition:color var(--transition),border-color var(--transition);white-space:nowrap}
+    .ins-mobile-cat:hover{color:var(--black)}
+    .ins-mobile-cat--active{color:var(--red);border-bottom-color:var(--red);font-weight:600}
+    .ins-mobile-cat__count{font-size:10px;color:var(--gray-light);font-weight:400}
+    .ins-mobile-cat--active .ins-mobile-cat__count{color:rgba(139,1,1,0.40)}
+
+    /* Layout */
+    .ins-body{padding:0 0 80px}
+    .ins-layout{display:grid;grid-template-columns:200px 1fr;align-items:start;max-width:var(--max-w);margin:0 auto}
+
+    /* Sidebar */
+    .ins-sidebar{position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;scrollbar-width:none;border-right:1px solid var(--border-light);padding:24px 0}
+    .ins-sidebar::-webkit-scrollbar{display:none}
+    .ins-sidebar__label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-mid);padding:0 20px 10px;display:block}
+    .ins-cat-item{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;font-size:13px;font-weight:500;color:var(--gray-text);border-left:2px solid transparent;cursor:pointer;transition:all var(--transition);user-select:none}
+    .ins-cat-item:hover{color:var(--black);background:var(--gray-bg)}
+    .ins-cat-item--active{color:var(--red);border-left-color:var(--red);background:rgba(139,1,1,0.04);font-weight:600}
+    .ins-cat-item__count{font-size:11px;color:var(--gray-light);font-weight:400}
+    .ins-cat-item--active .ins-cat-item__count{color:rgba(139,1,1,0.40)}
+    .ins-sidebar__sep{height:1px;background:var(--border-light);margin:8px 20px}
+    .ins-sidebar__section{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-light);padding:16px 20px 8px;display:block}
+
+    /* Content area */
+    .ins-content{padding:24px 28px}
+
+    /* Type filter bar */
+    .ins-type-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border-light)}
+    .ins-type-bar__label{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-mid);flex-shrink:0;margin-right:4px}
+    .ins-type-btn{font-size:11.5px;font-weight:500;padding:5px 13px;border-radius:100px;border:1px solid var(--border-light);background:#fff;color:var(--gray-mid);cursor:pointer;transition:all var(--transition);font-family:var(--font)}
+    .ins-type-btn:hover{border-color:rgba(0,0,0,0.18);color:var(--black)}
+    .ins-type-btn--active{background:var(--black);color:#fff;border-color:var(--black)}
+
+    /* Featured article */
+    .ins-featured{border:1px solid var(--border-light);border-left:3px solid var(--red);border-radius:10px;padding:26px;margin-bottom:20px;background:var(--gray-bg);display:block;transition:background var(--transition),box-shadow var(--transition)}
+    .ins-featured:hover{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.07)}
+    .ins-featured--hidden{display:none!important}
+    .ins-featured__tags{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+    .ins-featured__label{font-size:10px;font-weight:800;letter-spacing:0.10em;text-transform:uppercase;padding:3px 9px;border-radius:3px}
+    .ins-featured__title{font-size:clamp(16px,2vw,21px);font-weight:800;color:var(--black);letter-spacing:-0.03em;line-height:1.25;margin-bottom:10px}
+    .ins-featured__desc{font-size:14px;color:var(--gray-mid);line-height:1.72;margin-bottom:18px;max-width:700px}
+    .ins-featured__foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .ins-featured__meta{display:flex;gap:16px;font-size:12px;color:var(--gray-mid);align-items:center}
+    .ins-featured__sep{color:var(--gray-light)}
+    .ins-featured__cta{font-size:12.5px;font-weight:600;color:var(--red);display:flex;align-items:center;gap:5px}
+    .ins-featured__cta svg{transition:transform var(--transition)}
+    .ins-featured:hover .ins-featured__cta svg{transform:translateX(3px)}
+
+    /* Article card grid */
+    .ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .ins-card{border:1px solid var(--border-light);border-radius:10px;padding:20px;background:#fff;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition);text-decoration:none;color:inherit}
+    .ins-card:hover{border-color:rgba(0,0,0,0.12);box-shadow:0 4px 16px rgba(0,0,0,0.06);transform:translateY(-2px)}
+    .ins-card--hidden{display:none!important}
+    .ins-card__tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .ins-card__cat,.ins-card__type,.ins-featured__label{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+    .ins-card__title{font-size:14px;font-weight:700;color:var(--black);letter-spacing:-0.02em;line-height:1.38;flex:1}
+    .ins-card__desc{font-size:12.5px;color:var(--gray-mid);line-height:1.65}
+    .ins-card__foot{display:flex;align-items:center;justify-content:space-between;margin-top:2px}
+    .ins-card__read{font-size:11px;color:var(--gray-mid);display:flex;align-items:center;gap:4px}
+    .ins-card__date{font-size:11px;color:var(--gray-light)}
+
+    /* Category tag colors */
+    .ins-cat--data-warehouse{background:rgba(37,99,235,.08);color:#1D4ED8}
+    .ins-cat--bi{background:rgba(124,58,237,.08);color:#6D28D9}
+    .ins-cat--gobierno{background:rgba(5,150,105,.08);color:#047857}
+    .ins-cat--trusttech{background:var(--red-subtle);color:var(--red)}
+    .ins-cat--lakehouse{background:rgba(8,145,178,.08);color:#0E7490}
+    .ins-cat--ia{background:rgba(217,119,6,.08);color:#B45309}
+    .ins-cat--oracle{background:rgba(220,38,38,.08);color:#B91C1C}
+    .ins-cat--arquitecturas{background:rgba(107,114,128,.08);color:#4B5563}
+
+    /* Article type tag colors */
+    .ins-type--tendencias{background:rgba(180,83,9,.08);color:#B45309}
+    .ins-type--articulo{background:var(--gray-bg);color:var(--gray-mid)}
+    .ins-type--guia{background:rgba(29,78,216,.08);color:#1D4ED8}
+    .ins-type--practicas{background:rgba(4,120,87,.08);color:#047857}
+    .ins-type--whitepaper{background:rgba(185,28,28,.08);color:#B91C1C}
+
+    /* Empty state */
+    .ins-empty{display:none;padding:48px 0;text-align:center;color:var(--gray-mid);font-size:14px;grid-column:1/-1}
+    .ins-empty--visible{display:block}
+
     /* CTA */
     .cta-band{padding:80px 0;background:var(--black);color:#fff;text-align:center}
     .cta-band__title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-0.03em;margin-bottom:14px}
     .cta-band__sub{font-size:16px;color:rgba(255,255,255,0.55);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
     .cta-band .btn--primary{font-size:15px;padding:14px 32px;border-radius:100px}
+
     /* Footer */
     .footer{background:#1E1E1E;color:#fff;padding:40px 0 24px}
     .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px}
@@ -143,54 +248,22 @@
     .footer__link:hover{color:rgba(255,255,255,0.80)}
     .footer__bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     .footer__copy{font-size:12px;color:rgba(255,255,255,0.28)}
-    /* Reveal */
-    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    .reveal-delay-1{transition-delay:0.10s}
-    .reveal-delay-2{transition-delay:0.20s}
-    @media(max-width:900px){
+
+    /* Responsive */
+    @media(max-width:960px){
       .navbar__nav,.navbar__actions{display:none}
       .navbar__burger{display:flex}
-      .cat-grid{grid-template-columns:1fr}
-      .cross-links{grid-template-columns:1fr}
-      .newsletter__form{flex-direction:column}
+      .ins-layout{grid-template-columns:1fr}
+      .ins-sidebar{display:none}
+      .ins-mobile-cats{display:block}
+      .ins-content{padding:20px 16px}
+      .ins-grid{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:600px){
-      .topic-row__tag{display:none}
+      .ins-grid{grid-template-columns:1fr}
+      .ins-type-bar{display:none}
+      .ins-hero{padding:36px 0 28px}
     }
-    .trends-legend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
-    .trends-legend__item{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-mid)}
-    .trends-legend__arrow{font-size:13px;color:var(--gray-light)}
-    .trends-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-    .trends-dot--trend{background:var(--black)}
-    .trends-dot--problem{background:#EF4444}
-    .trends-dot--benefit{background:#10B981}
-    .trends-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px}
-    .trend-card{background:#fff;border:1px solid #E8E8E8;border-left:3px solid var(--red);border-radius:0 12px 12px 0;padding:24px 26px;display:flex;flex-direction:column}
-    .trend-card--gov{border-left-color:#1E40AF}
-    .trend-card--strategy{border-left-color:#92400E}
-    .trend-card--trust{border-left-color:#7C3AED}
-    .trend-card--analytics{border-left-color:#065F46}
-    .trend-card__meta{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-    .trend-domain{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 9px;border-radius:3px}
-    .trend-domain--arq{color:#8B0101;background:rgba(139,1,1,0.08)}
-    .trend-domain--gov{color:#1E40AF;background:rgba(30,64,175,0.08)}
-    .trend-domain--strategy{color:#92400E;background:rgba(146,64,14,0.08)}
-    .trend-domain--trust{color:#7C3AED;background:rgba(124,58,237,0.08)}
-    .trend-domain--analytics{color:#065F46;background:rgba(6,95,70,0.08)}
-    .trend-idx{font-size:11px;font-weight:700;color:var(--gray-light);letter-spacing:0.06em;font-variant-numeric:tabular-nums}
-    .trend-name{font-size:16px;font-weight:700;color:var(--black);letter-spacing:-0.02em;line-height:1.25;margin-bottom:16px}
-    .trend-divider{height:1px;background:#F0F0F0;margin-bottom:16px}
-    .trend-row{margin-bottom:14px}
-    .trend-row:last-child{margin-bottom:0;flex:1}
-    .trend-row__label{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:#BBBBBB;margin-bottom:5px}
-    .trend-row__dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-    .trend-row__dot--problem{background:#EF4444}
-    .trend-row__dot--benefit{background:#10B981}
-    .trend-row__text{font-size:13px;color:var(--gray-text);line-height:1.70}
-    .trends-note{background:#F7F7F7;border-left:3px solid var(--gray-light);border-radius:0 6px 6px 0;padding:16px 20px}
-    .trends-note p{font-size:12.5px;color:var(--gray-mid);line-height:1.75;font-style:italic}
-    @media(max-width:900px){.trends-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -210,29 +283,20 @@
           <div class="nav-dropdown__menu" role="menu">
             <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
               <span class="nav-dropdown__item-num">01</span>
-              <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Inteligencia Anal&iacute;tica</p>
-                <p class="nav-dropdown__item-desc">Oracle OAC &middot; Power BI &middot; Gobernanza</p>
-              </div>
+              <div><p class="nav-dropdown__item-title">Inteligencia Anal&iacute;tica</p><p class="nav-dropdown__item-desc">Oracle OAC &middot; Power BI &middot; Gobernanza</p></div>
             </a>
             <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
               <span class="nav-dropdown__item-num">02</span>
-              <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">TrustTech &amp; Certificaci&oacute;n</p>
-                <p class="nav-dropdown__item-desc">Notarizaci&oacute;n blockchain &middot; Stamping.io</p>
-              </div>
+              <div><p class="nav-dropdown__item-title">TrustTech &amp; Certificaci&oacute;n</p><p class="nav-dropdown__item-desc">Notarizaci&oacute;n blockchain &middot; Stamping.io</p></div>
             </a>
             <div class="nav-dropdown__divider"></div>
             <a class="nav-dropdown__item" href="capacidades.html" role="menuitem">
               <span class="nav-dropdown__item-num">&#8594;</span>
-              <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Ver todas las capacidades</p>
-                <p class="nav-dropdown__item-desc">Portafolio completo de servicios</p>
-              </div>
+              <div><p class="nav-dropdown__item-title">Ver todas las capacidades</p><p class="nav-dropdown__item-desc">Portafolio completo de servicios</p></div>
             </a>
           </div>
         </li>
-        <li class="nav-dropdown nav-dropdown--architecture">
+        <li class="nav-dropdown">
           <button class="nav-dropdown__trigger" aria-expanded="false" aria-haspopup="true">
             Arquitectura
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
@@ -240,17 +304,16 @@
           <div class="nav-dropdown__menu" role="menu">
             <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
               <span class="nav-dropdown__item-num">01</span>
-              <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Arquitectura</p>
-                <p class="nav-dropdown__item-desc">Arquitectura de Datos Enterprise</p>
-              </div>
+              <div><p class="nav-dropdown__item-title">Arquitectura Oracle</p><p class="nav-dropdown__item-desc">Stack enterprise de datos Oracle</p></div>
             </a>
             <a class="nav-dropdown__item" href="arquitecturas-referencia.html" role="menuitem">
               <span class="nav-dropdown__item-num">02</span>
-              <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Arquitecturas de Referencia</p>
-                <p class="nav-dropdown__item-desc">Patrones empresariales y buenas pr&aacute;cticas</p>
-              </div>
+              <div><p class="nav-dropdown__item-title">Arquitecturas de Referencia</p><p class="nav-dropdown__item-desc">Patrones empresariales documentados</p></div>
+            </a>
+            <div class="nav-dropdown__divider"></div>
+            <a class="nav-dropdown__item" href="arquitecturas.html" role="menuitem">
+              <span class="nav-dropdown__item-num">&#8594;</span>
+              <div><p class="nav-dropdown__item-title">Arquitecturas Detalladas</p><p class="nav-dropdown__item-desc">9 patrones con diagramas y componentes</p></div>
             </a>
           </div>
         </li>
@@ -266,9 +329,7 @@
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
       </div>
-      <button class="navbar__burger" id="burgerBtn" aria-label="Men&uacute;">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Men&uacute;"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -277,7 +338,7 @@
     <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
     <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
     <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
-    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura Oracle</a>
     <a class="mobile-menu__link" href="arquitecturas-referencia.html" onclick="closeMobile()">Arquitecturas de Referencia</a>
     <a class="mobile-menu__link" href="insights.html" onclick="closeMobile()">Insights</a>
     <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
@@ -294,310 +355,331 @@
     </div>
   </nav>
 
-  <!-- Page hero -->
-  <section class="page-hero">
+  <!-- Hero -->
+  <section class="ins-hero">
     <div class="container">
-      <div class="page-hero__tag"><span class="tag">Recursos</span></div>
-      <h1 class="page-hero__title">Perspectivas sobre datos<br>que mueven decisiones.</h1>
-      <p class="page-hero__sub">Gu&iacute;as pr&aacute;cticas, casos de uso y an&aacute;lisis t&eacute;cnicos sobre analytics empresarial, gobernanza de datos y certificaci&oacute;n blockchain para sectores regulados.</p>
-    </div>
-  </section>
-
-  <!-- Trends -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header reveal">
-        <div class="section__tag"><span class="tag">An&aacute;lisis de Mercado</span></div>
-        <h2 class="section__title">Tendencias e Iniciativas que est&aacute;n<br>transformando la gesti&oacute;n de datos.</h2>
-        <p class="section__sub">Seguimiento de publicaciones sectoriales, informes de analistas y evoluci&oacute;n de plataformas tecnol&oacute;gicas l&iacute;deres. Ninguna tendencia es atribuida a MAT Analytics.</p>
-        <div class="trends-legend">
-          <span class="trends-legend__item"><span class="trends-dot trends-dot--trend"></span>Tendencia</span>
-          <span class="trends-legend__arrow">&#8594;</span>
-          <span class="trends-legend__item"><span class="trends-dot trends-dot--problem"></span>Problema que resuelve</span>
-          <span class="trends-legend__arrow">&#8594;</span>
-          <span class="trends-legend__item"><span class="trends-dot trends-dot--benefit"></span>Beneficio empresarial</span>
-        </div>
-      </div>
-
-      <div class="trends-grid">
-
-        <div class="trend-card reveal">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--arq">Arquitectura</span>
-            <span class="trend-idx">01</span>
-          </div>
-          <h3 class="trend-name">Data Warehouses Modernos</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Las organizaciones acumulan datos en silos fragmentados &mdash;ERP, CRM, operaciones&mdash; sin fuente unificada de verdad. Los reportes son lentos, inconsistentes y dependen de consolidaci&oacute;n manual.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Arquitectura centralizada optimizada para consultas anal&iacute;ticas elimina inconsistencias y habilita reportes ejecutivos en tiempo real desde una sola fuente auditada.</p>
-          </div>
-        </div>
-
-        <div class="trend-card trend-card--gov reveal reveal-delay-1">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--gov">Gobernanza</span>
-            <span class="trend-idx">02</span>
-          </div>
-          <h3 class="trend-name">Gobierno de Datos</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Sin un marco de gobierno, los datos cr&iacute;ticos carecen de linaje claro, calidad verificable y responsabilidad asignada. Las decisiones se basan en cifras contradictorias entre &aacute;reas.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Propietarios de datos, est&aacute;ndares de calidad, reglas de acceso y trazabilidad completa desde la fuente hasta el reporte. Los datos pasan de ser un riesgo a ser un activo auditado.</p>
-          </div>
-        </div>
-
-        <div class="trend-card reveal">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--arq">Arquitectura</span>
-            <span class="trend-idx">03</span>
-          </div>
-          <h3 class="trend-name">Data Fabric</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Arquitecturas de datos que crecen en capas de tecnolog&iacute;as desconectadas: warehouses, data lakes, bases transaccionales y APIs sin metadatos compartidos ni sem&aacute;ntica consistente.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Capa de integraci&oacute;n inteligente que conecta fuentes heterog&eacute;neas con metadatos unificados. Los equipos consumen datos con contexto sin requerir ingenier&iacute;a centralizada para cada consulta.</p>
-          </div>
-        </div>
-
-        <div class="trend-card trend-card--strategy reveal reveal-delay-1">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--strategy">Estrategia</span>
-            <span class="trend-idx">04</span>
-          </div>
-          <h3 class="trend-name">Data Mesh</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Los equipos de datos centralizados se convierten en cuellos de botella cuando cada &aacute;rea de negocio debe canalizar sus necesidades anal&iacute;ticas a trav&eacute;s de un &uacute;nico equipo t&eacute;cnico.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Los dominios de negocio publican sus datos como productos con contratos y est&aacute;ndares definidos. La gobernanza se federaliza sin sacrificar consistencia global.</p>
-          </div>
-        </div>
-
-        <div class="trend-card trend-card--trust reveal">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--trust">TrustTech</span>
-            <span class="trend-idx">05</span>
-          </div>
-          <h3 class="trend-name">Certificaci&oacute;n Criptogr&aacute;fica de Documentos</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Los documentos digitales &mdash;contratos, reportes regulatorios, estados financieros&mdash; pueden modificarse sin dejar rastro verificable, exponiendo a las organizaciones a disputas legales y fallos de auditor&iacute;a.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">La notarizaci&oacute;n criptogr&aacute;fica registra una huella digital inmutable del documento en el momento de su emisi&oacute;n. Cualquier modificaci&oacute;n posterior es detectable sin necesidad de un tercero custodio.</p>
-          </div>
-        </div>
-
-        <div class="trend-card trend-card--trust reveal reveal-delay-1">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--trust">TrustTech</span>
-            <span class="trend-idx">06</span>
-          </div>
-          <h3 class="trend-name">Blockchain Aplicada a Auditor&iacute;a</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Los registros de auditor&iacute;a en sistemas tradicionales son mutables. Pueden ser alterados por administradores sin dejar evidencia, debilitando el valor probatorio del trail ante auditores externos.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Trail de auditor&iacute;a permanente, secuencial y verificable por cualquier parte autorizada, independiente del sistema que lo gener&oacute;. Cumple est&aacute;ndares de evidencia en entornos regulados.</p>
-          </div>
-        </div>
-
-        <div class="trend-card trend-card--analytics reveal">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--analytics">Analytics</span>
-            <span class="trend-idx">07</span>
-          </div>
-          <h3 class="trend-name">Anal&iacute;tica para Cumplimiento Regulatorio</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">El compliance &mdash;SBS, SMV, SUNAT&mdash; exige reportes peri&oacute;dicos con datos precisos y trazables. Los procesos manuales son lentos, propensos a error y dif&iacute;ciles de defender ante un auditor externo.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Fuente &uacute;nica de verdad con reglas de negocio codificadas y linaje de datos permite generar reportes regulatorios autom&aacute;ticamente con evidencia completa de la ruta de c&aacute;lculo.</p>
-          </div>
-        </div>
-
-        <div class="trend-card trend-card--analytics reveal reveal-delay-1">
-          <div class="trend-card__meta">
-            <span class="trend-domain trend-domain--analytics">Analytics</span>
-            <span class="trend-idx">08</span>
-          </div>
-          <h3 class="trend-name">Inteligencia Artificial Aplicada a Datos</h3>
-          <div class="trend-divider"></div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--problem"></span>Problema</div>
-            <p class="trend-row__text">Los vol&uacute;menes de datos transaccionales superan la capacidad humana para detectar patrones, anomal&iacute;as y se&ntilde;ales tempranas de riesgo mediante an&aacute;lisis manual o reportes est&aacute;ticos.</p>
-          </div>
-          <div class="trend-row">
-            <div class="trend-row__label"><span class="trend-row__dot trend-row__dot--benefit"></span>Beneficio</div>
-            <p class="trend-row__text">Detecci&oacute;n autom&aacute;tica de anomal&iacute;as, forecasting de variables cr&iacute;ticas y segmentaci&oacute;n inteligente que ampl&iacute;an la capacidad de decisi&oacute;n sin reemplazar al analista humano.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="trends-note reveal">
-        <p>Tendencias observadas a trav&eacute;s del seguimiento de publicaciones sectoriales, informes de analistas de mercado y la evoluci&oacute;n de las plataformas tecnol&oacute;gicas l&iacute;deres. Ninguna iniciativa mencionada es atribuida a MAT Analytics ni a sus clientes. Reflejan el conocimiento del mercado de datos que nuestro equipo consultor mantiene actualizado.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Categories -->
-  <section class="section">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__tag"><span class="tag">Categor&iacute;as</span></div>
-        <h2 class="section__title">Explora por tema.</h2>
-        <p class="section__sub">Contenido organizado en las tres verticales que definen la propuesta de valor de Mat Analytics.</p>
-      </div>
-      <div class="cat-grid">
-        <div class="cat-card reveal">
-          <div class="cat-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <p class="cat-card__count">Inteligencia Anal&iacute;tica</p>
-          <h3 class="cat-card__title">Oracle OAC, Power BI y Gobernanza de Datos</h3>
-          <p class="cat-card__desc">Mejores pr&aacute;cticas para implementar plataformas analíticas en entornos enterprise: modelado dimensional, capa sem&aacute;ntica, acceso por rol y auditoría de uso.</p>
-          <span class="coming-soon">Pr&oacute;ximamente</span>
-        </div>
-        <div class="cat-card reveal reveal-delay-1">
-          <div class="cat-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-          </div>
-          <p class="cat-card__count">TrustTech &amp; Certificaci&oacute;n</p>
-          <h3 class="cat-card__title">Notarizaci&oacute;n Blockchain y Evidencia Digital</h3>
-          <p class="cat-card__desc">C&oacute;mo la inmutabilidad criptogr&aacute;fica transforma auditor&iacute;as, contratos y reportes regulatorios en sectores de banca, seguros y administraci&oacute;n p&uacute;blica.</p>
-          <span class="coming-soon">Pr&oacute;ximamente</span>
-        </div>
-        <div class="cat-card reveal reveal-delay-2">
-          <div class="cat-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <p class="cat-card__count">Arquitecturas</p>
-          <h3 class="cat-card__title">Dise&ntilde;o de Ecosistemas de Datos End-to-End</h3>
-          <p class="cat-card__desc">Referentes de dise&ntilde;o para Data Warehouse, pilas de integraci&oacute;n, patrones ETL/ELT y estrategias de modernizaci&oacute;n de plataformas legacy en entornos Oracle.</p>
-          <span class="coming-soon">Pr&oacute;ximamente</span>
-        </div>
+      <div class="ins-hero__eyebrow">Centro de conocimiento</div>
+      <h1 class="ins-hero__title">An&aacute;lisis y perspectivas<br>sobre datos empresariales.</h1>
+      <p class="ins-hero__sub">Art&iacute;culos, gu&iacute;as y an&aacute;lisis sobre arquitecturas de datos, anal&iacute;tica empresarial, gobierno de datos, inteligencia artificial y TrustTech. Perspectivas editoriales sin contenido promocional.</p>
+      <div class="ins-hero__stats">
+        <div class="ins-hero__stat"><span class="ins-hero__stat-val">13</span><span class="ins-hero__stat-label">Art&iacute;culos publicados</span></div>
+        <div class="ins-hero__stat"><span class="ins-hero__stat-val">8</span><span class="ins-hero__stat-label">Categor&iacute;as</span></div>
+        <div class="ins-hero__stat"><span class="ins-hero__stat-val">5</span><span class="ins-hero__stat-label">Tipos de contenido</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Upcoming topics -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__tag"><span class="tag">En preparaci&oacute;n</span></div>
-        <h2 class="section__title">Temas que publicaremos pr&oacute;ximamente.</h2>
-      </div>
-      <div class="topics-list reveal">
-        <div class="topic-row">
-          <span class="topic-row__num">01</span>
-          <span class="topic-row__tag">Analytics</span>
-          <span class="topic-row__title">Modelo sem&aacute;ntico unificado en Oracle Analytics Cloud: gu&iacute;a de implementaci&oacute;n</span>
-          <span class="topic-row__status">En redacci&oacute;n</span>
-        </div>
-        <div class="topic-row">
-          <span class="topic-row__num">02</span>
-          <span class="topic-row__tag">TrustTech</span>
-          <span class="topic-row__title">Evidencia digital admisible: c&oacute;mo la notarizaci&oacute;n blockchain satisface requerimientos regulatorios SBS</span>
-          <span class="topic-row__status">En redacci&oacute;n</span>
-        </div>
-        <div class="topic-row">
-          <span class="topic-row__num">03</span>
-          <span class="topic-row__tag">Arquitectura</span>
-          <span class="topic-row__title">Migration path: de Data Warehouse on-premise a arquitectura h&iacute;brida Oracle Cloud</span>
-          <span class="topic-row__status">Planificado</span>
-        </div>
-        <div class="topic-row">
-          <span class="topic-row__num">04</span>
-          <span class="topic-row__tag">Analytics</span>
-          <span class="topic-row__title">Gobernanza de datos en banca: controles de acceso, linaje y retenci&oacute;n para cumplimiento normativo</span>
-          <span class="topic-row__status">Planificado</span>
-        </div>
-        <div class="topic-row">
-          <span class="topic-row__num">05</span>
-          <span class="topic-row__tag">TrustTech</span>
-          <span class="topic-row__title">Automatizaci&oacute;n de auditor&iacute;as con sellado criptogr&aacute;fico: caso de uso en sector seguros</span>
-          <span class="topic-row__status">Planificado</span>
-        </div>
-      </div>
+  <!-- Mobile categories -->
+  <nav class="ins-mobile-cats" aria-label="Filtrar por categor&iacute;a">
+    <div class="ins-mobile-cats__inner">
+      <span class="ins-mobile-cat ins-mobile-cat--active" data-cat="all">Todas <span class="ins-mobile-cat__count">13</span></span>
+      <span class="ins-mobile-cat" data-cat="data-warehouse">Data Warehouse <span class="ins-mobile-cat__count">2</span></span>
+      <span class="ins-mobile-cat" data-cat="bi">Business Intelligence <span class="ins-mobile-cat__count">1</span></span>
+      <span class="ins-mobile-cat" data-cat="gobierno">Gobierno de Datos <span class="ins-mobile-cat__count">2</span></span>
+      <span class="ins-mobile-cat" data-cat="trusttech">TrustTech <span class="ins-mobile-cat__count">2</span></span>
+      <span class="ins-mobile-cat" data-cat="lakehouse">Lakehouse <span class="ins-mobile-cat__count">2</span></span>
+      <span class="ins-mobile-cat" data-cat="ia">Inteligencia Artificial <span class="ins-mobile-cat__count">2</span></span>
+      <span class="ins-mobile-cat" data-cat="oracle">Oracle Analytics <span class="ins-mobile-cat__count">1</span></span>
+      <span class="ins-mobile-cat" data-cat="arquitecturas">Arquitecturas <span class="ins-mobile-cat__count">1</span></span>
     </div>
-  </section>
+  </nav>
 
-  <!-- Newsletter -->
-  <section class="section">
-    <div class="container">
-      <div class="newsletter reveal">
-        <h2 class="newsletter__title">Rec&iacute;belos en su correo.</h2>
-        <p class="newsletter__sub">Nuevos insights directamente a su bandeja de entrada. Sin spam. Sin frecuencia excesiva.</p>
-        <form class="newsletter__form" action="https://formspree.io/f/mdavynjy" method="POST" novalidate>
-          <input class="newsletter__input" type="email" name="email" placeholder="correo@empresa.com" required autocomplete="email">
-          <button type="submit" class="btn btn--primary" style="border-radius:8px">Suscribirse</button>
-        </form>
-        <p class="newsletter__note">Sin datos compartidos con terceros. Baja en cualquier momento.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Body -->
+  <div class="ins-body">
+    <div class="ins-layout">
 
-  <!-- Cross-links -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section__header">
-        <div class="section__tag"><span class="tag">Continuar explorando</span></div>
-        <h2 class="section__title">Conozca c&oacute;mo aplicamos estos conceptos.</h2>
-      </div>
-      <div class="cross-links">
-        <a href="capacidades.html" class="cross-link reveal">
-          <div class="cross-link__icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <!-- Sidebar -->
+      <aside class="ins-sidebar" aria-label="Filtros de categor&iacute;a">
+        <span class="ins-sidebar__label">Categor&iacute;as</span>
+        <div class="ins-cat-item ins-cat-item--active" data-cat="all" role="button" tabindex="0">
+          <span>Todos los temas</span>
+          <span class="ins-cat-item__count">13</span>
+        </div>
+        <div class="ins-sidebar__sep"></div>
+        <div class="ins-cat-item" data-cat="data-warehouse" role="button" tabindex="0">
+          <span>Data Warehouse</span>
+          <span class="ins-cat-item__count">2</span>
+        </div>
+        <div class="ins-cat-item" data-cat="bi" role="button" tabindex="0">
+          <span>Business Intelligence</span>
+          <span class="ins-cat-item__count">1</span>
+        </div>
+        <div class="ins-cat-item" data-cat="gobierno" role="button" tabindex="0">
+          <span>Gobierno de Datos</span>
+          <span class="ins-cat-item__count">2</span>
+        </div>
+        <div class="ins-cat-item" data-cat="trusttech" role="button" tabindex="0">
+          <span>TrustTech</span>
+          <span class="ins-cat-item__count">2</span>
+        </div>
+        <div class="ins-cat-item" data-cat="lakehouse" role="button" tabindex="0">
+          <span>Lakehouse</span>
+          <span class="ins-cat-item__count">2</span>
+        </div>
+        <div class="ins-cat-item" data-cat="ia" role="button" tabindex="0">
+          <span>Inteligencia Artificial</span>
+          <span class="ins-cat-item__count">2</span>
+        </div>
+        <div class="ins-cat-item" data-cat="oracle" role="button" tabindex="0">
+          <span>Oracle Analytics</span>
+          <span class="ins-cat-item__count">1</span>
+        </div>
+        <div class="ins-cat-item" data-cat="arquitecturas" role="button" tabindex="0">
+          <span>Arquitecturas</span>
+          <span class="ins-cat-item__count">1</span>
+        </div>
+        <div class="ins-sidebar__sep"></div>
+        <span class="ins-sidebar__section">Tipo de contenido</span>
+        <div class="ins-cat-item" data-cat="--type--tendencias" role="button" tabindex="0" style="font-size:12px">
+          <span>Tendencias</span><span class="ins-cat-item__count">5</span>
+        </div>
+        <div class="ins-cat-item" data-cat="--type--articulo" role="button" tabindex="0" style="font-size:12px">
+          <span>Art&iacute;culos</span><span class="ins-cat-item__count">4</span>
+        </div>
+        <div class="ins-cat-item" data-cat="--type--guia" role="button" tabindex="0" style="font-size:12px">
+          <span>Gu&iacute;as</span><span class="ins-cat-item__count">2</span>
+        </div>
+        <div class="ins-cat-item" data-cat="--type--practicas" role="button" tabindex="0" style="font-size:12px">
+          <span>Buenas Pr&aacute;cticas</span><span class="ins-cat-item__count">2</span>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <main class="ins-content">
+
+        <!-- Type filter bar -->
+        <div class="ins-type-bar" role="group" aria-label="Filtrar por tipo">
+          <span class="ins-type-bar__label">Tipo</span>
+          <button class="ins-type-btn ins-type-btn--active" data-type="all">Todos</button>
+          <button class="ins-type-btn" data-type="tendencias">Tendencias</button>
+          <button class="ins-type-btn" data-type="articulo">Art&iacute;culo</button>
+          <button class="ins-type-btn" data-type="guia">Gu&iacute;a</button>
+          <button class="ins-type-btn" data-type="practicas">Buenas pr&aacute;cticas</button>
+          <button class="ins-type-btn" data-type="whitepaper">Whitepaper</button>
+        </div>
+
+        <!-- Featured article -->
+        <a class="ins-featured" href="arquitecturas.html#lakehouse-ia-gen" data-cat="ia" data-type="tendencias" aria-label="Leer art&iacute;culo destacado">
+          <div class="ins-featured__tags">
+            <span class="ins-featured__label ins-cat--ia">Inteligencia Artificial</span>
+            <span class="ins-featured__label ins-type--tendencias">Tendencias</span>
+            <span style="font-size:11px;color:var(--gray-light);margin-left:4px">Destacado</span>
           </div>
-          <div>
-            <p class="cross-link__title">Ver Capacidades</p>
-            <p class="cross-link__sub">Portafolio completo de servicios Mat Analytics</p>
+          <h2 class="ins-featured__title">Del Business Intelligence Tradicional al An&aacute;lisis Aumentado: La Evoluci&oacute;n que Est&aacute; Transformando las Plataformas de Datos</h2>
+          <p class="ins-featured__desc">Las organizaciones que operan sobre infraestructura BI convencional enfrentan un punto de inflexi&oacute;n: los reportes est&aacute;ticos no pueden responder preguntas no anticipadas ni competir con plataformas que generan insights en lenguaje natural. C&oacute;mo est&aacute; evolucionando el mercado de datos y qu&eacute; implica arquitect&oacute;nicamente esta transici&oacute;n.</p>
+          <div class="ins-featured__foot">
+            <div class="ins-featured__meta">
+              <span>12 min lectura</span>
+              <span class="ins-featured__sep">·</span>
+              <span>Jun 2026</span>
+            </div>
+            <span class="ins-featured__cta">
+              Leer an&aacute;lisis
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            </span>
           </div>
         </a>
-        <a href="nosotros.html" class="cross-link reveal reveal-delay-1">
-          <div class="cross-link__icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <p class="cross-link__title">Conocer el Equipo</p>
-            <p class="cross-link__sub">Senior consultants &middot; Oracle Certified &middot; 15+ a&ntilde;os</p>
-          </div>
-        </a>
-      </div>
+
+        <!-- Cards grid -->
+        <div class="ins-grid" id="insGrid">
+
+          <div class="ins-empty" id="insEmpty">No hay contenido en esta categor&iacute;a todav&iacute;a.</div>
+
+          <!-- 01 Data Warehouse / Tendencias -->
+          <a class="ins-card" href="arquitecturas.html#dw-oracle" data-cat="data-warehouse" data-type="tendencias">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--data-warehouse">Data Warehouse</span>
+              <span class="ins-card__type ins-type--tendencias">Tendencias</span>
+            </div>
+            <h3 class="ins-card__title">Por qu&eacute; el Data Warehouse centralizado sigue siendo la base de la anal&iacute;tica en sectores regulados</h3>
+            <p class="ins-card__desc">La persistencia del paradigma DW en sectores financieros no es conservadurismo: es la consecuencia directa de requisitos de auditor&iacute;a, trazabilidad y consistencia hist&oacute;rica.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7 min
+              </span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 02 BI / Artículo -->
+          <a class="ins-card" href="analitica.html" data-cat="bi" data-type="articulo">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--bi">Business Intelligence</span>
+              <span class="ins-card__type ins-type--articulo">Art&iacute;culo</span>
+            </div>
+            <h3 class="ins-card__title">Self-service analytics vs. BI gobernado: el equilibrio que buscan las &aacute;reas de datos maduras</h3>
+            <p class="ins-card__desc">Entregar acceso directo sin perder control sobre las definiciones de negocio es el desaf&iacute;o central de cualquier plataforma BI que escale.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 03 Gobierno / Artículo -->
+          <a class="ins-card" href="arquitecturas.html#gobierno-datos" data-cat="gobierno" data-type="articulo">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--gobierno">Gobierno de Datos</span>
+              <span class="ins-card__type ins-type--articulo">Art&iacute;culo</span>
+            </div>
+            <h3 class="ins-card__title">El cat&aacute;logo de datos no es un proyecto de TI: es una iniciativa de negocio</h3>
+            <p class="ins-card__desc">Organizaciones que tratan el gobierno de datos como iniciativa t&eacute;cnica suelen obtener cat&aacute;logos sin adopci&oacute;n. Por qu&eacute; el contexto de negocio determina el &eacute;xito del programa.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 04 TrustTech / Buenas Prácticas -->
+          <a class="ins-card" href="trusttech.html" data-cat="trusttech" data-type="practicas">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--trusttech">TrustTech</span>
+              <span class="ins-card__type ins-type--practicas">Buenas pr&aacute;cticas</span>
+            </div>
+            <h3 class="ins-card__title">No-repudio en reportes regulatorios: por qu&eacute; la firma electr&oacute;nica no es suficiente</h3>
+            <p class="ins-card__desc">La firma electr&oacute;nica certifica identidad. La notarizaci&oacute;n blockchain certifica contenido en un instante espec&iacute;fico. La diferencia define la calidad de la evidencia ante auditor&iacute;a.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 05 Lakehouse / Tendencias -->
+          <a class="ins-card" href="arquitecturas.html#lakehouse" data-cat="lakehouse" data-type="tendencias">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--lakehouse">Lakehouse</span>
+              <span class="ins-card__type ins-type--tendencias">Tendencias</span>
+            </div>
+            <h3 class="ins-card__title">Lakehouse vs. Data Warehouse: cu&aacute;ndo cada arquitectura responde al contexto correcto</h3>
+            <p class="ins-card__desc">La elecci&oacute;n entre ambos patrones no es ideol&oacute;gica: depende del volumen, la variedad de datos, los requisitos de latencia y la madurez del gobierno en la organizaci&oacute;n.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 06 IA / Tendencias -->
+          <a class="ins-card" href="arquitecturas.html#lakehouse-ia-gen" data-cat="ia" data-type="tendencias">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--ia">Inteligencia Artificial</span>
+              <span class="ins-card__type ins-type--tendencias">Tendencias</span>
+            </div>
+            <h3 class="ins-card__title">RAG empresarial: c&oacute;mo los LLMs acceden al conocimiento interno sin exponer datos sensibles</h3>
+            <p class="ins-card__desc">Retrieval-Augmented Generation es el patr&oacute;n que permite a los modelos de lenguaje responder con el contexto espec&iacute;fico de la organizaci&oacute;n, no con conocimiento gen&eacute;rico.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 07 Oracle / Guía -->
+          <a class="ins-card" href="analitica.html" data-cat="oracle" data-type="guia">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--oracle">Oracle Analytics</span>
+              <span class="ins-card__type ins-type--guia">Gu&iacute;a</span>
+            </div>
+            <h3 class="ins-card__title">Oracle Analytics Cloud vs. Power BI: criterios t&eacute;cnicos para entornos regulados</h3>
+            <p class="ins-card__desc">Un an&aacute;lisis estructurado de capacidades, gobierno, sem&aacute;ntica y escalabilidad. La elecci&oacute;n no puede basarse en tendencias de mercado cuando el contexto tiene exigencias de cumplimiento.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>11 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 08 Arquitecturas / Tendencias -->
+          <a class="ins-card" href="arquitecturas.html" data-cat="arquitecturas" data-type="tendencias">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--arquitecturas">Arquitecturas</span>
+              <span class="ins-card__type ins-type--tendencias">Tendencias</span>
+            </div>
+            <h3 class="ins-card__title">Patrones de arquitectura de datos para banca regulada: an&aacute;lisis del mercado</h3>
+            <p class="ins-card__desc">Los requerimientos de disponibilidad 24&times;7, trazabilidad de operaciones y cumplimiento con normativa SBS definen un conjunto de restricciones arquitect&oacute;nicas que determinan las opciones viables.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 09 Gobierno / Buenas Prácticas -->
+          <a class="ins-card" href="arquitecturas.html#gobierno-datos" data-cat="gobierno" data-type="practicas">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--gobierno">Gobierno de Datos</span>
+              <span class="ins-card__type ins-type--practicas">Buenas pr&aacute;cticas</span>
+            </div>
+            <h3 class="ins-card__title">DAMA-DMBOK en la pr&aacute;ctica: qu&eacute; principios son universalmente aplicables y cu&aacute;les requieren adaptaci&oacute;n</h3>
+            <p class="ins-card__desc">Los marcos internacionales de gobierno de datos fueron concebidos en mercados con alta madurez anal&iacute;tica. Qu&eacute; aplica directamente y qu&eacute; requiere ajuste para contextos latinoamericanos.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 10 TrustTech / Artículo -->
+          <a class="ins-card" href="trusttech.html" data-cat="trusttech" data-type="articulo">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--trusttech">TrustTech</span>
+              <span class="ins-card__type ins-type--articulo">Art&iacute;culo</span>
+            </div>
+            <h3 class="ins-card__title">Blockchain aplicado a datos empresariales: qu&eacute; garantiza y cu&aacute;ndo es la herramienta correcta</h3>
+            <p class="ins-card__desc">La tecnolog&iacute;a blockchain no resuelve todos los problemas de integridad, pero resuelve uno de los m&aacute;s dif&iacute;ciles: demostrar que informaci&oacute;n no fue modificada despu&eacute;s de un instante espec&iacute;fico.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 11 Lakehouse / Guía -->
+          <a class="ins-card" href="arquitecturas.html#lakehouse" data-cat="lakehouse" data-type="guia">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--lakehouse">Lakehouse</span>
+              <span class="ins-card__type ins-type--guia">Gu&iacute;a</span>
+            </div>
+            <h3 class="ins-card__title">Evaluaci&oacute;n de migraci&oacute;n: de Data Warehouse tradicional a Lakehouse</h3>
+            <p class="ins-card__desc">La decisi&oacute;n de migrar no es binaria. Un proceso de evaluaci&oacute;n estructurado considera cargas de trabajo existentes, nuevos casos de uso, capacidad del equipo y costos de transici&oacute;n.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 12 Data Warehouse / Buenas Prácticas -->
+          <a class="ins-card" href="arquitecturas.html#dw-oracle" data-cat="data-warehouse" data-type="practicas">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--data-warehouse">Data Warehouse</span>
+              <span class="ins-card__type ins-type--practicas">Buenas pr&aacute;cticas</span>
+            </div>
+            <h3 class="ins-card__title">Modelado dimensional en 2026: el est&aacute;ndar que mantiene su relevancia en entornos regulados</h3>
+            <p class="ins-card__desc">El esquema estrella y el esquema copo de nieve no son legados: son la base sobre la que los modelos sem&aacute;nticos modernos siguen construyendo su capa de presentaci&oacute;n.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+          <!-- 13 IA / Artículo -->
+          <a class="ins-card" href="arquitecturas.html#lakehouse-ia" data-cat="ia" data-type="articulo">
+            <div class="ins-card__tags">
+              <span class="ins-card__cat ins-cat--ia">Inteligencia Artificial</span>
+              <span class="ins-card__type ins-type--articulo">Art&iacute;culo</span>
+            </div>
+            <h3 class="ins-card__title">Por qu&eacute; el gobierno de datos es el prerequisito de toda iniciativa de IA empresarial</h3>
+            <p class="ins-card__desc">Los proyectos de IA que no alcanzan producci&oacute;n frecuentemente comparten una causa ra&iacute;z: datos sin gobierno, sin calidad verificada y sin linaje claro. La infraestructura de datos define el techo de madurez de la IA.</p>
+            <div class="ins-card__foot">
+              <span class="ins-card__read"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              <span class="ins-card__date">Jun 2026</span>
+            </div>
+          </a>
+
+        </div><!-- /ins-grid -->
+      </main>
     </div>
-  </section>
+  </div>
 
   <!-- CTA -->
   <section class="cta-band">
     <div class="container">
-      <h2 class="cta-band__title">Lleve estos conceptos a su organizaci&oacute;n.</h2>
-      <p class="cta-band__sub">Un diagn&oacute;stico gratuito de 45 minutos para identificar el punto de mayor impacto en su arquitectura de datos.</p>
+      <h2 class="cta-band__title">Un diagn&oacute;stico antes de decidir.</h2>
+      <p class="cta-band__sub">45 minutos para evaluar cu&aacute;l de estos patrones es el punto de entrada m&aacute;s adecuado para su organizaci&oacute;n.</p>
       <a href="/#diagnostico" class="btn btn--primary">
         Agendar Diagn&oacute;stico
         <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
@@ -629,17 +711,98 @@
   </footer>
 
   <script>
+    // Navbar scroll
     const nb = document.getElementById('navbar');
     window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 10), {passive:true});
-    const dd = document.querySelector('.nav-dropdown');
+    // Dropdown
+    const dd = document.querySelector('#navDropdown');
     const btn = document.getElementById('navDropdownBtn');
     if(dd && btn){ btn.addEventListener('click', e => { e.stopPropagation(); const o = !dd.classList.contains('open'); dd.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); }); document.addEventListener('click', () => { dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }); document.addEventListener('keydown', e => { if(e.key==='Escape'){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');} }); }
+    // Burger
     const burger = document.getElementById('burgerBtn');
     const mob = document.getElementById('mobileMenu');
     function closeMobile(){ mob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow=''; }
     burger.addEventListener('click', () => { const o = mob.classList.toggle('open'); burger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
-    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.12});
-    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+    // ── Insights filtering ──────────────────────────────────────────────
+    const catItems     = document.querySelectorAll('.ins-cat-item');
+    const mobileCats   = document.querySelectorAll('.ins-mobile-cat');
+    const typeBtns     = document.querySelectorAll('.ins-type-btn');
+    const cards        = document.querySelectorAll('.ins-card');
+    const featured     = document.querySelector('.ins-featured');
+    const emptyState   = document.getElementById('insEmpty');
+    let activeCat  = 'all';
+    let activeType = 'all';
+
+    function applyFilters(){
+      // Resolve if cat filter is actually a type filter (sidebar type section)
+      const isCatTypeFilter = activeCat.startsWith('--type--');
+      const resolvedType = isCatTypeFilter ? activeCat.replace('--type--','') : activeType;
+      const resolvedCat  = isCatTypeFilter ? 'all' : activeCat;
+
+      // Featured
+      if(featured){
+        const cm = resolvedCat  === 'all' || featured.dataset.cat  === resolvedCat;
+        const tm = resolvedType === 'all' || featured.dataset.type === resolvedType;
+        featured.classList.toggle('ins-featured--hidden', !(cm && tm));
+      }
+      // Cards
+      let visible = 0;
+      cards.forEach(c => {
+        const cm = resolvedCat  === 'all' || c.dataset.cat  === resolvedCat;
+        const tm = resolvedType === 'all' || c.dataset.type === resolvedType;
+        const show = cm && tm;
+        c.classList.toggle('ins-card--hidden', !show);
+        if(show) visible++;
+      });
+      // Empty state
+      const featHidden = featured ? featured.classList.contains('ins-featured--hidden') : true;
+      emptyState.classList.toggle('ins-empty--visible', visible === 0 && featHidden);
+    }
+
+    // Sidebar category items
+    catItems.forEach(item => {
+      item.addEventListener('click', () => {
+        activeCat = item.dataset.cat;
+        // Reset type filter when changing category
+        if(!activeCat.startsWith('--type--')) activeType = 'all';
+        catItems.forEach(i => i.classList.remove('ins-cat-item--active'));
+        item.classList.add('ins-cat-item--active');
+        // Sync mobile
+        const isTypeCat = activeCat.startsWith('--type--');
+        mobileCats.forEach(m => m.classList.toggle('ins-mobile-cat--active', !isTypeCat && m.dataset.cat === activeCat));
+        // Sync type btns
+        if(!isTypeCat){ typeBtns.forEach(b => b.classList.toggle('ins-type-btn--active', b.dataset.type === 'all')); }
+        applyFilters();
+      });
+      item.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); item.click(); } });
+    });
+
+    // Mobile category tabs
+    mobileCats.forEach(item => {
+      item.addEventListener('click', () => {
+        activeCat  = item.dataset.cat;
+        activeType = 'all';
+        mobileCats.forEach(i => i.classList.remove('ins-mobile-cat--active'));
+        item.classList.add('ins-mobile-cat--active');
+        item.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+        catItems.forEach(c => c.classList.toggle('ins-cat-item--active', c.dataset.cat === activeCat));
+        typeBtns.forEach(b => b.classList.toggle('ins-type-btn--active', b.dataset.type === 'all'));
+        applyFilters();
+      });
+    });
+
+    // Type filter buttons (above grid)
+    typeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeType = btn.dataset.type;
+        // Clear any sidebar type filter
+        if(activeCat.startsWith('--type--')){ activeCat = 'all'; catItems.forEach(c => c.classList.toggle('ins-cat-item--active', c.dataset.cat==='all')); }
+        typeBtns.forEach(b => b.classList.remove('ins-type-btn--active'));
+        btn.classList.add('ins-type-btn--active');
+        applyFilters();
+      });
+    });
   </script>
 </body>
 </html>
