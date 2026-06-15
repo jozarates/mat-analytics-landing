@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arquitecturas de Referencia — Oracle, Data Warehouse, TrustTech | Mat Analytics</title>
-  <meta name="description" content="Modelos de referencia y buenas prácticas para arquitecturas Oracle: Data Warehouse, Analytics, Oracle RAC, Alta Disponibilidad, Gobierno de Datos y TrustTech blockchain.">
+  <title>Arquitecturas de Referencia — Lakehouse, Data Lake, Data Warehouse, Data Fabric | Mat Analytics</title>
+  <meta name="description" content="Arquitecturas de referencia para Lakehouse, Data Lake, Data Warehouse, Data Fabric, Gobierno de Datos, Arquitecturas Analíticas e Inteligencia Artificial Empresarial.">
+  <meta name="keywords" content="Lakehouse, Data Lake, Data Warehouse, Data Fabric, Gobierno de Datos, Arquitecturas Analíticas, Inteligencia Artificial Empresarial, Arquitecturas de Referencia, Oracle Analytics">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mat-analytics.com/arquitecturas-referencia.html">
   <meta property="og:type" content="website">
   <meta property="og:logo" content="https://mat-analytics.com/brand-assets/logo-horizontal-negativo.svg">
   <meta property="og:url" content="https://mat-analytics.com/arquitecturas-referencia.html">
   <meta property="og:title" content="Arquitecturas de Referencia — Mat Analytics">
-  <meta property="og:description" content="Modelos de referencia para Data Warehouse Oracle, Oracle Analytics, Gobierno de Datos, TrustTech y Alta Disponibilidad. Buenas prácticas para entornos enterprise.">
+  <meta property="og:description" content="Modelos de referencia para Lakehouse, Data Lake, Data Warehouse, Data Fabric, Gobierno de Datos, Arquitecturas Analíticas, TrustTech y Alta Disponibilidad. Buenas prácticas para entornos enterprise.">
   <meta property="og:site_name" content="Mat Analytics">
   <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="brand-assets/favicon/favicon-32.png">
@@ -54,7 +55,7 @@
     .nav-dropdown__trigger{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);background:none;border:none;cursor:pointer;padding:0;transition:color var(--transition)}
     .nav-dropdown__trigger:hover{color:#fff}
     .nav-dropdown__menu{display:none;position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#1E1E1E;border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:8px;min-width:280px;box-shadow:0 16px 48px rgba(0,0,0,0.40);z-index:200}
-    .nav-dropdown.open .nav-dropdown__menu{display:block}
+    .nav-dropdown.open .nav-dropdown__menu,.nav-dropdown:hover .nav-dropdown__menu,.nav-dropdown:focus-within .nav-dropdown__menu{display:block}
     .nav-dropdown__item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:6px;transition:background var(--transition);color:#fff}
     .nav-dropdown__item:hover{background:rgba(255,255,255,0.06)}
     .nav-dropdown__item-num{font-size:11px;font-weight:600;color:rgba(255,255,255,0.25);margin-top:2px;flex-shrink:0}
@@ -72,12 +73,26 @@
     .breadcrumb__link:hover{color:var(--red)}
     .breadcrumb__sep{color:var(--gray-light)}
     .breadcrumb__current{color:var(--gray-text);font-weight:500}
+    /* Editorial notice */
+    .arch-notice{background:#0C0C0C;border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 0}
+    .arch-notice__inner{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .arch-notice__icon{flex-shrink:0;width:36px;height:36px;background:rgba(139,1,1,0.14);border:1px solid rgba(139,1,1,0.22);border-radius:8px;display:flex;align-items:center;justify-content:center}
+    .arch-notice__body{flex:1;min-width:0}
+    .arch-notice__eyebrow{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:3px}
+    .arch-notice__text{font-size:12.5px;color:rgba(255,255,255,0.42);line-height:1.55}
+    .arch-notice__pills{display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0}
+    .arch-notice__pill{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.28);border:1px solid rgba(255,255,255,0.10);padding:4px 10px;border-radius:3px;white-space:nowrap}
     /* Hero */
     .page-hero{padding:72px 0 60px;background:#fff;border-bottom:1px solid var(--border-light)}
+    .page-hero__grid{display:grid;grid-template-columns:minmax(0,0.98fr) minmax(360px,0.82fr);gap:44px;align-items:center}
+    .page-hero__content{min-width:0}
     .page-hero__tag{margin-bottom:18px}
     .page-hero__title{font-size:clamp(28px,3.8vw,52px);font-weight:800;color:var(--black);letter-spacing:-0.035em;line-height:1.1;margin-bottom:20px}
     .page-hero__sub{font-size:16px;color:var(--gray-mid);max-width:600px;line-height:1.75;margin-bottom:24px}
     .page-hero__disclaimer{font-size:12.5px;color:var(--gray-mid);background:var(--gray-bg);border-left:3px solid var(--gray-light);border-radius:0 6px 6px 0;padding:12px 16px;max-width:600px;line-height:1.65;font-style:italic}
+    .page-hero__visual{position:relative}
+    .page-hero__visual::before{content:"";position:absolute;inset:10% -4% -6% 12%;background:radial-gradient(circle at 50% 40%,rgba(139,1,1,0.08),rgba(139,1,1,0));z-index:0;pointer-events:none}
+    .page-hero__img{position:relative;z-index:1;width:100%;border-radius:14px;border:1px solid var(--border-light);box-shadow:0 18px 56px rgba(0,0,0,0.09);background:#fff}
     /* Architecture cards */
     .arch-list{display:flex;flex-direction:column;gap:24px}
     .arch-card{background:#fff;border:1px solid var(--border-light);border-radius:16px;overflow:hidden;transition:box-shadow var(--transition)}
@@ -91,31 +106,63 @@
     .arch-domain--gov{color:#1E40AF;background:rgba(30,64,175,0.08)}
     .arch-domain--trust{color:#7C3AED;background:rgba(124,58,237,0.08)}
     .arch-domain--ha{color:#065F46;background:rgba(6,95,70,0.08)}
+    .arch-domain--lake{color:#0F766E;background:rgba(15,118,110,0.08)}
     .arch-card__title{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.025em;line-height:1.20;margin-bottom:8px}
     .arch-card__obj{font-size:13.5px;color:var(--gray-mid);line-height:1.65}
     .arch-card__toggle{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border-light);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;transition:all var(--transition);cursor:pointer}
     .arch-card.open .arch-card__toggle{background:var(--black);border-color:var(--black)}
     .arch-card__toggle svg{stroke:#999;transition:transform var(--transition),stroke var(--transition)}
     .arch-card.open .arch-card__toggle svg{transform:rotate(180deg);stroke:#fff}
-    .arch-card__body{display:none;padding:0 32px 28px;border-top:1px solid var(--border-light);margin:0 32px;padding-top:24px}
+    .arch-card__body{display:none;padding:0 24px 22px;border-top:1px solid var(--border-light);margin:0 32px;padding-top:18px}
     .arch-card.open .arch-card__body{display:block;margin:0}
-    .arch-card__body-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .arch-card__body-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,0.52fr);grid-template-areas:"components visual" "benefits diagram" "scenarios scenarios";gap:16px 24px;align-items:start}
     .arch-section-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-light);margin-bottom:10px}
-    .arch-components{display:flex;flex-direction:column;gap:8px}
-    .arch-comp{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-text);line-height:1.55}
+    .arch-components{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 14px}
+    .arch-comp{display:flex;align-items:flex-start;gap:9px;font-size:12.2px;color:var(--gray-text);line-height:1.45}
     .arch-comp__dot{width:6px;height:6px;border-radius:50%;background:var(--red);margin-top:6px;flex-shrink:0}
-    .arch-benefits{display:flex;flex-direction:column;gap:8px}
-    .arch-benefit{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--gray-text);line-height:1.55}
+    .arch-card__body-inner > .ref-diagram + div{grid-area:components}
+    .arch-card__body-inner > .ref-diagram + div + div{grid-area:benefits}
+    .arch-visual{grid-area:visual;margin:0;position:relative;overflow:hidden;border-radius:12px;isolation:isolate}
+    .arch-visual::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(105deg,transparent 0%,transparent 38%,rgba(139,1,1,0.16) 48%,rgba(255,255,255,0.42) 52%,transparent 64%,transparent 100%);transform:translateX(-120%);pointer-events:none}
+    .arch-visual__img{width:100%;border-radius:12px;border:1px solid var(--border-light);box-shadow:0 12px 34px rgba(0,0,0,0.08);background:#fff;transform-origin:center;transition:transform 0.5s ease,box-shadow 0.5s ease}
+    .arch-card.open .arch-visual{animation:archVisualReveal 0.7s cubic-bezier(0.16,1,0.3,1) both}
+    .arch-card.open .arch-visual::after{animation:archVisualSweep 1.15s ease 0.22s both}
+    .arch-card.open .arch-visual__img{animation:archImageDepth 0.9s cubic-bezier(0.16,1,0.3,1) both;box-shadow:0 18px 44px rgba(0,0,0,0.12)}
+    .arch-card.open .ref-diagram{animation:archDiagramRise 0.55s cubic-bezier(0.16,1,0.3,1) 0.08s both}
+    .ref-diagram{grid-area:diagram;background:linear-gradient(180deg,#fff 0%,#FAFAFA 100%);border:1px solid var(--border-light);border-radius:12px;padding:12px;margin:0}
+    .ref-diagram__title{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-light);margin-bottom:8px}
+    .ref-diagram__flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;align-items:stretch}
+    .ref-diagram__flow--five{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .ref-diagram__node{position:relative;background:#fff;border:1px solid var(--border-light);border-radius:8px;padding:9px 9px;min-height:40px}
+    .ref-diagram__node:not(:last-child)::after{display:none}
+    .ref-diagram__label{display:block;font-size:11px;font-weight:800;color:var(--black);line-height:1.2;margin-bottom:0}
+    .ref-diagram__text{display:none;font-size:10px;color:var(--gray-mid);line-height:1.3}
+    .arch-benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 14px}
+    .arch-benefit{display:flex;align-items:flex-start;gap:9px;font-size:12.2px;color:var(--gray-text);line-height:1.45}
     .arch-benefit__check{flex-shrink:0;margin-top:2px}
-    .arch-scenarios{grid-column:1/-1;border-top:1px solid #F0F0F0;padding-top:20px;margin-top:4px}
-    .arch-scenario-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .arch-scenario{font-size:11.5px;font-weight:600;color:var(--gray-mid);background:var(--gray-bg);padding:5px 12px;border-radius:4px;border:1px solid var(--border-light)}
+    .arch-scenarios{grid-area:scenarios;border-top:1px solid #F0F0F0;padding-top:9px;margin-top:0}
+    .arch-scenario-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+    .arch-scenario{font-size:10.5px;font-weight:600;color:var(--gray-mid);background:var(--gray-bg);padding:3px 8px;border-radius:4px;border:1px solid var(--border-light)}
     /* Index */
     .arch-index{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px}
     .arch-index-item{background:var(--gray-bg);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background var(--transition),border-color var(--transition);border:1.5px solid transparent}
     .arch-index-item:hover{background:#fff;border-color:rgba(139,1,1,0.18)}
     .arch-index-item__num{font-size:11px;font-weight:700;color:var(--gray-light);font-variant-numeric:tabular-nums;flex-shrink:0}
     .arch-index-item__name{font-size:13px;font-weight:600;color:var(--black);line-height:1.30}
+    /* Evolution */
+    .evolution{padding:68px 0;background:#fff;border-bottom:1px solid var(--border-light)}
+    .evolution__grid{display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.45fr);gap:42px;align-items:start}
+    .evolution__eyebrow{margin-bottom:14px}
+    .evolution__title{font-size:clamp(24px,3vw,38px);font-weight:800;color:var(--black);letter-spacing:-0.03em;line-height:1.12;margin-bottom:14px}
+    .evolution__copy{font-size:14.5px;color:var(--gray-mid);line-height:1.75;max-width:520px}
+    .evolution__note{margin-top:18px;font-size:12.5px;color:var(--gray-mid);background:var(--gray-bg);border:1px solid var(--border-light);border-radius:8px;padding:12px 14px;line-height:1.65}
+    .evolution-flow{background:var(--gray-bg);border:1px solid var(--border-light);border-radius:14px;padding:20px}
+    .evolution-flow__rail{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}
+    .evolution-step{position:relative;background:#fff;border:1px solid var(--border-light);border-radius:10px;padding:16px 14px;min-height:132px}
+    .evolution-step:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:8px;height:8px;border-top:2px solid var(--red);border-right:2px solid var(--red);transform:translateY(-50%) rotate(45deg);z-index:2;background:transparent}
+    .evolution-step__num{display:block;font-size:10px;font-weight:700;color:var(--gray-light);letter-spacing:0.08em;margin-bottom:12px}
+    .evolution-step__name{font-size:14px;font-weight:800;color:var(--black);line-height:1.25;margin-bottom:7px}
+    .evolution-step__desc{font-size:11.5px;color:var(--gray-mid);line-height:1.45}
     /* CTA */
     .cta-band{padding:72px 0;background:var(--black);color:#fff;text-align:center}
     .cta-band__title{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
@@ -139,12 +186,35 @@
     .reveal-delay-3{transition-delay:0.24s}
     .reveal-delay-4{transition-delay:0.32s}
     .reveal-delay-5{transition-delay:0.40s}
+    @keyframes archVisualReveal{from{opacity:0;transform:translateY(18px) scale(0.985);filter:saturate(0.86)}to{opacity:1;transform:translateY(0) scale(1);filter:saturate(1.04)}}
+    @keyframes archImageDepth{from{transform:scale(0.992)}55%{transform:scale(1.012)}to{transform:scale(1)}}
+    @keyframes archVisualSweep{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+    @keyframes archDiagramRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @media(prefers-reduced-motion:reduce){
+      .arch-card.open .arch-visual,.arch-card.open .arch-visual::after,.arch-card.open .arch-visual__img,.arch-card.open .ref-diagram{animation:none}
+      .arch-visual__img{transition:none}
+    }
     @media(max-width:900px){
       .navbar__nav,.navbar__actions{display:none}
       .navbar__burger{display:flex}
+      .page-hero__grid{grid-template-columns:1fr;gap:28px}
+      .page-hero__img{border-radius:10px}
+      .arch-visual__img{border-radius:10px}
       .arch-index{grid-template-columns:1fr}
       .arch-card__header{grid-template-columns:auto 1fr auto}
-      .arch-card__body-inner{grid-template-columns:1fr}
+      .arch-card__body{padding-left:18px;padding-right:18px}
+      .arch-card__body-inner{grid-template-columns:1fr;grid-template-areas:"visual" "diagram" "components" "benefits" "scenarios";gap:18px}
+      .arch-card__body-inner > .ref-diagram + div{grid-area:components}
+      .arch-card__body-inner > .ref-diagram + div + div{grid-area:benefits}
+      .arch-components,.arch-benefits{grid-template-columns:1fr}
+      .ref-diagram__flow,.ref-diagram__flow--five{grid-template-columns:1fr}
+      .ref-diagram__node{min-height:66px}
+      .ref-diagram__label{margin-bottom:4px}
+      .ref-diagram__text{display:block}
+      .ref-diagram__node:not(:last-child)::after{display:none}
+      .evolution__grid{grid-template-columns:1fr}
+      .evolution-flow__rail{grid-template-columns:1fr}
+      .evolution-step:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-9px;transform:translateX(-50%) rotate(135deg)}
     }
   </style>
 </head>
@@ -187,7 +257,28 @@
             </a>
           </div>
         </li>
-        <li><a class="navbar__link navbar__link--active" href="arquitecturas-referencia.html">Arquitecturas</a></li>
+        <li class="nav-dropdown nav-dropdown--architecture">
+          <button class="nav-dropdown__trigger navbar__link--active" aria-expanded="false" aria-haspopup="true">
+            Arquitectura
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitectura</p>
+                <p class="nav-dropdown__item-desc">Arquitectura de Datos Enterprise</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="arquitecturas-referencia.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitecturas de Referencia</p>
+                <p class="nav-dropdown__item-desc">Patrones empresariales y buenas pr&aacute;cticas</p>
+              </div>
+            </a>
+          </div>
+        </li>
         <li><a class="navbar__link" href="conocimiento.html">Conocimiento</a></li>
         <li><a class="navbar__link" href="nosotros.html">Nosotros</a></li>
         <li><a class="navbar__link" href="/#diagnostico">Contacto</a></li>
@@ -211,6 +302,7 @@
     <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
     <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
     <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura</a>
     <a class="mobile-menu__link" href="arquitecturas-referencia.html" onclick="closeMobile()">Arquitecturas de Referencia</a>
     <a class="mobile-menu__link" href="conocimiento.html" onclick="closeMobile()">Conocimiento</a>
     <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
@@ -227,13 +319,84 @@
     </div>
   </nav>
 
+  <!-- Editorial notice -->
+  <div class="arch-notice" role="note" aria-label="Marco editorial">
+    <div class="container">
+      <div class="arch-notice__inner">
+        <div class="arch-notice__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(139,1,1,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="arch-notice__body">
+          <p class="arch-notice__eyebrow">Marco editorial</p>
+          <p class="arch-notice__text">Las arquitecturas presentadas son modelos de referencia y patrones empresariales documentados. Reflejan buenas pr&aacute;cticas del ecosistema Oracle y arquitecturas observadas en el mercado. No representan proyectos ejecutados por MAT Analytics ni hacen referencia a ninguna organizaci&oacute;n espec&iacute;fica.</p>
+        </div>
+        <div class="arch-notice__pills" aria-hidden="true">
+          <span class="arch-notice__pill">Buenas pr&aacute;cticas</span>
+          <span class="arch-notice__pill">Modelos de referencia</span>
+          <span class="arch-notice__pill">Patrones enterprise</span>
+          <span class="arch-notice__pill">Marco independiente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Hero -->
   <section class="page-hero">
     <div class="container">
-      <div class="page-hero__tag"><span class="tag">Modelos de referencia</span></div>
-      <h1 class="page-hero__title">Arquitecturas de Referencia<br>para entornos enterprise.</h1>
-      <p class="page-hero__sub">Modelos de dise&ntilde;o, buenas pr&aacute;cticas y componentes recomendados para arquitecturas de datos Oracle en organizaciones de sectores regulados.</p>
-      <p class="page-hero__disclaimer">Las arquitecturas presentadas son modelos de referencia basados en buenas pr&aacute;cticas del ecosistema Oracle y est&aacute;ndares de la industria. No representan implementaciones espec&iacute;ficas realizadas por MAT Analytics ni hacen referencia a ning&uacute;n cliente.</p>
+      <div class="page-hero__grid">
+        <div class="page-hero__content">
+          <div class="page-hero__tag"><span class="tag">Modelos de referencia</span></div>
+          <h1 class="page-hero__title">Arquitecturas de Referencia<br>para entornos enterprise.</h1>
+          <p class="page-hero__sub">Modelos de dise&ntilde;o, buenas pr&aacute;cticas y componentes recomendados para arquitecturas de datos Oracle en organizaciones de sectores regulados.</p>
+          <p class="page-hero__disclaimer">Las arquitecturas presentadas son modelos de referencia basados en buenas pr&aacute;cticas del ecosistema Oracle y est&aacute;ndares de la industria. No representan implementaciones espec&iacute;ficas realizadas por MAT Analytics ni hacen referencia a ning&uacute;n cliente.</p>
+        </div>
+        <div class="page-hero__visual" aria-hidden="true">
+          <img class="page-hero__img" src="assets/arquitecturas-referencia-hero.png" alt="" loading="eager" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data platform evolution -->
+  <section class="evolution" aria-labelledby="evolucion-plataformas-datos">
+    <div class="container">
+      <div class="evolution__grid reveal">
+        <div>
+          <div class="evolution__eyebrow"><span class="tag">Evoluci&oacute;n de plataformas</span></div>
+          <h2 class="evolution__title" id="evolucion-plataformas-datos">Evoluci&oacute;n de las Plataformas de Datos</h2>
+          <p class="evolution__copy">Las arquitecturas anal&iacute;ticas empresariales han evolucionado desde repositorios estructurados hacia plataformas abiertas, gobernadas y preparadas para Inteligencia Artificial Empresarial. Este recorrido combina Data Warehouse, Data Lake, Lakehouse y Data Fabric como patrones complementarios seg&uacute;n madurez, volumen, gobierno de datos y casos de uso.</p>
+          <p class="evolution__note">Esta transici&oacute;n se presenta como patr&oacute;n empresarial y buena pr&aacute;ctica observada en el mercado, no como una afirmaci&oacute;n de implementaciones realizadas por MAT Analytics.</p>
+        </div>
+        <div class="evolution-flow" aria-label="Transici&oacute;n de Data Warehouse a Inteligencia Artificial Empresarial">
+          <div class="evolution-flow__rail">
+            <div class="evolution-step">
+              <span class="evolution-step__num">01</span>
+              <h3 class="evolution-step__name">Data Warehouse</h3>
+              <p class="evolution-step__desc">Datos estructurados, modelos dimensionales y reporting corporativo.</p>
+            </div>
+            <div class="evolution-step">
+              <span class="evolution-step__num">02</span>
+              <h3 class="evolution-step__name">Data Lake</h3>
+              <p class="evolution-step__desc">Datos estructurados y no estructurados en almacenamiento escalable.</p>
+            </div>
+            <div class="evolution-step">
+              <span class="evolution-step__num">03</span>
+              <h3 class="evolution-step__name">Lakehouse</h3>
+              <p class="evolution-step__desc">Gobierno, transacciones y anal&iacute;tica sobre formatos abiertos.</p>
+            </div>
+            <div class="evolution-step">
+              <span class="evolution-step__num">04</span>
+              <h3 class="evolution-step__name">Data Fabric</h3>
+              <p class="evolution-step__desc">Cat&aacute;logo, linaje, pol&iacute;ticas y acceso federado entre dominios.</p>
+            </div>
+            <div class="evolution-step">
+              <span class="evolution-step__num">05</span>
+              <h3 class="evolution-step__name">IA Empresarial</h3>
+              <p class="evolution-step__desc">Modelos anal&iacute;ticos, copilotos y automatizaci&oacute;n con datos confiables.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -253,16 +416,20 @@
           <span class="arch-index-item__num">03</span>
           <span class="arch-index-item__name">Gobierno de Datos</span>
         </a>
-        <a class="arch-index-item" href="#trusttech">
+        <a class="arch-index-item" href="#lakehouse">
           <span class="arch-index-item__num">04</span>
+          <span class="arch-index-item__name">Lakehouse Empresarial</span>
+        </a>
+        <a class="arch-index-item" href="#trusttech">
+          <span class="arch-index-item__num">05</span>
           <span class="arch-index-item__name">TrustTech</span>
         </a>
         <a class="arch-index-item" href="#rac">
-          <span class="arch-index-item__num">05</span>
+          <span class="arch-index-item__num">06</span>
           <span class="arch-index-item__name">Oracle RAC</span>
         </a>
         <a class="arch-index-item" href="#ha">
-          <span class="arch-index-item__num">06</span>
+          <span class="arch-index-item__num">07</span>
           <span class="arch-index-item__name">Alta Disponibilidad</span>
         </a>
       </div>
@@ -286,6 +453,18 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/data-warehouse.webp" alt="Imagen de referencia de arquitectura Data Warehouse" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de Data Warehouse Oracle">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Fuentes corporativas</span><span class="ref-diagram__text">ERP, CRM, core bancario, archivos y sistemas transaccionales.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">ETL / ELT</span><span class="ref-diagram__text">Ingesta, validaci&oacute;n, reglas de calidad y transformaci&oacute;n.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">DWH + Data Marts</span><span class="ref-diagram__text">Modelo integrado, hist&oacute;rico y orientado a dominios de negocio.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">BI y reporting</span><span class="ref-diagram__text">Capa sem&aacute;ntica, KPIs, reportes regulatorios y autoservicio.</span></div>
+                </div>
+              </div>
               <div>
                 <p class="arch-section-label">Componentes recomendados</p>
                 <div class="arch-components">
@@ -339,6 +518,18 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/analitica-empresarial.webp" alt="Imagen de referencia de anal&iacute;tica empresarial" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de Oracle Analytics">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Fuentes anal&iacute;ticas</span><span class="ref-diagram__text">Data Warehouse, ADW, aplicaciones y datasets certificados.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Modelo sem&aacute;ntico</span><span class="ref-diagram__text">M&eacute;tricas, jerarqu&iacute;as, dimensiones y reglas de negocio comunes.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Gobierno de acceso</span><span class="ref-diagram__text">Roles, seguridad por filas, permisos y trazabilidad de uso.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Experiencia anal&iacute;tica</span><span class="ref-diagram__text">Dashboards, reportes ad-hoc, alertas y anal&iacute;tica aumentada.</span></div>
+                </div>
+              </div>
               <div>
                 <p class="arch-section-label">Componentes recomendados</p>
                 <div class="arch-components">
@@ -389,6 +580,18 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/gobierno-datos.webp" alt="Imagen de referencia de gobierno de datos" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de Gobierno de Datos">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Activos de datos</span><span class="ref-diagram__text">Tablas, reportes, APIs, documentos y dominios cr&iacute;ticos.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Cat&aacute;logo y linaje</span><span class="ref-diagram__text">Inventario, propietarios, clasificaci&oacute;n y trazabilidad end-to-end.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Pol&iacute;ticas y calidad</span><span class="ref-diagram__text">Reglas, controles, privacidad, stewardship y observabilidad.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Consumo confiable</span><span class="ref-diagram__text">BI, auditor&iacute;a, cumplimiento, anal&iacute;tica avanzada e IA gobernada.</span></div>
+                </div>
+              </div>
               <div>
                 <p class="arch-section-label">Componentes recomendados</p>
                 <div class="arch-components">
@@ -423,10 +626,76 @@
           </div>
         </div>
 
-        <!-- 04 TrustTech -->
-        <div class="arch-card reveal reveal-delay-3" id="trusttech">
+        <!-- 04 Lakehouse Empresarial -->
+        <div class="arch-card reveal reveal-delay-3" id="lakehouse">
           <div class="arch-card__header" onclick="toggleArch(this)">
             <span class="arch-card__num">04</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--lake">Lakehouse</span>
+              </div>
+              <h2 class="arch-card__title">Lakehouse Empresarial</h2>
+              <p class="arch-card__obj">Arquitectura de referencia para integrar datos estructurados, semiestructurados y no estructurados en una plataforma gobernada, apta para anal&iacute;tica avanzada e iniciativas de Inteligencia Artificial Empresarial.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/lakehouse.webp" alt="Imagen de referencia de arquitectura Lakehouse" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de Lakehouse Empresarial">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow ref-diagram__flow--five">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Fuentes mixtas</span><span class="ref-diagram__text">Datos estructurados, semiestructurados, documentos, eventos y APIs.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Bronze</span><span class="ref-diagram__text">Zona cruda con conservaci&oacute;n de detalle, auditor&iacute;a e ingesta continua.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Silver</span><span class="ref-diagram__text">Datos depurados, normalizados, enriquecidos y con calidad validada.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Gold</span><span class="ref-diagram__text">Datasets certificados, m&eacute;tricas compartidas y productos de datos.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">BI + IA</span><span class="ref-diagram__text">Anal&iacute;tica avanzada, features, modelos, copilotos y automatizaci&oacute;n.</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Componentes recomendados</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Zona de ingesta batch y streaming</strong> — captura de datos desde aplicaciones, APIs, eventos, archivos, IoT y fuentes transaccionales</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Almacenamiento tipo Data Lake</strong> — repositorio escalable para datos estructurados y no estructurados con separaci&oacute;n de c&oacute;mputo y almacenamiento</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Formatos abiertos transaccionales</strong> — tablas gobernadas con control de versiones, consistencia ACID y optimizaci&oacute;n de consulta</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Capas bronze, silver y gold</strong> — progresi&oacute;n desde datos crudos hasta datasets curados, certificados y listos para consumo</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Cat&aacute;logo, linaje y pol&iacute;ticas</strong> — gobierno de datos, clasificaci&oacute;n, privacidad, calidad y control de acceso por dominio</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot"></span><span><strong>Consumo anal&iacute;tico y de IA</strong> — SQL, BI, notebooks, feature engineering, MLOps y modelos de inteligencia artificial empresarial</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Beneficios de esta arquitectura</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Integra Data Lake y Data Warehouse en un patr&oacute;n empresarial com&uacute;n para anal&iacute;tica avanzada</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Reduce duplicidad de datos entre sandboxes, warehouses, lagos y plataformas de ciencia de datos</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Aplica gobierno de datos, linaje, calidad y seguridad sobre datasets usados por BI e IA</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Habilita casos de Inteligencia Artificial Empresarial con datos confiables, trazables y reutilizables</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#065F46" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Permite evolucionar hacia Data Fabric mediante cat&aacute;logo activo, metadatos y federaci&oacute;n de dominios</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Escenarios donde suele utilizarse</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Anal&iacute;tica avanzada sobre datos estructurados y no estructurados</span>
+                  <span class="arch-scenario">Modernizaci&oacute;n de Data Warehouse con almacenamiento abierto</span>
+                  <span class="arch-scenario">Plataformas de IA Empresarial y machine learning gobernado</span>
+                  <span class="arch-scenario">Unificaci&oacute;n de Data Lake, BI y ciencia de datos</span>
+                  <span class="arch-scenario">Gobierno de datos para dominios anal&iacute;ticos distribuidos</span>
+                  <span class="arch-scenario">Preparaci&oacute;n para Data Fabric y modelos de datos federados</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 TrustTech -->
+        <div class="arch-card reveal reveal-delay-4" id="trusttech">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">05</span>
             <div class="arch-card__meta">
               <div class="arch-card__domain">
                 <span class="arch-domain arch-domain--trust">TrustTech</span>
@@ -440,6 +709,18 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/certificacion-criptografica.webp" alt="Imagen de referencia de certificaci&oacute;n criptogr&aacute;fica" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de TrustTech y certificaci&oacute;n criptogr&aacute;fica">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Documento o reporte</span><span class="ref-diagram__text">Salida generada por sistemas anal&iacute;ticos, operativos o documentales.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Hash y sellado</span><span class="ref-diagram__text">Huella criptogr&aacute;fica, timestamp y registro de integridad.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Blockchain / registro</span><span class="ref-diagram__text">Evidencia inmutable verificable sin exponer el contenido original.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Verificaci&oacute;n p&uacute;blica</span><span class="ref-diagram__text">Validaci&oacute;n por terceros, auditor&iacute;a, cumplimiento y trazabilidad.</span></div>
+                </div>
+              </div>
               <div>
                 <p class="arch-section-label">Componentes recomendados</p>
                 <div class="arch-components">
@@ -473,10 +754,10 @@
           </div>
         </div>
 
-        <!-- 05 Oracle RAC -->
-        <div class="arch-card reveal reveal-delay-4" id="rac">
+        <!-- 06 Oracle RAC -->
+        <div class="arch-card reveal reveal-delay-5" id="rac">
           <div class="arch-card__header" onclick="toggleArch(this)">
-            <span class="arch-card__num">05</span>
+            <span class="arch-card__num">06</span>
             <div class="arch-card__meta">
               <div class="arch-card__domain">
                 <span class="arch-domain arch-domain--oracle">Oracle RAC</span>
@@ -490,6 +771,18 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/clustering-alta-disponibilidad.webp" alt="Imagen de referencia de clustering de alta disponibilidad" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de Oracle RAC">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Aplicaciones</span><span class="ref-diagram__text">Servicios cr&iacute;ticos conectados mediante listeners y balanceo.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Cluster RAC</span><span class="ref-diagram__text">Nodos activos, interconnect privado y gesti&oacute;n de recursos.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Almacenamiento compartido</span><span class="ref-diagram__text">ASM, discos redundantes y acceso concurrente a la base de datos.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Continuidad operativa</span><span class="ref-diagram__text">Failover, mantenimiento por nodo y escalabilidad horizontal.</span></div>
+                </div>
+              </div>
               <div>
                 <p class="arch-section-label">Componentes recomendados</p>
                 <div class="arch-components">
@@ -523,10 +816,10 @@
           </div>
         </div>
 
-        <!-- 06 Alta Disponibilidad -->
+        <!-- 07 Alta Disponibilidad -->
         <div class="arch-card reveal reveal-delay-5" id="ha">
           <div class="arch-card__header" onclick="toggleArch(this)">
-            <span class="arch-card__num">06</span>
+            <span class="arch-card__num">07</span>
             <div class="arch-card__meta">
               <div class="arch-card__domain">
                 <span class="arch-domain arch-domain--ha">Alta Disponibilidad</span>
@@ -540,6 +833,18 @@
           </div>
           <div class="arch-card__body">
             <div class="arch-card__body-inner">
+              <figure class="arch-visual">
+                <img class="arch-visual__img" src="assets/arquitecturas/recuperacion-desastres.webp" alt="Imagen de referencia de recuperaci&oacute;n ante desastres" loading="lazy" decoding="async">
+              </figure>
+              <div class="ref-diagram" aria-label="Diagrama de referencia de Alta Disponibilidad y Recuperaci&oacute;n ante Desastres">
+                <p class="ref-diagram__title">Diagrama de referencia</p>
+                <div class="ref-diagram__flow">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Sitio primario</span><span class="ref-diagram__text">Aplicaciones, base de datos activa, operaciones y monitoreo.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Replicaci&oacute;n</span><span class="ref-diagram__text">Data Guard, GoldenGate, almacenamiento o mecanismos equivalentes.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Sitio secundario</span><span class="ref-diagram__text">Infraestructura preparada para recuperaci&oacute;n, pruebas y conmutaci&oacute;n.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">RTO / RPO</span><span class="ref-diagram__text">Objetivos medibles, simulacros, runbooks y continuidad del negocio.</span></div>
+                </div>
+              </div>
               <div>
                 <p class="arch-section-label">Componentes recomendados</p>
                 <div class="arch-components">
