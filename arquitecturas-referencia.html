@@ -107,6 +107,9 @@
     .arch-domain--trust{color:#7C3AED;background:rgba(124,58,237,0.08)}
     .arch-domain--ha{color:#065F46;background:rgba(6,95,70,0.08)}
     .arch-domain--lake{color:#0F766E;background:rgba(15,118,110,0.08)}
+    .arch-domain--ai{color:#B45309;background:rgba(180,83,9,0.08)}
+    .ref-diagram__flow--seven{grid-template-columns:1fr}
+    .arch-card__body-inner--ia{grid-template-areas:"components diagram" "benefits diagram" "scenarios scenarios"}
     .arch-card__title{font-size:18px;font-weight:800;color:var(--black);letter-spacing:-0.025em;line-height:1.20;margin-bottom:8px}
     .arch-card__obj{font-size:13.5px;color:var(--gray-mid);line-height:1.65}
     .arch-card__toggle{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border-light);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;transition:all var(--transition);cursor:pointer}
@@ -431,6 +434,10 @@
         <a class="arch-index-item" href="#ha">
           <span class="arch-index-item__num">07</span>
           <span class="arch-index-item__name">Alta Disponibilidad</span>
+        </a>
+        <a class="arch-index-item" href="#ia-empresarial">
+          <span class="arch-index-item__num">08</span>
+          <span class="arch-index-item__name">Lakehouse e IA</span>
         </a>
       </div>
 
@@ -873,6 +880,69 @@
                   <span class="arch-scenario">Sistemas de recaudaci&oacute;n del Estado</span>
                   <span class="arch-scenario">Infraestructura cr&iacute;tica con SLA &gt; 99.9%</span>
                   <span class="arch-scenario">Entornos con Exadata o infraestructura Oracle engineered</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 Lakehouse e IA Empresarial -->
+        <div class="arch-card reveal reveal-delay-5" id="ia-empresarial">
+          <div class="arch-card__header" onclick="toggleArch(this)">
+            <span class="arch-card__num">08</span>
+            <div class="arch-card__meta">
+              <div class="arch-card__domain">
+                <span class="arch-domain arch-domain--ai">IA Empresarial</span>
+              </div>
+              <h2 class="arch-card__title">Lakehouse e Inteligencia Artificial Empresarial</h2>
+              <p class="arch-card__obj">Tendencia observada en organizaciones que evolucionan desde BI tradicional hacia plataformas de inteligencia aumentada: datos gobernados como base, vectorizaci&oacute;n sem&aacute;ntica y modelos de lenguaje como capa de razonamiento, asistentes empresariales como interfaz de consumo.</p>
+            </div>
+            <button class="arch-card__toggle" aria-label="Expandir">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 5l5 5 5-5"/></svg>
+            </button>
+          </div>
+          <div class="arch-card__body">
+            <div class="arch-card__body-inner arch-card__body-inner--ia">
+              <div class="ref-diagram" aria-label="Diagrama de flujo — 7 capas Lakehouse e IA Empresarial">
+                <p class="ref-diagram__title">Flujo de referencia &mdash; 7 capas</p>
+                <div class="ref-diagram__flow ref-diagram__flow--seven">
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Fuentes de Datos</span><span class="ref-diagram__text">ERP, CRM, IoT, APIs y sistemas transaccionales como origen.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Lakehouse</span><span class="ref-diagram__text">Almacenamiento unificado de datos estructurados y no estructurados.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Gobierno de Datos</span><span class="ref-diagram__text">Cat&aacute;logo, linaje, calidad y control de acceso sobre los activos de datos.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Vector Database</span><span class="ref-diagram__text">&Iacute;ndices de embeddings para b&uacute;squeda sem&aacute;ntica y contexto del LLM.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">LLM</span><span class="ref-diagram__text">Modelo de lenguaje de gran escala como motor de razonamiento y generaci&oacute;n.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Asistentes Empresariales</span><span class="ref-diagram__text">Interfaces conversacionales orientadas a procesos y roles del negocio.</span></div>
+                  <div class="ref-diagram__node"><span class="ref-diagram__label">Dashboards e Insights</span><span class="ref-diagram__text">Visualizaci&oacute;n aumentada con respuestas generadas y an&aacute;lisis explicativo.</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Componentes del patr&oacute;n</p>
+                <div class="arch-components">
+                  <div class="arch-comp"><span class="arch-comp__dot" style="background:#B45309"></span><span><strong>Lakehouse unificado</strong> &mdash; zona de aterrizaje y almacenamiento de datos estructurados y no estructurados</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot" style="background:#B45309"></span><span><strong>Gobierno de datos activo</strong> &mdash; cat&aacute;logo, linaje y controles de calidad aplicados antes de la capa IA</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot" style="background:#B45309"></span><span><strong>Vector Database</strong> &mdash; almac&eacute;n de embeddings para RAG (Retrieval-Augmented Generation)</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot" style="background:#B45309"></span><span><strong>LLM orquestado</strong> &mdash; modelo en nube o on-premise con acceso controlado al contexto empresarial</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot" style="background:#B45309"></span><span><strong>Capa de asistentes</strong> &mdash; interfaces conversacionales conectadas a flujos de negocio espec&iacute;ficos</span></div>
+                  <div class="arch-comp"><span class="arch-comp__dot" style="background:#B45309"></span><span><strong>Dashboards aumentados</strong> &mdash; anal&iacute;tica complementada con respuestas generativas y an&aacute;lisis explicativo</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="arch-section-label">Capacidades habilitadas</p>
+                <div class="arch-benefits">
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Consulta en lenguaje natural sobre datos gobernados de la organizaci&oacute;n</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Generaci&oacute;n autom&aacute;tica de res&uacute;menes, reportes y alertas contextualizadas</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Trazabilidad completa desde la respuesta generada hasta el dato de origen</span></div>
+                  <div class="arch-benefit"><svg class="arch-benefit__check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round"><polyline points="2,7 5,10 12,3"/></svg><span>Reutilizaci&oacute;n del capital de datos existente sin migraciones de plataforma</span></div>
+                </div>
+              </div>
+              <div class="arch-scenarios">
+                <p class="arch-section-label">Contextos donde se observa este patr&oacute;n</p>
+                <div class="arch-scenario-list">
+                  <span class="arch-scenario">Organizaciones con DWH maduro evolucionando hacia IA generativa</span>
+                  <span class="arch-scenario">Sector financiero y seguros con regulaci&oacute;n sobre explicabilidad</span>
+                  <span class="arch-scenario">Operaciones con alta carga documental (contratos, p&oacute;lizas, informes)</span>
+                  <span class="arch-scenario">Equipos de anal&iacute;tica que buscan acelerar el ciclo insight-acci&oacute;n</span>
+                  <span class="arch-scenario">Plataformas de autoservicio para usuarios no t&eacute;cnicos</span>
                 </div>
               </div>
             </div>
