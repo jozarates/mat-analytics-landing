@@ -156,6 +156,7 @@
 
     /* Meta: benefits + scenarios */
     .ac-section__meta{display:grid;grid-template-columns:1fr 1fr}
+    .ac-section__meta--3col{grid-template-columns:repeat(3,1fr)}
     .ac-meta-block{padding:22px 28px}
     .ac-meta-block:first-child{border-right:1px solid var(--border-light)}
     .ac-meta-block__title{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:12px;display:block}
@@ -202,7 +203,7 @@
       .ac-section__num{font-size:36px;min-width:50px}
       .ac-comp-grid{grid-template-columns:1fr}
       .ac-comp-col:first-child{border-right:none;border-bottom:1px solid var(--border-light)}
-      .ac-section__meta{grid-template-columns:1fr}
+      .ac-section__meta,.ac-section__meta--3col{grid-template-columns:1fr}
       .ac-meta-block:first-child{border-right:none;border-bottom:1px solid var(--border-light)}
     }
     @media(max-width:600px){
@@ -347,6 +348,7 @@
       <a class="ac-mobile-nav__item" href="#oracle-rac"><span class="ac-mobile-nav__num">05</span> Oracle RAC</a>
       <a class="ac-mobile-nav__item" href="#lakehouse"><span class="ac-mobile-nav__num">06</span> Lakehouse</a>
       <a class="ac-mobile-nav__item" href="#lakehouse-ia"><span class="ac-mobile-nav__num">07</span> Lakehouse + IA</a>
+      <a class="ac-mobile-nav__item" href="#lakehouse-oracle"><span class="ac-mobile-nav__num">08</span> Lakehouse Oracle</a>
     </div>
   </nav>
 
@@ -358,7 +360,7 @@
         <!-- Sidebar -->
         <aside class="ac-sidebar" aria-label="Arquitecturas">
           <nav class="ac-nav">
-            <span class="ac-nav__label">7 Arquitecturas</span>
+            <span class="ac-nav__label">8 Arquitecturas</span>
             <a class="ac-nav__item" href="#dw-oracle"><span class="ac-nav__num">01</span>Data Warehouse Oracle</a>
             <a class="ac-nav__item" href="#bi-empresarial"><span class="ac-nav__num">02</span>Business Intelligence</a>
             <a class="ac-nav__item" href="#gobierno-datos"><span class="ac-nav__num">03</span>Gobierno de Datos</a>
@@ -366,6 +368,7 @@
             <a class="ac-nav__item" href="#oracle-rac"><span class="ac-nav__num">05</span>Oracle RAC</a>
             <a class="ac-nav__item" href="#lakehouse"><span class="ac-nav__num">06</span>Lakehouse Empresarial</a>
             <a class="ac-nav__item" href="#lakehouse-ia"><span class="ac-nav__num">07</span>Lakehouse + IA</a>
+            <a class="ac-nav__item" href="#lakehouse-oracle"><span class="ac-nav__num">08</span>Lakehouse Oracle</a>
             <div class="ac-nav__divider"></div>
             <a class="ac-nav__item" href="arquitecturas-referencia.html" style="font-size:11.5px;opacity:0.70">&#8592; Arquitecturas de Referencia</a>
           </nav>
@@ -829,6 +832,83 @@
                 <p class="ac-meta-item">Banca: detecci&oacute;n de fraude en tiempo real con modelos especializados</p>
                 <p class="ac-meta-item">Sector p&uacute;blico: an&aacute;lisis de normativa y documentaci&oacute;n legal (RAG)</p>
                 <p class="ac-meta-item">Retail: recomendaciones personalizadas con contexto conversacional</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               08. LAKEHOUSE EMPRESARIAL ORACLE
+          ============================================================ -->
+          <section class="ac-section reveal" id="lakehouse-oracle">
+            <div class="ac-section__head">
+              <span class="ac-section__num">08</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Plataforma Anal&iacute;tica Unificada Oracle</span>
+                <h2 class="ac-section__title">Lakehouse Empresarial Oracle</h2>
+                <p class="ac-section__problem">Las plataformas de datos fragmentadas generan costos operativos elevados, inconsistencias entre sistemas y limitaciones para escalar iniciativas de anal&iacute;tica avanzada. La convergencia del almacenamiento econ&oacute;mico, el gobierno de datos y el motor anal&iacute;tico en una plataforma Oracle unificada es el patr&oacute;n que los mercados maduros est&aacute;n adoptando de forma acelerada.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Ingesta y repositorio</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">OCI Object Storage</p><p class="ac-comp-item__desc">Almacenamiento econ&oacute;mico y escalable para datos en bruto y procesados</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Data Integration</p><p class="ac-comp-item__desc">OCI Data Integration / ODI — pipelines ETL/ELT, transformaci&oacute;n y orquestaci&oacute;n</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Autonomous Data Warehouse</p><p class="ac-comp-item__desc">Repositorio anal&iacute;tico central con auto-tuning, escalado autom&aacute;tico y Lakehouse capabilities</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Data Catalog</p><p class="ac-comp-item__desc">Descubrimiento, clasificaci&oacute;n, linaje y gobierno de activos de datos en OCI</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Anal&iacute;tica e inteligencia</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Analytics Cloud (OAC)</p><p class="ac-comp-item__desc">Plataforma BI, an&aacute;lisis aumentado con IA, Auto Insights y reportes self-service</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Machine Learning (OML)</p><p class="ac-comp-item__desc">AutoML, notebooks Python/R, modelos predictivos dentro del ADW sin mover datos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Dashboards ejecutivos y operativos</p><p class="ac-comp-item__desc">Visualizaci&oacute;n por rol, alertas y distribuci&oacute;n automatizada de reportes</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — flujo plataforma Oracle unificada</span>
+              <div class="ac-flow" role="img" aria-label="Flujo Lakehouse Oracle: Object Storage a Dashboards">
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Almacenamiento</span><span class="ac-node__name">OCI Object Storage</span><span class="ac-node__tech">Data lake · Raw · Curated</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Integraci&oacute;n</span><span class="ac-node__name">Oracle Data Integration</span><span class="ac-node__tech">Pipelines ETL/ELT · OCI DI</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Repositorio</span><span class="ac-node__name">Autonomous DW</span><span class="ac-node__tech">ADW · Auto-tuning · Lakehouse</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Gobierno</span><span class="ac-node__name">Data Catalog</span><span class="ac-node__tech">Linaje · Clasificaci&oacute;n · DQ</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Anal&iacute;tica</span><span class="ac-node__name">Oracle OAC</span><span class="ac-node__tech">BI · Auto Insights · AI</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Modelado</span><span class="ac-node__name">Oracle ML (OML)</span><span class="ac-node__tech">AutoML · Python/R · In-DB</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Consumo</span><span class="ac-node__name">Dashboards</span><span class="ac-node__tech">Ejecutivo · Operativo · Rol</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta ac-section__meta--3col">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Ecosistema 100% Oracle con integraci&oacute;n nativa sin conectores intermedios</p>
+                <p class="ac-meta-item">Gobierno de datos integrado: Data Catalog conectado al ADW de forma nativa</p>
+                <p class="ac-meta-item">Escalabilidad autom&aacute;tica del ADW seg&uacute;n demanda anal&iacute;tica sin intervenci&oacute;n</p>
+                <p class="ac-meta-item">Machine Learning in-database: modelos sobre los datos sin moverlos</p>
+                <p class="ac-meta-item">Reducci&oacute;n de complejidad operativa al eliminar herramientas heterog&eacute;neas</p>
+                <p class="ac-meta-item">Auto Insights en OAC detecta patrones sin configuraci&oacute;n manual</p>
+              </div>
+              <div class="ac-meta-block" style="border-right:1px solid var(--border-light)">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Organizaciones con ecosistema Oracle consolidado que modernizan su arquitectura anal&iacute;tica</p>
+                <p class="ac-meta-item">Sectores regulados que requieren gobierno de datos certificable y trazable en OCI</p>
+                <p class="ac-meta-item">Empresas que necesitan ML sin extraer datos del entorno controlado</p>
+                <p class="ac-meta-item">Migraciones desde Oracle DW on-premise hacia plataforma cloud anal&iacute;tica unificada</p>
+                <p class="ac-meta-item">Iniciativas de analítica avanzada que deben integrarse con sistemas Oracle existentes</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Tendencias observadas en el mercado</span>
+                <p class="ac-meta-item">La convergencia de data lake, DW y gobierno en una plataforma &uacute;nica (Lakehouse) es el patr&oacute;n dominante en mercados maduros de datos</p>
+                <p class="ac-meta-item">Oracle ADW con Lakehouse capabilities consolida cargas anal&iacute;ticas y ML sin infraestructura separada</p>
+                <p class="ac-meta-item">Data Catalog como componente obligatorio en arquitecturas reguladas — el principio &ldquo;catalogar antes de analizar&rdquo; se consolida</p>
+                <p class="ac-meta-item">AutoML integrado al repositorio reduce el ciclo de experimentaci&oacute;n de semanas a horas en organizaciones maduras</p>
+                <p class="ac-meta-item">Migraci&oacute;n acelerada desde Oracle DW on-premise hacia OCI en sectores financieros de LATAM</p>
               </div>
             </div>
           </section>
