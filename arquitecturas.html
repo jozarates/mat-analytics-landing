@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitecturas de Datos Empresariales — Data Warehouse, BI, Lakehouse e IA | Mat Analytics</title>
+  <meta name="description" content="Patrones arquitectónicos de referencia: Data Warehouse Oracle, Business Intelligence, Gobierno de Datos, TrustTech Blockchain, Oracle RAC, Lakehouse e IA Empresarial. Lima, Perú.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mat-analytics.com/arquitecturas.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mat-analytics.com/arquitecturas.html">
+  <meta property="og:title" content="Arquitecturas de Referencia — Mat Analytics SAC">
+  <meta property="og:description" content="7 patrones arquitectónicos documentados: Data Warehouse Oracle, BI Empresarial, Gobierno de Datos, TrustTech, Oracle RAC, Lakehouse e IA Empresarial.">
+  <meta property="og:site_name" content="Mat Analytics">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechnicalArticle","headline":"Arquitecturas de Referencia para Datos Empresariales","description":"Modelos conceptuales y patrones arquitectónicos para Data Warehouse, Business Intelligence, Gobierno de Datos, TrustTech, Oracle RAC, Lakehouse e IA Empresarial en sectores regulados.","url":"https://mat-analytics.com/arquitecturas.html","datePublished":"2026-06-15","dateModified":"2026-06-15","proficiencyLevel":"Expert","articleSection":"Arquitecturas de Datos Empresariales","author":{"@type":"Organization","name":"Mat Analytics SAC","url":"https://mat-analytics.com"},"publisher":{"@type":"Organization","name":"Mat Analytics SAC","url":"https://mat-analytics.com","logo":{"@type":"ImageObject","url":"https://mat-analytics.com/brand-assets/logo-horizontal-negativo.svg"}},"about":[{"@type":"Thing","name":"Data Warehouse"},{"@type":"Thing","name":"Business Intelligence"},{"@type":"Thing","name":"Gobierno de Datos"},{"@type":"Thing","name":"Blockchain Notarización"},{"@type":"Thing","name":"Oracle RAC Alta Disponibilidad"},{"@type":"Thing","name":"Lakehouse"},{"@type":"Thing","name":"Inteligencia Artificial Empresarial"}]}
+  </script>
+  <link rel="icon" type="image/x-icon" href="brand-assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="brand-assets/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" href="brand-assets/favicon/favicon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#8B0101;--red-hover:#A50101;--red-subtle:rgba(139,1,1,0.08);--black:#1E1E1E;--gray-text:#3A3A3A;--gray-mid:#757575;--gray-light:#D9D9D9;--gray-bg:#F7F7F7;--white:#FFFFFF;--border-light:#E8E8E8;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--transition:0.22s ease;--max-w:1160px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font);color:var(--gray-text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    img{display:block;max-width:100%}
+    button{font-family:inherit}
+    .container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);background:var(--red-subtle);padding:5px 12px;border-radius:3px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 22px;border-radius:6px;border:none;cursor:pointer;transition:all var(--transition);text-decoration:none;white-space:nowrap}
+    .btn--primary{background:var(--red);color:#fff}
+    .btn--primary:hover{background:var(--red-hover);box-shadow:0 4px 14px rgba(139,1,1,0.35)}
+    .btn--lg{font-size:15px;padding:13px 24px}
+
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;background:#1E1E1E;border-bottom:1px solid rgba(255,255,255,0.07);transition:box-shadow var(--transition)}
+    .navbar.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.40)}
+    .navbar__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+    .navbar__logo{height:34px;width:auto}
+    .navbar__nav{display:flex;align-items:center;gap:32px}
+    .navbar__link{font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);transition:color var(--transition)}
+    .navbar__link:hover,.navbar__link--active{color:#fff}
+    .navbar__actions{display:flex;align-items:center;gap:8px}
+    .navbar__mail{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.55);transition:all var(--transition)}
+    .navbar__mail:hover{background:var(--red);border-color:var(--red);color:#fff}
+    .navbar__burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+    .navbar__burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform var(--transition),opacity var(--transition)}
+    .navbar__burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .navbar__burger.open span:nth-child(2){opacity:0}
+    .navbar__burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown__trigger{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.70);background:none;border:none;cursor:pointer;padding:0;transition:color var(--transition)}
+    .nav-dropdown__trigger:hover,.nav-dropdown__trigger--active{color:#fff}
+    .nav-dropdown__menu{display:none;position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#1E1E1E;border:1px solid rgba(255,255,255,0.10);border-radius:10px;padding:8px;min-width:280px;box-shadow:0 16px 48px rgba(0,0,0,0.40);z-index:200}
+    .nav-dropdown.open .nav-dropdown__menu,.nav-dropdown:hover .nav-dropdown__menu,.nav-dropdown:focus-within .nav-dropdown__menu{display:block}
+    .nav-dropdown__item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:6px;transition:background var(--transition);color:#fff}
+    .nav-dropdown__item:hover{background:rgba(255,255,255,0.06)}
+    .nav-dropdown__item-num{font-size:11px;font-weight:600;color:rgba(255,255,255,0.25);margin-top:2px;flex-shrink:0}
+    .nav-dropdown__item-title{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.35;margin-bottom:2px}
+    .nav-dropdown__item-desc{font-size:11.5px;color:rgba(255,255,255,0.35);line-height:1.45}
+    .nav-dropdown__divider{height:1px;background:rgba(255,255,255,0.07);margin:6px 0}
+    .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:#1E1E1E;padding:32px 24px;flex-direction:column;gap:4px;z-index:99;overflow-y:auto}
+    .mobile-menu.open{display:flex}
+    .mobile-menu__link{display:block;font-size:18px;font-weight:500;color:rgba(255,255,255,0.80);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);transition:color var(--transition)}
+    .mobile-menu__link:hover{color:#fff}
+    .mobile-menu .btn{margin-top:24px;width:100%;justify-content:center}
+
+    /* Breadcrumb */
+    .breadcrumb{padding:13px 0;background:var(--gray-bg);border-bottom:1px solid var(--border-light);margin-top:68px}
+    .breadcrumb__inner{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray-mid)}
+    .breadcrumb__link{color:var(--gray-mid);transition:color var(--transition)}
+    .breadcrumb__link:hover{color:var(--red)}
+    .breadcrumb__sep{color:var(--gray-light)}
+    .breadcrumb__current{color:var(--gray-text);font-weight:500}
+
+    /* Hero */
+    .ac-hero{padding:72px 0 64px;background:#0C0C0C;position:relative;overflow:hidden}
+    .ac-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 90% 10%,rgba(139,1,1,0.12) 0%,transparent 60%),radial-gradient(ellipse 30% 40% at 5% 90%,rgba(139,1,1,0.06) 0%,transparent 55%);pointer-events:none}
+    .ac-hero .container{position:relative;z-index:1}
+    .ac-hero__tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.30);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);padding:5px 12px;border-radius:3px;margin-bottom:20px}
+    .ac-hero__title{font-size:clamp(28px,4vw,52px);font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.06;margin-bottom:18px}
+    .ac-hero__title em{font-style:normal;color:rgba(255,255,255,0.45)}
+    .ac-hero__sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.75;max-width:580px;margin-bottom:36px}
+    .ac-hero__pills{display:flex;flex-wrap:wrap;gap:8px}
+    .ac-hero__pill{font-size:11px;font-weight:500;color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);padding:4px 12px;border-radius:3px}
+
+    /* Disclaimer */
+    .ac-disclaimer{background:#FFFBF0;border-bottom:1px solid #F0E6C0;padding:14px 0}
+    .ac-disclaimer__inner{display:flex;align-items:flex-start;gap:14px}
+    .ac-disclaimer__icon{width:30px;height:30px;border-radius:6px;background:rgba(180,83,9,0.10);border:1px solid rgba(180,83,9,0.20);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .ac-disclaimer__text{font-size:12.5px;color:#6B4F0A;line-height:1.60}
+    .ac-disclaimer__text strong{color:#4A3608;font-weight:600}
+
+    /* Layout */
+    .ac-body{padding:0 0 80px}
+    .ac-layout{display:grid;grid-template-columns:220px 1fr;align-items:start}
+    .ac-sidebar{position:sticky;top:68px;background:#0F0F0F;border-radius:0;height:calc(100vh - 68px);overflow-y:auto;scrollbar-width:none}
+    .ac-sidebar::-webkit-scrollbar{display:none}
+    .ac-nav{padding:20px 0}
+    .ac-nav__label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.22);padding:0 16px 12px;display:block}
+    .ac-nav__item{display:flex;align-items:center;gap:10px;padding:9px 16px;color:rgba(255,255,255,0.42);font-size:12.5px;font-weight:500;transition:color var(--transition),background var(--transition);border-left:2px solid transparent}
+    .ac-nav__item:hover{color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.04)}
+    .ac-nav__item--active{color:#fff;background:rgba(139,1,1,0.18);border-left-color:var(--red)}
+    .ac-nav__num{font-size:10px;font-weight:700;color:rgba(255,255,255,0.22);font-variant-numeric:tabular-nums;letter-spacing:0.06em;flex-shrink:0;width:20px}
+    .ac-nav__item--active .ac-nav__num{color:rgba(255,255,255,0.45)}
+    .ac-nav__divider{height:1px;background:rgba(255,255,255,0.06);margin:8px 16px}
+    .ac-content{border-left:1px solid var(--border-light)}
+
+    /* Architecture sections */
+    .ac-section{scroll-margin-top:68px;border-bottom:1px solid var(--border-light)}
+    .ac-section__head{background:var(--gray-bg);padding:32px 36px 28px;display:flex;gap:20px;align-items:flex-start;border-bottom:1px solid var(--border-light)}
+    .ac-section__num{font-size:52px;font-weight:900;color:var(--border-light);letter-spacing:-0.05em;line-height:1;flex-shrink:0;font-variant-numeric:tabular-nums;min-width:70px;margin-top:-4px}
+    .ac-section__head-body{flex:1}
+    .ac-section__domain{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);opacity:0.75;margin-bottom:6px}
+    .ac-section__title{font-size:21px;font-weight:800;color:var(--black);letter-spacing:-0.03em;margin-bottom:10px;line-height:1.20}
+    .ac-section__problem{font-size:13.5px;color:var(--gray-mid);line-height:1.72;max-width:600px}
+
+    /* Component grid */
+    .ac-comp-grid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border-light)}
+    .ac-comp-col{padding:24px 28px}
+    .ac-comp-col:first-child{border-right:1px solid var(--border-light)}
+    .ac-comp-col__label{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:14px;display:block}
+    .ac-comp-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border-light)}
+    .ac-comp-item:last-child{border-bottom:none}
+    .ac-comp-item__dot{width:5px;height:5px;border-radius:50%;background:var(--red);opacity:0.45;flex-shrink:0;margin-top:7px}
+    .ac-comp-item__name{font-size:13px;font-weight:600;color:var(--black);line-height:1.30;margin-bottom:2px}
+    .ac-comp-item__desc{font-size:11.5px;color:var(--gray-mid);line-height:1.45}
+
+    /* Flow diagram */
+    .ac-flow-wrap{padding:24px 28px;background:var(--white);border-bottom:1px solid var(--border-light)}
+    .ac-flow-wrap__label{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:16px;display:block}
+    .ac-flow{display:flex;align-items:flex-start;gap:0;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border-light) transparent;padding-bottom:8px}
+    .ac-flow::-webkit-scrollbar{height:4px}
+    .ac-flow::-webkit-scrollbar-track{background:transparent}
+    .ac-flow::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:2px}
+    .ac-node{background:var(--gray-bg);border:1px solid var(--border-light);border-radius:8px;padding:12px 14px;min-width:136px;max-width:156px;flex-shrink:0}
+    .ac-node--oracle{background:rgba(139,1,1,0.04);border-color:rgba(139,1,1,0.18)}
+    .ac-node--chain{background:rgba(5,150,105,0.04);border-color:rgba(5,150,105,0.20)}
+    .ac-node--ai{background:rgba(180,83,9,0.04);border-color:rgba(180,83,9,0.20)}
+    .ac-node__cat{display:block;font-size:9px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:6px}
+    .ac-node--oracle .ac-node__cat{color:rgba(139,1,1,0.60)}
+    .ac-node--chain .ac-node__cat{color:rgba(5,150,105,0.70)}
+    .ac-node--ai .ac-node__cat{color:rgba(180,83,9,0.70)}
+    .ac-node__name{display:block;font-size:12.5px;font-weight:700;color:var(--black);margin-bottom:4px;line-height:1.25}
+    .ac-node__tech{display:block;font-size:10.5px;color:var(--gray-mid);line-height:1.45}
+    .ac-flow__arr{display:flex;align-items:center;justify-content:center;width:28px;flex-shrink:0;color:var(--gray-light);font-size:14px}
+    .ac-flow__arr::after{content:'→'}
+    .ac-node--cluster{background:rgba(139,1,1,0.04);border-color:rgba(139,1,1,0.18)}
+    .ac-node--cluster .ac-node__name+.ac-node__name{padding-top:6px;border-top:1px solid rgba(139,1,1,0.12);margin-top:6px}
+
+    /* Meta: benefits + scenarios */
+    .ac-section__meta{display:grid;grid-template-columns:1fr 1fr}
+    .ac-meta-block{padding:22px 28px}
+    .ac-meta-block:first-child{border-right:1px solid var(--border-light)}
+    .ac-meta-block__title{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--gray-mid);margin-bottom:12px;display:block}
+    .ac-meta-item{font-size:13px;color:var(--gray-text);padding:4px 0 4px 16px;position:relative;line-height:1.55}
+    .ac-meta-item::before{content:'—';position:absolute;left:0;color:var(--red);opacity:0.50;font-size:11px;top:6px}
+
+    /* Mobile nav */
+    .ac-mobile-nav{display:none;background:var(--gray-bg);border-bottom:1px solid var(--border-light);overflow-x:auto;scrollbar-width:none;padding:0 16px}
+    .ac-mobile-nav::-webkit-scrollbar{display:none}
+    .ac-mobile-nav__inner{display:flex;gap:0;white-space:nowrap}
+    .ac-mobile-nav__item{display:inline-flex;align-items:center;gap:6px;padding:12px 14px;font-size:12px;font-weight:500;color:var(--gray-mid);border-bottom:2px solid transparent;transition:color var(--transition),border-color var(--transition);flex-shrink:0}
+    .ac-mobile-nav__item:hover{color:var(--black)}
+    .ac-mobile-nav__item--active{color:var(--red);border-bottom-color:var(--red)}
+    .ac-mobile-nav__num{font-size:10px;font-weight:700;opacity:0.60}
+
+    /* CTA */
+    .cta-band{padding:80px 0;background:var(--black);color:#fff;text-align:center}
+    .cta-band__title{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-0.03em;margin-bottom:14px}
+    .cta-band__sub{font-size:16px;color:rgba(255,255,255,0.55);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+    .cta-band .btn--primary{font-size:15px;padding:14px 32px;border-radius:100px}
+
+    /* Footer */
+    .footer{background:#1E1E1E;color:#fff;padding:40px 0 24px}
+    .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:32px}
+    .footer__logo{height:28px;opacity:0.80}
+    .footer__links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer__link{font-size:13px;color:rgba(255,255,255,0.45);transition:color var(--transition)}
+    .footer__link:hover{color:rgba(255,255,255,0.80)}
+    .footer__bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .footer__copy{font-size:12px;color:rgba(255,255,255,0.28)}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.50s ease,transform 0.50s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:960px){
+      .navbar__nav,.navbar__actions{display:none}
+      .navbar__burger{display:flex}
+      .ac-layout{grid-template-columns:1fr}
+      .ac-sidebar{display:none}
+      .ac-mobile-nav{display:block}
+      .ac-content{border-left:none}
+      .ac-section__head{padding:24px 20px 20px}
+      .ac-section__num{font-size:36px;min-width:50px}
+      .ac-comp-grid{grid-template-columns:1fr}
+      .ac-comp-col:first-child{border-right:none;border-bottom:1px solid var(--border-light)}
+      .ac-section__meta{grid-template-columns:1fr}
+      .ac-meta-block:first-child{border-right:none;border-bottom:1px solid var(--border-light)}
+    }
+    @media(max-width:600px){
+      .ac-hero{padding:48px 0 44px}
+      .ac-section__head{flex-direction:column;gap:8px}
+      .ac-section__num{font-size:28px;min-width:auto}
+      .ac-flow-wrap{padding:18px 16px}
+      .ac-comp-col{padding:18px 16px}
+      .ac-meta-block{padding:16px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" aria-label="Mat Analytics">
+        <img class="navbar__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+      </a>
+      <ul class="navbar__nav">
+        <li><a class="navbar__link" href="/">Inicio</a></li>
+        <li class="nav-dropdown" id="navDropdown">
+          <button class="nav-dropdown__trigger" id="navDropdownBtn" aria-expanded="false" aria-haspopup="true">
+            Capacidades
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="analitica.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div><p class="nav-dropdown__item-title">Inteligencia Anal&iacute;tica</p><p class="nav-dropdown__item-desc">Oracle OAC &middot; Power BI &middot; Gobernanza</p></div>
+            </a>
+            <a class="nav-dropdown__item" href="trusttech.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div><p class="nav-dropdown__item-title">TrustTech &amp; Certificaci&oacute;n</p><p class="nav-dropdown__item-desc">Notarizaci&oacute;n blockchain &middot; Stamping.io</p></div>
+            </a>
+            <div class="nav-dropdown__divider"></div>
+            <a class="nav-dropdown__item" href="capacidades.html" role="menuitem">
+              <span class="nav-dropdown__item-num">&#8594;</span>
+              <div><p class="nav-dropdown__item-title">Ver todas las capacidades</p><p class="nav-dropdown__item-desc">Portafolio completo de servicios</p></div>
+            </a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown__trigger nav-dropdown__trigger--active" aria-expanded="false" aria-haspopup="true">
+            Arquitectura
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+              <span class="nav-dropdown__item-num">01</span>
+              <div><p class="nav-dropdown__item-title">Arquitectura Oracle</p><p class="nav-dropdown__item-desc">Arquitectura de Datos Enterprise</p></div>
+            </a>
+            <a class="nav-dropdown__item" href="arquitecturas-referencia.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div><p class="nav-dropdown__item-title">Arquitecturas de Referencia</p><p class="nav-dropdown__item-desc">Patrones empresariales y buenas pr&aacute;cticas</p></div>
+            </a>
+            <div class="nav-dropdown__divider"></div>
+            <a class="nav-dropdown__item" href="arquitecturas.html" role="menuitem">
+              <span class="nav-dropdown__item-num">&#8594;</span>
+              <div><p class="nav-dropdown__item-title">Arquitecturas Detalladas</p><p class="nav-dropdown__item-desc">7 patrones con diagramas y componentes</p></div>
+            </a>
+          </div>
+        </li>
+        <li><a class="navbar__link" href="insights.html">Insights</a></li>
+        <li><a class="navbar__link" href="nosotros.html">Nosotros</a></li>
+        <li><a class="navbar__link" href="/#diagnostico">Contacto</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <a href="https://webmail.mat-analytics.com" target="_blank" rel="noopener noreferrer" class="navbar__mail" aria-label="Webmail">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="/#diagnostico" class="btn btn--primary">Agendar Diagn&oacute;stico
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Men&uacute;"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="/" onclick="closeMobile()">Inicio</a>
+    <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
+    <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
+    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura Oracle</a>
+    <a class="mobile-menu__link" href="arquitecturas-referencia.html" onclick="closeMobile()">Arquitecturas de Referencia</a>
+    <a class="mobile-menu__link" href="arquitecturas.html" onclick="closeMobile()">Arquitecturas Detalladas</a>
+    <a class="mobile-menu__link" href="insights.html" onclick="closeMobile()">Insights</a>
+    <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
+    <a href="/#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagn&oacute;stico</a>
+  </div>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <div class="breadcrumb__inner">
+        <a class="breadcrumb__link" href="/">Inicio</a>
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <a class="breadcrumb__link" href="arquitectura.html">Arquitectura</a>
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current" aria-current="page">Arquitecturas Detalladas</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="ac-hero">
+    <div class="container">
+      <div class="ac-hero__tag">Arquitecturas de Referencia</div>
+      <h1 class="ac-hero__title">Modelos de arquitectura<br><em>para datos empresariales.</em></h1>
+      <p class="ac-hero__sub">Patrones conceptuales documentados para iniciativas de gesti&oacute;n de datos, anal&iacute;tica y transformaci&oacute;n digital en organizaciones de sectores regulados.</p>
+      <div class="ac-hero__pills">
+        <span class="ac-hero__pill">Data Warehouse Oracle</span>
+        <span class="ac-hero__pill">Business Intelligence</span>
+        <span class="ac-hero__pill">Gobierno de Datos</span>
+        <span class="ac-hero__pill">TrustTech Blockchain</span>
+        <span class="ac-hero__pill">Oracle RAC</span>
+        <span class="ac-hero__pill">Lakehouse</span>
+        <span class="ac-hero__pill">Lakehouse + IA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="ac-disclaimer" role="note" aria-label="Nota editorial">
+    <div class="container">
+      <div class="ac-disclaimer__inner">
+        <div class="ac-disclaimer__icon" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(180,83,9,0.70)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <p class="ac-disclaimer__text"><strong>Marco editorial:</strong> Las arquitecturas presentadas corresponden a modelos conceptuales y patrones empresariales com&uacute;nmente observados en iniciativas modernas de gesti&oacute;n de datos, anal&iacute;tica y transformaci&oacute;n digital. No representan proyectos espec&iacute;ficos ni se atribuyen a organizaciones particulares.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav class="ac-mobile-nav" aria-label="Navegaci&oacute;n de arquitecturas">
+    <div class="ac-mobile-nav__inner">
+      <a class="ac-mobile-nav__item" href="#dw-oracle"><span class="ac-mobile-nav__num">01</span> Data Warehouse</a>
+      <a class="ac-mobile-nav__item" href="#bi-empresarial"><span class="ac-mobile-nav__num">02</span> Business Intelligence</a>
+      <a class="ac-mobile-nav__item" href="#gobierno-datos"><span class="ac-mobile-nav__num">03</span> Gobierno de Datos</a>
+      <a class="ac-mobile-nav__item" href="#trusttech"><span class="ac-mobile-nav__num">04</span> TrustTech</a>
+      <a class="ac-mobile-nav__item" href="#oracle-rac"><span class="ac-mobile-nav__num">05</span> Oracle RAC</a>
+      <a class="ac-mobile-nav__item" href="#lakehouse"><span class="ac-mobile-nav__num">06</span> Lakehouse</a>
+      <a class="ac-mobile-nav__item" href="#lakehouse-ia"><span class="ac-mobile-nav__num">07</span> Lakehouse + IA</a>
+    </div>
+  </nav>
+
+  <!-- Body layout -->
+  <div class="ac-body">
+    <div style="max-width:var(--max-w);margin:0 auto">
+      <div class="ac-layout">
+
+        <!-- Sidebar -->
+        <aside class="ac-sidebar" aria-label="Arquitecturas">
+          <nav class="ac-nav">
+            <span class="ac-nav__label">7 Arquitecturas</span>
+            <a class="ac-nav__item" href="#dw-oracle"><span class="ac-nav__num">01</span>Data Warehouse Oracle</a>
+            <a class="ac-nav__item" href="#bi-empresarial"><span class="ac-nav__num">02</span>Business Intelligence</a>
+            <a class="ac-nav__item" href="#gobierno-datos"><span class="ac-nav__num">03</span>Gobierno de Datos</a>
+            <a class="ac-nav__item" href="#trusttech"><span class="ac-nav__num">04</span>TrustTech Blockchain</a>
+            <a class="ac-nav__item" href="#oracle-rac"><span class="ac-nav__num">05</span>Oracle RAC</a>
+            <a class="ac-nav__item" href="#lakehouse"><span class="ac-nav__num">06</span>Lakehouse Empresarial</a>
+            <a class="ac-nav__item" href="#lakehouse-ia"><span class="ac-nav__num">07</span>Lakehouse + IA</a>
+            <div class="ac-nav__divider"></div>
+            <a class="ac-nav__item" href="arquitecturas-referencia.html" style="font-size:11.5px;opacity:0.70">&#8592; Arquitecturas de Referencia</a>
+          </nav>
+        </aside>
+
+        <!-- Content -->
+        <main class="ac-content">
+
+          <!-- ============================================================
+               01. DATA WAREHOUSE ORACLE
+          ============================================================ -->
+          <section class="ac-section reveal" id="dw-oracle">
+            <div class="ac-section__head">
+              <span class="ac-section__num">01</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Almacenamiento &amp; Anal&iacute;tica</span>
+                <h2 class="ac-section__title">Data Warehouse Oracle</h2>
+                <p class="ac-section__problem">Los datos dispersos en m&uacute;ltiples sistemas transaccionales impiden el an&aacute;lisis hist&oacute;rico consolidado y la toma de decisiones basada en informaci&oacute;n integrada y confiable. Las organizaciones necesitan una fuente &uacute;nica de verdad para sus datos de negocio.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Capa 1 a 4</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Fuentes de datos transaccionales</p><p class="ac-comp-item__desc">ERP, CRM, Core Bancario, archivos planos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Stage / Landing Zone</p><p class="ac-comp-item__desc">&Aacute;rea de aterrizaje transitoria en Oracle DB u Object Storage</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Data Integrator (ODI)</p><p class="ac-comp-item__desc">Flujos ETL/ELT, transformaciones y orquestaci&oacute;n</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Autonomous Data Warehouse</p><p class="ac-comp-item__desc">Repositorio central de datos hist&oacute;ricos integrados</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Capa 5 a 7</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Data Marts por dominio</p><p class="ac-comp-item__desc">Finanzas, Comercial, RRHH, Operaciones</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Analytics Server (OAS)</p><p class="ac-comp-item__desc">Capa sem&aacute;ntica RPD, l&oacute;gica de negocio y m&eacute;tricas</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Capa de presentaci&oacute;n</p><p class="ac-comp-item__desc">Oracle OAC, Power BI, dashboards ejecutivos</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — flujo de datos</span>
+              <div class="ac-flow" role="img" aria-label="Flujo: Fuentes a Analytics">
+                <div class="ac-node"><span class="ac-node__cat">Origen</span><span class="ac-node__name">Fuentes</span><span class="ac-node__tech">ERP · CRM · Core · Archivos</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Aterrizaje</span><span class="ac-node__name">Stage / Landing</span><span class="ac-node__tech">Oracle DB · Object Storage</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Integraci&oacute;n</span><span class="ac-node__name">Oracle ODI</span><span class="ac-node__tech">ETL/ELT · Transformaci&oacute;n</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Repositorio</span><span class="ac-node__name">Oracle ADW</span><span class="ac-node__tech">Data Warehouse Central</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Especializaci&oacute;n</span><span class="ac-node__name">Data Marts</span><span class="ac-node__tech">Finanzas · Comercial · RRHH</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Presentaci&oacute;n</span><span class="ac-node__name">Oracle OAC</span><span class="ac-node__tech">OAS Sem&aacute;ntica · Dashboards</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">&Uacute;nica versi&oacute;n de la verdad para toda la organizaci&oacute;n</p>
+                <p class="ac-meta-item">Reportes hist&oacute;ricos desde d&iacute;as hasta d&eacute;cadas sin degradaci&oacute;n</p>
+                <p class="ac-meta-item">Reducci&oacute;n del tiempo de consolidaci&oacute;n de informaci&oacute;n gerencial</p>
+                <p class="ac-meta-item">Eliminaci&oacute;n de silos departamentales y duplicidades de datos</p>
+                <p class="ac-meta-item">Trazabilidad del dato desde el sistema de origen hasta el reporte</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Sector financiero: consolidaci&oacute;n de reportes regulatorios (SBS, BCRP)</p>
+                <p class="ac-meta-item">Seguros: an&aacute;lisis de siniestralidad, reservas t&eacute;cnicas y cartera</p>
+                <p class="ac-meta-item">Sector p&uacute;blico: seguimiento presupuestal y ejecuci&oacute;n de gasto</p>
+                <p class="ac-meta-item">Retail: an&aacute;lisis de ventas multicanal con hist&oacute;rico completo</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               02. BUSINESS INTELLIGENCE EMPRESARIAL
+          ============================================================ -->
+          <section class="ac-section reveal" id="bi-empresarial">
+            <div class="ac-section__head">
+              <span class="ac-section__num">02</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Inteligencia de Negocios</span>
+                <h2 class="ac-section__title">Business Intelligence Empresarial</h2>
+                <p class="ac-section__problem">Los reportes manuales en hojas de c&aacute;lculo, la falta de visibilidad en tiempo real sobre KPIs cr&iacute;ticos y la informaci&oacute;n desconectada entre &aacute;reas dificultan la toma de decisiones oportuna y basada en datos confiables.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Capa de datos y sem&aacute;ntica</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Fuentes de datos</p><p class="ac-comp-item__desc">Data Warehouse, Data Marts, APIs operacionales</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Capa sem&aacute;ntica / RPD</p><p class="ac-comp-item__desc">Oracle Analytics Server: capas f&iacute;sica, l&oacute;gica y presentaci&oacute;n</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Analytics Cloud (OAC)</p><p class="ac-comp-item__desc">Plataforma central BI, ML nativo, augmented analytics</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Power BI</p><p class="ac-comp-item__desc">Self-service analytics para usuarios de negocio</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Capa de distribuci&oacute;n</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Dashboards ejecutivos y operativos</p><p class="ac-comp-item__desc">KPIs estrat&eacute;gicos, SLAs, cuadros de mando</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Motor de alertas y notificaciones</p><p class="ac-comp-item__desc">Umbrales, alarmas por condici&oacute;n, env&iacute;o autom&aacute;tico</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Control de acceso por rol (RLS)</p><p class="ac-comp-item__desc">Gobernanza de visibilidad por jerarqu&iacute;a organizacional</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — flujo anal&iacute;tico</span>
+              <div class="ac-flow" role="img" aria-label="Flujo BI: DW a Usuarios">
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Repositorio</span><span class="ac-node__name">DW &amp; Data Marts</span><span class="ac-node__tech">Oracle ADW · Marts</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Sem&aacute;ntica</span><span class="ac-node__name">OAS / RPD</span><span class="ac-node__tech">M&eacute;tricas · L&oacute;gica de negocio</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Plataforma</span><span class="ac-node__name">Oracle OAC</span><span class="ac-node__tech">BI · ML · Augmented</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Self-service</span><span class="ac-node__name">Power BI</span><span class="ac-node__tech">Exploraci&oacute;n ad-hoc</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Distribuci&oacute;n</span><span class="ac-node__name">Dashboards</span><span class="ac-node__tech">Ejecutivo · Operativo · RLS</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Consumo</span><span class="ac-node__name">Usuarios por Rol</span><span class="ac-node__tech">Gerencia · Operaciones · Finanzas</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Visibilidad en tiempo real sobre indicadores cr&iacute;ticos del negocio</p>
+                <p class="ac-meta-item">Self-service analytics sin dependencia del &aacute;rea de TI para reportes</p>
+                <p class="ac-meta-item">Drill-down desde el resumen ejecutivo hasta el detalle transaccional</p>
+                <p class="ac-meta-item">Gobierno de acceso por rol y jerarqu&iacute;a organizacional (RLS)</p>
+                <p class="ac-meta-item">Reducci&oacute;n de horas de elaboraci&oacute;n de reportes peri&oacute;dicos</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Alta gerencia: tablero de KPIs estrat&eacute;gicos y OKRs corporativos</p>
+                <p class="ac-meta-item">Operaciones: monitoreo de SLAs y eficiencia en tiempo real</p>
+                <p class="ac-meta-item">Finanzas: cierre mensual automatizado y P&amp;L en horas</p>
+                <p class="ac-meta-item">Regulatorio: reportes preformateados para env&iacute;o autom&aacute;tico a reguladores</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               03. GOBIERNO DE DATOS
+          ============================================================ -->
+          <section class="ac-section reveal" id="gobierno-datos">
+            <div class="ac-section__head">
+              <span class="ac-section__num">03</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Gesti&oacute;n del Activo de Datos</span>
+                <h2 class="ac-section__title">Gobierno de Datos</h2>
+                <p class="ac-section__problem">Sin una capa de gobierno, los datos carecen de calidad verificable, linaje claro y responsables definidos, lo que genera desconfianza en la informaci&oacute;n y decisiones basadas en datos de origen incierto o calidad no certificada.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Conocimiento y calidad</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Cat&aacute;logo de datos empresarial</p><p class="ac-comp-item__desc">Oracle OEMM, Apache Atlas — inventario de activos de datos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Motor de perfilado y calidad</p><p class="ac-comp-item__desc">Detecci&oacute;n de anomal&iacute;as, completitud, unicidad y consistencia</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Registro de linaje (Data Lineage)</p><p class="ac-comp-item__desc">Trazabilidad completa del dato desde origen hasta presentaci&oacute;n</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Glosario de negocio</p><p class="ac-comp-item__desc">Definiciones &uacute;nicas acordadas entre TI y &aacute;reas de negocio</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Pol&iacute;ticas y cumplimiento</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Pol&iacute;ticas y reglas de calidad</p><p class="ac-comp-item__desc">Umbrales, alertas y procedimientos de correcci&oacute;n</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Stewards y custodios de datos</p><p class="ac-comp-item__desc">Roles definidos de responsabilidad por dominio de datos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Dashboard de cumplimiento</p><p class="ac-comp-item__desc">M&eacute;tricas de calidad, SLAs de datos y auditor&iacute;a</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — ciclo de gobierno</span>
+              <div class="ac-flow" role="img" aria-label="Ciclo de gobierno de datos">
+                <div class="ac-node"><span class="ac-node__cat">Descubrimiento</span><span class="ac-node__name">Cat&aacute;logo</span><span class="ac-node__tech">OEMM · Apache Atlas</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Calidad</span><span class="ac-node__name">Perfilado / DQ</span><span class="ac-node__tech">Completitud · Unicidad</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Trazabilidad</span><span class="ac-node__name">Linaje</span><span class="ac-node__tech">Origen a presentaci&oacute;n</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Sem&aacute;ntica</span><span class="ac-node__name">Glosario</span><span class="ac-node__tech">Definiciones &uacute;nicas</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Responsabilidad</span><span class="ac-node__name">Stewardship</span><span class="ac-node__tech">Roles &amp; custodios</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Reporte</span><span class="ac-node__name">Compliance DQ</span><span class="ac-node__tech">M&eacute;tricas · Auditor&iacute;a</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Datos confiables con calidad medida, certificada y trazable</p>
+                <p class="ac-meta-item">Auditor&iacute;a completa del ciclo de vida de cada dato corporativo</p>
+                <p class="ac-meta-item">Cumplimiento de marcos regulatorios de datos (GDPR, normativa SBS)</p>
+                <p class="ac-meta-item">Reducci&oacute;n de incidentes por datos incorrectos en informes ejecutivos</p>
+                <p class="ac-meta-item">Definici&oacute;n &uacute;nica y acordada de m&eacute;tricas de negocio cr&iacute;ticas</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Banca regulada: reporte de datos a SBS con calidad certificada</p>
+                <p class="ac-meta-item">Fusiones y adquisiciones: auditor&iacute;a de activos de datos corporativos</p>
+                <p class="ac-meta-item">Open Banking: gobierno de APIs de datos para terceros autorizados</p>
+                <p class="ac-meta-item">Sector p&uacute;blico: interoperabilidad de datos entre entidades del Estado</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               04. TRUSTTECH — CERTIFICACIÓN BLOCKCHAIN
+          ============================================================ -->
+          <section class="ac-section reveal" id="trusttech">
+            <div class="ac-section__head">
+              <span class="ac-section__num">04</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Integridad &amp; Certificaci&oacute;n</span>
+                <h2 class="ac-section__title">TrustTech — Certificaci&oacute;n Blockchain</h2>
+                <p class="ac-section__problem">Los reportes, datasets y documentos cr&iacute;ticos carecen de un mecanismo verificable de integridad que permita demostrar ante auditores o reguladores que la informaci&oacute;n no fue alterada despu&eacute;s de su generaci&oacute;n. El no-repudio es el est&aacute;ndar en entornos regulados.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Generaci&oacute;n y certificaci&oacute;n</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Proceso origen</p><p class="ac-comp-item__desc">Generaci&oacute;n del reporte, dataset o documento cr&iacute;tico</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Motor de hash SHA-256</p><p class="ac-comp-item__desc">Huella criptogr&aacute;fica &uacute;nica del contenido en ese instante</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Conector API Stamping.io</p><p class="ac-comp-item__desc">Webhook o integraci&oacute;n directa con la plataforma aliada</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Red blockchain</p><p class="ac-comp-item__desc">Registro p&uacute;blico e inmutable del hash con timestamp</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Evidencia y verificaci&oacute;n</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Certificado digital</p><p class="ac-comp-item__desc">PDF con evidencia de notarizaci&oacute;n y referencia blockchain</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Portal de verificaci&oacute;n p&uacute;blica</p><p class="ac-comp-item__desc">Validaci&oacute;n sin cuenta ni software especializado</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Receptor final</p><p class="ac-comp-item__desc">Auditor, regulador, contraparte o cliente externo</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — cadena de certificaci&oacute;n</span>
+              <div class="ac-flow" role="img" aria-label="Flujo TrustTech: Origen a Verificaci&oacute;n">
+                <div class="ac-node"><span class="ac-node__cat">Origen</span><span class="ac-node__name">Proceso / Reporte</span><span class="ac-node__tech">Dataset · Documento</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--chain"><span class="ac-node__cat">Criptograf&iacute;a</span><span class="ac-node__name">SHA-256</span><span class="ac-node__tech">Hash &uacute;nico del contenido</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--chain"><span class="ac-node__cat">Alianza</span><span class="ac-node__name">API Stamping.io</span><span class="ac-node__tech">Webhook · Integraci&oacute;n directa</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--chain"><span class="ac-node__cat">Inmutabilidad</span><span class="ac-node__name">Blockchain</span><span class="ac-node__tech">Registro p&uacute;blico + timestamp</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--chain"><span class="ac-node__cat">Evidencia</span><span class="ac-node__name">Certificado Digital</span><span class="ac-node__tech">PDF con notarizaci&oacute;n</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Validaci&oacute;n</span><span class="ac-node__name">Verificaci&oacute;n P&uacute;blica</span><span class="ac-node__tech">Auditor · Regulador</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">No-repudio: imposible negar o alterar informaci&oacute;n certificada</p>
+                <p class="ac-meta-item">Trazabilidad con timestamp verificable por cualquier tercero</p>
+                <p class="ac-meta-item">Certificaci&oacute;n de procesos sin depender de autoridad central</p>
+                <p class="ac-meta-item">Compliance regulatorio con evidencia inmutable y portable</p>
+                <p class="ac-meta-item">Verificaci&oacute;n accesible sin cuenta ni software especializado</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Reportes SBS/BCRP: certificaci&oacute;n del estado al momento del env&iacute;o</p>
+                <p class="ac-meta-item">Auditor&iacute;as externas: evidencia de inmutabilidad ante firmas Big Four</p>
+                <p class="ac-meta-item">Contratos con datos: protecci&oacute;n jur&iacute;dica del estado de informaci&oacute;n</p>
+                <p class="ac-meta-item">Licitaciones p&uacute;blicas: transparencia verificable de propuestas</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               05. ORACLE RAC ALTA DISPONIBILIDAD
+          ============================================================ -->
+          <section class="ac-section reveal" id="oracle-rac">
+            <div class="ac-section__head">
+              <span class="ac-section__num">05</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Alta Disponibilidad</span>
+                <h2 class="ac-section__title">Oracle RAC — Alta Disponibilidad</h2>
+                <p class="ac-section__problem">Los sistemas de misi&oacute;n cr&iacute;tica con requerimientos de disponibilidad 24&times;7 no toleran ventanas de mantenimiento ni fallos no planificados. Una arquitectura de cl&uacute;ster de base de datos permite operar con continuidad ante fallos de hardware, software o actualizaciones planeadas.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Cl&uacute;ster y red</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Nodo RAC 1 (instancia activa)</p><p class="ac-comp-item__desc">Lectura/escritura simult&aacute;nea, misma base de datos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Nodo RAC 2 (instancia activa)</p><p class="ac-comp-item__desc">Failover autom&aacute;tico si el nodo 1 falla</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Grid Infrastructure</p><p class="ac-comp-item__desc">Clusterware, VIP, SCAN Listener, balanceo de carga</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle ASM</p><p class="ac-comp-item__desc">Automatic Storage Management — vol&uacute;menes compartidos</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Almacenamiento y recuperaci&oacute;n</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">SAN compartida (Shared Storage)</p><p class="ac-comp-item__desc">Almacenamiento de alta velocidad accesible por todos los nodos</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle Data Guard Standby</p><p class="ac-comp-item__desc">R&eacute;plica s&iacute;ncrona o as&iacute;ncrona en sitio alterno</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Oracle RMAN</p><p class="ac-comp-item__desc">Backup gestionado, restauraci&oacute;n a punto exacto</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — topolog&iacute;a de cl&uacute;ster</span>
+              <div class="ac-flow" role="img" aria-label="Topolog&iacute;a Oracle RAC">
+                <div class="ac-node"><span class="ac-node__cat">Acceso</span><span class="ac-node__name">Aplicaciones / Clientes</span><span class="ac-node__tech">Conexiones entrantes</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Red Oracle</span><span class="ac-node__name">SCAN / VIP</span><span class="ac-node__tech">Balanceo autom&aacute;tico</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--cluster ac-node--oracle"><span class="ac-node__cat">Cl&uacute;ster Oracle RAC</span><span class="ac-node__name">Nodo 1 (Activo)</span><span class="ac-node__name">Nodo 2 (Activo)</span><span class="ac-node__tech">R/W simult&aacute;neo</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Almacenamiento</span><span class="ac-node__name">Grid / ASM</span><span class="ac-node__tech">SAN compartida</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Protecci&oacute;n</span><span class="ac-node__name">Data Guard</span><span class="ac-node__tech">Standby s&iacute;ncrono / as&iacute;ncrono</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Recuperaci&oacute;n</span><span class="ac-node__name">RMAN Backup</span><span class="ac-node__tech">RPO / RTO gestionado</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Disponibilidad 99.99% (&lt;53 min de downtime no planificado/a&ntilde;o)</p>
+                <p class="ac-meta-item">Failover autom&aacute;tico entre nodos sin intervenci&oacute;n manual</p>
+                <p class="ac-meta-item">Escalabilidad horizontal agregando nodos al cl&uacute;ster</p>
+                <p class="ac-meta-item">Cero p&eacute;rdida de datos con Data Guard en modo SYNC</p>
+                <p class="ac-meta-item">Mantenimiento de un nodo sin impacto en disponibilidad del servicio</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Core bancario (CBS): operaciones 24&times;7 sin ventana de mantenimiento</p>
+                <p class="ac-meta-item">Sistemas de pagos en tiempo real: settlement y clearing cr&iacute;tico</p>
+                <p class="ac-meta-item">ERP empresarial: Oracle EBS / SAP sobre Oracle sin downtime</p>
+                <p class="ac-meta-item">Sistemas de trading: alta demanda de transacciones concurrentes</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               06. LAKEHOUSE EMPRESARIAL
+          ============================================================ -->
+          <section class="ac-section reveal" id="lakehouse">
+            <div class="ac-section__head">
+              <span class="ac-section__num">06</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">Plataforma de Datos Unificada</span>
+                <h2 class="ac-section__title">Lakehouse Empresarial</h2>
+                <p class="ac-section__problem">Las organizaciones con grandes vol&uacute;menes de datos estructurados y no estructurados necesitan combinar la econom&iacute;a de almacenamiento del data lake con las capacidades anal&iacute;ticas, el gobierno y la consistencia del data warehouse tradicional.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Ingesta y almacenamiento</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Fuentes heterog&eacute;neas</p><p class="ac-comp-item__desc">Datos estructurados, semi-estructurados y no estructurados</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Capa de ingesta</p><p class="ac-comp-item__desc">Kafka, Oracle GoldenGate, APIs, conectores CDC</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Data Lake</p><p class="ac-comp-item__desc">OCI Object Storage / S3-compatible, bajo costo</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Formato abierto</p><p class="ac-comp-item__desc">Apache Iceberg / Delta Lake — ACID, time travel</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Procesamiento y anal&iacute;tica</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Motor de procesamiento</p><p class="ac-comp-item__desc">Apache Spark, Oracle Data Flow — batch y streaming</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Cat&aacute;logo unificado</p><p class="ac-comp-item__desc">Metadatos de datos lake y warehouse en un solo lugar</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Motor anal&iacute;tico</p><p class="ac-comp-item__desc">Oracle ADW, Trino / Starburst — consultas SQL sobre lake</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Capa BI y ML</p><p class="ac-comp-item__desc">OAC, Power BI, Jupyter, MLflow — consumo unificado</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — plataforma unificada</span>
+              <div class="ac-flow" role="img" aria-label="Flujo Lakehouse Empresarial">
+                <div class="ac-node"><span class="ac-node__cat">Origen</span><span class="ac-node__name">Fuentes</span><span class="ac-node__tech">Struct · Semi · Unstruct</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Ingesta</span><span class="ac-node__name">Kafka / GoldenGate</span><span class="ac-node__tech">Batch · Streaming · CDC</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Almacenamiento</span><span class="ac-node__name">Data Lake</span><span class="ac-node__tech">OCI Object / S3 · Iceberg</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Procesamiento</span><span class="ac-node__name">Spark / Data Flow</span><span class="ac-node__tech">Batch &amp; Streaming</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Anal&iacute;tica SQL</span><span class="ac-node__name">ADW / Trino</span><span class="ac-node__tech">Consultas sobre el lake</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Consumo</span><span class="ac-node__name">BI &amp; ML</span><span class="ac-node__tech">OAC · Power BI · MLflow</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Reducci&oacute;n significativa en costos de almacenamiento vs. DW tradicional</p>
+                <p class="ac-meta-item">Soporte nativo para workloads de machine learning e IA sobre los mismos datos</p>
+                <p class="ac-meta-item">Eliminaci&oacute;n del silo entre data lake y data warehouse</p>
+                <p class="ac-meta-item">Formatos abiertos (Iceberg/Delta) sin vendor lock-in</p>
+                <p class="ac-meta-item">Capacidades ACID y time travel sobre almacenamiento de bajo costo</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Telco: an&aacute;lisis de tr&aacute;fico de red con petabytes de logs de CDRs</p>
+                <p class="ac-meta-item">Retail: vista 360&deg; del cliente combinando comportamiento online y transaccional</p>
+                <p class="ac-meta-item">Fintech: detecci&oacute;n de fraude en streaming con modelos ML en tiempo real</p>
+                <p class="ac-meta-item">Banca: stress testing y modelos de riesgo sobre datos hist&oacute;ricos masivos</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               07. LAKEHOUSE E IA EMPRESARIAL
+          ============================================================ -->
+          <section class="ac-section reveal" id="lakehouse-ia">
+            <div class="ac-section__head">
+              <span class="ac-section__num">07</span>
+              <div class="ac-section__head-body">
+                <span class="ac-section__domain">IA Empresarial</span>
+                <h2 class="ac-section__title">Lakehouse e Inteligencia Artificial Empresarial</h2>
+                <p class="ac-section__problem">Las iniciativas de IA empresarial frecuentemente no alcanzan su potencial al no contar con una plataforma de datos gobernada y de calidad certificada. Sin datos confiables, los modelos producen resultados no auditables que no pueden adoptarse en entornos regulados.</p>
+              </div>
+            </div>
+
+            <div class="ac-comp-grid">
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Datos y gobierno</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Fuentes de datos</p><p class="ac-comp-item__desc">Estructurados, no estructurados, documentos, streaming</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Lakehouse</p><p class="ac-comp-item__desc">Datos unificados, formatos abiertos, acceso gobernado</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Gobierno y calidad de datos</p><p class="ac-comp-item__desc">Cat&aacute;logo, linaje, reglas DQ — base para modelos confiables</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Vector Database</p><p class="ac-comp-item__desc">Embeddings sem&aacute;nticos — Pinecone, pgvector, Oracle AI Vector</p></div></div>
+              </div>
+              <div class="ac-comp-col">
+                <span class="ac-comp-col__label">Componentes — Modelos y aplicaciones</span>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">LLM / Modelo base</p><p class="ac-comp-item__desc">GPT-4, Gemini, Oracle GenAI — seg&uacute;n contexto y regulaci&oacute;n</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Capa de orquestaci&oacute;n</p><p class="ac-comp-item__desc">LangChain, LlamaIndex — RAG, agentes, memoria conversacional</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Asistentes empresariales</p><p class="ac-comp-item__desc">Chatbots internos, co-pilots con contexto de negocio espec&iacute;fico</p></div></div>
+                <div class="ac-comp-item"><span class="ac-comp-item__dot"></span><div><p class="ac-comp-item__name">Dashboards aumentados con IA</p><p class="ac-comp-item__desc">OAC + GenAI, Copilot en Power BI — an&aacute;lisis conversacional</p></div></div>
+              </div>
+            </div>
+
+            <div class="ac-flow-wrap">
+              <span class="ac-flow-wrap__label">Diagrama conceptual — plataforma de IA gobernada</span>
+              <div class="ac-flow" role="img" aria-label="Flujo Lakehouse e IA Empresarial">
+                <div class="ac-node"><span class="ac-node__cat">Origen</span><span class="ac-node__name">Fuentes</span><span class="ac-node__tech">Struct · Doc · Stream</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Plataforma</span><span class="ac-node__name">Lakehouse</span><span class="ac-node__tech">Iceberg · Delta · ADW</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node"><span class="ac-node__cat">Gobierno</span><span class="ac-node__name">DQ &amp; Cat&aacute;logo</span><span class="ac-node__tech">Linaje · Calidad · Reglas</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Sem&aacute;ntica IA</span><span class="ac-node__name">Vector DB</span><span class="ac-node__tech">Embeddings · B&uacute;squeda</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Modelo</span><span class="ac-node__name">LLM / GenAI</span><span class="ac-node__tech">GPT · Gemini · Oracle AI</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--ai"><span class="ac-node__cat">Aplicaci&oacute;n</span><span class="ac-node__name">Asistentes</span><span class="ac-node__tech">Co-pilots · Chatbots</span></div>
+                <div class="ac-flow__arr"></div>
+                <div class="ac-node ac-node--oracle"><span class="ac-node__cat">Consumo</span><span class="ac-node__name">Dashboards IA</span><span class="ac-node__tech">OAC GenAI · Copilot PBI</span></div>
+              </div>
+            </div>
+
+            <div class="ac-section__meta">
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Beneficios esperados</span>
+                <p class="ac-meta-item">Modelos de IA alimentados por datos gobernados y de calidad certificada</p>
+                <p class="ac-meta-item">Asistentes empresariales con contexto del negocio, no gen&eacute;ricos</p>
+                <p class="ac-meta-item">Trazabilidad de inferencias y auditor&iacute;a de decisiones tomadas con IA</p>
+                <p class="ac-meta-item">Integraci&oacute;n con plataformas BI existentes sin reemplazarlas</p>
+                <p class="ac-meta-item">Base de datos vectorial sobre los mismos datos gobernados del lakehouse</p>
+              </div>
+              <div class="ac-meta-block">
+                <span class="ac-meta-block__title">Escenarios donde suele utilizarse</span>
+                <p class="ac-meta-item">Seguros: asistente de suscripci&oacute;n con acceso a historial de siniestros</p>
+                <p class="ac-meta-item">Banca: detecci&oacute;n de fraude en tiempo real con modelos especializados</p>
+                <p class="ac-meta-item">Sector p&uacute;blico: an&aacute;lisis de normativa y documentaci&oacute;n legal (RAG)</p>
+                <p class="ac-meta-item">Retail: recomendaciones personalizadas con contexto conversacional</p>
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2 class="cta-band__title">Evaluemos su contexto arquitect&oacute;nico.</h2>
+      <p class="cta-band__sub">45 minutos para identificar qu&eacute; patr&oacute;n arquitect&oacute;nico es el punto de entrada con mayor impacto para su organizaci&oacute;n.</p>
+      <a href="/#diagnostico" class="btn btn--primary">
+        Agendar Diagn&oacute;stico
+        <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <img class="footer__logo" src="brand-assets/logo-horizontal-negativo.svg" alt="Mat Analytics">
+        <div class="footer__links">
+          <a class="footer__link" href="/">Inicio</a>
+          <a class="footer__link" href="capacidades.html">Capacidades</a>
+          <a class="footer__link" href="arquitectura.html">Arquitecturas</a>
+          <a class="footer__link" href="insights.html">Insights</a>
+          <a class="footer__link" href="nosotros.html">Nosotros</a>
+          <a class="footer__link" href="/#diagnostico">Contacto</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Mat Analytics SAC &middot; Lima, Per&uacute;</p>
+        <div class="footer__links">
+          <a class="footer__link" href="privacidad.html">Privacidad</a>
+          <a class="footer__link" href="terminos.html">T&eacute;rminos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 10), {passive:true});
+    const dd = document.querySelector('#navDropdown');
+    const btn = document.getElementById('navDropdownBtn');
+    if(dd && btn){ btn.addEventListener('click', e => { e.stopPropagation(); const o = !dd.classList.contains('open'); dd.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); }); document.addEventListener('click', () => { dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }); document.addEventListener('keydown', e => { if(e.key==='Escape'){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');} }); }
+    const burger = document.getElementById('burgerBtn');
+    const mob = document.getElementById('mobileMenu');
+    function closeMobile(){ mob.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow=''; }
+    burger.addEventListener('click', () => { const o = mob.classList.toggle('open'); burger.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; });
+
+    // Sidebar + mobile nav active state
+    const sections = document.querySelectorAll('.ac-section');
+    const sideNavItems = document.querySelectorAll('.ac-nav__item');
+    const mobileNavItems = document.querySelectorAll('.ac-mobile-nav__item');
+    const allNavItems = [...sideNavItems, ...mobileNavItems];
+    const sectionObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          const id = e.target.id;
+          sideNavItems.forEach(i => i.classList.toggle('ac-nav__item--active', i.getAttribute('href') === '#'+id));
+          mobileNavItems.forEach(i => {
+            const active = i.getAttribute('href') === '#'+id;
+            i.classList.toggle('ac-mobile-nav__item--active', active);
+            if(active) i.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+          });
+        }
+      });
+    }, {rootMargin:'-15% 0px -75% 0px', threshold:0});
+    sections.forEach(s => sectionObs.observe(s));
+
+    // Reveal on scroll
+    const revObs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.06});
+    document.querySelectorAll('.reveal').forEach(r => revObs.observe(r));
+  </script>
+</body>
+</html>
