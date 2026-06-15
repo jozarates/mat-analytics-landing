@@ -6,6 +6,17 @@ Historial de versiones y planificación de desarrollo.
 
 ## Versiones lanzadas
 
+### v1.1.2 — Unificación visual de arquitecturas `[2026-06-15]`
+
+**Arquitecturas de Referencia:**
+- Se actualizaron las 7 imágenes iniciales con el mismo contexto visual de "Lakehouse e Inteligencia Artificial Empresarial".
+- Todas las arquitecturas usan una línea visual consistente: fondo claro, paneles técnicos, acentos rojo MAT, naranja y teal.
+- Las imágenes se enfocan en explicar componentes y flujos de arquitectura, sin marcas ni afirmaciones de implementación.
+
+**Assets:**
+- Se reemplazaron los WebP anteriores por nuevas imágenes PNG en `assets/arquitecturas/`.
+- Se retiraron assets obsoletos para mantener limpia la carpeta de producción.
+
 ### v1.1.1 — Imagen IA Empresarial y ajuste de despliegue `[2026-06-15]`
 
 **Arquitecturas de Referencia:**
