@@ -1,0 +1,51 @@
+# ─── HTTPS Redirect ──────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Skip redirect if already HTTPS or behind proxy that terminated SSL
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ─── Security Headers ─────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # HSTS — 1 hour initially; increase to 31536000 after validating HTTPS works
+  Header always set Strict-Transport-Security "max-age=3600; includeSubDomains"
+
+  # Clickjacking — CSP already has frame-ancestors 'none', this adds server-level defense
+  Header always set X-Frame-Options "DENY"
+
+  # Block MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Referrer — send origin on same-site, only origin on cross-site HTTPS
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Restrict browser features not used by this site
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+  # Disable legacy XSS auditor (modern browsers ignore it; old ones may break with '1')
+  Header always set X-XSS-Protection "0"
+
+  # Prevent IE from switching rendering modes
+  Header always set X-UA-Compatible "IE=edge"
+</IfModule>
+
+# ─── Charset ──────────────────────────────────────────────────────────────────
+AddDefaultCharset UTF-8
+
+# ─── Error documents ──────────────────────────────────────────────────────────
+ErrorDocument 404 /index.html
+
+# ─── Cache static assets ──────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png  "access plus 30 days"
+  ExpiresByType image/jpg  "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css   "access plus 7 days"
+</IfModule>
