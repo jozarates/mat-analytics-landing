@@ -1375,6 +1375,38 @@
       .stats__grid { grid-template-columns: 1fr; }
       .form-card { padding: 28px 20px; }
     }
+
+    /* ─── ARCH CARDS (home highlight) ──────────────────────────────────── */
+    .arch-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .arch-card {
+      display: block; background: var(--white); border: 1px solid #e8e8e8;
+      border-radius: 14px; padding: 28px; text-decoration: none; color: inherit;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+    }
+    .arch-card:hover { border-color: rgba(139,1,1,0.22); box-shadow: 0 8px 32px rgba(0,0,0,0.07); transform: translateY(-3px); }
+    .arch-card__num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; opacity: 0.65; }
+    .arch-card__title { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 9px; letter-spacing: -0.02em; line-height: 1.32; }
+    .arch-card__desc { font-size: 13px; color: var(--gray-mid); line-height: 1.65; margin-bottom: 16px; }
+    .arch-card__tags { display: flex; flex-wrap: wrap; gap: 5px; border-top: 1px solid #f2f2f2; padding-top: 12px; }
+    .arch-card__tag { font-size: 10px; font-weight: 600; background: var(--gray-bg); color: #999; padding: 3px 9px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.18s, color 0.18s; }
+    .arch-card:hover .arch-card__tag { background: rgba(139,1,1,0.06); color: rgba(139,1,1,0.65); }
+
+    /* ─── POR QUÉ MAT ANALYTICS ─────────────────────────────────────────── */
+    .porq__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .porq-item {
+      background: var(--white); border: 1px solid #e8e8e8; border-radius: 14px;
+      padding: 32px; display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .porq-item:hover { border-color: rgba(139,1,1,0.18); box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+    .porq-item__icon { width: 40px; height: 40px; flex-shrink: 0; background: rgba(139,1,1,0.055); border: 1px solid rgba(139,1,1,0.10); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+    .porq-item__title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 7px; line-height: 1.30; }
+    .porq-item__desc { font-size: 13px; color: var(--gray-mid); line-height: 1.68; }
+
+    @media (max-width: 860px) {
+      .arch-cards { grid-template-columns: 1fr; }
+      .porq__grid { grid-template-columns: 1fr; }
+    }
   </style>
 
   <!-- Schema.org JSON-LD -->
@@ -1466,24 +1498,31 @@
             </a>
           </div>
         </li>
-        <li class="nav-dropdown nav-dropdown--architecture">
+        <li class="nav-dropdown">
           <button class="nav-dropdown__trigger" aria-expanded="false" aria-haspopup="true">
-            Arquitectura
+            Arquitecturas
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="2,4 6,8 10,4"/></svg>
           </button>
           <div class="nav-dropdown__menu" role="menu">
-            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+            <a class="nav-dropdown__item" href="arquitecturas.html" role="menuitem">
               <span class="nav-dropdown__item-num">01</span>
               <div class="nav-dropdown__item-body">
-                <p class="nav-dropdown__item-title">Arquitectura</p>
-                <p class="nav-dropdown__item-desc">Arquitectura de Datos Enterprise</p>
+                <p class="nav-dropdown__item-title">Arquitecturas Detalladas</p>
+                <p class="nav-dropdown__item-desc">9 patrones con diagramas y componentes</p>
+              </div>
+            </a>
+            <a class="nav-dropdown__item" href="arquitectura.html" role="menuitem">
+              <span class="nav-dropdown__item-num">02</span>
+              <div class="nav-dropdown__item-body">
+                <p class="nav-dropdown__item-title">Arquitectura Oracle</p>
+                <p class="nav-dropdown__item-desc">Stack enterprise de datos Oracle</p>
               </div>
             </a>
             <a class="nav-dropdown__item" href="arquitecturas-referencia.html" role="menuitem">
-              <span class="nav-dropdown__item-num">02</span>
+              <span class="nav-dropdown__item-num">03</span>
               <div class="nav-dropdown__item-body">
                 <p class="nav-dropdown__item-title">Arquitecturas de Referencia</p>
-                <p class="nav-dropdown__item-desc">Patrones empresariales y buenas pr&aacute;cticas</p>
+                <p class="nav-dropdown__item-desc">Patrones empresariales documentados</p>
               </div>
             </a>
           </div>
@@ -1511,9 +1550,8 @@
     <a class="mobile-menu__link" href="/" onclick="closeMobile()">Inicio</a>
     <a class="mobile-menu__link" href="capacidades.html" onclick="closeMobile()">Capacidades</a>
     <a class="mobile-menu__link" href="analitica.html" onclick="closeMobile()">Inteligencia Anal&iacute;tica</a>
-    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech &amp; Certificaci&oacute;n</a>
-    <a class="mobile-menu__link" href="arquitectura.html" onclick="closeMobile()">Arquitectura</a>
-    <a class="mobile-menu__link" href="arquitecturas-referencia.html" onclick="closeMobile()">Arquitecturas de Referencia</a>
+    <a class="mobile-menu__link" href="trusttech.html" onclick="closeMobile()">TrustTech</a>
+    <a class="mobile-menu__link" href="arquitecturas.html" onclick="closeMobile()">Arquitecturas</a>
     <a class="mobile-menu__link" href="insights.html" onclick="closeMobile()">Insights</a>
     <a class="mobile-menu__link" href="nosotros.html" onclick="closeMobile()">Nosotros</a>
     <a href="#diagnostico" class="btn btn--primary btn--lg" onclick="closeMobile()">Agendar Diagn&oacute;stico</a>
@@ -1539,7 +1577,7 @@
           Plataformas analíticas empresariales con trazabilidad, auditoría e integridad verificable para sectores regulados.
         </p>
         <div class="hero__actions">
-          <a href="#quienes-somos" class="btn btn--outline-dark btn--pill">Conocer la Firma</a>
+          <a href="#por-que" class="btn btn--outline-dark btn--pill">Conocer la Firma</a>
           <a href="#diagnostico" class="btn btn--primary btn--pill">
             Agendar Reunión
             <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
@@ -1614,14 +1652,11 @@
 
     <!-- Dot navigation -->
   <nav class="dot-nav" aria-label="Navegación por secciones">
-    <a href="#inicio"        title="01 · Portada"></a>
-    <a href="#quienes-somos" title="02 · Quiénes Somos"></a>
-    <a href="#capacidades"   title="03 · Capacidades"></a>
-    <a href="#trusttech"     title="04 · TrustTech"></a>
-    <a href="#industrias"    title="05 · Industrias"></a>
-    <a href="#casos"         title="06 · Casos de Éxito"></a>
-    <a href="#equipo"        title="07 · Equipo"></a>
-    <a href="#diagnostico"   title="08 · Contacto"></a>
+    <a href="#inicio"             title="01 · Portada"></a>
+    <a href="#problemas"          title="02 · Problemas"></a>
+    <a href="#capacidades"        title="03 · Capacidades"></a>
+    <a href="#arquitecturas-home" title="04 · Arquitecturas"></a>
+    <a href="#diagnostico"        title="05 · Contacto"></a>
   </nav>
 
   <!-- ══════════════════════════════════════════════════ TRUST BAR ═════════ -->
@@ -1642,32 +1677,34 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════ 02 · QUIÉNES SOMOS ═════════ -->
-  <section class="stats section" id="quienes-somos">
+  <!-- ════════════════════════════════════ PROBLEMAS QUE RESOLVEMOS ═══════ -->
+  <section class="section section--gray" id="problemas">
     <div class="container">
-      <div class="section__header" style="margin-bottom:48px">
-        <div class="section__tag"><span class="tag tag--white">Quiénes somos</span></div>
-        <h2 class="section__title section__title--white">Consultores senior.<br>Proyectos que importan.</h2>
-        <p class="section__sub section__sub--white">
-          Mat Analytics SAC es una firma consultora peruana especializada en arquitecturas de datos críticas y certificación criptográfica. Nuestro equipo acumula más de una década de experiencia desplegando ecosistemas Oracle en los sectores más regulados del país.
-        </p>
+      <div class="section__header">
+        <div class="section__tag"><span class="tag">Problemas que resolvemos</span></div>
+        <h2 class="section__title">Los datos cr&iacute;ticos tienen<br>problemas cr&iacute;ticos.</h2>
+        <p class="section__sub">Cuatro escenarios que frenan la confianza en la informaci&oacute;n empresarial en sectores regulados.</p>
       </div>
-      <div class="stats__grid">
-        <div class="stat reveal">
-          <div class="stat__num" data-count="15" data-suffix="+" data-prefix="">15<span>+</span></div>
-          <div class="stat__label">Años de experiencia<br>en ecosistema Oracle</div>
+      <div class="problema__grid">
+        <div class="problema-item reveal">
+          <p class="problema-item__num">01</p>
+          <h3 class="problema-item__title">Datos sin trazabilidad</h3>
+          <p class="problema-item__desc">Los reportes regulatorios no pueden reconstituir su ruta de c&aacute;lculo. Cuando el regulador pregunta, no hay respuesta t&eacute;cnica suficiente para respaldar cada cifra entregada.</p>
         </div>
-        <div class="stat reveal reveal-delay-1">
-          <div class="stat__num" data-count="40" data-suffix="+" data-prefix="">40<span>+</span></div>
-          <div class="stat__label">Proyectos enterprise<br>liderados por nuestro equipo</div>
+        <div class="problema-item reveal reveal-delay-1">
+          <p class="problema-item__num">02</p>
+          <h3 class="problema-item__title">Integridad no verificable</h3>
+          <p class="problema-item__desc">Un documento puede haber sido modificado despu&eacute;s de su emisi&oacute;n. Sin sellado criptogr&aacute;fico, ning&uacute;n tercero puede distinguir el original de una versi&oacute;n alterada.</p>
         </div>
-        <div class="stat reveal reveal-delay-2">
-          <div class="stat__num" data-count="98.7" data-suffix="%" data-prefix="" data-decimals="1">98<span>.7%</span></div>
-          <div class="stat__label">SLA promedio sostenido<br>en proyectos previos</div>
+        <div class="problema-item reveal reveal-delay-2">
+          <p class="problema-item__num">03</p>
+          <h3 class="problema-item__title">BI sin gobierno de datos</h3>
+          <p class="problema-item__desc">Los dashboards responden preguntas con definiciones distintas seg&uacute;n qui&eacute;n los construy&oacute;. El dato del CFO no coincide con el del CIO, y nadie sabe cu&aacute;l es el correcto.</p>
         </div>
-        <div class="stat reveal reveal-delay-3">
-          <div class="stat__num" data-count="2" data-suffix="h" data-prefix="&lt;">&lt;2<span>h</span></div>
-          <div class="stat__label">Tiempo de respuesta<br>estándar del equipo consultor</div>
+        <div class="problema-item reveal reveal-delay-3">
+          <p class="problema-item__num">04</p>
+          <h3 class="problema-item__title">Sistemas desconectados</h3>
+          <p class="problema-item__desc">Los datos viven en silos: ERP, CRM, sistemas legados. Consolidarlos manualmente consume semanas y produce informes que ya son obsoletos cuando se publican.</p>
         </div>
       </div>
     </div>
@@ -1742,17 +1779,21 @@
           </div>
         </a>
       </div>
-      <div class="reveal" style="text-align:center;margin-top:20px">
+      <div class="reveal" style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <a href="capacidades.html" class="btn btn--primary btn--pill">
-          Explorar todas las capacidades
+          Ver todas las capacidades
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+        <a href="insights.html" class="btn btn--outline-dark btn--pill">
+          Explorar Insights
           <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════ 06 · DIFERENCIAL TRUSTTECH ════════════ -->
-  <section class="section trusttech" id="trusttech">
+  <!-- TRUSTTECH Y INDUSTRIAS MOVIDOS A SUS PÁGINAS DEDICADAS -->
+  <section class="section trusttech" id="trusttech" style="display:none">
     <div class="container">
       <div class="trusttech__inner">
         <div class="trusttech__content reveal">
@@ -1836,7 +1877,7 @@
   </section>
 
   <!-- ══════════════════════════════════════════ 07 · INDUSTRIAS ══════════ -->
-  <section class="section" id="industrias">
+  <section class="section" id="industrias" style="display:none">
     <div class="container">
       <div class="section__header">
         <div class="section__tag"><span class="tag">Sectores que atendemos</span></div>
@@ -2035,7 +2076,7 @@
   </section>
 
   <!-- ════════════════════════════════════════════════ 10 · EQUIPO ════════ -->
-  <section class="section section--gray" id="equipo">
+  <section class="section section--gray" id="equipo" style="display:none">
     <div class="container">
       <div class="section__header">
         <div class="section__tag"><span class="tag">El equipo</span></div>
@@ -2059,6 +2100,115 @@
       <div class="reveal" style="text-align:center;margin-top:32px">
         <a href="nosotros.html" class="btn btn--outline-dark btn--pill">
           Conocer Nuestro Equipo
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ ARQUITECTURAS DESTACADAS ══════════ -->
+  <section class="section" id="arquitecturas-home">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag"><span class="tag">Arquitecturas de referencia</span></div>
+        <h2 class="section__title">Patrones probados para entornos donde<br>los datos no pueden fallar.</h2>
+        <p class="section__sub">Arquitecturas conceptuales para los escenarios m&aacute;s comunes en sectores regulados. Sin vendor lock-in como premisa, con Oracle como base validada.</p>
+      </div>
+      <div class="arch-cards">
+        <a class="arch-card reveal" href="arquitecturas.html#dw-oracle">
+          <p class="arch-card__num">01 · Data Warehouse</p>
+          <h3 class="arch-card__title">Data Warehouse Oracle Enterprise</h3>
+          <p class="arch-card__desc">Pipeline ETL sobre Oracle Data Integrator hacia Oracle ADW. Est&aacute;ndar de mercado para reportes regulatorios con trazabilidad completa y gobierno de datos desde el origen.</p>
+          <div class="arch-card__tags">
+            <span class="arch-card__tag">Oracle ADW</span>
+            <span class="arch-card__tag">Oracle ODI</span>
+            <span class="arch-card__tag">OAC</span>
+            <span class="arch-card__tag">Gobierno</span>
+          </div>
+        </a>
+        <a class="arch-card reveal reveal-delay-1" href="arquitecturas.html#lakehouse-oracle">
+          <p class="arch-card__num">08 · Lakehouse</p>
+          <h3 class="arch-card__title">Lakehouse Empresarial Oracle</h3>
+          <p class="arch-card__desc">Plataforma unificada 100% Oracle: Object Storage, Data Catalog, ADW, Oracle Machine Learning y OAC. Anal&iacute;tica y ML sobre el mismo stack, sin fricciones de integraci&oacute;n.</p>
+          <div class="arch-card__tags">
+            <span class="arch-card__tag">Object Storage</span>
+            <span class="arch-card__tag">Oracle ML</span>
+            <span class="arch-card__tag">Data Catalog</span>
+          </div>
+        </a>
+        <a class="arch-card reveal reveal-delay-2" href="arquitecturas.html#lakehouse-ia-gen">
+          <p class="arch-card__num">09 · IA Generativa</p>
+          <h3 class="arch-card__title">Lakehouse con IA Generativa</h3>
+          <p class="arch-card__desc">Arquitectura con RAG empresarial: los LLMs acceden al conocimiento interno de la organizaci&oacute;n sin exponer datos sensibles. El patr&oacute;n que define la tendencia de 2026.</p>
+          <div class="arch-card__tags">
+            <span class="arch-card__tag">RAG</span>
+            <span class="arch-card__tag">Vector DB</span>
+            <span class="arch-card__tag">LLM Empresarial</span>
+          </div>
+        </a>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:28px">
+        <a href="arquitecturas.html" class="btn btn--outline-dark btn--pill">
+          Ver las 9 arquitecturas
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ POR QUÉ MAT ANALYTICS ════════ -->
+  <section class="section section--gray" id="por-que">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag"><span class="tag">Por qu&eacute; elegirnos</span></div>
+        <h2 class="section__title">Una firma consultora senior.<br>Sin intermediarios.</h2>
+        <p class="section__sub">Cuatro principios que distinguen c&oacute;mo trabajamos de c&oacute;mo trabajan las dem&aacute;s consultoras de datos en el mercado.</p>
+      </div>
+      <div class="porq__grid">
+        <div class="porq-item reveal">
+          <div class="porq-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <h3 class="porq-item__title">Rigor t&eacute;cnico desde el origen</h3>
+            <p class="porq-item__desc">No construimos dashboards sobre datos sin gobierno. Cada proyecto parte de la arquitectura correcta. El informe es la consecuencia, no el punto de partida.</p>
+          </div>
+        </div>
+        <div class="porq-item reveal reveal-delay-1">
+          <div class="porq-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h3 class="porq-item__title">TrustTech nativo</h3>
+            <p class="porq-item__desc">La integridad criptogr&aacute;fica no es un m&oacute;dulo adicional: es parte de la arquitectura base. Cada entrega regulatoria incluye evidencia verificable por terceros.</p>
+          </div>
+        </div>
+        <div class="porq-item reveal reveal-delay-2">
+          <div class="porq-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h3 class="porq-item__title">Equipo de consultores senior</h3>
+            <p class="porq-item__desc">M&aacute;s de 15 a&ntilde;os en ecosistema Oracle. Interlocuci&oacute;n directa con arquitectos certificados en cada fase del proyecto. Sin juniors en posiciones cr&iacute;ticas.</p>
+          </div>
+        </div>
+        <div class="porq-item reveal reveal-delay-3">
+          <div class="porq-item__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B0101" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div>
+            <h3 class="porq-item__title">Arquitecturas para escalar</h3>
+            <p class="porq-item__desc">Dise&ntilde;amos pensando en el crecimiento regulatorio, no solo en el requerimiento de hoy. Los patrones que implementamos est&aacute;n documentados y son auditables.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="nosotros.html" class="btn btn--outline-dark btn--pill">
+          Conocer al Equipo
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+        <a href="insights.html" class="btn btn--outline-dark btn--pill">
+          Explorar Insights
           <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
       </div>
@@ -2214,11 +2364,12 @@
           </ul>
           <p class="footer__col-title" style="margin-top:16px">Enlaces</p>
           <ul class="footer__links">
-            <li><a class="footer__link" href="#trusttech">Cómo funciona MAT Analytics | TrustTech</a></li>
-            <li><a class="footer__link" href="#casos">Casos de Uso</a></li>
-            <li><a class="footer__link" href="#diagnostico">Agendar Diagnóstico</a></li>
-            <li><a class="footer__link" href="terminos.html">Términos y Condiciones</a></li>
-            <li><a class="footer__link" href="privacidad.html">Política de Privacidad</a></li>
+            <li><a class="footer__link" href="arquitecturas.html">Arquitecturas de Referencia</a></li>
+            <li><a class="footer__link" href="insights.html">Insights</a></li>
+            <li><a class="footer__link" href="nosotros.html">Nosotros</a></li>
+            <li><a class="footer__link" href="#diagnostico">Agendar Diagn&oacute;stico</a></li>
+            <li><a class="footer__link" href="terminos.html">T&eacute;rminos y Condiciones</a></li>
+            <li><a class="footer__link" href="privacidad.html">Pol&iacute;tica de Privacidad</a></li>
           </ul>
         </div>
 
@@ -2364,7 +2515,7 @@
 
     // Dot nav — scroll spy
     (function () {
-      const sectionIds = ['inicio','quienes-somos','capacidades','trusttech','industrias','casos','equipo','diagnostico'];
+      const sectionIds = ['inicio','problemas','capacidades','casos','arquitecturas-home','por-que','diagnostico'];
       const dots = document.querySelectorAll('.dot-nav a');
       const dotMap = {};
       dots.forEach(d => { dotMap[d.getAttribute('href').slice(1)] = d; });
